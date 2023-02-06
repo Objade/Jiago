@@ -153,8 +153,16 @@
                 </ul>
 
                 <div class="loginBar">
-                    <span class="login"><a href="${cpath }/user/login">로그인</a></span>
-                    <span class="join"><a href="#">회원가입</a></span>
+                 <c:choose>
+                 	<c:when test="${empty login }">
+                    	<span class="login"><a href="${cpath }/user/login">로그인</a></span>
+                    	<span class="join"><a href="${cpath }/user/join">회원가입</a></span>
+                 	</c:when>
+                 	<c:otherwise>
+                    	<span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
+                    	<span><a href="${cpath }/user/logout">로그아웃</a></span>
+                    </c:otherwise>
+                 </c:choose>
                 </div>
             </div>
 
@@ -256,3 +264,14 @@
 
 
 
+<<<<<<< HEAD
+=======
+<script>
+
+</script>
+
+
+    
+</body>
+</html>
+>>>>>>> sungsu
