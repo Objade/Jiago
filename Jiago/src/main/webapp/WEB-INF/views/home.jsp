@@ -169,8 +169,8 @@
                 </ul>
 
                 <div class="loginBar">
-                    <span class="login">로그인</span>
-                    <span class="join">회원가입</span>
+                    <span class="login"><a href="${cpath }/user/login">로그인</a></span>
+                    <span class="join"><a href="#">회원가입</a></span>
                 </div>
             </div>
 
