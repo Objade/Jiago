@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: kgitbank22
 Build-Jdk: 1.8.0_333
+=======
+Built-By: 82105
+Build-Jdk: 1.8.0_351
+>>>>>>> 9de7c96ff492f568dfd69f31c1f9c2dabde9a7ac
 Created-By: Maven Integration for Eclipse
 
