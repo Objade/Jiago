@@ -11,7 +11,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.itbank.model.UserDTO" alias="user"/>
+		<typeAlias type="com.itbank.model.BoardDTO" alias="board" />
 	</typeAliases>
 	
 </configuration>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itbank.repository.BoardDAO">
+
+	<select id="selectAll" resultType="board" parameterType="hashmap">
+		
+		select 
+			* from q_board
+			 
+			order by qboard_idx desc
+			
+			offset #{offset} rows			
+			fetch first #{perPage} rows only
+			
+	</select>
+
+	
+	<select id="selectBoardCount" resultType="int">
+		select count(*) from q_board
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="board">
+		select 
+			* from q_board
+			where
+				qboard_idx = #{qboard_idx}
+				
+	</select>
+	
+	<update id="updateViewCount" parameterType="int">
+		update q_board
+			set
+				qboard_view = qboard_view + 1
+			where
+				qboard_idx = #{qboard_idx}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
