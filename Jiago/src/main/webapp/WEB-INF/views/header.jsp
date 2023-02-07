@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cpath"  value="${pageContext.request.contextPath }"/>
     
     
@@ -9,7 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
     <title>지아고</title>
 
     <style>
@@ -141,14 +141,71 @@
             width: 100%;
             padding-bottom: 20px;
         }
-
+        table { 
+        	width: 100%;
+        	border-collapse: collapse;
+        	min-width: 500px;
+        	margin: 0 auto;
+        }
+        thead {
+        	display: table-header-group;
+    		vertical-align: middle;
+    		border-color: inherit;
+        }
+        td {
+        	display: table-cell;
+        	vertical-align: inherit;
+        	
+        }
+        
+        th {
+        	display: table-cell;
+        	vertical-align: inherit;
+        	text-align: inherit;
+        	text-align: center;
+        }
+        .qboard_title {
+        	display: flex;
+        	justify-content: space-between;
+        }
+		th, td {
+			font: 12px;
+			font-family: '맑은고딕';
+		}
+		thead tr:first-child th:first-child {
+   			background: #0383ce;
+		}
+		thead th {
+			padding: 13px 0;
+			line-height: 1.5;
+			font-size: 15px;
+			color: #fff;
+			font-weight: bold;
+		}
+		p {
+			margin: 0;
+			padding: 0;
+		}
+		
+		 .numS {
+  			float: left;
+    		width: 108px;
+		}
+		.conS {
+			float: left;
+			width: 650px;
+		}
+		.dateS {
+    		float: left;
+    		width: 122px;
+    	
     </style>
 
 </head>
 <body>
 
+    <div id="root">
 
-	<div id="root">
         <div class="header">
             <div class="logo">
                 <img src="${cpath }/resources/img/로고.png">
@@ -161,7 +218,7 @@
                     <li><a href="">설문참여</a></li>
                     <li><a href="">포인트</a></li>
                     <li><a href="">나무심기</a></li>
-                    <li><a href="">고객센터</a>
+                    <li><a href="${cpath }/board/list">게시판</a>
                         <ol>
                             <li><a href="">공지사항</a></li>
                             <li><a href="">질문 게시판</a></li>
@@ -170,18 +227,11 @@
                 </ul>
 
                 <div class="loginBar">
-                 <c:choose>
-                 	<c:when test="${empty login }">
-                    	<span class="login"><a href="${cpath }/user/login">로그인</a></span>
-                    	<span class="join"><a href="${cpath }/user/join">회원가입</a></span>
-                 	</c:when>
-                 	<c:otherwise>
-                    	<span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
-                    	<span><a href="${cpath }/user/logout">로그아웃</a></span>
-                    </c:otherwise>
-                 </c:choose>
+                    <span class="login">로그인</span>
+                    <span class="join">회원가입</span>
                 </div>
             </div>
 
         </div>
-        
+    
+    </div>
