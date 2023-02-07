@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
     <title>지아고</title>
 
     <style>
