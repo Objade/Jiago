@@ -1,25 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="cpath"  value="${pageContext.request.contextPath }"/>
-    
-    
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>지아고</title>
+<%@ include file="header.jsp" %>
 
-    <style>
-        #root {
-            width: 1000px;
-            margin: auto;
-        }
-        .header {
-            display: flex;
-        }
 
+<<<<<<< HEAD
         .logo > img {
             width: 250px;
         }
@@ -169,8 +153,21 @@
                 </ul>
 
                 <div class="loginBar">
+<<<<<<< HEAD
                     <span class="login"><a href="${cpath }/user/login">로그인</a></span>
                     <span class="join"><a href="#">회원가입</a></span>
+=======
+                 <c:choose>
+                 	<c:when test="${empty login }">
+                    	<span class="login"><a href="${cpath }/user/login">로그인</a></span>
+                    	<span class="join"><a href="${cpath }/user/join">회원가입</a></span>
+                 	</c:when>
+                 	<c:otherwise>
+                    	<span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
+                    	<span><a href="${cpath }/user/logout">로그아웃</a></span>
+                    </c:otherwise>
+                 </c:choose>
+>>>>>>> 55148b28529d977f27a2d7dbb11dcf73e12992e0
                 </div>
             </div>
 
@@ -187,6 +184,8 @@
     </section>
     
 </div>
+=======
+>>>>>>> 9de7c96ff492f568dfd69f31c1f9c2dabde9a7ac
 <section id="section3">
     <div class="s3_top">진행 중인 조사</div>
     <div class="s3_mid">
@@ -264,10 +263,20 @@
 </section>
 
 
-    
+<input type="color">
 
-    <input type="color">
+<%@ include file="footer.jsp" %>
+
+
+
+<<<<<<< HEAD
+=======
+<script>
+
+</script>
+
 
     
 </body>
 </html>
+>>>>>>> sungsu
