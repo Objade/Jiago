@@ -28,5 +28,27 @@ public class NoticeService {
 		return dao.selectNoticeCount();
 	}
 
+	public List<NoticeDTO> search(String notice_name) {
+		return dao.search(notice_name);
+	}
+
+	public int write(NoticeDTO dto) {
+		
+		return dao.insert(dto);
+	}
+
+	public NoticeDTO get(int notice_idx) {
+		
+		return dao.selectOne(notice_idx);
+	}
+
+	public int modify(NoticeDTO dto) {
+		return dao.modify(dto);
+	}
+
+	public int delete(int notice_idx) {
+		return dao.delete(notice_idx);
+	}
+
 
 }

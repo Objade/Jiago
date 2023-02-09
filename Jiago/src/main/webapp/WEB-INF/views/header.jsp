@@ -20,8 +20,17 @@
         .header {
             display: flex;
         }
+        .notice_name {
+        	display: flex;
+        	justify-content: space-between;
+        	margin-top: 50px;
+        }
+        .notice_name > .notice_name_L {
+        	font-size: 30px;
+        	font-weight: bolder;
+        }
 
-        .logo > img {
+        .logo > a > img {
             width: 250px;
         }
 
@@ -60,6 +69,7 @@
             width: 900px;
             padding-bottom: 20px;
         }
+        
         .s3_top {
             font-weight: bolder;
             text-align: center;
@@ -159,11 +169,13 @@
 			width: 500px;
 			height: 200px;
 			background: #1B434A;
+			margin: 100px auto;
 		}
 		.boardBox {
 			width: 500px;
 			height: 200px;
 			background: #1B434A;
+			margin: 100px auto;
 		}
 		
 		.serviceBox > .noticeBox > a {
@@ -194,6 +206,13 @@
 		.hidden {
 			display: none;
 		}
+		
+		.header > .nav a {
+			font-family: '맑은고딕';
+			font-size: 20px;
+			color: #333333;
+			font-weight: bolder;
+		}
     	
     </style>
 
@@ -204,13 +223,13 @@
 
         <div class="header">
             <div class="logo">
-                <img src="${cpath }/resources/img/로고.png">	
+                <a href="${cpath }/"><img src="${cpath }/resources/img/로고.png"></a>
             </div>
 
        
             <div class="nav">
                 <ul>
-                    <li><a href="">홈</a></li>
+                    <li><a href="${cpath }/">홈</a></li>
                     <li><a href="${cpath }/survey/list">설문참여</a></li>
                     <li><a href="">포인트</a></li>
                     <li><a href="">나무심기</a></li>
@@ -234,3 +253,4 @@
         </div>
     
     </div>
+    <hr>
