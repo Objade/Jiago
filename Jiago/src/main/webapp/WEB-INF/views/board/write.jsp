@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-
-
 <form method="POST" enctype="multipart/form-data">
 	<p><input type="text" name="qboard_title" placeholder="제목" required></p>
 	<p><input type="text" name="qboard_writer" value="${login.user_id }" readonly></p>

@@ -29,7 +29,6 @@
             <th>제목</th>
             <th>작성자</th>
             <th>작성날짜</th>
-            <th>조회수</th>
          </tr>
       </thead>
       
@@ -40,7 +39,6 @@
          <td><a href="${cpath}/board/view/${dto.qboard_idx}">${dto.qboard_title }</a></td>
          <td>${dto.qboard_writer }</td>
          <td><fmt:formatDate value="${dto.qboard_date }"/></td>
-         <td>${dto.qboard_view }</td>
       </tr>
       </c:forEach>
       </tbody>

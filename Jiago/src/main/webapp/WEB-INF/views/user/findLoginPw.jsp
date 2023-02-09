@@ -64,6 +64,20 @@
 		const url = '${cpath}/user/sendId'
 		const id = document.querySelector('input[name="id"]').value
 		console.log(id)
+		
+		const opt1 = {
+			method: 'POST',
+			body: id,
+			headers: { 
+				'Content-Type': 'application/json; charset=utf-8'
+			}
+		}
+		
+		fetch(url,opt1)
+		.then(response => response.text())
+		.then(text => {
+			console.log(text)
+		})
 	}
 	
 	

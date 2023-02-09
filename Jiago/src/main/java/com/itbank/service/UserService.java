@@ -19,6 +19,10 @@ public class UserService {
 		return userDao.join(user);
 	}
 
+	public int checkId(String id) {	
+		return id.equals(userDao.checkId(id)) == true ? 1 : 0;
+	}
+
 
 
 }

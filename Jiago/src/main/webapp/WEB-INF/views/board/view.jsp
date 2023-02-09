@@ -15,7 +15,7 @@
 <table id="view">
 	<tr>
 		<td>${dto.qboard_idx } : ${dto.qboard_title } </td>
-		<td>조회수 : ${dto.qboard_view }</td>
+		<td>조회수 : ${dto.board_view }</td>
 	</tr>
 	<tr>
 		<td colspan="2">작성자  : ${dto.qboard_writer }</td>
