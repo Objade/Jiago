@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cpath"  value="${pageContext.request.contextPath }"/>
     
     
@@ -9,7 +10,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
     <title>지아고</title>
 
     <style>
@@ -141,14 +141,39 @@
             width: 100%;
             padding-bottom: 20px;
         }
-
+        table {
+			border: 2px solid black;
+			border-collapse: collapse;
+			min-width: 500px;
+			margin: 0 auto;
+		}
+		td, th {
+			border: 1px solid darkgrey;
+			padding: 5px 10px;
+		}
+		.serviceBox {
+			width: 900px;
+			margin: auto;
+		}
+		.noticeBox {
+			width: 500px;
+			height: 100px;
+			background: green;
+		}
+		.boardBox {
+			width: 500px;
+			height: 100px;
+			background: #90EE90;
+		}
+		
+    	
     </style>
 
 </head>
 <body>
 
+    <div id="root">
 
-	<div id="root">
         <div class="header">
             <div class="logo">
                 <img src="${cpath }/resources/img/로고.png">
@@ -161,7 +186,7 @@
                     <li><a href="">설문참여</a></li>
                     <li><a href="">포인트</a></li>
                     <li><a href="">나무심기</a></li>
-                    <li><a href="">고객센터</a>
+                    <li><a href="${cpath }/cuscenter">고객센터</a>
                         <ol>
                             <li><a href="">공지사항</a></li>
                             <li><a href="">질문 게시판</a></li>
@@ -184,4 +209,5 @@
             </div>
 
         </div>
-        
+    
+    </div>

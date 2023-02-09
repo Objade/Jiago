@@ -123,7 +123,7 @@
 	
 	
 	<div id="menuBar">
-		<span><a href="${cpath }/user/findLoginPw">비밀번호 찾기</a></span>
+		<span><a href="#">비밀번호 찾기</a></span>
 		<span>|</span>
 		<span><a href="${cpath }/user/findLoginId">아이디 찾기</a></span>
 		<span>|</span>

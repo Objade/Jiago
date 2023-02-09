@@ -11,6 +11,8 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias type="com.itbank.model.BoardDTO" alias="board" />
+		<typeAlias type="com.itbank.model.ReplyDTO" alias="reply" />
 		<typeAlias type="com.itbank.model.UserDTO" alias="user"/>
 	</typeAliases>
 	

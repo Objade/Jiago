@@ -4,13 +4,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-
-import com.itbank.model.UserDTO;
-import com.itbank.repository.UserDAO;
 
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -24,8 +20,6 @@ import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class MailService {
-	
-	@Autowired UserDAO userDao;
 
 	@Value("classpath:account.txt")
 	private Resource account;
@@ -99,15 +93,6 @@ public class MailService {
 			return -2;
 		}		
 		
-	}
-
-	public boolean checkRealMail(String email) {
-		String saveEmail = userDao.checkRealMail(email);
-		return saveEmail.equals(email);
-	}
-
-	public String getId(String email) {
-		return userDao.getId(email);
 	}
 	
 }
