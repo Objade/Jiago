@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itbank.service.MailService;
+import com.itbank.service.UserService;
 
 @RestController
 @RequestMapping("user")
 public class UserSecurityController {
 	
 	@Autowired MailService mailService;
+	@Autowired UserService userService;
 	
 	private HashMap<String, String> sendNumberMap = new HashMap<String, String>();
 	
@@ -38,7 +40,7 @@ public class UserSecurityController {
 	}
 	
 	@PostMapping("sendCheckNumber")
-	public String ajax03(@RequestBody HashMap<String, String> param) {
+	public String checkNumber(@RequestBody HashMap<String, String> param) {
 		System.out.println("키 벨류 값 ===================");
 		System.out.println(param);
 
@@ -55,6 +57,11 @@ public class UserSecurityController {
 		}
 		System.out.println("유저 아이디 : " + userId);
 		return userId;
+	}
+	
+	@PostMapping("sendId")
+	public int realLogin(@RequestBody String id) {
+		return userService.checkId(id);
 	}
 	
 	 

@@ -5,7 +5,6 @@
 	
 <mapper namespace="com.itbank.repository.BoardDAO">
 
-	<!-- 게시판 조회 -->
 	<select id="selectAll" resultType="board" parameterType="hashmap">
 		
 		select 
@@ -18,19 +17,17 @@
 			
 	</select>
 	
-	<!-- 게시판 검색 -->
 	<select id="search" parameterType="String" resultType="board">
 		select 
 			* 
 			from q_board where qboard_title like '%${qboard_title}%' 			
 	</select>
 
-	<!-- 게시판 카운트 -->
+	
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from q_board
 	</select>
 	
-	<!-- 게시판 조회(상세조회) -->
 	<select id="selectOne" parameterType="int" resultType="board">
 		select 
 			* from q_board
@@ -39,7 +36,6 @@
 				
 	</select>
 	
-	<!-- 게시판 글쓰기(작성) -->
 	<insert id="insert" parameterType="board">
 		insert into q_board
 			(qboard_title, qboard_writer, qboard_content, qboard_privacy) 
@@ -47,7 +43,6 @@
 			(#{qboard_title}, #{qboard_writer}, #{qboard_content}, #{qboard_privacy})
 	</insert>
 	
-	<!-- 게시판 수정 -->
 	<update id="modify">
 		update q_board
 			set
@@ -59,12 +54,11 @@
 				qboard_idx = #{qboard_idx}
 	</update>
 	
-	<!-- 게시판 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete q_board where qboard_idx = #{qboard_idx}
 	</delete>
 	
-	<!-- 게시판 조회수 -->
+	
 	<update id="updateViewCount" parameterType="int">
 		update q_board
 			set
@@ -73,7 +67,6 @@
 				qboard_idx = #{qboard_idx}
 	</update>
 	
-	<!-- 게시판 댓글 조회 -->
 	<select id="selectReplyList" parameterType="int" resultType="reply">
 		select *
     		from (
@@ -82,7 +75,6 @@
     		)
 	</select>
 	
-	<!-- 게시판 댓글 글쓰기(작성) -->
 	<insert id="insertReply" parameterType="reply">
 		insert into reply 
 				(qboard_idx, admin_id, reply_content)

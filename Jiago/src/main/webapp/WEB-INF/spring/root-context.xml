@@ -27,7 +27,6 @@
 			<list>
 <!-- 				<value>classpath:mybatis/member.xml</value> -->
 				<value>classpath:mybatis/board.xml</value>
-				<value>classpath:mybatis/notice.xml</value>
 				<value>classpath:mybatis/user.xml</value>
 				<value>classpath:mybatis/survey.xml</value>
 			</list>

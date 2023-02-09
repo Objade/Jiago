@@ -16,5 +16,7 @@ public interface UserDAO {
 
 	String getId(String email);
 
+	String checkId(String id);
+
 	
 }

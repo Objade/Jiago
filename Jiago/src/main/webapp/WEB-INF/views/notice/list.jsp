@@ -4,7 +4,7 @@
 
 <div id="root">
 	<div class="notice_name">
-		<div class="notice_name_L"><a href="${cpath }/notice/list">공지사항</a></div>
+		<div class="notice_name_L">공지사항</div>
 		<div class="notice_name_R">Home > 고객센터 > 공지사항</div>
 	</div>
 	<div class="sb">
