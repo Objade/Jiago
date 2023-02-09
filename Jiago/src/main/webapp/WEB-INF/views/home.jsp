@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-
-
-    <section id="section1">
-        <div class="banner">
-            <img src="${cpath }/resources/img/banner.png">
-        </div>
-    </section>
-    <section id="section2">
-        <div class="banner2">
-            <img src="${cpath }/resources/img/howTo.png">
-        </div>
-    </section>
-  </div>
+<div id="root">
+	<section id="section1">
+	       <div class="banner">
+	            <img src="${cpath }/resources/img/banner.png">
+	       </div>
+	</section>
+	<section id="section2">
+	       <div class="banner2">
+	            <img src="${cpath }/resources/img/howTo.png">
+	       </div>
+	</section>
+</div>
 
 <section id="section3">
     <div class="s3_top">진행 중인 조사</div>
@@ -92,13 +91,10 @@
 </section>
 
 
-    
-
-    <input type="color">
-
-<script>
-
-</script>
+<input type="color">
 
 <%@ include file="footer.jsp" %>
-    
+
+</body>
+
+
