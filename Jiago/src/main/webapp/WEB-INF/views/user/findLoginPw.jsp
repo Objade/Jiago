@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="cpath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 <style>
 	.hidden {
 		display: none;
@@ -13,8 +15,17 @@
 </style>
 </head>
 <body>
+<fieldset id="inputId">
+	<form id="idForm">
+		<p>
+			<input type="text" name="id" placeholder="아이디를 입력하세요">
+			<input type="submit" value="입력">
+		</p>
+	</form>
+</fieldset>	
 	
-<fieldset id="send">
+	
+<fieldset id="send" class="hidden">
 	<form id="sendForm">
 		<p>
 			<input type="email" name="email" placeholder="이메일을 입력하세요">
@@ -41,13 +52,35 @@
 	<a href="${cpath }/"><button>home으로 이동</button></a>
 </p>
 
-	
 <script>
+	// ID 존재 확인
+	const inputId = document.getElementById('inputId')
+	const sendId = document.forms[0]
+	console.log(inputId)
+	console.log(sendId)
+	
+	function checkUserId(event) {
+		event.preventDefault()
+		const url = '${cpath}/user/sendId'
+		const id = document.querySelector('input[name="id"]').value
+		console.log(id)
+	}
+	
+	
+	sendId.onsubmit = checkUserId
+</script>
+	
+	
+<!-- <script>
+
+
+
+
 	// 메세지 전송
 	const sendcheck = document.getElementById('send')
-	const sendmessage = document.forms[0]
+	const sendmessage = document.forms[1]
 	console.log(sendmessage)
-	const checkmessage = document.forms[1]
+	const checkmessage = document.forms[2]
 	console.log(checkmessage)
 	const numcheck = document.getElementById('check')
 	console.log(numcheck)
@@ -129,8 +162,11 @@
 			})
 		}
 	checkmessage.onsubmit = checknumber
-</script>
+</script> -->
 
 
+
+
+	
 </body>
 </html>

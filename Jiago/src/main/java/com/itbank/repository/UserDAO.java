@@ -12,5 +12,9 @@ public interface UserDAO {
 
 	int join(UserDTO user);
 
+	String checkRealMail(String email);
+
+	String getId(String email);
+
 	
 }
