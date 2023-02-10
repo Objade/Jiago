@@ -60,6 +60,9 @@
       const buttonBefore = document.querySelector('.button.before')
       const buttonAfter = document.querySelector('.button.after')
       const buttonSubmit = document.querySelector('.button.submit')
+      
+      buttonSubmit.classList.add('hidden')
+      
 
       const questionAll = Array.from(document.querySelectorAll('.surveyList.item'))
       console.log(questionAll.length)
@@ -70,11 +73,13 @@
       exampleAll.map(e => e.classList.add('hidden'))
 
       const input = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]'))
+      
+      
 		
       // 정답 제출할거
       function submitHandler(event) {
     	 const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
-         
+    	     	          
     	 if(inputArr.length == questionAll.length) {   // 문항수와 정답지의 길이가 같으면 실행함
            
             const ob = {
@@ -108,6 +113,10 @@
 
          const submit = document.querySelector('.button.submit')
          console.log(submit)
+         
+         if(inputArr.length == questionAll.length) {  
+	     	buttonSubmit.classList.remove('hidden')
+	     }
       }
       input.map(e => e.onclick = inputHandler)
       

@@ -61,7 +61,6 @@ public class SurveyAjaxController {
       System.out.println(resultMap);
       
       int answerSub = surveyService.answerSubstr(resultMap);
-      
       int deleteAnswerResult = surveyService.deleteAnswerResult(resultMap);
       
       return 1;
