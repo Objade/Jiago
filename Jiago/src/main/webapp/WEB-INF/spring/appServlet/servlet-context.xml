@@ -34,12 +34,10 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/board/**" />
-			<!-- <mapping path="/user/**" /> -->
+			<mapping path="/user/**" />
 			
-			<!-- <exclude-mapping path="/user/login" />
+			<exclude-mapping path="/user/login" />
 			<exclude-mapping path="/user/join" />
-			 -->
-			
 			
 			<exclude-mapping path="/board/list" />
 			<exclude-mapping path="/board/view/**" />
