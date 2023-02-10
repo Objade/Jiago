@@ -13,6 +13,10 @@
     <title>지아고</title>
 
     <style>
+    	.hidden {
+    		display: none;
+    	}
+    	
         #root {
             width: 1000px;
             margin: auto;
@@ -20,8 +24,30 @@
         .header {
             display: flex;
         }
+        .notice_name {
+           display: flex;
+           justify-content: space-between;
+           margin-top: 50px;
+           margin-bottom: 50px;
+        }
+        .notice_name > .notice_name_L {
+           font-size: 30px;
+           font-weight: bolder;
+        }
+        
+        .qboard_title {
+           display: flex;
+           justify-content: space-between;
+           margin-top: 50px;
+           margin-bottom: 50px;
+           
+        }
+        .qboard_title > .qboard_title_L {
+           font-size: 30px;
+           font-weight: bolder;
+        }
 
-        .logo > img {
+        .logo > a > img {
             width: 250px;
         }
 
@@ -60,6 +86,7 @@
             width: 900px;
             padding-bottom: 20px;
         }
+        
         .s3_top {
             font-weight: bolder;
             text-align: center;
@@ -142,31 +169,33 @@
             padding-bottom: 20px;
         }
         table {
-			border: 2px solid black;
-			border-collapse: collapse;
-			min-width: 500px;
-			margin: 0 auto;
-		}
-		td, th {
-			border: 1px solid darkgrey;
-			padding: 5px 10px;
-		}
-		.serviceBox {
-			width: 900px;
-			margin: auto;
-		}
-		.noticeBox {
-			width: 500px;
-			height: 200px;
-			background: #1B434A;
-		}
-		.boardBox {
-			width: 500px;
-			height: 200px;
-			background: #1B434A;
-		}
-		
-		.serviceBox > .noticeBox > a {
+         border: 2px solid black;
+         border-collapse: collapse;
+         min-width: 500px;
+         margin: 0 auto;
+      }
+      td, th {
+         border: 1px solid darkgrey;
+         padding: 5px 10px;
+      }
+      .serviceBox {
+         width: 900px;
+         margin: auto;
+      }
+      .noticeBox {
+         width: 500px;
+         height: 200px;
+         background: #1B434A;
+         margin: 100px auto;
+      }
+      .boardBox {
+         width: 500px;
+         height: 200px;
+         background: #1B434A;
+         margin: 100px auto;
+      }
+      
+      .serviceBox > .noticeBox > a {
             display: flex;
             width: 500px;
             height: 200px;
@@ -189,12 +218,24 @@
             font-weight: bolder;
             color: #eee;
         }
-		
-		
-		.hidden {
-			display: none;
-		}
-    	
+      
+      
+      .hidden {
+         display: none;
+      }
+      
+      .header > .nav a {
+         font-family: '맑은고딕';
+         font-size: 20px;
+         color: #333333;
+         font-weight: bolder;
+      }
+      #replyWriteForm textarea {
+			height: 100px;
+			min-height: auto;
+			width: 80%;
+	  }
+   	    
     </style>
 
 </head>
@@ -204,13 +245,13 @@
 
         <div class="header">
             <div class="logo">
-                <img src="${cpath }/resources/img/로고.png">	
+                <a href="${cpath }/"><img src="${cpath }/resources/img/로고.png"></a>
             </div>
 
        
             <div class="nav">
                 <ul>
-                    <li><a href="">홈</a></li>
+                    <li><a href="${cpath }/">홈</a></li>
                     <li><a href="${cpath }/survey/list">설문참여</a></li>
                     <li><a href="">포인트</a></li>
                     <li><a href="">나무심기</a></li>
@@ -219,13 +260,13 @@
 
                 <div class="loginBar">
                  <c:choose>
-                 	<c:when test="${empty login }">
-                    	<span class="login"><a href="${cpath }/user/login">로그인</a></span>
-                    	<span class="join"><a href="${cpath }/user/join">회원가입</a></span>
-                 	</c:when>
-                 	<c:otherwise>
-                    	<span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
-                    	<span><a href="${cpath }/user/logout">로그아웃</a></span>
+                    <c:when test="${empty login }">
+                       <span class="login"><a href="${cpath }/user/login">로그인</a></span>
+                       <span class="join"><a href="${cpath }/user/join">회원가입</a></span>
+                    </c:when>
+                    <c:otherwise>
+                       <span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
+                       <span><a href="${cpath }/user/logout">로그아웃</a></span>
                     </c:otherwise>
                  </c:choose>
                 </div>
@@ -234,3 +275,4 @@
         </div>
     
     </div>
+    <hr>

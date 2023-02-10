@@ -1,3 +1,25 @@
+function deleteHandler(event) {
+	
+	const replyWriter = event.target.parentNode.parentNode.querySelector('.writer')
+	
+	if(login_user_id != replyWriter.innerText) {
+		alert('본인이 작성한 댓글만 삭제할 수 있습니다')
+		return
+	}
+	else {
+		const flag = confirm('정말 삭제하시겠습니까?')
+		if(flag) {
+			// 삭제하는 내용을 fetch로 전송 (댓글idx)
+			const idx = replyWriter.parentNode.parentNode.parentNode.getAttribute('idx')
+			const url = `${cpath}/board/reply/${qboard_idx}/${reply_idx}`
+			const opt = {
+				method: 'DELETE'
+			}
+			fetch(url, opt)	// 쿼리 수행 후 then을 이용하여 댓글 삭제된 형태로 새로 불러오기
+		}
+	}
+}
+
 async function replyLoadHandler() {
 	const replyDiv = document.getElementById('reply')
 	const url = cpath + '/board/reply/' + qboard_idx
@@ -40,35 +62,19 @@ function convertHTMLfromJSON(dto) {
 	
 	const margin = dto.reply_depth * 30
 	
-	let html = `<div class="reply" idx="${dto.idx}" reply_depth="${dto.reply_depth}" style="margin-left: ${margin}px">`
+	let html = `<div class="reply" idx="${dto.reply_idx}" style="margin-left: ${margin}px">`
 	html += `		<div class="replyTop">`
 	html += `			<div class="left">`
-	html += `				<div class="writer">${dto.writer}</div>`
-	html += `				<div class="writeDate">${getYMD(dto.writeDate)}</div>`	
+	html += `				<div class="writer">${dto.admin_id}</div>`
 	html += `			</div>`
 	html += `			<div class="right">`
-	html += `				<button class="rreply" ${login_userid == '' ? 'hidden' : ''}>답변</button>`
-	html += `				<button class="modify" ${login_userid != dto.writer ? 'hidden' : ''}>수정</button>`
-	html += `				<button class="delete" ${login_userid != dto.writer ? 'hidden' : ''}>삭제</button>`
+	html += `				<button class="modify" ${login_user_id != dto.admin_id ? 'hidden' : ''}>수정</button>`
+	html += `				<button class="delete" ${login_user_id != dto.admin_id ? 'hidden' : ''}>삭제</button>`
 	html += `			</div>`
 	html += `		</div>`
-	html += `		<pre class="content">${dto.content}</pre>`
+	html += `		<pre class="content">${dto.reply_content}</pre>`
 	html += `</div>`
 	return html
-}
-
-function getYMD(date) {			// 1675298767000
-	const d = new Date(date)	// js 날짜 객체
-	const yyyy = d.getFullYear()	// 4자리 연도
-	let mm = d.getMonth() + 1		// 월
-	let dd = d.getDate()			// 일
-	if(mm < 10) {					// 월이 한자리면
-		mm = '0' + mm				// 앞에 0을 붙인다
-	}
-	if(dd < 10) {					// 일이 한자리면
-		dd = '0' + dd				// 앞에 0을 붙인다
-	}
-	return `${yyyy}-${mm}-${dd}`	// 형식대로 문자열을 반환한다
 }
 
 function replyWriteHandler(event) {
@@ -77,12 +83,11 @@ function replyWriteHandler(event) {
 	// 게시글 번호, 작성자, 내용
 	const ob = {
 		board_idx: board_idx,
-		writer: login_userid,
+		writer: login_user_id,
 		content: content.value,
-		parent_idx: event.target.querySelector('input[name="parent_idx"]').value,
-		reply_depth: event.target.querySelector('input[name="reply_depth"]').value,
+	
 	}
-	const url = cpath + '/board/reply/' + qboard_idx
+	const url = cpath + '/board/reply/' + board_idx
 	const opt = {
 		method: 'POST',
 		body: JSON.stringify(ob),
@@ -101,5 +106,6 @@ function replyWriteHandler(event) {
 		}
 	})
 }
+
 
 
