@@ -23,7 +23,14 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis/main.xml" />
-		<property name="mapperLocations" value="classpath:mybatis/user.xml"/>
+		<property name="mapperLocations">
+			<list>
+<!-- 				<value>classpath:mybatis/member.xml</value> -->
+				<value>classpath:mybatis/board.xml</value>
+				<value>classpath:mybatis/user.xml</value>
+				<value>classpath:mybatis/survey.xml</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
@@ -31,6 +38,7 @@
 	</bean>
 	
 	<context:component-scan base-package="com.itbank.service" />
-	<mybatis-spring:scan base-package="com.itbank.repository"/>	
-			
+	<mybatis-spring:scan base-package="com.itbank.repository"/>		
+		
+		
 </beans>

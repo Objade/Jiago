@@ -52,8 +52,10 @@ public class UserController {
 	@GetMapping("findLoginId")
 	public void findLoginId() {}
 	
+	@GetMapping("findLoginPw")
+	public void findLoginPw() {}
 	
-	
-	
-	
+	@GetMapping("pwCheckEmail")
+	public void pwCheckEmail() {}
+		
 }

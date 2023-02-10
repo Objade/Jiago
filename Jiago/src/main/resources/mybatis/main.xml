@@ -11,7 +11,13 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias type="com.itbank.model.BoardDTO" alias="board" />
+		<typeAlias type="com.itbank.model.ReplyDTO" alias="reply" />
 		<typeAlias type="com.itbank.model.UserDTO" alias="user"/>
+		<typeAlias type="com.itbank.model.SurveyDTO" alias="survey"/>
+		<typeAlias type="com.itbank.model.SurveyQuestionDTO" alias="surveyQuestion"/>
+		<typeAlias type="com.itbank.model.SurveyExampleDTO" alias="surveyExample"/>
+		<typeAlias type="com.itbank.model.NoticeDTO" alias="notice" />
 	</typeAliases>
 	
 </configuration>
