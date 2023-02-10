@@ -16,6 +16,7 @@ import com.itbank.service.BoardService;
 
 @RestController
 @RequestMapping("/board/reply")
+
 public class ReplyController {
 	@Autowired private BoardService boardService;
 	@GetMapping("/{qboard_idx}")

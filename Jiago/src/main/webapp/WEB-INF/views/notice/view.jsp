@@ -30,8 +30,10 @@
 		<a href="${cpath }/notice/list"><button>목록</button></a>
 	</div>
 	<div>
-		<a href="${cpath }/notice/modify/${dto.notice_idx}"><button>수정</button></a>
-		<a href="${cpath }/notice/delete/${dto.notice_idx}"><button>삭제</button></a>
+		<c:if test="${ login.user_type == 'Admin'}">
+			<a href="${cpath }/notice/modify/${dto.notice_idx}"><button>수정</button></a>
+			<a href="${cpath }/notice/delete/${dto.notice_idx}"><button>삭제</button></a>
+		</c:if>
 	</div>
 </div>
 </div>

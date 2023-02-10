@@ -22,9 +22,11 @@ public class SurveyController {
 
 	@GetMapping("list")
 	public ModelAndView list() {
+		
 		ModelAndView mav = new ModelAndView();
 		List<SurveyDTO> list = surveyService.selectList();
 		mav.addObject("list", list);
+		
 		return mav;
 	}
 	
@@ -39,15 +41,15 @@ public class SurveyController {
 	@GetMapping("surveyStart/{survey_idx}")
 	public ModelAndView surveyStart(@PathVariable("survey_idx") int survey_idx) {
 		ModelAndView mav = new ModelAndView("/survey/surveyStart");
+		List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
 		
-		List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);		
 		List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
 		
 		mav.addObject("list", list);
+		
 		mav.addObject("exList", exList);
 		
 		return mav;
-		
 	}
 	
 	

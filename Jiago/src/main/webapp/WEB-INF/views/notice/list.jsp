@@ -3,24 +3,26 @@
 <%@ include file="../header.jsp" %>
 
 <div id="root">
-	<div class="notice_name">
-		<div class="notice_name_L">공지사항</div>
-		<div class="notice_name_R">Home > 고객센터 > 공지사항</div>
-	</div>
-	<div class="sb">
-		<div>
-			<form method="POST" class="search">
-				<p>
-					<input type="text" name="notice_name" placeholder="제목을 입력하세요">
-					<input type="submit" value="검색">
-				</p>
-			</form>
-		</div>
-		<div>
-			<a href="${cpath }/notice/write"><button>작성</button></a>
-		</div>
-	</div>
-	
+   <div class="notice_name">
+      <div class="notice_name_L"><a href="${cpath }/notice/list">공지사항</a></div>
+      <div class="notice_name_R">Home > 고객센터 > 공지사항</div>
+   </div>
+   <div class="sb">
+      <div>
+         <form method="POST" class="search">
+            <p>
+               <input type="text" name="notice_name" placeholder="제목을 입력하세요">
+               <input type="submit" value="검색">
+            </p>
+         </form>
+      </div>
+      <div class="notice_write">
+      	<c:if test="${login.user_type == 'Admin' }">
+         	<a href="${cpath }/notice/write"><button>작성</button></a>
+         </c:if>
+      </div>
+   </div>
+   
 
    <table id="boardList">
       <thead>
@@ -45,19 +47,19 @@
    </table>
    
     <div class="pageNumber">
-		<c:if test="${paging.prev }">
-			<a href="${cpath }/board/list?page=${paging.begin - 1}">[이전]</a>
-		</c:if>
-		
-		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
-			<a class="${paging.page == i ? 'bold' : '' }" 
-			   href="${cpath }/board/list?page=${i}">[${i }]</a>
-		</c:forEach>
-		
-		<c:if test="${paging.next }">
-			<a href="${cpath }/board/list?page=${paging.end + 1}">[다음]</a>
-		</c:if>
-	</div>
+      <c:if test="${paging.prev }">
+         <a href="${cpath }/board/list?page=${paging.begin - 1}">[이전]</a>
+      </c:if>
+      
+      <c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
+         <a class="${paging.page == i ? 'bold' : '' }" 
+            href="${cpath }/board/list?page=${i}">[${i }]</a>
+      </c:forEach>
+      
+      <c:if test="${paging.next }">
+         <a href="${cpath }/board/list?page=${paging.end + 1}">[다음]</a>
+      </c:if>
+   </div>
 </div>
 </body>
 </html>
