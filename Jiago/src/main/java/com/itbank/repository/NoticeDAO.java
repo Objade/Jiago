@@ -14,15 +14,5 @@ public interface NoticeDAO {
 
 	int selectNoticeCount();
 
-	List<NoticeDTO> search(String notice_name);
-
-	int insert(NoticeDTO dto);
-
-	NoticeDTO selectOne(int notice_idx);
-
-	int modify(NoticeDTO dto);
-
-	int delete(int notice_idx);
-
 
 }

@@ -33,25 +33,20 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/notice/**" />
 			<mapping path="/board/**" />
-			<mapping path="/user/**" />
+			<!-- <mapping path="/user/**" /> -->
 			
-			<exclude-mapping path="/user/login" />
+			<!-- <exclude-mapping path="/user/login" />
 			<exclude-mapping path="/user/join" />
-			<exclude-mapping path="/user/findLoginId" />
-			<exclude-mapping path="/user/findLoginPw" />
+			 -->
 			
 			
 			<exclude-mapping path="/board/list" />
 			<exclude-mapping path="/board/view/**" />
 			
-			<exclude-mapping path="/notice/list" />
-			<exclude-mapping path="/notice/view/**" />
+			<beans:bean id="loginInterceptor" class="com.itbank.interceptor.LoginInterceptor" />
 			
-			<beans:bean id="loginInterceptor" class="com.itbank.interceptor.LoginInterceptor" />	
 		</interceptor>
-		
 	</interceptors>
 	
 	<!-- 요청이 multipart/form-data 형식으로 전달될 때, 파일을 처리할 객체를 스프링 빈으로 등록 -->

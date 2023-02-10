@@ -20,7 +20,7 @@ public class BoardDTO {
 	private String qboard_content;
 	private Date qboard_date;
 	private String qboard_privacy;
-	private int qboard_view;
+	private int board_view;
 
 	public int getQboard_idx() {
 		return qboard_idx;
@@ -72,7 +72,13 @@ public class BoardDTO {
 		this.qboard_privacy = qboard_privacy;
 	}
 
+	public int getBoard_view() {
+		return board_view;
+	}
 
+	public void setBoard_view(int board_view) {
+		this.board_view = board_view;
+	}
 
 	public Date getQboard_date() {
 		return qboard_date;
@@ -80,14 +86,6 @@ public class BoardDTO {
 
 	public void setQboard_date(Date qboard_date) {
 		this.qboard_date = qboard_date;
-	}
-
-	public int getQboard_view() {
-		return qboard_view;
-	}
-
-	public void setQboard_view(int qboard_view) {
-		this.qboard_view = qboard_view;
 	}
 
 }
