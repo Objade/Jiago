@@ -9,6 +9,7 @@ import com.itbank.model.AnswerDTO;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.UserDonateDTO;
 
 @Repository
 public interface SurveyDAO {
@@ -28,6 +29,12 @@ public interface SurveyDAO {
    int insertAnswerSubstr(HashMap<String, Object> resultMap);
 
    int deleteAnswerResult(HashMap<String, Object> resultMap);
+
+   int insertUserPoint(HashMap<String, Object> resultMap);
+
+   int insertUserDonate(UserDonateDTO dto);
+
+   int minusUserPoint(UserDonateDTO dto);
 
 
 

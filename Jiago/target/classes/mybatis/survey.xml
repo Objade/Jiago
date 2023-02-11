@@ -45,6 +45,17 @@
    <delete id="deleteAnswerResult" parameterType="HashMap">
       delete answer where survey_idx = #{survey_idx} and question_idx = 1 and user_idx = #{user_idx}
    </delete>
+   
+   <insert id="insertUserPoint" parameterType="HashMap">
+   		insert into point(user_idx, survey_idx, point) values (#{user_idx}, #{survey_idx}, (select survey_point from survey where survey_idx = #{survey_idx}))
+   </insert>
 
+	<insert id="insertUserDonate" parameterType="userDonate">
+		insert into user_donate (user_idx, survey_idx, total_donate) values (#{user_idx}, #{survey_idx}, #{total_donate})	
+	</insert>
+	
+	<insert id="minusUserPoint" parameterType="userDonate">
+		insert into point(user_idx, survey_idx, point) values (#{user_idx}, #{survey_idx}, -#{total_donate})
+	</insert>
 
 </mapper>

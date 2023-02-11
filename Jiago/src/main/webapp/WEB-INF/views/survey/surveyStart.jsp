@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<script>
-   const test = ${survey_idx}
-</script>
+
 
 
 
 <div class="main" value="0">
+ 	 <%-- 중요! 시작 이미지 변경 및 크기 정해야함 --%>  <div class="surveyList_start"><img src="${cpath }/resources/img/설문_시작페이지.png" style="width: 300px;"></div>
+
    <c:forEach var="dto" items="${list }" varStatus="status">
       <div class="surveyList item" question_idx="${dto.question_idx}" index="${status.count }">
          <div class="surveyList surveyTitle">${status.count} ${dto.question_content}</div>
@@ -27,7 +27,7 @@
 <button class="button before">이전</button>
 <button class="button after">다음</button>
  
-<button class="button submit">제출</button>
+<a href="${cpath }/survey/surveyComplete/${survey_idx}"><button class="button submit">제출</button></a>
 
 
 	<script>
@@ -88,7 +88,7 @@
             }
             
             const cpath = '${cpath}'
-            const url = cpath + '/survey/surveyAnswer/'+ test
+            const url = cpath + '/survey/surveyAnswer/${survey_idx}'
             const opt = {
                   method: 'POST',
                   body: JSON.stringify(ob),
@@ -145,6 +145,9 @@
       // 다음 문제와 보기를 보여주는 핸들러
         function buttonAfterHandler(event) {
          if(main.getAttribute('value') < questionAll.length) {
+        	const start = document.querySelector('.surveyList_start')
+			start.classList.add('hidden')
+        	        	 
             questionAll.map(e => e.classList.add('hidden'))
             exampleAll.map(e => e.classList.add('hidden'))
             main.setAttribute('value', +main.getAttribute('value')+1)

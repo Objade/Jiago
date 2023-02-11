@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ public class SurveyAjaxController {
       System.out.println(ob);
       
       int user_idx = Integer.parseInt((String) ob.get("user_idx"));
+      @SuppressWarnings("unchecked")
       List<String> answerList = (List<String>) ob.get("answer_content");
       String answer_content = "";
       
@@ -62,8 +64,10 @@ public class SurveyAjaxController {
       
       int answerSub = surveyService.answerSubstr(resultMap);
       int deleteAnswerResult = surveyService.deleteAnswerResult(resultMap);
+      int userPoint = surveyService.addpoint(resultMap);	// 포인트 적립
       
-      return 1;
-      
+      return userPoint;
    }
+      
+   
 }

@@ -10,6 +10,7 @@ import com.itbank.model.AnswerDTO;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.SurveyDAO;
 
 @Service
@@ -50,10 +51,22 @@ public class SurveyService {
       return dao.deleteAnswerResult(resultMap);
    }
 
-   
+   public int addpoint(HashMap<String, Object> resultMap) {
+	   return dao.insertUserPoint(resultMap);
+   }
 
-   
+   public int addUserDonate(UserDonateDTO dto) {
+	  return dao.insertUserDonate(dto);
+   }
 
-   
-   
+   public int minusUserPoint(UserDonateDTO dto) {
+	  return dao.minusUserPoint(dto);
+   }
+
+
+
+	
 }
+
+      
+   
