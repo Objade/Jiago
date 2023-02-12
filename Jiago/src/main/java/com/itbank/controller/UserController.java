@@ -58,6 +58,32 @@ public class UserController {
 	@GetMapping("pwCheckEmail")
 	public void pwCheckEmail() {}
 	
+	@GetMapping("mypage")
+	public String mypage() {
+		return "user/mypage"; 
+	}
 	
+	@GetMapping("mypageHome")
+	public void mypageHome() {}
+	
+	@GetMapping("mypageSecurity")
+	public void mypageSecurity() {}
+	
+	@PostMapping("userModify")
+	public ModelAndView userModify(HttpSession session ,UserDTO user) {
+		System.out.println("여기 실행됬어요");
+		
+		
+		ModelAndView mav = new ModelAndView("user/result");
+		int row = userService.update(user);
+		if(row == 1) {
+			session.removeAttribute("login");
+			mav.addObject("result","회원 정보 수정에 성공");
+		} else {
+			mav.addObject("result","오류가 발생");
+			
+		}
+		return mav;
+	}
 	
 }

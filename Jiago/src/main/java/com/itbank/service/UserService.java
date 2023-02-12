@@ -23,6 +23,10 @@ public class UserService {
 		return id.equals(userDao.checkId(id)) == true ? 1 : 0;
 	}
 
+	public int update(UserDTO user) {
+		return userDao.update(user);
+	}
+
 
 
 }

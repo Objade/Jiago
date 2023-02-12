@@ -18,5 +18,7 @@ public interface UserDAO {
 
 	String checkId(String id);
 
+	int update(UserDTO user);
+
 	
 }
