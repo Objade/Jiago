@@ -265,7 +265,7 @@
                        <span class="join"><a href="${cpath }/user/join">회원가입</a></span>
                     </c:when>
                     <c:otherwise>
-                       <span><b style="color:red">${login.user_name }</b>님 환영합니다</span>
+                       <span><a href="${cpath }/user/mypage"><b style="color:red">${login.user_name }</b>님 환영합니다</a></span>
                        <span><a href="${cpath }/user/logout">로그아웃</a></span>
                     </c:otherwise>
                  </c:choose>

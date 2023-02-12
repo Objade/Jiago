@@ -24,6 +24,7 @@ public class UserSecurityController {
 	
 	@PostMapping("sendNumber")
 	public int findLoginId(@RequestBody String email) throws IOException {
+		System.out.println(email);
 		if(mailService.checkRealMail(email) == false) {
 			return 0;
 		}

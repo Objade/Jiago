@@ -67,11 +67,11 @@
 				'Content-Type': 'application/json; charset=utf-8'
 			}
 		}
-		//console.log(email)
+		console.log(email)
 		fetch(url , opt1)
 		.then(response => response.text())
 		.then(text => {
-			//console.log(text)
+			console.log('안에 값은 = ' + text)
 			if(text == 1) {
 				numcheck.classList.remove('hidden')
 				sendcheck.classList.add('hidden')

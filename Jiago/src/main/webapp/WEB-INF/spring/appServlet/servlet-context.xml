@@ -35,12 +35,12 @@
 		<interceptor>
 			<mapping path="/notice/**" />
 			<mapping path="/board/**" />
-			<mapping path="/user/**" />
+<!-- 		<mapping path="/user/**" />
 			
 			<exclude-mapping path="/user/login" />
 			<exclude-mapping path="/user/join" />
 			<exclude-mapping path="/user/findLoginId" />
-			<exclude-mapping path="/user/findLoginPw" />
+			<exclude-mapping path="/user/findLoginPw" /> -->
 			
 			
 			<exclude-mapping path="/board/list" />

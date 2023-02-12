@@ -68,7 +68,7 @@
 </div>
 
 	
-<form method="POST" action="/user/userModify" >
+<form method="POST" action="${cpath }/user/userModify" >
 	<div id="customerData">
 		
 		<div class="info">

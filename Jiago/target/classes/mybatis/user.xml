@@ -35,5 +35,13 @@
 		select user_id from member where user_id=#{id}
 	</select>
 
+	<update id="update" parameterType="user">
+		update member 
+			set user_address=#{user_address},
+		 	user_phone=#{user_phone},
+			user_email=#{user_email},
+			user_job=#{user_job}
+		 		 where user_idx = #{user_idx}
+	</update>
 
 </mapper>

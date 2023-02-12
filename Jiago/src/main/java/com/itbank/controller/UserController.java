@@ -77,7 +77,6 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.update(user);
 		if(row == 1) {
-			session.removeAttribute("login");
 			mav.addObject("result","회원 정보 수정에 성공");
 		} else {
 			mav.addObject("result","오류가 발생");
