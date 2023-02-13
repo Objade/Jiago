@@ -58,6 +58,10 @@
 		delete q_board where qboard_idx = #{qboard_idx}
 	</delete>
 	
+	<delete id="replyDelete" parameterType="int">
+		delete reply where reply_idx = #{reply_idx}
+	</delete>
+	
 	
 	<update id="updateViewCount" parameterType="int">
 		update q_board
@@ -77,10 +81,12 @@
 	
 	<insert id="insertReply" parameterType="reply">
 		insert into reply 
-				(qboard_idx, admin_id, reply_content)
+				(qboard_idx, user_idx, admin_id, reply_content)
 			values
-				(#{qboard_idx}, #{admin_id}, #{reply_content})
+				(#{qboard_idx},#{user_idx}, #{admin_id}, #{reply_content})
 	</insert>
+	
+	
 	
 </mapper>
 

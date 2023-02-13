@@ -48,6 +48,9 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 		return dao.delete(qboard_idx);
 	}
 
+	public List<BoardDTO> search(String qboard_title) {
+		return dao.search(qboard_title);
+	}
 	public List<ReplyDTO> getReplyList(int qboard_idx) {
 		return dao.selectReplyList(qboard_idx);
 	}
@@ -56,8 +59,8 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 		return dao.insertReply(dto);
 	}
 
-	public List<BoardDTO> search(String qboard_title) {
-		return dao.search(qboard_title);
+	public int replyDelete(int reply_idx) {
+		return dao.replyDelete(reply_idx);
 	}
 
 }

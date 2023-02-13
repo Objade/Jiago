@@ -12,7 +12,9 @@ public class Paging {
 	
 	private int pageCount;				
 	private int begin;					
-	private int end;					
+	private int end;	
+	private int start;
+	private int finish;
 	private boolean prev;				
 	private boolean next;				
 	
@@ -20,6 +22,7 @@ public class Paging {
 		
 		this.page = page;				
 		this.boardCount = boardCount;
+		
 		
 		offset = (page - 1) * perPage;
 		
@@ -127,6 +130,22 @@ public class Paging {
 
 	public int getPerSection() {
 		return perSection;
+	}
+
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getFinish() {
+		return finish;
+	}
+
+	public void setFinish(int finish) {
+		this.finish = finish;
 	}
 
 	
