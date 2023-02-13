@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.UserDTO;
@@ -18,6 +20,8 @@ import com.itbank.service.UserService;
 @Controller
 @RequestMapping("user")
 public class UserController {
+	
+	HashMap<String, String> repository = new HashMap<String, String>();
 	
 	@Autowired UserService userService;
 
@@ -98,6 +102,24 @@ public class UserController {
 			mav.addObject("result","오류가 발생했");
 			
 		}
+		return mav;
+	}
+	
+	@PostMapping("newPasswordSet")
+	public ModelAndView newPasswordSet(@RequestParam("password") String first, @RequestParam("passwordCheck") String second) {
+		System.out.println("앞" + first);
+		System.out.println("뒤" + second);
+		ModelAndView mav = new ModelAndView("user/result");
+		//if(first.equals(second)) {
+		UserDTO user = new UserDTO();
+		user.setUser_pw(first);
+		int row = userService.newPasswordSet(user);
+		if(row == 1) mav.addObject("result","비밀번호가 변경되었");
+		else {
+			mav.addObject("result","오류가 발생했");
+			mav.addObject("address","user/findLoginPw");
+		}
+		//}
 		return mav;
 	}
 	

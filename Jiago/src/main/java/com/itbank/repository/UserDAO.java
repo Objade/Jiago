@@ -22,5 +22,7 @@ public interface UserDAO {
 
 	int update(UserDTO user);
 
+	int newPasswordSet(UserDTO user);
+
 	
 }
