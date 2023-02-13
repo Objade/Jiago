@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.service.MailService;
 import com.itbank.service.UserService;
@@ -67,24 +68,28 @@ public class UserSecurityController {
 		return userService.checkId(id);
 	}
 	
-	@PostMapping("mainSelectResult")
-	public int mainSelectResult(@RequestBody HashMap<String, String> item) throws IOException {
-		System.out.println(item.get("email"));  	
-		String email = item.get("email");
+	@PostMapping("findType")
+	public String findType(@RequestBody HashMap<String, String> item) throws IOException {
+		String type = item.get("type");
+		System.out.println(type);
 //		if(mailService.checkRealMail(email) == false) {
 //			return 0;
 //		}
 		
-		Random ran = new Random();
-		String sendNumber = ran.nextInt(100000) + 100000 + "";
-		System.out.println("인증 메일 전송시 번호 : " + sendNumber);
-		int row = mailService.sendMail(email, sendNumber);
-		if(row == 1) sendNumberMap.put("saveCheckNumber", sendNumber);
-		return row;
+		if(type.equals("email")) {
+			System.out.println(item.get("email"));  	
+			String email = item.get("email");
+			Random ran = new Random();
+			String sendNumber = ran.nextInt(100000) + 100000 + "";
+			System.out.println("인증 메일 전송시 번호 : " + sendNumber);
+			int row = mailService.sendMail(email, sendNumber);
+			if(row == 1) sendNumberMap.put("saveCheckNumber", sendNumber);
+		}
+		return type;
 	}
 	
-	@PostMapping("pwCheckNumber")
-	public int pwCheckNumber(@RequestBody String number) {
+	@PostMapping("pwFindMailNumber")
+	public int pwFindMailNumber(@RequestBody String number) {
 		String saveCheckNumber = sendNumberMap.get("saveCheckNumber");
 		String inputCheckNumber = number;
 		
@@ -94,6 +99,9 @@ public class UserSecurityController {
 		
 		return 0;
 	}
+	
+	
+
 	
 	 
 }

@@ -28,13 +28,13 @@ public class UserService {
 	public int checkId(String id) {
 		HashMap<String, String> result = userDao.checkId(id);
 		if(result.isEmpty()) return 0;
-		/* String userId = result.get("USER_ID"); */
+		String userId = result.get("USER_ID");
 		String userEmail = result.get("USER_EMAIL");
 		String userPhone = result.get("USER_PHONE");
 		/* System.out.println(userId); */
 		/* System.out.println(userEmail); */
 		/* System.out.println(userPhone); */
-		/* base.put("userId", userId); */
+		base.put("userId", userId);
 		base.put("userEmail", userEmail);
 		base.put("userPhone", userPhone);
 		/* id.equals(userId) ? 1 : 0 */
@@ -77,7 +77,6 @@ public class UserService {
 
 		user.add(email);
 		user.add(phone);
-		
 		return user;
 	}
 
@@ -86,5 +85,12 @@ public class UserService {
 	}
 
 
+	public int newPasswordSet(UserDTO user) {
+		user.setUser_id(base.get("userId"));
+		return userDao.newPasswordSet(user);
+	}
+
+
+	
 
 }

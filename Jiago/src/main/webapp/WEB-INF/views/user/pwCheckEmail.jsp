@@ -17,6 +17,7 @@
 			display: none;
 		}
 		
+		
 	</style>
 <body>
 	<%-- <h1>이메일 = ${email }</h1> --%>
@@ -34,7 +35,7 @@
 	
 
 	<div id="checkNumber" class="hidden">
-		<form id="checkForm">
+		<form id="checkForm" method="POST">
 			<p>
 				<input type="text" name="checkNumber" placeholder="인증번호를 입력하세요">
 				<input type="submit" value="인증">
@@ -43,9 +44,18 @@
 	</div>
 	
 	<div id="newPassword" class="hidden">
-		<form  method="POST">
-			<input type="password">
-			<input type="password">
+		<form method="POST" action="${cpath }/user/newPasswordSet">
+			<div>
+				<span>새로 변경할 비밀번호</span>
+				<input type="password" name="password" placeholder="신규 비밀번호 입력" required autocomplete="off">
+				<span id="pwMessage1"></span>
+			</div>
+			<div>
+				<span>변경된 비밀번호 확인</span>
+				<input type="password" name="passwordCheck" placeholder="신규 비밀번호 확인" required autocomplete="off">
+				<span id="pwMessage2"></span>
+			</div>
+			<div><input type="submit" value="변경" disabled class="btn"></div>
 		</form>
 	</div>
 	
@@ -64,7 +74,7 @@
 			const checkedValue = event.target.querySelector('input:checked').value
 			console.log(checkedValue)
 
-			const url = '${cpath}/user/mainSelectResult'
+			const url = '${cpath}/user/findType'
 			
 			const item =  {
 				email: '${user[0] }',
@@ -84,10 +94,14 @@
 			.then(response => response.text())
 			.then(text => {
 				console.log(text)
-				if(text == 1) {
+				if(text == 'email') {
 					alert('계정에 저장된 이메일 주소로 인증번호를 보냈습니다.')
 					event.target.parentNode.classList.add('hidden')
 					checkNumber.classList.remove('hidden')
+				}
+				else {
+					alert('휴대폰 인증 미구현')
+					
 				}
 			})
 
@@ -99,7 +113,7 @@
 			
 			const inputValue = event.target.querySelector('input[type="text"]').value
 			console.log(inputValue)
-			const url = '${cpath}/user/pwCheckNumber'
+			const url = '${cpath}/user/pwFindMailNumber'
 			
 			
 			const cls = {
@@ -121,22 +135,60 @@
 					
 				} else {
 					alert('인증번호가 틀렸습니다.')
-					
 				}
-				
-				
 			})
 		}
+		
+		const addPassword = document.querySelector('input[name="password"]')
+		console.log(addPassword)
+		const checkPassword = document.querySelector('input[name="passwordCheck"]')
+		console.log(checkPassword)
+		
+		const pwMessage1 = document.getElementById('pwMessage1')
+		console.log(pwMessage1)
+		const pwMessage2 = document.getElementById('pwMessage2')
+		console.log(pwMessage2)	
+		
+		function pwHandler1(event) {
+			const addPwValue = event.target.value
+			console.log(addPwValue)
+			if(addPwValue.length > 16) {
+				pwMessage1.innerText = '비밀번호는 최대 16자리까지만 가능합니다'	
+				pwMessage1.style.color = 'red'
+			}
+			else {
+				pwMessage1.innerText = '사용가능한 비밀번호 입니다'
+				pwMessage1.style.color = 'blue'
+			}
+		}
+		addPassword.onkeyup = pwHandler1
+		
+		
+		function pwHandler2(event2) {
+			const btn = document.querySelector('.btn')
+			const checkPwValue = event2.target.value
+			console.log('위' + addPassword.value)
+			console.log('아래' + checkPwValue)
+			if(checkPwValue == addPassword.value ) {
+				pwMessage2.innerText = '비밀번호가 서로 일치합니다'
+				pwMessage2.style.color = 'blue'
+				btn.disabled = false
+			}
+			else {
+				pwMessage2.innerText = '비밀번호가 서로 일치하지 않습니다'
+				pwMessage2.style.color = 'red'
+				btn.disabled = true
+			}
+		}
+		
+		checkPassword.onkeyup = pwHandler2
+		
+
 		
 			
 			
 	
-	/* 		document.forms[2].onsubmit = event => {
-			event.preventDefault()
-			checkNumber.classList.add('hidden')
-			event.submit()
-		}	 */
-	
+
 		
 	
 	
