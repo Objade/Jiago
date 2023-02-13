@@ -1,7 +1,5 @@
 package com.itbank.repository;
 
-import java.util.HashMap;
-
 import org.springframework.stereotype.Repository;
 
 import com.itbank.model.UserDTO;
@@ -18,7 +16,7 @@ public interface UserDAO {
 
 	String getId(String email);
 
-	HashMap<String, String> checkId(String id);
+	String checkId(String id);
 
 	int update(UserDTO user);
 

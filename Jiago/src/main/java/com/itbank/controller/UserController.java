@@ -1,12 +1,9 @@
 package com.itbank.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,18 +22,10 @@ public class UserController {
 	public void login() {}
 	
 	@PostMapping("login")
-	public ModelAndView login(HttpSession session, UserDTO account) {
-		ModelAndView mav = new ModelAndView();
+	public String login(HttpSession session, UserDTO account) {
 		UserDTO userAccount = userService.login(account);
-		mav.setViewName("user/result");
-		if(userAccount == null) {
-			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었");
-			mav.addObject("address","user/login");
-			return mav;
-		}
-		mav.addObject("result","로그인에 성공 했");
-		session.setAttribute("login", userAccount);	
-		return mav;
+		session.setAttribute("login", userAccount);
+		return "home";
 	}
 	
 	@GetMapping("join") 
@@ -46,7 +35,7 @@ public class UserController {
 	public ModelAndView join(UserDTO user) {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.join(user);
-		String result = row == 1 ? "회원 가입에 성공했" : "오류가 발생했";
+		String result = row == 1 ? "회원 가입에 성공" : "오류가 발생";
 		mav.addObject("result", result);
 		return mav;
 	}
@@ -56,7 +45,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/result");
 		session.removeAttribute("login");
-		mav.addObject("result","로그아웃에 성공했");
+		mav.addObject("result","로그아웃에 성공");
 		return mav;
 	}
 	
@@ -67,12 +56,7 @@ public class UserController {
 	public void findLoginPw() {}
 	
 	@GetMapping("pwCheckEmail")
-	public ModelAndView pwCheckEmail() {
-		ModelAndView mav = new ModelAndView("user/pwCheckEmail");
-		List<String> user = userService.getEmailAndPhone();
-		 mav.addObject("user",user);
-		return mav;
-	}
+	public void pwCheckEmail() {}
 	
 	@GetMapping("mypage")
 	public String mypage() {
@@ -93,9 +77,9 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.update(user);
 		if(row == 1) {
-			mav.addObject("result","회원 정보 수정에 성공했");
+			mav.addObject("result","회원 정보 수정에 성공");
 		} else {
-			mav.addObject("result","오류가 발생했");
+			mav.addObject("result","오류가 발생");
 			
 		}
 		return mav;

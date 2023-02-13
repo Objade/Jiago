@@ -40,8 +40,6 @@ public class UserSecurityController {
 		return row;
 	}
 	
-	
-	// 아이디 인증번호
 	@PostMapping("sendCheckNumber")
 	public String checkNumber(@RequestBody HashMap<String, String> param) {
 		System.out.println("키 벨류 값 ===================");
@@ -65,34 +63,6 @@ public class UserSecurityController {
 	@PostMapping("sendId")
 	public int realLogin(@RequestBody String id) {
 		return userService.checkId(id);
-	}
-	
-	@PostMapping("mainSelectResult")
-	public int mainSelectResult(@RequestBody HashMap<String, String> item) throws IOException {
-		System.out.println(item.get("email"));  	
-		String email = item.get("email");
-//		if(mailService.checkRealMail(email) == false) {
-//			return 0;
-//		}
-		
-		Random ran = new Random();
-		String sendNumber = ran.nextInt(100000) + 100000 + "";
-		System.out.println("인증 메일 전송시 번호 : " + sendNumber);
-		int row = mailService.sendMail(email, sendNumber);
-		if(row == 1) sendNumberMap.put("saveCheckNumber", sendNumber);
-		return row;
-	}
-	
-	@PostMapping("pwCheckNumber")
-	public int pwCheckNumber(@RequestBody String number) {
-		String saveCheckNumber = sendNumberMap.get("saveCheckNumber");
-		String inputCheckNumber = number;
-		
-		if(saveCheckNumber.equals(inputCheckNumber)) {
-			return 1;
-		}
-		
-		return 0;
 	}
 	
 	 
