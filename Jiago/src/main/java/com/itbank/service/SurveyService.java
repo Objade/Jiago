@@ -63,6 +63,11 @@ public class SurveyService {
 	  return dao.minusUserPoint(dto);
    }
 
+   public int insertSurvey(SurveyDTO dto) {
+      return dao.insertSurvey(dto);
+   }
+
+
 
 
 	

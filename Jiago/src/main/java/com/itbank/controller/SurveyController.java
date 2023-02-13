@@ -72,4 +72,17 @@ public class SurveyController {
 		return "redirect:/";
 	}
 
+	@GetMapping("surveyAdd")
+	public void surveyAdd() {}
+	
+	@PostMapping("surveyAdd") 
+	public ModelAndView surveyAdd(SurveyDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		int row = surveyService.insertSurvey(dto);
+		
+		System.out.println(row == 1 ? "추가 성공" : "추가 실패");
+		return mav;
+	}
+	
+
 }

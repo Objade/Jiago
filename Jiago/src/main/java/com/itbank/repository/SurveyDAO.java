@@ -35,6 +35,8 @@ public interface SurveyDAO {
    int insertUserDonate(UserDonateDTO dto);
 
    int minusUserPoint(UserDonateDTO dto);
+   
+   int insertSurvey(SurveyDTO dto);
 
 
 
