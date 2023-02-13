@@ -1,7 +1,6 @@
 function deleteHandler(event) {
 	
 	const replyWriter = event.target.parentNode.parentNode.querySelector('.writer')
-	console.log(login_user_id, replyWriter.innerText)
 	
 	if(login_user_id != replyWriter.innerText) {
 		alert('본인이 작성한 댓글만 삭제할 수 있습니다')
@@ -10,13 +9,13 @@ function deleteHandler(event) {
 	else {
 		const flag = confirm('정말 삭제하시겠습니까?')
 		if(flag) {
+			// 삭제하는 내용을 fetch로 전송 (댓글idx)
 			const idx = replyWriter.parentNode.parentNode.parentNode.getAttribute('idx')
-			const url = `${cpath}/board/reply/${qboard_idx}/${idx}`
+			const url = `${cpath}/board/reply/${qboard_idx}/${reply_idx}`
 			const opt = {
 				method: 'DELETE'
 			}
-			fetch(url, opt)	
-			location.reload()
+			fetch(url, opt)	// 쿼리 수행 후 then을 이용하여 댓글 삭제된 형태로 새로 불러오기
 		}
 	}
 }
@@ -24,6 +23,9 @@ function deleteHandler(event) {
 async function replyLoadHandler() {
 	const replyDiv = document.getElementById('reply')
 	const url = cpath + '/board/reply/' + qboard_idx
+	
+	// 특정 작업이 끝난 이후 진행을 하고 싶다면...await
+	// await는 async 함수 안에서만 가능
 	
 	await fetch(url)
 	.then(resp => resp.json())
@@ -55,6 +57,8 @@ function rreplyHandler(event) {
 }
 
 function convertHTMLfromJSON(dto) {
+	// JSON객체를 받아서
+	// HTML 태그형식으로 문자열을 반환해야 한다
 	
 	const margin = dto.reply_depth * 30
 	
@@ -64,6 +68,7 @@ function convertHTMLfromJSON(dto) {
 	html += `				<div class="writer">${dto.admin_id}</div>`
 	html += `			</div>`
 	html += `			<div class="right">`
+	html += `				<button class="modify" ${login_user_id != dto.admin_id ? 'hidden' : ''}>수정</button>`
 	html += `				<button class="delete" ${login_user_id != dto.admin_id ? 'hidden' : ''}>삭제</button>`
 	html += `			</div>`
 	html += `		</div>`
@@ -75,15 +80,14 @@ function convertHTMLfromJSON(dto) {
 function replyWriteHandler(event) {
 	event.preventDefault()
 	const content = document.querySelector('#replyWriteForm textarea')
+	// 게시글 번호, 작성자, 내용
 	const ob = {
-		qboard_idx: qboard_idx,
-		user_idx: login_user_idx,
-		admin_id: login_user_id,
-		reply_content: content.value,
+		board_idx: board_idx,
+		writer: login_user_id,
+		content: content.value,
 	
 	}
-	console.log(ob);
-	const url = cpath + '/board/reply/' + qboard_idx
+	const url = cpath + '/board/reply/' + board_idx
 	const opt = {
 		method: 'POST',
 		body: JSON.stringify(ob),
@@ -91,13 +95,12 @@ function replyWriteHandler(event) {
 			'Content-Type': 'application/json; charset=utf-8'
 		}
 	}
-	console.log(url);
-	console.log(opt);
 	fetch(url, opt)
 	.then(resp => resp.text())
 	.then(text => {
 		if(text == 1) {
 			alert('작성 성공 !!')
+			// replyLoadHandler()	// 댓글 작성 이후, 댓글 목록을 다시 불러온다
 			location.reload()
 			content.value = ''
 		}

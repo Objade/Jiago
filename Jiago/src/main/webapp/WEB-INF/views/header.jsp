@@ -24,7 +24,29 @@
         .header {
             display: flex;
         }
+        .notice_name {
+           display: flex;
+           justify-content: space-between;
+           margin-top: 50px;
+           margin-bottom: 50px;
+        }
+        .notice_name > .notice_name_L {
+           font-size: 30px;
+           font-weight: bolder;
+        }
         
+        .qboard_title {
+           display: flex;
+           justify-content: space-between;
+           margin-top: 50px;
+           margin-bottom: 50px;
+           
+        }
+        .qboard_title > .qboard_title_L {
+           font-size: 30px;
+           font-weight: bolder;
+        }
+
         .logo > a > img {
             width: 250px;
         }
@@ -147,33 +169,33 @@
             padding-bottom: 20px;
         }
         table {
-	         border: 2px solid black;
-	         border-collapse: collapse;
-	         min-width: 500px;
-	         margin: 0 auto;
-    	}
-      	td, th {
-        	 border: 1px solid darkgrey;
-        	 padding: 5px 10px;
-      	}
-      	.serviceBox {
-        	 width: 900px;
-        	 margin: auto;
-     	}
-     	.noticeBox {
-	         width: 500px;
-	         height: 200px;
-	         background: #1B434A;
-	         margin: 100px auto;
-      	}
-      	.boardBox {
-	         width: 500px;
-	         height: 200px;
-	         background: #1B434A;
-	         margin: 100px auto;
-      	}
+         border: 2px solid black;
+         border-collapse: collapse;
+         min-width: 500px;
+         margin: 0 auto;
+      }
+      td, th {
+         border: 1px solid darkgrey;
+         padding: 5px 10px;
+      }
+      .serviceBox {
+         width: 900px;
+         margin: auto;
+      }
+      .noticeBox {
+         width: 500px;
+         height: 200px;
+         background: #1B434A;
+         margin: 100px auto;
+      }
+      .boardBox {
+         width: 500px;
+         height: 200px;
+         background: #1B434A;
+         margin: 100px auto;
+      }
       
-      	.serviceBox > .noticeBox > a {
+      .serviceBox > .noticeBox > a {
             display: flex;
             width: 500px;
             height: 200px;
@@ -197,88 +219,22 @@
             color: #eee;
         }
       
-    	.header > .nav a {
-	         font-family: '맑은고딕';
-	         font-size: 20px;
-	         color: #333333;
-	         font-weight: bolder;
-     	}
-      	#replyWriteForm textarea {
+      
+      .hidden {
+         display: none;
+      }
+      
+      .header > .nav a {
+         font-family: '맑은고딕';
+         font-size: 20px;
+         color: #333333;
+         font-weight: bolder;
+      }
+      #replyWriteForm textarea {
 			height: 100px;
 			min-height: auto;
 			width: 80%;
-		}
-	  
-	  	.notice_name {
-           display: flex;
-           justify-content: space-between;
-           margin-top: 50px;
-           margin-bottom: 50px;
-        }
-        .notice_name > .notice_name_L {
-           font-size: 30px;
-           font-weight: bolder;
-        }
-        
-        .qboard_title {
-           display: flex;
-           justify-content: space-between;
-           margin-top: 50px;
-           margin-bottom: 50px;
-           
-        }
-        .qboard_title > .qboard_title_L {
-           font-size: 30px;
-           font-weight: bolder;
-        }
-        .page_wrap {
-        	margin-top: 20px;
-			text-align:center;
-			font-size:0;
- 		}
-		.page_nation {
-			display:inline-block;
-		}
-		
-		.page_nation a {
-			display:block;
-			margin:0 3px;
-			float:left;
-			border:1px solid #e6e6e6;
-			width:28px;
-			height:28px;
-			line-height:28px;
-			text-align:center;
-			background-color:#fff;
-			font-size:13px;
-			color:#999999;
-			text-decoration:none;
-		}
-		.page_nation .arrow {
-			border:1px solid #ccc;
-		}
-		.page_nation .pprev {
-			background:#f8f8f8 url('${cpath}/resources/img/page_pprev.png') no-repeat center center;
-			margin-left:0;
-		}
-		.page_nation .prev {
-			background:#f8f8f8 url('${cpath}/resources/img/page_prev.png') no-repeat center center;
-			margin-right:7px;
-		}
-		.page_nation .next {
-			background:#f8f8f8 url('${cpath}/resources/img/page_next.png') no-repeat center center;
-			margin-left:7px;
-		}
-		.page_nation .nnext {
-			background:#f8f8f8 url('${cpath}/resources/img/page_nnext.png') no-repeat center center;
-			margin-right:0;
-		}
-		.page_nation .active  {
-			background-color:#1B434A;
-			color:#fff;
-			border:1px solid #1B434A;
-		}
-		
+	  }
    	    
     </style>
 

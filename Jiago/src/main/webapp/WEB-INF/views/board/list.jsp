@@ -59,32 +59,21 @@
       </c:forEach>
       </tbody>
    </table>
-   <div class="page_wrap">
-    <div class="page_nation">
+   
+    <div class="pageNumber">
       <c:if test="${paging.prev }">
-         <a class="arrow pprev" href="${cpath }/board/list?page=1"></a>
-      </c:if>	
-    
-      <c:if test="${paging.prev }">
-         <a class="arrow prev" href="${cpath }/board/list?page=${paging.begin - 1}"></a>
+         <a href="${cpath }/board/list?page=${paging.begin - 1}">[이전]</a>
       </c:if>
       
       <c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
-         <a class="${paging.page == i ? 'active' : '' }" 
-            href="${cpath }/board/list?page=${i}">${i}</a>
+         <a class="${paging.page == i ? 'bold' : '' }" 
+            href="${cpath }/board/list?page=${i}">[${i }]</a>
       </c:forEach>
       
       <c:if test="${paging.next }">
-         <a class="arrow next" href="${cpath }/board/list?page=${paging.end + 1}"></a>
+         <a href="${cpath }/board/list?page=${paging.end + 1}">[다음]</a>
       </c:if>
-      
-      <c:if test="${paging.next }">
-         <a class="arrow nnext" href="${cpath }/board/list?page=${paging.pageCount }"></a>
-      </c:if>
-      
-      
    </div>
-  </div>
 </div>
 </body>
 </html>

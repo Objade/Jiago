@@ -32,7 +32,7 @@
 	</select>
 
 	<select id="checkId" parameterType="String" resultType="HashMap">
-		select user_id,user_email from member where user_id=#{id}
+		select user_id,user_email,user_phone from member where user_id=#{id}
 	</select>
 
 	<update id="update" parameterType="user">

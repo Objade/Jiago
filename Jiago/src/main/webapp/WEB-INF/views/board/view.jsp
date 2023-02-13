@@ -6,7 +6,6 @@
    const cpath = '${cpath}'
    const qboard_idx = '${dto.qboard_idx}'
    const login_user_id = '${login.user_id}'
-   const login_user_idx = '${login.user_idx}'
 </script>
 <script src="${cpath }/resources/js/script.js"></script>
 
@@ -32,7 +31,7 @@
       <form id="replyWriteForm">
          <p>
             <textarea name="content" 
-                       placeholder="고객님에게 친절하게 댓글을 달아주세요" 
+                       placeholder="바르고 고운 말을 사용합시다" 
                        ${empty login ? 'readonly' : '' }></textarea>
             <button>작성</button>
          </p>
@@ -64,12 +63,10 @@
 <script>
    const replyWriteForm = document.getElementById('replyWriteForm')
 
-   
-   
-   
    document.body.onload = replyLoadHandler
-   replyWriteForm.onsubmit = replyWriteHandler
 
+   
+   
 </script>
 
 </body>

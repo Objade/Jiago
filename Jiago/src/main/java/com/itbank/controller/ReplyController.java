@@ -18,9 +18,7 @@ import com.itbank.service.BoardService;
 @RequestMapping("/board/reply")
 
 public class ReplyController {
-	
 	@Autowired private BoardService boardService;
-	
 	@GetMapping("/{qboard_idx}")
 	public List<ReplyDTO> getReplyList(@PathVariable("qboard_idx") int qboard_idx) {
 		List<ReplyDTO> list = boardService.getReplyList(qboard_idx);
@@ -35,10 +33,8 @@ public class ReplyController {
 	
 	@DeleteMapping("/{qboard_idx}/{reply_idx}")
 	public int deleteReply(@PathVariable("reply_idx") int reply_idx) {
-		int row = boardService.replyDelete(reply_idx);
+		int row = 0;
 		System.out.println("삭제할 댓글 idx : " + reply_idx);
 		return row;
 	}
-	
-	
 }
