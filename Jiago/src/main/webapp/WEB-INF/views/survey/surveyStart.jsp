@@ -52,6 +52,19 @@
 		})
 		
 	</script>
+	
+	
+	<script>
+	//	설문 시작 시 이전 버튼 빼고 다음버튼을 설문 시작으로 변경하기
+	const before = document.querySelector('.button.before')
+	const after = document.querySelector('.button.after')
+
+	console.log(before)
+	console.log(after)
+
+
+
+	</script>
 
 
    <script>
@@ -61,11 +74,9 @@
       const buttonAfter = document.querySelector('.button.after')
       const buttonSubmit = document.querySelector('.button.submit')
       
-      buttonSubmit.classList.add('hidden')
-      
+      buttonSubmit.classList.add('hidden')     
 
       const questionAll = Array.from(document.querySelectorAll('.surveyList.item'))
-      console.log(questionAll.length)
         
       const exampleAll = Array.from(document.querySelectorAll('.surveyList.example'))
              
@@ -73,6 +84,16 @@
       exampleAll.map(e => e.classList.add('hidden'))
 
       const input = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]'))
+      
+      
+      // 설문 시작 시 멘트 변경      
+      function surveyStart(event) {
+		buttonBefore.classList.add('hidden')
+		buttonAfter.innerText = '설문시작'
+
+	  }
+
+	  window.onload = surveyStart
       
       
 		
@@ -112,7 +133,6 @@
          console.log(inputArr)
 
          const submit = document.querySelector('.button.submit')
-         console.log(submit)
          
          if(inputArr.length == questionAll.length) {  
 	     	buttonSubmit.classList.remove('hidden')
@@ -123,6 +143,7 @@
       
       // 이전 문제와 보기를 보여주는 핸들러
         function buttonBeforeHandler(event) {
+    	 buttonAfter.classList.remove('hidden')
          if(main.getAttribute('value') > 1) {
             questionAll.map(e => e.classList.add('hidden'))
             exampleAll.map(e => e.classList.add('hidden'))
@@ -134,17 +155,20 @@
          
             question = questionAll.filter(data => (data.getAttribute('index') == mainValue) == true)
             example = exampleAll.filter(data => (data.getAttribute('index') == mainValue) == true)
-            console.log(example)
-            console.log(question)
             
             question.forEach(e => e.classList.remove('hidden'))
             example.forEach(e => e.classList.remove('hidden'))
          }
+    	 if(main.getAttribute('value') == 1) {
+            	buttonBefore.classList.add('hidden')
+       	  }
         }
 
       // 다음 문제와 보기를 보여주는 핸들러
         function buttonAfterHandler(event) {
+    	  buttonBefore.classList.remove('hidden')
          if(main.getAttribute('value') < questionAll.length) {
+        	after.innerText = '다음'
         	const start = document.querySelector('.surveyList_start')
 			start.classList.add('hidden')
         	        	 
@@ -158,20 +182,22 @@
 
             question = questionAll.filter(data => (data.getAttribute('index') == mainValue) == true)
             example = exampleAll.filter(data => (data.getAttribute('index') == mainValue) == true)
-            console.log(example)
-            console.log(question)
 
             question.forEach(e => e.classList.remove('hidden'))
             example.forEach(e => e.classList.remove('hidden'))
          }
-         
+    	  if(main.getAttribute('value') == questionAll.length) {
+         	buttonAfter.classList.add('hidden')
+    	  }
+    	  if(main.getAttribute('value') == 1) {
+           	buttonBefore.classList.add('hidden')
+      	  }
         }
       
       buttonBefore.onclick = buttonBeforeHandler
       buttonAfter.onclick = buttonAfterHandler
       buttonSubmit.onclick = submitHandler
     </script>
-
 
 </body>
 </html>
