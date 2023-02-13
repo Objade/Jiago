@@ -31,4 +31,6 @@ public interface BoardDAO {
 
 	List<BoardDTO> search(String qboard_title);
 
+	int replyDelete(int reply_idx);
+
 }
