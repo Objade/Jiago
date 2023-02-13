@@ -3,6 +3,8 @@ package com.itbank.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.UserDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.service.SurveyService;
 
@@ -56,8 +59,18 @@ public class SurveyController {
 	}
 
 	@GetMapping("surveyComplete/{survey_idx}")
-	public String surveyComplete(@PathVariable("survey_idx") int survey_idx) {
-		return "/survey/surveyComplete";
+	public ModelAndView surveyComplete(@PathVariable("survey_idx") int survey_idx, HttpSession session) {
+		ModelAndView mav = new ModelAndView("/survey/surveyComplete");
+		UserDTO login = (UserDTO)session.getAttribute("login");
+		System.out.println("login : " + login.getUser_idx());
+		String userName = login.getUser_name();
+		int user_idx = login.getUser_idx();
+		int userPoint = surveyService.getUserPoint(user_idx);
+		System.out.println(userPoint);
+		
+		mav.addObject("userName", userName);		
+		mav.addObject("userPoint", userPoint);	
+		return mav;
 	}
 	
 	@PostMapping("surveyComplete")
@@ -71,18 +84,5 @@ public class SurveyController {
 		int minus = surveyService.minusUserPoint(dto);
 		return "redirect:/";
 	}
-
-	@GetMapping("surveyAdd")
-	public void surveyAdd() {}
-	
-	@PostMapping("surveyAdd") 
-	public ModelAndView surveyAdd(SurveyDTO dto) {
-		ModelAndView mav = new ModelAndView();
-		int row = surveyService.insertSurvey(dto);
-		
-		System.out.println(row == 1 ? "추가 성공" : "추가 실패");
-		return mav;
-	}
-	
 
 }

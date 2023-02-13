@@ -18,67 +18,19 @@
     <div class="s3_top">진행 중인 조사</div>
     <div class="s3_mid">
         <div class="customer">
-            <div class="write_top">소비자 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
-        </div>
-        <div class="customer">
-            <div class="write_top">제품관련 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
-        </div>
-        <div class="customer">
-            <div class="write_top">인식 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
-
+        	<c:forEach var="list" items="${list }">
+	            <div class="write_top">${list.survey_title }</div>
+	            <div class="write_mid">조사기간</div>
+	            <div class="write_bottom">${list.survey_date }</div>
+	            <div class="write_mid">응답시간</div>
+	            <div class="write_bottom">${list.survey_time }</div>
+	            <div class="write_mid">포인트</div>
+	            <div class="write_bottom">${list.survey_point }</div>
+        	</c:forEach>
         </div>
     </div>
-    <div class="s3_bottom">
-        <div class="customer">
-            <div class="write_top">건강 관련 연구 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
 
-        </div>
-        <div class="customer">
-            <div class="write_top">패널 기초 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
-
-        </div>
-        <div class="customer">
-            <div class="write_top">소비자 조사</div>
-            <div class="write_mid">조사기간</div>
-            <div class="write_bottom">2023년 01월 31일까지</div>
-            <div class="write_mid">응답시간</div>
-            <div class="write_bottom">약9분 ~ 22분 소요</div>
-            <div class="write_mid">포인트</div>
-            <div class="write_bottom">500 POINT</div>
-
-        </div>
-    </div>
-    <div class="minipont">더보기</div>
+    <div class="minipont"><a href="${cpath }/survey/list">더보기</a></div>
 </section>
 
 <section id="section4">

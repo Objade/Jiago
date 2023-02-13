@@ -63,10 +63,13 @@ public class SurveyService {
 	  return dao.minusUserPoint(dto);
    }
 
-   public int insertSurvey(SurveyDTO dto) {
-      return dao.insertSurvey(dto);
-   }
+	public int getUserPoint(int user_idx) {
+		return dao.selectUserPoint(user_idx);
+	}
 
+	public List<SurveyDTO> getHomeSurvey() {
+		return dao.selectHomeSurvey();
+	}
 
 
 
