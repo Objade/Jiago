@@ -25,7 +25,7 @@
 	</form>
 </fieldset>
 
-<fieldset id="check" class="hidden"> <!-- class hidden 잠시 지워놓음 -->
+<fieldset id="check" class="hidden">
 	<form id="checkForm">
 		<p>
 			<input type="text" name="checkNumber" placeholder="인증번호를 입력하세요">
@@ -64,7 +64,7 @@
 			method: 'POST',
 			body: email,
 			headers: {
-				'Content-Type': 'application/json; charset=utf-8'
+				'Content-Type': 'plain/text; charset=utf-8'
 			}
 		}
 		console.log(email)

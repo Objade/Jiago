@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cpath" value="${pageContext.request.contextPath }"/>
 <script>
-	alert('${result}했습니다')
-	location.href = '${cpath}/'
+	alert('${result}습니다')
+	location.href = '${cpath}/${address}'
 </script>
