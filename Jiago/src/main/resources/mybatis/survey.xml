@@ -65,5 +65,25 @@
 	<select id="selectHomeSurvey" resultType="survey">
 		select * from survey where to_date(substr(survey_date,10)) >= sysdate and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
 	</select>
+	
+	<insert id="insertSurvey" parameterType="survey">
+      insert into survey
+          (company_idx, survey_title, survey_date, survey_point, survey_time, 
+           survey_targetAge, survey_targetGender, survey_targetJob, survey_info) 
+          values 
+          (#{company_idx}, #{survey_title}, #{survey_date}, #{survey_point}, #{survey_time}, #{survey_targetAge},
+            #{survey_targetGender}, #{survey_targetJob}, #{survey_info}) 
+   </insert>
+   
+   <select id="selectQuestionList" resultType="surveyQuestion" parameterType="int">
+      select * from question where question_idx > 1 order by question_idx
+   </select>
+
+   <select id="selectSurveyIdx" resultType="int">
+      select * from(select survey_idx from survey order by rownum desc) where rownum = 1
+   </select>
+   
+	
+	
 
 </mapper>

@@ -57,6 +57,7 @@ public class SurveyController {
 		
 		return mav;
 	}
+	
 
 	@GetMapping("surveyComplete/{survey_idx}")
 	public ModelAndView surveyComplete(@PathVariable("survey_idx") int survey_idx, HttpSession session) {
@@ -84,5 +85,29 @@ public class SurveyController {
 		int minus = surveyService.minusUserPoint(dto);
 		return "redirect:/";
 	}
+	
+	@GetMapping("surveyAdd")
+	   public void surveyAdd() {}
+	   
+	   @PostMapping("surveyAdd") 
+	   public String surveyAdd(SurveyDTO dto) {
+	      int row = surveyService.insertSurvey(dto);
+	      System.out.println(row == 1 ? "추가 성공" : "추가 실패");
+	      
+	      int surveyIdx = surveyService.selectSurveyIdx();
+	      
+	      return "redirect:/survey/surveyQuestionAdd/" + surveyIdx;
+	   }
+
+	   @GetMapping("surveyQuestionAdd/{surveyIdx}")
+	   public ModelAndView surveyQuestionAdd(@PathVariable("surveyIdx") int surveyIdx) {
+	      ModelAndView mav = new ModelAndView("/survey/surveyQuestionAdd");
+	      List<SurveyQuestionDTO> list = surveyService.selectQuestionList();
+	      mav.addObject("list", list);
+	      
+
+	      return mav;
+	   }
+	
 
 }
