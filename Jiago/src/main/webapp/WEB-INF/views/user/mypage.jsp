@@ -38,6 +38,3 @@
 			<li><a href="${cpath }/user/mypageSecurity">보안</a></li>
 		</ul>
 	</div>
-	
-</body>
-</html>

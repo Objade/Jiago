@@ -21,30 +21,32 @@ public class NoticeController {
    
    @Autowired private NoticeService noticeService;
    
-   @GetMapping("/list")
-   public ModelAndView list(@RequestParam(defaultValue="1") Integer page) {   
-      
-      ModelAndView mav = new ModelAndView();   
+   @GetMapping("/list")						
+	public ModelAndView list(@RequestParam(defaultValue="1") Integer page, @RequestParam("notice_name") String notice_name) {	
+		
+		ModelAndView mav = new ModelAndView();	
 
-      int boardCount = noticeService.getNoticeCount();
-      Paging paging = new Paging(page, boardCount);
-      
-      List<NoticeDTO> list = noticeService.getListAll(paging);
-      
-      mav.addObject("list", list);
-      mav.addObject("paging", paging);
-      
-      return mav;   
-   }
-   @PostMapping("/list")
-   public ModelAndView boardlist(String notice_name) {
-      ModelAndView mav = new ModelAndView();
-      
-      List<NoticeDTO> list = noticeService.search(notice_name);
-      mav.addObject("list", list);
-   
-      return mav;
-   }   
+		int noticeCount = 0;
+		Paging paging = null;		
+		List<NoticeDTO> list = null;		
+		
+		if(notice_name != "") {
+			noticeCount = noticeService.getNoticeSearchCount(notice_name);
+			paging = new Paging(page, noticeCount);
+			list = noticeService.search(notice_name, paging);			
+		}
+		else {
+			noticeCount = noticeService.getNoticeCount();
+			paging = new Paging(page, noticeCount);
+			list = noticeService.getListAll(paging);
+		}
+		
+		mav.addObject("notice_name", notice_name);
+		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		
+		return mav;	
+	}   
    
    @GetMapping("/view/{notice_idx}")
    public ModelAndView view(@PathVariable("notice_idx") int notice_idx) {
@@ -61,7 +63,7 @@ public class NoticeController {
    public String write(NoticeDTO dto) {
       int row = noticeService.write(dto);
       System.out.println(row != 0 ? "작성 성공" : "작성 실패");
-      return "redirect:/notice/list";
+      return "redirect:/notice/list?notice_name=";
    }
    
    @GetMapping("/modify/{notice_idx}")
@@ -82,6 +84,6 @@ public class NoticeController {
    public String delete(@PathVariable("notice_idx") int notice_idx) {
       int row = noticeService.delete(notice_idx);
       System.out.println(row != 0 ? "삭제 성공" : "삭제 실패");
-      return "redirect:/notice/list";
+      return "redirect:/notice/list?notice_name=";
    }
 }

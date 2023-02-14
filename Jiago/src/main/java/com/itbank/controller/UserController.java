@@ -1,13 +1,11 @@
 package com.itbank.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +19,6 @@ import com.itbank.service.UserService;
 @RequestMapping("user")
 public class UserController {
 	
-	HashMap<String, String> repository = new HashMap<String, String>();
 	
 	@Autowired UserService userService;
 
@@ -78,13 +75,18 @@ public class UserController {
 		return mav;
 	}
 	
-	@GetMapping("mypage")
-	public String mypage() {
-		return "user/mypage"; 
+	@GetMapping("mypageHome")
+	public ModelAndView mypage(HttpSession session) {
+		ModelAndView mav = new ModelAndView("user/mypageHome");
+		UserDTO user = (UserDTO)session.getAttribute("login");
+		int user_idx = user.getUser_idx();
+		System.out.println(user_idx);
+		int point = userService.getPoint(user_idx);
+		System.out.println(point);
+		mav.addObject("point",point);
+		return mav; 
 	}
 	
-	@GetMapping("mypageHome")
-	public void mypageHome() {}
 	
 	@GetMapping("mypageSecurity")
 	public void mypageSecurity() {}
@@ -107,19 +109,16 @@ public class UserController {
 	
 	@PostMapping("newPasswordSet")
 	public ModelAndView newPasswordSet(@RequestParam("password") String first, @RequestParam("passwordCheck") String second) {
-		System.out.println("앞" + first);
-		System.out.println("뒤" + second);
 		ModelAndView mav = new ModelAndView("user/result");
-		//if(first.equals(second)) {
-		UserDTO user = new UserDTO();
-		user.setUser_pw(first);
-		int row = userService.newPasswordSet(user);
-		if(row == 1) mav.addObject("result","비밀번호가 변경되었");
-		else {
-			mav.addObject("result","오류가 발생했");
-			mav.addObject("address","user/findLoginPw");
+		if(first.equals(second)) {
+			UserDTO user = new UserDTO();
+			user.setUser_pw(first);
+			int row = userService.newPasswordSet(user);
+			if(row == 1) mav.addObject("result","비밀번호가 변경되었");
+			return mav;
 		}
-		//}
+		mav.addObject("result","오류가 발생했");
+		mav.addObject("address","user/findLoginPw");
 		return mav;
 	}
 	

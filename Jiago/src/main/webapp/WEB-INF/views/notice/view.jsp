@@ -27,7 +27,7 @@
 
 <div class="sb">
 	<div>
-		<a href="${cpath }/notice/list"><button>목록</button></a>
+		<a href="${cpath }/notice/list?notice_name="><button>목록</button></a>
 	</div>
 	<div>
 		<c:if test="${ login.user_type == 'Admin'}">

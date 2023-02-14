@@ -40,12 +40,10 @@ public interface SurveyDAO {
 
    List<SurveyDTO> selectHomeSurvey();
 
+   int insertSurvey(SurveyDTO dto);
 
-
-   
-
-
-
-
+   List<SurveyQuestionDTO> selectQuestionList();
+  
+   int selectSurveyIdx();
    
 }

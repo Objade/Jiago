@@ -31,13 +31,9 @@ public class UserService {
 		String userId = result.get("USER_ID");
 		String userEmail = result.get("USER_EMAIL");
 		String userPhone = result.get("USER_PHONE");
-		/* System.out.println(userId); */
-		/* System.out.println(userEmail); */
-		/* System.out.println(userPhone); */
 		base.put("userId", userId);
 		base.put("userEmail", userEmail);
 		base.put("userPhone", userPhone);
-		/* id.equals(userId) ? 1 : 0 */
 		return 1; 
 	}
 
@@ -72,8 +68,6 @@ public class UserService {
 		String endNum = split2[2];
 		endNum = endNum.replace(endNum, "****");
 		phone = split2[0] + "-" + split2[1] + "-" + endNum;
-//		System.out.println(email);
-//		System.out.println(phone);
 
 		user.add(email);
 		user.add(phone);
@@ -88,6 +82,14 @@ public class UserService {
 	public int newPasswordSet(UserDTO user) {
 		user.setUser_id(base.get("userId"));
 		return userDao.newPasswordSet(user);
+	}
+
+	public int pwUpdate(UserDTO user) {
+		return userDao.pwUpdate(user);
+	}
+
+	public int getPoint(int user_idx) {
+		return userDao.getPoint(user_idx);
 	}
 
 

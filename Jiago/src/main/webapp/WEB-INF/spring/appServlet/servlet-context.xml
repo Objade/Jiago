@@ -40,7 +40,9 @@
 			<exclude-mapping path="/user/login" />
 			<exclude-mapping path="/user/join" />
 			<exclude-mapping path="/user/findLoginId" />
-			<exclude-mapping path="/user/findLoginPw" /> -->
+			<exclude-mapping path="/user/findLoginPw" /> 
+			<exclude-mapping path="/user/pwCheckEmail"/>
+			<exclude-mapping path="/user/result.jsp"/> -->
 			
 			
 			<exclude-mapping path="/board/list" />

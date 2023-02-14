@@ -110,7 +110,7 @@
 	<div class="otherlink">아이디가 기억나지 않는다면?&nbsp; &nbsp;<a href="${cpath }/user/findLoginId">아이디 찾기</a></div>
 </div>
 
-<div class="foot"><a href="#" style="font-weight: bolder;">JIAGO</a><span style="margin: 0 5px;">|</span><a href="${cpath }/cuscenter">회원정보 고객센터</a></div>		
+<div class="foot"><a href="${cpath }/" style="font-weight: bolder;">JIAGO</a><span style="margin: 0 5px;">|</span><a href="${cpath }/cuscenter">회원정보 고객센터</a></div>		
 
 
 <script>

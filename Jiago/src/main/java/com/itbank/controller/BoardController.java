@@ -24,29 +24,32 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	
 	@GetMapping("/list")						
-	public ModelAndView list(@RequestParam(defaultValue="1") Integer page) {	
+	public ModelAndView list(@RequestParam(defaultValue="1") Integer page, @RequestParam("qboard_title") String qboard_title) {	
 		
 		ModelAndView mav = new ModelAndView();	
 
-		int boardCount = boardService.getBoardCount();
-		Paging paging = new Paging(page, boardCount);
+		int boardCount = 0;
+		Paging paging = null;		
+		List<BoardDTO> list = null;		
 		
-		List<BoardDTO> list = boardService.getListAll(paging);
+		if(qboard_title != "") {
+			boardCount = boardService.getBoardSearchCount(qboard_title);
+			paging = new Paging(page, boardCount);
+			list = boardService.search(qboard_title, paging);			
+		}
+		else {
+			boardCount = boardService.getBoardCount();
+			paging = new Paging(page, boardCount);
+			list = boardService.getListAll(paging);
+		}
 		
+		mav.addObject("qboard_title", qboard_title);
 		mav.addObject("list", list);
 		mav.addObject("paging", paging);
 		
 		return mav;	
 	}
-	@PostMapping("/list")
-	public ModelAndView boardlist(String qboard_title) {
-		ModelAndView mav = new ModelAndView();
-		
-		List<BoardDTO> list = boardService.search(qboard_title);
-		mav.addObject("list", list);
 	
-		return mav;
-	}	
 	@GetMapping("/view/{qboard_idx}")
 	public ModelAndView view(@PathVariable("qboard_idx") int qboard_idx) {
 		ModelAndView mav = new ModelAndView("/board/view");
@@ -66,7 +69,7 @@ public class BoardController {
 		System.out.println(dto.getQboard_privacy());
 		int row = boardService.write(dto);
 		System.out.println(row != 0 ? "작성 성공" : "작성 실패");
-		return "redirect:/board/list";
+		return "redirect:/board/list?qboard_title=";
 	}
 	
 	@GetMapping("/modify/{qboard_idx}")

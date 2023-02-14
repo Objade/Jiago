@@ -29,8 +29,11 @@ public interface BoardDAO {
 
 	int insertReply(ReplyDTO dto);
 
-	List<BoardDTO> search(String qboard_title);
 
 	int replyDelete(int reply_idx);
+
+	List<BoardDTO> search(HashMap<String, Object> param);
+
+	int selectSearchBoardCount(String qboard_title);
 
 }

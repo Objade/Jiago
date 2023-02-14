@@ -71,6 +71,18 @@ public class SurveyService {
 		return dao.selectHomeSurvey();
 	}
 
+	public int insertSurvey(SurveyDTO dto) {
+	    return dao.insertSurvey(dto);
+	}
+
+	public List<SurveyQuestionDTO> selectQuestionList() {
+	    return dao.selectQuestionList();
+	}
+
+	public int selectSurveyIdx() {
+	    return dao.selectSurveyIdx();
+	}
+
 
 
 	

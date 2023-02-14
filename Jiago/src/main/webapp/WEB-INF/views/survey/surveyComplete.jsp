@@ -3,6 +3,7 @@
 <%@ include file="../header.jsp" %>
 
 
+
 <h3>설문 완료페이지</h3>
 <h3>설문 마무리 멘트 이미지</h3>
 
@@ -23,6 +24,8 @@
 
 <a href="${cpath }">나중에 기부하기</a>
 
+
+
 <script>
     const form = document.querySelector('form')
 
@@ -34,6 +37,7 @@
     form.onsubmit = formHandler
 
 </script>
+
 
 </body>
 </html>

@@ -4,14 +4,14 @@
 
 <div id="root">
    <div class="qboard_title">
-      <div class="qboard_title_L"><a href="${cpath }/board/list">질문게시판</a></div>
+      <div class="qboard_title_L"><a href="${cpath }/board/list?qboard_title=">질문게시판</a></div>
       <div class="qboard_title_R">Home > 고객센터 > 질문게시판</div>
    </div>
    <div class="sb">
       <div>
-         <form method="POST" class="search">
+         <form class="search">
             <p>
-               <input type="text" name="qboard_title" placeholder="제목을 입력하세요">
+               <input type="text" name="qboard_title" placeholder="제목을 입력하세요" value="${qboard_title }">
                <input type="submit" value="검색">
             </p>
          </form>
@@ -59,32 +59,32 @@
       </c:forEach>
       </tbody>
    </table>
+   
    <div class="page_wrap">
     <div class="page_nation">
       <c:if test="${paging.prev }">
-         <a class="arrow pprev" href="${cpath }/board/list?page=1"></a>
+         <a class="arrow pprev" href="${cpath }/board/list?page=1&qboard_title=${qboard_title}"></a>
       </c:if>	
     
       <c:if test="${paging.prev }">
-         <a class="arrow prev" href="${cpath }/board/list?page=${paging.begin - 1}"></a>
+         <a class="arrow prev" href="${cpath }/board/list?page=${paging.begin - 1}&qboard_title=${qboard_title}"></a>
       </c:if>
       
       <c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
          <a class="${paging.page == i ? 'active' : '' }" 
-            href="${cpath }/board/list?page=${i}">${i}</a>
+            href="${cpath }/board/list?page=${i}&qboard_title=${qboard_title}">${i}</a>
       </c:forEach>
       
       <c:if test="${paging.next }">
-         <a class="arrow next" href="${cpath }/board/list?page=${paging.end + 1}"></a>
+         <a class="arrow next" href="${cpath }/board/list?page=${paging.end + 1}&qboard_title=${qboard_title}"></a>
       </c:if>
       
       <c:if test="${paging.next }">
-         <a class="arrow nnext" href="${cpath }/board/list?page=${paging.pageCount }"></a>
-      </c:if>
-      
-      
+         <a class="arrow nnext" href="${cpath }/board/list?page=${paging.pageCount }&qboard_title=${qboard_title}"></a>
+      </c:if>   
    </div>
   </div>
+  
 </div>
 </body>
 </html>

@@ -21,8 +21,16 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		param.put("offset", paging.getOffset());
 		param.put("perPage", paging.getPerPage());
-		
 		return dao.selectAll(param);
+	}
+	public List<BoardDTO> search(String qboard_title, Paging paging) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("offset", paging.getOffset());
+		param.put("perPage", paging.getPerPage());
+		param.put("qboard_title",qboard_title);
+		
+		return dao.search(param);
+
 	}
 
 	public int getBoardCount() {
@@ -48,9 +56,6 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 		return dao.delete(qboard_idx);
 	}
 
-	public List<BoardDTO> search(String qboard_title) {
-		return dao.search(qboard_title);
-	}
 	public List<ReplyDTO> getReplyList(int qboard_idx) {
 		return dao.selectReplyList(qboard_idx);
 	}
@@ -61,6 +66,9 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 
 	public int replyDelete(int reply_idx) {
 		return dao.replyDelete(reply_idx);
+	}
+	public int getBoardSearchCount(String qboard_title) {
+		return dao.selectSearchBoardCount(qboard_title);
 	}
 
 }

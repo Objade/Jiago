@@ -24,5 +24,10 @@ public interface UserDAO {
 
 	int newPasswordSet(UserDTO user);
 
+	int pwUpdate(UserDTO user);
+
+	
+	int getPoint(int user_idx);
+
 	
 }
