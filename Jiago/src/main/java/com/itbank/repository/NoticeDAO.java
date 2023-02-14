@@ -14,7 +14,7 @@ public interface NoticeDAO {
 
 	int selectNoticeCount();
 
-	List<NoticeDTO> search(String notice_name);
+	List<NoticeDTO> search(HashMap<String, Object> param);
 
 	int insert(NoticeDTO dto);
 
@@ -23,6 +23,8 @@ public interface NoticeDAO {
 	int modify(NoticeDTO dto);
 
 	int delete(int notice_idx);
+
+	int selectSearchNoticeCount(String notice_name);
 
 
 }

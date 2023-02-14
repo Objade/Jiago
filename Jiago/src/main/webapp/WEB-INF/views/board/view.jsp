@@ -50,7 +50,7 @@
 
 <div class="sb">
    <div>
-      <a href="${cpath }/board/list"><button>목록</button></a>
+      <a href="${cpath }/board/list?qboard_title="><button>목록</button></a>
    </div>
 <c:if test="${login.user_id == dto.qboard_writer }">
    <div>
