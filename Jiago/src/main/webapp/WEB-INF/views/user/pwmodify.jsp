@@ -7,9 +7,24 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
+<style>
+	.hidden {
+		display: none;
+	}
+</style>
 </head>
 <body>
-	<div>
+	
+	<div id="pwCheck">
+		<form method="POST">
+			<div><input type="password" name="input_pw" placeholder="비밀번호를 입력하세요" required autocomplete="off"></div>
+			<div><input type="submit" value="입력"></div>
+		</form>
+	</div>
+
+
+
+	<div id="changePw" class="hidden">
 		<form method="POST">
 			<div>
 				<input type="password" name="user_pw" placeholder="변경할 비밀번호를 입력">
@@ -23,14 +38,56 @@
 		</form>
 	</div>
 	
+		<script>
+		const pwCheck = document.getElementById('pwCheck')	// 비밀번호 검사
+		const changePw = document.getElementById('changePw')
+		const modifyPw = document.querySelector('input[name="user_pw"]') // 새로운 비밀번호 입력
+		const checkPw = document.querySelector('input[name="user_pw_check"]') // 비밀번호 확인
+		const pwMessage1 = document.querySelector('.pwMessage1')	// 비밀번호 조건 메세지
+		const pwMessage2 = document.querySelector('.pwMessage2')	// 비밀번호 확인 메세지
+		
+		
+	
+		document.forms[0].onsubmit = function(event) {
+			event.preventDefault()
+			
+			const inputPw = document.querySelector('input[name="input_pw"]').value
+			console.log(inputPw)
+			
+			const item1 = {
+				idx: '${idx }',
+				inputPw: inputPw
+			}
+			
+			const url = '${cpath}/popUp/pwCheck'
+			const tmp = {
+					method: 'POST',
+					body: JSON.stringify(item1),
+					headers: {
+						'Content-Type': 'application/json; charset=utf-8'
+					}	
+			}
+			
+			fetch(url,tmp)
+			.then(response => response.text())
+			.then(text => {
+				if(text == 1) {
+					pwCheck.classList.add('hidden')
+					changePw.classList.remove('hidden')
+				}
+				else alert('비밀번호가 틀렸습니다.')
+			})
+		}
+	</script>
+	
+	
+	
+	
+	
+	
 	
 	<script>
-		const modifyPw = document.querySelector('input[name="user_pw"]')
-		console.log(modifyPw)
-		const checkPw = document.querySelector('input[name="user_pw_check"]')
-		console.log(checkPw)
-		const pwMessage1 = document.querySelector('.pwMessage1')
-		const pwMessage2 = document.querySelector('.pwMessage2')
+
 		
 		function pwHandler1(event) {
 			const addPwValue = event.target.value
@@ -70,14 +127,14 @@
 			event.preventDefault()
 			url = '${cpath}/popUp/pwUpdate'
 			
-			const item = {
+			const item2 = {
 				idx: '${idx }',
 				modifyPw: modifyPw.value,
 				checkPw: checkPw.value
 			}
 			const cls = {
 				method: 'POST',
-				body: JSON.stringify(item),
+				body: JSON.stringify(item2),
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8'
 				}	
@@ -101,7 +158,7 @@
 		
 		
 		
-		document.forms[0].onsubmit = pwUpdate
+		document.forms[1].onsubmit = pwUpdate
 		
 		
 		

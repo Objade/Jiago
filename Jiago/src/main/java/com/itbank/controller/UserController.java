@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -79,11 +81,9 @@ public class UserController {
 	public ModelAndView mypage(HttpSession session) {
 		ModelAndView mav = new ModelAndView("user/mypageHome");
 		UserDTO user = (UserDTO)session.getAttribute("login");
-		int user_idx = user.getUser_idx();
-		System.out.println(user_idx);
-		int point = userService.getPoint(user_idx);
-		System.out.println(point);
-		mav.addObject("point",point);
+		System.out.println(user.getUser_idx());
+		String point = userService.getPoint(user.getUser_idx());
+		if(point != null) mav.addObject("point",point);
 		return mav; 
 	}
 	
@@ -119,6 +119,18 @@ public class UserController {
 		}
 		mav.addObject("result","오류가 발생했");
 		mav.addObject("address","user/findLoginPw");
+		return mav;
+	}
+	
+	@GetMapping("mypageQuit")
+	public void mypageQuit() {}
+	
+	
+	@PostMapping("mypageQuit")
+	public ModelAndView mypageQuit(@RequestBody HashMap<String, String> param) {
+		ModelAndView mav = new ModelAndView("home");
+		
+		
 		return mav;
 	}
 	

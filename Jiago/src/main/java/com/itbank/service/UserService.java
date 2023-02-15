@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.itbank.model.UserDTO;
 import com.itbank.repository.UserDAO;
@@ -18,10 +19,13 @@ public class UserService {
 	@Autowired UserDAO userDao;
 	
 	public UserDTO login(UserDTO account) {
+		account.setUser_pw(sha256.encrypt(account.getUser_pw()));
+		System.out.println(account.getUser_pw());
 		return userDao.login(account);
 	}
 	
 	public int join(UserDTO user) {
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.join(user);
 	}
 
@@ -81,18 +85,28 @@ public class UserService {
 
 	public int newPasswordSet(UserDTO user) {
 		user.setUser_id(base.get("userId"));
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.newPasswordSet(user);
 	}
 
 	public int pwUpdate(UserDTO user) {
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.pwUpdate(user);
 	}
 
-	public int getPoint(int user_idx) {
-		return userDao.getPoint(user_idx);
+	public String getPoint(int idx) {
+		return userDao.getPoint(idx);
 	}
 
+	public int pwCheck(HashMap<String, String> param) {
+		String idx = param.get("idx");
+		String getPw = userDao.getPw(idx);
+		String inputPw = param.get("inputPw");
+		inputPw = sha256.encrypt(inputPw);
+		return getPw.equals(inputPw) ? 1 : 0;
+	}
 
+	
 	
 
 }

@@ -22,6 +22,10 @@
 	ul > li {
 		padding: 10px 20px;
 	}
+	
+	.hidden {
+		display: none;
+	}
 
 </style>
 
@@ -36,5 +40,6 @@
 		<ul>
 			<li><a href="${cpath }/user/mypageHome">나무 보여줄 홈</a></li>
 			<li><a href="${cpath }/user/mypageSecurity">보안</a></li>
+			<li><a href="${cpath }/user/mypageQuit">회원탈퇴</a></li>
 		</ul>
 	</div>

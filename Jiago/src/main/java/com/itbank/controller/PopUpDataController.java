@@ -35,6 +35,14 @@ public class PopUpDataController {
 		return 0;
 	}
 
+	@PostMapping("pwCheck") 
+	public int pwCheck(@RequestBody HashMap<String, String> param) {
+		return userService.pwCheck(param);
+	}
+		
+		
+	
+	
 	
 	
 }
