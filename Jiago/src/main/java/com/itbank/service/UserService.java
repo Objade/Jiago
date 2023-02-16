@@ -106,6 +106,15 @@ public class UserService {
 		return getPw.equals(inputPw) ? 1 : 0;
 	}
 
+	public int quit(int idx) {
+		return userDao.quit(idx);
+	}
+
+	public boolean checkPw(String loginPw, String inputPw) {
+		inputPw = sha256.encrypt(inputPw);
+		return loginPw.equals(inputPw);
+	}
+
 	
 	
 

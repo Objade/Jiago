@@ -30,5 +30,7 @@ public interface UserDAO {
 
 	String getPw(String idx);
 
+	int quit(int idx);
+
 	
 }
