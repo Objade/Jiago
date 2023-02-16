@@ -10,32 +10,34 @@
 <script src="${cpath }/resources/js/script.js"></script>
 
 
-<div id="root">
-<h3>게시글</h3>
-<table id="view">
-	<tr>
-		<td>${dto.notice_idx } : ${dto.notice_name } </td>
-		<td>작성자  : ${dto.notice_admin }</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-	<pre>${dto.notice_content }</pre>
-		</td>
-	</tr>
-
-</table>
-
-<div class="sb">
-	<div>
-		<a href="${cpath }/notice/list"><button>목록</button></a>
+<div id="vBody">
+	<div id="vRoot">
+		<div class="vMDL">
+			<div>
+				<a href="${cpath }/notice/list?notice_name="><button>목록</button></a>
+			</div>
+			<div>
+				<c:if test="${ login.user_type == 'Admin'}">
+					<a href="${cpath }/notice/modify/${dto.notice_idx}"><button>수정</button></a>
+					<a href="${cpath }/notice/delete/${dto.notice_idx}"><button>삭제</button></a>
+				</c:if>
+			</div>
+		</div>
+		<table id="viewList">
+			<tr class="viewListTop">
+				<td class="bTitle">${dto.notice_name } </td>
+				<td class="bWriter">${dto.notice_admin }</td>
+			</tr>
+			<tr>
+				<td class="bContent" colspan="2">
+			<pre>${dto.notice_content }</pre>
+				</td>
+			</tr>
+		
+		</table>
+		
+		
 	</div>
-	<div>
-		<c:if test="${ login.user_type == 'Admin'}">
-			<a href="${cpath }/notice/modify/${dto.notice_idx}"><button>수정</button></a>
-			<a href="${cpath }/notice/delete/${dto.notice_idx}"><button>삭제</button></a>
-		</c:if>
-	</div>
-</div>
 </div>
 
 </body>
