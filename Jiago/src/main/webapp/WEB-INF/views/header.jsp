@@ -21,6 +21,7 @@
     	    width: 100%;
   			top: 0;
     		background-color: white;
+    		z-index: 2;
     	}
     
     	body {
@@ -207,16 +208,168 @@
             padding-bottom: 20px;
         }
         
-        table {
-	         border: 2px solid black;
-	         border-collapse: collapse;
-	         min-width: 500px;
-	         margin: 0 auto;
+
+        
+        /*  게시판  */ 
+        #bBody {
+        	padding-top: 30px;
+        } 
+        #bRoot {
+        	
+        	width: 1000px;
+            margin: 100px auto;
+        }
+        #vBody {
+        	padding-top: 40px;
+        }
+        #vRoot {
+        	width: 800px;
+        	margin: 100px auto;
+        }
+        .vMDL {
+        	padding-bottom: 10px;
+        	padding-top: 10px;
+        	display: flex;
+        	justify-content: space-between;
+        	border-bottom: 2px solid #7d8389;
+        }
+        
+        #lRoot {
+        	background-color: white;
+        }
+        #mdiRoot {
+        	padding-top: 100px; 
+        }
+        #boardList {
+	        border-collapse: collapse;
+            width: 100%;
+            margin: auto;
+           
     	}
     	
-      	td, th {
-        	 border: 1px solid darkgrey;
-        	 padding: 5px 10px;
+    	#boardList th {
+    		padding: 8px;
+    		text-align: center;
+    		background-color: #1B434A;
+    		font-size: 25px;
+    		color: #eee;
+    		
+    	}
+    	
+      	#boardList  td {
+        	border-bottom: 1px solid #7d8389;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+      	}
+      	#viewList {
+      		border-collapse: collapse;
+            width: 100%;
+            margin: auto;
+            
+      	}
+      	.viewListTop {
+      		border-bottom: 2px solid #1B434A;
+      	}
+      	.bTitle {
+      		font-size: 50px;
+      		width: 600px;
+      	}
+      	
+      	.bWriter {
+			font-size: 30px;
+			width: 100px;
+			text-align: right;
+      	}
+      	.bView {
+      		font-size: 30px;
+      		width: 100px;
+      		text-align: center;
+      	}
+      	.bContent {
+      		height: 450px;
+      		padding-top: 10px;
+      		border-bottom: 2px solid #1B434A;
+      		vertical-align: top;
+      		text-align: left;
+      		font-size: 25px;
+      	}
+      	.bContent pre {
+      		font-size: 25px;
+      		font-family: 'Dongle';
+      	}
+      	#replyWriteForm {
+      	
+      	
+      	}
+      	
+      	
+      	.write_button {
+      		width: 100px;
+      		height: 30px;
+      		background-color: #1B434A;
+      		float: right;
+      		
+      	}
+      	
+      	.write_button > a {
+      		display: flex;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bolder;
+            color: #eee;
+      	}
+      	.write_button2 {
+      		width: 100px;
+      		height: 30px;
+      		background-color: #1B434A;
+      		float: right;
+      		
+      	}
+      	
+      	.write_button2 > a {
+      		display: flex;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bolder;
+            color: #eee;
+      	}
+      	
+      	.search {
+      		padding-top: 20px;
+      		padding-bottom: 50px;
+      		z-index: 1;
+      	}
+      	.search > form {
+      		position: relative;
+  			width: 100%;
+  			display: flex;
+      	}
+      	 #input1 {
+      		width: 90%;
+      		height: 30px;
+		  	border: 1px solid #bbb;
+		  	border-right: none;
+		  	padding: 10px 12px;
+		  	font-size: 14px;
+		  	border-bottom: 2px solid #bbb;
+      	}
+      	#input2 {
+      		width:10%; 
+      		border-left: none;
+      		border: 1px solid #bbb;
+      		font-family: 'Dongle';
+      		font-size: 25px;
+      		background-color: #1B434A;
+      		color: white;
       	}
       	
       	.serviceBox {
@@ -272,12 +425,29 @@
 			min-height: auto;
 			width: 80%;
 		}
+		.reply {
+			border-right: 1px solid grey;
+			border-left: 1px solid grey;
+			border-bottom: 1px solid grey;
+			padding: 10px;
+			
+		}
+		.replyTop {
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		.replyTop .reply_writer {
+			font-size: 20px;
+		}
+		.reply_content {
+			font-size: 20px;
+		}
 	  
 	  	.notice_name {
            display: flex;
            justify-content: space-between;
-           margin-top: 50px;
-           margin-bottom: 50px;
+           margin-top: 30px;
         }
         
         .notice_name > .notice_name_L {
@@ -288,16 +458,17 @@
         .qboard_title {
            display: flex;
            justify-content: space-between;
-           margin-top: 50px;
-           margin-bottom: 50px;
-           
+           margin-top: 30px;           
         }
         
         .qboard_title > .qboard_title_L {
-           font-size: 30px;
+           font-size: 40px;
            font-weight: bolder;
         }
-        
+        .reply_title {
+           font-size: 40px;
+           font-weight: bolder;
+        }
         .page_wrap {
         	margin-top: 20px;
 			text-align:center;

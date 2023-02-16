@@ -60,14 +60,14 @@ function convertHTMLfromJSON(dto) {
 	
 	let html = `<div class="reply" idx="${dto.reply_idx}" style="margin-left: ${margin}px">`
 	html += `		<div class="replyTop">`
-	html += `			<div class="left">`
-	html += `				<div class="writer">${dto.admin_id}</div>`
+	html += `			<div class="reply_left">`
+	html += `				<div class="reply_writer">${dto.admin_id}</div>`
 	html += `			</div>`
-	html += `			<div class="right">`
-	html += `				<button class="delete" ${login_user_id != dto.admin_id ? 'hidden' : ''}>삭제</button>`
+	html += `			<div class="reply_right">`
+	html += `				<button class="reply_delete" ${login_user_id != dto.admin_id ? 'hidden' : ''}>삭제</button>`
 	html += `			</div>`
 	html += `		</div>`
-	html += `		<pre class="content">${dto.reply_content}</pre>`
+	html += `		<pre class="reply_content">${dto.reply_content}</pre>`
 	html += `</div>`
 	return html
 }
