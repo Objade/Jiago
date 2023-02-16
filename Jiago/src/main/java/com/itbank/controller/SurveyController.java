@@ -66,11 +66,17 @@ public class SurveyController {
 		System.out.println("login : " + login.getUser_idx());
 		String userName = login.getUser_name();
 		int user_idx = login.getUser_idx();
-		int userPoint = surveyService.getUserPoint(user_idx);
+		
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("survey_idx", survey_idx);
+	    resultMap.put("user_idx", user_idx);
+		
+		int userPoint = surveyService.addpoint(resultMap);	// 포인트 적립
+		int getPoint = surveyService.getUserPoint(user_idx); // 적립 포인트 들고 오기
 		System.out.println(userPoint);
 		
 		mav.addObject("userName", userName);		
-		mav.addObject("userPoint", userPoint);	
+		mav.addObject("userPoint", getPoint);
 		return mav;
 	}
 	
@@ -81,7 +87,6 @@ public class SurveyController {
 		System.out.println(dto.getSurvey_idx());
 		
 		int row = surveyService.addUserDonate(dto);
-		
 		int minus = surveyService.minusUserPoint(dto);
 		return "redirect:/";
 	}

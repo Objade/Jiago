@@ -14,7 +14,7 @@
 
 <form method="POST">
    
-   <p>회사 번호 <input type="number" placeholder="회사 번호" name="company_idx" required></p> 
+   <p>회사 번호 <input type="number" placeholder="회사 번호" name="company_idx" min="0" required></p> 
 
    <p>설문 제목 <input type="text" placeholder="설문 제목" name="survey_title" required></p> 
 
@@ -22,7 +22,7 @@
 
    <p>적립금 <input type="number" name="survey_point" placeholder="적립금" min="0" step="100" required/> POINT
 
-   <p>예상 소요 시간 <input type="number" name="survey_time" placeholder="예상 소요 시간" min="0" required/> 분
+   <p>예상 소요 시간 <input type="number" name="survey_time" placeholder="예상 소요 시간" min="1" required/> 분
    
 
    <p>타겟 연령대 
