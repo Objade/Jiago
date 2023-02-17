@@ -34,7 +34,7 @@
 </head>
 <body>
 
-	<div><a href="${cpath }/"><img src="${cpath }/resources/img/로고.png"></a></div>
+	<div><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png"></a></div>
 	<div id="selectBox">
 	
 		<ul>

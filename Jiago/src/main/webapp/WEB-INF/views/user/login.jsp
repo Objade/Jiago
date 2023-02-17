@@ -101,7 +101,7 @@
 </style>
 </head>
 <body>
-	<div id="loginLogo"><img src="${cpath}/resources/img/로고.png "></div>
+	<div id="loginLogo"><img src="${cpath}/resources/img/logo.png "></div>
 	
 	<form method="POST" action="${cpath }/user/login">
 		<div id="accountInput">

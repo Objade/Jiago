@@ -7,8 +7,7 @@
 
 
 	<select id="login" parameterType="user" resultType="user">
-		select * from member where user_id=#{user_id} and user_pw=#{user_pw}
-	
+		select * from member where user_id=#{user_id} and user_pw=#{user_pw } and user_withdraw='N'
 	</select>
 
 
@@ -60,5 +59,13 @@
 		select user_pw from member where user_idx=#{idx}
 	</select>
 	
+	<!-- 삭제지만 withdraw를 Y로 업데이트 한다  -->
+	<update id="quit" parameterType="int">
+		update member set 
+		user_id = '탈퇴', user_pw = '탈퇴', user_name = '탈퇴', user_birth = '00/01/01', user_gender = '남',
+		user_address = '탈퇴', user_phone = '0', user_email = '탈퇴', user_job = '탈퇴', 
+		user_type = 'Member', user_joindate = '00/01/01', user_withdraw = 'Y', user_agree = 'Y'
+		where user_idx = #{idx }
+	</update>
 
 </mapper>
