@@ -34,11 +34,11 @@
 </head>
 <body>
 
-
+	<div><a href="${cpath }/"><img src="${cpath }/resources/img/로고.png"></a></div>
 	<div id="selectBox">
 	
 		<ul>
-			<li><a href="${cpath }/user/mypageHome">나무 보여줄 홈</a></li>
+			<li><a href="${cpath }/user/mypageHome">마이페이지 홈</a></li>
 			<li><a href="${cpath }/user/mypageSecurity">보안</a></li>
 			<li><a href="${cpath }/user/mypageQuit">회원탈퇴</a></li>
 		</ul>
