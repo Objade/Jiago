@@ -267,24 +267,6 @@
            })
            console.log(result)
 
-//       const questionArray = Array.from(document.querySelectorAll("#question"))
-
-//             console.log(questionArray)
-
-//            const qa = questionArray.map(e => {
-//                 const ex = Array.from(e.querySelectorAll('.example'))
-//                 const exArray = ex.map(e => e.childNodes[0].value)
-
-//                 const ob = {
-//                     question_idx: +e.childNodes[0].getAttribute("question_idx"),
-//                     question_content: e.childNodes[0].value,
-//                     example_content: exArray
-//                 }
-//                 return ob
-//             })
-
-//             console.log(qa)
-           
            
            const cpath = '${cpath}'
 		   const url = location.href
@@ -300,6 +282,7 @@
            .then(resp => resp.text())
            .then(text => {
               alert(text)
+              location.href = cpath		// 이후에는 관리자 페이지 메인으로 이동하도록 수정할것
            })
            .error(err => console.log(err))
            

@@ -114,5 +114,15 @@ public class SurveyController {
 	      return mav;
 	   }
 	
+	   
+	   @GetMapping("surveyManage")
+		public ModelAndView surveyManage() {
+			
+			ModelAndView mav = new ModelAndView();
+			List<SurveyDTO> list = surveyService.selectAllList();
+			mav.addObject("list", list);
+			
+			return mav;
+		}
 
 }

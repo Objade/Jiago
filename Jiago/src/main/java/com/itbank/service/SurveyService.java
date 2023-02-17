@@ -83,6 +83,27 @@ public class SurveyService {
 	    return dao.selectSurveyIdx();
 	}
 
+	public int addQuestion(HashMap<String, String> addMap) {
+		return dao.insertQuestion(addMap);
+	}
+
+	public int addExample(HashMap<String, String> addMap) {
+		return dao.insertExample(addMap);
+	}
+
+	public int addNewQuestion(HashMap<String, String> addNewMap) {
+		
+		return dao.insertNewQuestion(addNewMap);
+	}
+
+	public int addNewExample(HashMap<String, String> addNewMap) {
+		return dao.insertNewExample(addNewMap);
+	}
+
+	public List<SurveyDTO> selectAllList() {
+		return dao.selectAllList();
+	}
+
 
 
 	

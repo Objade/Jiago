@@ -19,13 +19,15 @@
     <div class="s3_mid">
         <div class="customer">
         	<c:forEach var="list" items="${list }">
-	            <div class="write_top">${list.survey_title }</div>
-	            <div class="write_mid">조사기간</div>
-	            <div class="write_bottom">${list.survey_date }</div>
-	            <div class="write_mid">응답시간</div>
-	            <div class="write_bottom">${list.survey_time }</div>
-	            <div class="write_mid">포인트</div>
-	            <div class="write_bottom">${list.survey_point }</div>
+        		<div class="surveys">
+		            <div class="write_top">${list.survey_title }</div>
+		            <div class="write_mid">조사기간</div>
+		            <div class="write_bottom">${list.survey_date }</div>
+		            <div class="write_mid">응답시간</div>
+		            <div class="write_bottom">${list.survey_time }</div>
+		            <div class="write_mid">포인트</div>
+		            <div class="write_bottom">${list.survey_point }</div>
+	            </div>
         	</c:forEach>
         </div>
     </div>

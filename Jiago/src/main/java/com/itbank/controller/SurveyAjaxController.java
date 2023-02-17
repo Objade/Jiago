@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itbank.model.SurveyFormDTO;
-import com.itbank.model.SurveyFormDTOBox;
+
 import com.itbank.service.SurveyService;
 
 @RestController
@@ -76,25 +76,10 @@ public class SurveyAjaxController {
       return answerSub;
    }
    
-   
-//   @PostMapping("/survey/surveyQuestionAdd/{survey_idx}")
-//   public int surveyQuestionAdd(@RequestBody String json, @PathVariable("survey_idx") int survey_idx) {
-//  
-//      System.out.println(json);
-//      
-//      return 1;
-//   }
-   
-//   @PostMapping("/survey/surveyQuestionAdd/{survey_idx}")
-//   public int surveyQuestionAdd(@RequestBody List<SurveyFormDTO> json, @PathVariable("survey_idx") int survey_idx) {
-//	   
-//	   System.out.println(json);
-//	   
-//	   return 1;
-//   }
+  
    
    @PostMapping("/survey/surveyQuestionAdd/{survey_idx}")
-   public int surveyQuestionAdd(@RequestBody String question, @PathVariable("survey_idx") int survey_idx) throws JsonMappingException, JsonProcessingException {
+   public String surveyQuestionAdd(@RequestBody String question, @PathVariable("survey_idx") int survey_idx) throws JsonMappingException, JsonProcessingException {
 	   
 	   System.out.println(question);
 	   
@@ -102,23 +87,65 @@ public class SurveyAjaxController {
 	   List<SurveyFormDTO> list = mapper.readValue(question, new TypeReference<List<SurveyFormDTO>>() {});
 	   System.out.println(list);
 	   
-	   list.forEach(System.out::println);
+	   int qrow = 0;
+	   int erow = 0;
 	   
+	   HashMap<String, String> addMap = new HashMap<String, String>();
+	   addMap.put("survey_idx", survey_idx+"");
+	   
+	   // 이미 있는 질문을 추가한 경우
 	   for(int i = 0; i < list.size(); i++) {
 		   SurveyFormDTO dto = list.get(i);
 		   String question_content = dto.getQuestion_content();
 		   int idx = dto.getQuestion_idx();
+		   
 		   System.out.println(idx);
 		   System.out.println(question_content);
 		   
 		   List<String> example = dto.getExample_content();
-		   for(int j = 0; j < example.size(); j++) {
-			   System.out.println(example.get(j));
-		   }
-		   System.out.println("==================================");
+		   
+		   if(idx != 0) {
+			   addMap.put("question_idx", idx+"");
+			   addMap.put("question_content", question_content);
+			   qrow = surveyService.addQuestion(addMap);
+			   
+			   for(int j = 0; j < example.size(); j++) {
+				   System.out.println(example.get(j));
+				   String example_content = example.get(j);
+				   addMap.put("example_content", example_content);
+				  
+				   erow = surveyService.addExample(addMap);
+				   
+				   System.out.println(qrow);
+				   System.out.println(erow);
+		
+			   }
+			   
+		  }
+		   
+		// 새로운 질문을 추가한 경우
+		   
+		   HashMap<String, String> addNewMap = new HashMap<String, String>();
+		   addNewMap.put("survey_idx", survey_idx+"");
+		   
+		   if(idx == 0) {
+			   addNewMap.put("question_content", question_content);
+			   qrow = surveyService.addNewQuestion(addNewMap);
+			   
+			   for(int j = 0; j < example.size(); j++) {
+				   System.out.println(example.get(j));
+				   String example_content = example.get(j);
+				   addNewMap.put("example_content", example_content);
+				  
+				   erow = surveyService.addNewExample(addNewMap);
+		
+			   }
+			   
+		  }
+		   
 	   }
 	   
-	   return 1;
+	   return "추가 성공";
    }
       
       

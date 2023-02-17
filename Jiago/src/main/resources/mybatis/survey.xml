@@ -9,6 +9,10 @@
    <select id="selectList" resultType="survey">
       select * from survey where to_date(substr(survey_date,10)) >= sysdate order by survey_idx
    </select>
+   
+   <select id="selectAllList" resultType="survey">
+  	  select * from survey order by survey_idx 
+   </select>
 
    <select id="selectOneDetail" parameterType="int" resultType="survey">
       select * from survey where survey_idx = #{survey_idx}
@@ -83,7 +87,30 @@
       select * from(select survey_idx from survey order by rownum desc) where rownum = 1
    </select>
    
+	<insert id="insertQuestion" parameterType="HashMap">
+		insert into survey_question 
+			(survey_idx, question_idx, question_content) 
+		values (#{survey_idx}, #{question_idx}, #{question_content})
+	</insert>
 	
+	<insert id="insertExample" parameterType="HashMap">
+		insert into survey_example
+    		(survey_idx, question_idx, example_content) 
+    	values (#{survey_idx}, #{question_idx}, #{example_content})
+	</insert>
 	
+	<insert id="insertNewQuestion" parameterType="HashMap">
+		insert into survey_question (survey_idx, question_idx, question_content) values (#{survey_idx}, question_seq.nextval, #{question_content})
+	</insert>
+	
+	<insert id="insertNewExample" parameterType="HashMap">
+		insert into survey_example
+    		(survey_idx, question_idx, example_content) 
+    	values 
+        (#{survey_idx}, 
+        (select question_idx from 
+        	(select * from survey_question where survey_idx = #{survey_idx} order by rownum desc) where rownum = 1), 
+        #{example_content})
+	</insert>
 
 </mapper>

@@ -45,5 +45,17 @@ public interface SurveyDAO {
    List<SurveyQuestionDTO> selectQuestionList();
   
    int selectSurveyIdx();
+
+   int insertQuestion(HashMap<String, String> addMap);
+
+   int insertExample(HashMap<String, String> addMap);
+
+   int insertNewQuestion(HashMap<String, String> addNewMap);
+
+   int insertNewExample(HashMap<String, String> addNewMap);
+
+   List<SurveyDTO> selectAllList();
+
+
    
 }
