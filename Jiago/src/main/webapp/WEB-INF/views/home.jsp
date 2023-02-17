@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-<div id="root">
+<div class="root">
 	<section id="section1">
 	       <div class="banner">
 	            <img src="${cpath }/resources/img/banner.png">
@@ -41,9 +41,6 @@
     </div>
     <div class="s4_bottom">더 알아보기</div>
 </section>
-
-
-<input type="color">
 
 <%@ include file="footer.jsp" %>
 
