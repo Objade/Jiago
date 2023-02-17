@@ -1,6 +1,5 @@
 package com.itbank.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -108,10 +106,9 @@ public class UserController {
 	}
 	
 	@PostMapping("newPasswordSet")
-	public ModelAndView newPasswordSet(HttpSession session , @RequestParam("password") String first, @RequestParam("passwordCheck") String second) {
-		String sessionPw = (String)((UserDTO)session.getAttribute("login")).getUser_pw();
+	public ModelAndView newPasswordSet(@RequestParam("password") String first, @RequestParam("passwordCheck") String second) {
 		ModelAndView mav = new ModelAndView("user/result");
-		if(first.equals(second) && sessionPw.equals(first)) {
+		if(first.equals(second)) {
 			UserDTO user = new UserDTO();
 			user.setUser_pw(first);
 			int row = userService.newPasswordSet(user);
