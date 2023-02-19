@@ -115,6 +115,10 @@ public class UserService {
 		return loginPw.equals(inputPw);
 	}
 
+	public int dupId(String id) {
+		return userDao.dupId(id);
+	}
+
 	
 	
 

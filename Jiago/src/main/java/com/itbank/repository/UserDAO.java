@@ -32,5 +32,7 @@ public interface UserDAO {
 
 	int quit(int idx);
 
+	int dupId(String id);
+
 	
 }
