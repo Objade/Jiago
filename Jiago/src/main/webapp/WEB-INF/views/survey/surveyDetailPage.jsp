@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>    
 
-<style>
-
-     
-
-</style>
 
 <div class="main">
 	<div class="surveyDetail title">조사 참여하기</div>
@@ -30,7 +25,7 @@
 	
 	        <tr>
 	            <th>예상 응답 시간</th>
-	            <td>${dto.survey_time}</td>
+	            <td>${dto.survey_time}분</td>
 	        </tr>
 	
 	        <tr>

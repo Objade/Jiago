@@ -56,6 +56,18 @@ public interface SurveyDAO {
 
    List<SurveyDTO> selectAllList();
 
+   int updateSurvey(SurveyDTO dto);
+
+   List<SurveyExampleDTO> selectSurveyExample(HashMap<String, String> exMap);
+
+   int changeSurveyQuestion(int survey_idx);
+
+   int changeSurveyExample(int survey_idx);
+
+   SurveyQuestionDTO checkQuestion(int idx);
+
+
+
 
    
 }

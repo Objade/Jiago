@@ -7,7 +7,7 @@
 
 
    <select id="selectList" resultType="survey">
-      select * from survey where to_date(substr(survey_date,10)) >= sysdate order by survey_idx
+      select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 order by survey_idx
    </select>
    
    <select id="selectAllList" resultType="survey">
@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id="selectHomeSurvey" resultType="survey">
-		select * from survey where to_date(substr(survey_date,10)) >= sysdate and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
+		select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
 	</select>
 	
 	<insert id="insertSurvey" parameterType="survey">
@@ -109,8 +109,29 @@
     	values 
         (#{survey_idx}, 
         (select question_idx from 
-        	(select * from survey_question where survey_idx = #{survey_idx} order by rownum desc) where rownum = 1), 
+        	(select * from survey_question where survey_idx = #{survey_idx} order by question_idx desc) where rownum = 1), 
         #{example_content})
 	</insert>
 
+	<update id="updateSurvey" parameterType="survey">
+		update survey set 
+		company_idx = #{company_idx}, survey_title = #{survey_title}, survey_date = #{survey_date}, 
+		survey_point = #{survey_point}, survey_time = #{survey_time}, survey_targetAge = #{survey_targetAge}, 
+		survey_targetGender = #{survey_targetGender}, survey_targetJob = #{survey_targetJob}, survey_info = #{survey_info}
+		
+		where survey_idx = #{survey_idx}
+	</update>
+	
+	<delete id="changeSurveyQuestion" parameterType="int">
+		delete from survey_question where survey_idx = #{survey_idx}
+	</delete>
+	
+	<delete id="changeSurveyExample" parameterType="int">
+		delete from survey_example where survey_idx = #{survey_idx}
+	</delete>
+	
+	<select id="checkQuestion" parameterType="int" resultType="surveyQuestion">
+		select * from question where question_idx = #{question_idx}
+	</select>
+	
 </mapper>

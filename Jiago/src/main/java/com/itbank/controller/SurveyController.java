@@ -124,5 +124,44 @@ public class SurveyController {
 			
 			return mav;
 		}
+	   
+	   @GetMapping("surveyView/{survey_idx}")
+		public ModelAndView view(@PathVariable ("survey_idx") int survey_idx) {
+			ModelAndView mav = new ModelAndView("/survey/surveyView");
+			SurveyDTO dto = surveyService.getSurveyDetail(survey_idx);
+			mav.addObject("dto", dto);
+			
+			List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
+			List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
+			
+			mav.addObject("list", list);
+			mav.addObject("exList", exList);
+			
+			return mav;
+		}
+	   
+	   @GetMapping("surveyModify/{survey_idx}")
+		public ModelAndView modifyInfo(@PathVariable ("survey_idx") int survey_idx) {
+			ModelAndView mav = new ModelAndView("/survey/surveyModify");
+			SurveyDTO dto = surveyService.getSurveyDetail(survey_idx);
+			mav.addObject("dto", dto);
+			
+			List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
+			List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
+			
+			mav.addObject("list", list);
+			mav.addObject("exList", exList);
+			
+			return mav;
+		}
+	   
+	   @PostMapping("surveyModify/{survey_idx}")
+			public String modify(SurveyDTO dto) {
+				int row = surveyService.modifySurvey(dto);
+				
+				return "redirect:/survey/surveyView/{survey_idx}";
+			}
 
+	 
+	   
 }

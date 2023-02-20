@@ -104,6 +104,21 @@ public class SurveyService {
 		return dao.selectAllList();
 	}
 
+	public int modifySurvey(SurveyDTO dto) {
+		return dao.updateSurvey(dto);
+	}
+
+	public int resetSurveyQuestion(int survey_idx) {
+		return dao.changeSurveyQuestion(survey_idx);
+	}
+	
+	public int resetSurveyExample(int survey_idx) {
+		return dao.changeSurveyExample(survey_idx);
+	}
+
+	public SurveyQuestionDTO checkQuestion(int idx) {
+		return dao.checkQuestion(idx);
+	}
 
 
 	
