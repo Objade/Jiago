@@ -108,15 +108,15 @@
 	<div id="joinForm" > <!-- class="hidden"  -->
 		<form method="POST" action="${cpath }/user/join">
 			<div>
-				<input type="text" name="user_id" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" class="dupbtn">중복 검사</button></span><span class="duptext1"></span>
-				<div>8자리 이상의 문자 + 숫자</div>
+				<input type="text" id="joinId" name="user_id" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" onclick="joinIdCheck()">중복 검사</button></span><span class="checkIdText"></span>
+				<div>영문자로 시작하는 영문자 + 숫자의 조합의 6 ~ 12자 </div>
 			</div>
 			
 			<div>
-				<input type="password" name="user_pw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="pwMessage1"></span>
-				<div>8 ~ 16자리 문자 + 숫자 + 특수기호</div>
+				<input type="password" id="joinPw" name="user_pw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
+				<div>소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 			</div>
-			<div><input type="password" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="pwMessage2"></span></div>
+			<div><input type="password" id="checkPw" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
 
 			<div><input type="text" name="user_name" placeholder="유저 이름" required autocomplete="off"><span class="nameMessage"></span></div>
 			<div><input type="date" name="user_birth" required>생일 입력</div>
@@ -173,117 +173,98 @@
 		</form>
 	</div>
 	
-	
+
 <script>
-	const contract = document.forms[0]
-	console.log(contract.parentNode)
-	const joinForm = document.getElementById('joinForm')
-	console.log(joinForm)
+	// 약간 동의 체크시 히든 회원가입 폼 히든 삭제
+	const contract = document.forms[0]	// 약간동의 폼
+	const joinForm = document.forms[1]	// 회원가입 폼
 	
 	const agbtn = document.querySelector('.agbtn')
-	console.log(agbtn)
 
 	function btnHandler() {
 		contract.parentNode.classList.add('hidden')
-		joinForm.classList.remove('hidden')
+		joinForm.parentNode.classList.remove('hidden')
 	}
-	
 	agbtn.onclick = btnHandler
 	
-
-	const dupbtn = document.querySelector('.dupbtn')
-	console.log(dupbtn)
+</script>
 	
-	// 아이디 중복 검사
-	function idHandler(event) {
-		const idValue = document.querySelector('input[name="user_id"]')
-		const duptext1 = document.querySelector('.duptext1')
-		console.log(duptext1)
-		const url = '${cpath}/user/idDup'
-		const rsp = {
-				method: 'POST',
-				body: idValue.value,
-				headers: {
-					'Content-Type': 'plain/text; charset=utf-8'
-				}
-		}
+<script>
+	// 회원 가입 시 아이디 중복 검사
+		const joinId = document.getElementById('joinId')			// 아이디 input폼
+		const checkIdText = document.querySelector('.checkIdText')	// 조건 일치 여부 및 중복 여부 확인 문장
+
+
+	
+	function joinIdCheck() {
 		
-		fetch(url , rsp)
+		const url = '${cpath}/user/joinId/' + joinId.value + '/'
+		
+		fetch(url)
 		.then(response => response.text())
 		.then(text => {
-			console.log(text)
-			if(text == 1 || (idValue.value).length < 8) {
-				duptext1.innerText = ''
-				duptext1.innerText = '중복된 아이디가 존재하거나 길이가 너무 짧습니다.'
-				duptext1.style.color = 'red'
-				idValue.value = ''
-				console.log(idValue)
+			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{6,12}$/g
+			if(text == 0 && id_if.test(joinId.value)) {
+				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
+				checkIdText.style.color = 'blue'
 			}
 			else {
-				duptext1.innerText = ''
-				duptext1.innerText = '사용가능한 아이디입니다.'
-				duptext1.style.color = 'blue';
-				idValue.disabled = true;
+				checkIdText.innerText = '조건이 맞지 않거나 중복된 계정이 존재합니다.'
+				checkIdText.style.color = 'red'
 			}
 		})
-		
-		
 	}
-	
-	
-	dupbtn.onclick = idHandler
-
 </script>
 
 <script>
 
-	// 비밀번호 확인
-		const modifyPw = document.querySelector('input[name="user_pw"]') // 새로운 비밀번호 입력
-		const checkPw = document.querySelector('input[name="user_pw_check"]') // 비밀번호 확인
-		const pwMessage1 = document.querySelector('.pwMessage1')	// 비밀번호 조건 메세지
-		const pwMessage2 = document.querySelector('.pwMessage2')	// 비밀번호 확인 메세지
+		// 비밀번호 입력 및 확인
+		const joinPw = document.getElementById('joinPw')				// 새로운 비밀번호 입력
+		const checkPw = document.getElementById('checkPw') 				// 비밀번호 확인
+		const checkPwText1 = document.querySelector('.checkPwText1')	// 비밀번호 조건 메세지
+		const checkPwText2 = document.querySelector('.checkPwText2')	// 비밀번호 확인 메세지
 
 
-		function pwHandler1(event) {
-			const addPwValue = event.target.value
-			pwMessage2.innerText = '비밀번호가 서로 일치하지 않습니다'
-			pwMessage2.style.color = 'red'
-			if(addPwValue.length < 16 && addPwValue.length > 8) {
-				pwMessage1.innerText = '사용가능한 비밀번호 입니다'
-				pwMessage1.style.color = 'blue'
+		function joinPwHandler(event) {
+			checkPw.value = ''
+			checkPwText2.innerText = ''
+			const joinPwValue = event.target.value
+			if(joinPwValue.length == 0) {
+				checkPwText1.innerText = ''
+				return
+			}
+			const pw_if = /(?=.*[0-9])(?=.*[a-z])(?=.*\W)(?=\S+$).{8,20}/
+			if(pw_if.test(joinPwValue)) {
+				checkPwText1.innerText = '사용가능한 비밀번호입니다'
+				checkPwText1.style.color = 'blue'
+				checkPw.removeAttribute('disabled')		// 사용가능한 비밀번호가 아니면 비밀번호 확인 비활성화
 			}
 			else {
-				pwMessage1.innerText = '해당 조건에 부합하지 않는 비밀번호입니다.'	
-				pwMessage1.style.color = 'red'
+				checkPwText1.innerText = '조건에 부합되지 않은 비밀번호입니다.'
+				checkPwText1.style.color = 'red'
+				checkPw.setAttribute('disabled',true)
 			}
 		}
 		
-//		modifyPw.onkeyup = pwHandler1
-		modifyPw.addEventListener('keyup', pwHandler1)
+//		joinPw.onkeyup = pwHandler1
+		joinPw.addEventListener('keyup', joinPwHandler)
 		
-		function pwHandler2(event2) {
-			const btn = document.querySelector('.btn')
-			const checkPwValue = event2.target.value
-			console.log('위' + modifyPw.value)
-			console.log('아래' + checkPwValue)
-			if(checkPwValue == modifyPw.value && pwMessage1.innerText == '사용가능한 비밀번호 입니다' ) {
-				pwMessage2.innerText = '비밀번호가 서로 일치합니다'
-				pwMessage2.style.color = 'blue'
-				btn.disabled = false
+		
+		
+		function checkPwHandler(event) {
+			const checkPwValue = event.target.value
+			if(checkPwValue == joinPw.value) {
+				checkPwText2.innerText = '비밀번호가 서로 일치합니다'
+				checkPwText2.style.color = 'blue'
 			}
 			else {
-				pwMessage2.innerText = '비밀번호가 서로 일치하지 않습니다'
-				pwMessage2.style.color = 'red'
-				btn.disabled = true
+				checkPwText2.innerText = '비밀번호가 서로 일치하지 않습니다'
+				checkPwText2.style.color = 'red'
 			}
 		}
 		
 // 		checkPw.onkeyup = pwHandler2	
-		checkPw.addEventListener('keyup', pwHandler2)
-		
-		
-		
-		
+		checkPw.addEventListener('keyup', checkPwHandler)
 </script>
 
 
