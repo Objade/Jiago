@@ -102,7 +102,7 @@ public class SurveyAjaxController {
 		   int idx = dto.getQuestion_idx();
 		   
 		   System.out.println(idx);
-		   System.out.println(question_content);
+		   System.out.println("질문 : " + question_content);
 		   
 		   List<String> example = dto.getExample_content();
 		   
@@ -114,14 +114,14 @@ public class SurveyAjaxController {
 			   qrow = surveyService.addQuestion(addMap);
 			   
 			   for(int j = 0; j < example.size(); j++) {
-				   System.out.println(example.get(j));
+				   System.out.println("보기 [" + j + "]" + example.get(j));
 				   String example_content = example.get(j);
 				   addMap.put("example_content", example_content);
 				  
 				   erow = surveyService.addExample(addMap);
 				   
-				   System.out.println(qrow);
-				   System.out.println(erow);
+				   System.out.println("기존 질문 추가 성공 : " + qrow);
+				   System.out.println("보기 추가 성공 : " + erow);
 		
 			   }
 			   
@@ -135,13 +135,17 @@ public class SurveyAjaxController {
 		   if(idx == 0) {
 			   addNewMap.put("question_content", question_content);
 			   qrow = surveyService.addNewQuestion(addNewMap);
+			   System.out.println("질문 : " + question_content);
 			   
 			   for(int j = 0; j < example.size(); j++) {
-				   System.out.println(example.get(j));
+				   System.out.println("보기 [" + j + "]" + example.get(j));
 				   String example_content = example.get(j);
 				   addNewMap.put("example_content", example_content);
 				  
 				   erow = surveyService.addNewExample(addNewMap);
+				   
+				   System.out.println("새 질문 추가 성공 : " + qrow);
+				   System.out.println("보기 추가 성공 : " + erow);
 		
 			   }
 			   
@@ -149,8 +153,9 @@ public class SurveyAjaxController {
 		   
 	   }
 	   
-	   return "추가 성공";
+	   return "설문이 추가되었습니다.";
    }
+   
       
    @GetMapping("/survey/surveyQuestionModify/{survey_idx}")
    public ModelAndView surveyQuestionUpdate(@PathVariable("survey_idx") int survey_idx) {
@@ -245,9 +250,16 @@ public class SurveyAjaxController {
 			  }   
 		   }
 		  
-	   return "수정 성공";
+	   return "설문이 수정되었습니다.";
    }
       
+   
+   @GetMapping("/survey/surveyDelete/{survey_idx}")
+   public String surveyDelete(@PathVariable("survey_idx") int survey_idx) {
+	   int row = surveyService.deleteSurvey(survey_idx);
+	   
+	   return "설문이 삭제 되었습니다.";
+   }
    
 }
 

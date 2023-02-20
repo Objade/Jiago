@@ -61,7 +61,7 @@
       <input type="submit" value="제출">
   </form>
 
-    <script>
+   <script>
         const button = document.querySelector('#button')
         const items = document.querySelector('.items')
         const example = document.querySelector('.example')
@@ -81,6 +81,7 @@
             input.setAttribute('name', 'question_content')
             input.setAttribute('placeholder', '질문 추가')
             input.setAttribute('question_idx', '0')
+            input.setAttribute('required', 'required')
 
             const button = document.createElement('button')
             button.innerHTML = "보기 추가"
@@ -122,6 +123,7 @@
                input.setAttribute('name', 'example_content')
                input.setAttribute('placeholder', '보기 추가')
                input.setAttribute('question_idx', '0')
+               input.setAttribute('required', 'required')
 
                const insert = document.createElement('button')
                insert.innerHTML = "삭제"
@@ -178,7 +180,7 @@
 
 
 
-    <script>
+	<script>
         const item = Array.from(document.querySelectorAll('.questionList.questionItem'))
 
         const checkbox = Array.from(document.querySelectorAll('.questionList.questionItem > input[type="checkbox"]'))
@@ -201,6 +203,7 @@
                input.setAttribute('id', 'question_content')
                input.setAttribute('value', item[event.target.getAttribute('idx')].innerText)
                input.setAttribute('question_idx', value)
+               input.setAttribute('required', 'required')
 
                question.setAttribute('value', value)
 
@@ -250,6 +253,7 @@
                   input.setAttribute('name', 'example_content')
                   input.setAttribute('placeholder', '보기 추가')
                   input.setAttribute('question_idx', event.target.parentNode.getAttribute('value'))
+                  input.setAttribute('required', 'required')
 
                   const insert = document.createElement('button')
                   insert.innerHTML = "삭제"
@@ -289,7 +293,7 @@
       checkbox.map(e => e.onchange = checkboxHandler)
     </script>
 
-    <script>
+	<script>
       const form = document.forms[0]
         
          function testHandler(event) {
@@ -312,7 +316,7 @@
 
            
            const cpath = '/jiago'
-         const url = location.href
+           const url = location.href
            const opt = {
                  method: 'POST',
                  body: JSON.stringify(result),
@@ -332,7 +336,7 @@
         }
         
       form.onsubmit = testHandler
-                 
+        
     </script>
 
 

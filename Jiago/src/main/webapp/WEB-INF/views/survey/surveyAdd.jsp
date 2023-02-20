@@ -27,7 +27,7 @@
 
    <p>타겟 연령대 
       <select name="survey_targetAge">
-         <option value="">== 타겟 연령대 ==</option>
+         <option value="공통">== 타겟 연령대 ==</option>
          <option value="10대 이전">10대 이전</option>
          <option value="10대">10대</option>
          <option value="20대">20대</option>
@@ -40,7 +40,7 @@
 
    <p>타겟 성별
       <select name="survey_targetGender">
-         <option value="">== 타겟 성별 ==</option>
+         <option value="공통">== 타겟 성별 ==</option>
          <option value="남성">남성</option>
          <option value="여성">여성</option>
       </select>
@@ -48,7 +48,7 @@
 
    <p>타겟 직업 
       <select name="survey_targetJob">
-         <option value="">== 타겟 직업 ==</option>
+         <option value="공통">== 타겟 직업 ==</option>
          <option value="전문직">전문직</option>
          <option value="경영직">경영직</option>
          <option value="사무직">사무직</option>

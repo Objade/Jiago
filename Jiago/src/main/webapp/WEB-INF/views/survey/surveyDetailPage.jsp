@@ -20,7 +20,9 @@
 	
 	        <tr>
 	            <th>주요 대상</th>
-	            <td>${dto.survey_targetAge} ${dto.survey_targetJob } ${dto.survey_targetGender}</td>
+	            <td><p>연령대 : ${dto.survey_targetAge}</p> 
+	            	<p>성별 : ${dto.survey_targetGender}</p>
+	            	<p>직업 : ${dto.survey_targetJob }</p></td>
 	        </tr>
 	
 	        <tr>

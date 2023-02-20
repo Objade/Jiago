@@ -670,7 +670,47 @@
 	        color: black;
 	      }
 	      
-      
+	      .s3_mid {
+	         width: 100%;
+	            
+	      }
+	
+	      .customer {
+	         display: flex;
+	         width: 70%;
+	         text-align: center;
+	         margin: 0 auto;
+	         flex-flow: wrap;
+	      }
+	
+	      .surveys {
+	         width: 325px;
+	           
+	      }
+	        
+	        
+	      .banner3 {
+	         width: 40%;
+	         margin: 10px auto;
+	         position: relative;            
+	      }
+	      
+	      .banner3_img {
+	         width: 100%;
+	         vertical-align: middle;
+	            
+	      }
+	        
+	      .banner3_text {
+	         padding: 5px 10px;
+	         text-align: center;
+	         color: white;
+	         font-size: 60px;
+	         position: absolute;
+	         top: 50%;
+	         left: 50%;
+	      }
+	     
     </style>
 
 </head>
@@ -689,9 +729,9 @@
 		    <ul>
 		        <li><a href="${cpath }/">홈</a></li>
 		        <li><a href="${cpath }/survey/list">설문참여</a></li>
-		        <li><a href="#">포인트</a></li>
-		        <li><a href="#">나무심기</a></li>
+		        <li><a href="${cpath }/donate/donateList">나무심기</a></li>
 		        <li><a href="${cpath }/cuscenter">고객센터</a></li>
+		        <li><a href="${cpath }/survey/surveyManage">설문관리</a></li>
 		    </ul>
 		</div>
 		

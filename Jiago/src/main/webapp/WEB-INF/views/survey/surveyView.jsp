@@ -24,10 +24,21 @@ table.surveyView {
 </head>
 <body>
 
+
 	<h2>설문 상세</h2>
 
 	<div class="surveyView item">
 		<table class="surveyView">
+			<tr>
+				<th>설문 번호</th>
+				<td>${dto.survey_idx}</td>
+			</tr>
+
+			<tr>
+				<th>회사 번호</th>
+				<td>${dto.company_idx}</td>
+			</tr>
+					
 			<tr>
 				<th>설문 제목</th>
 				<td>${dto.survey_title}</td>
@@ -40,8 +51,9 @@ table.surveyView {
 
 			<tr>
 				<th>주요 대상</th>
-				<td>${dto.survey_targetAge}${dto.survey_targetJob }
-					${dto.survey_targetGender}</td>
+				<td><p>연령대 : ${dto.survey_targetAge }</p> 
+	            	<p>성별 : ${dto.survey_targetGender}</p>
+	            	<p>직업 : ${dto.survey_targetJob }</p></td>
 			</tr>
 
 			<tr>
@@ -57,6 +69,11 @@ table.surveyView {
 			<tr>
 				<th>적립금</th>
 				<td>${dto.survey_point}POINT</td>
+			</tr>
+			
+			<tr>
+				<th>삭제 여부</th>
+				<td>${dto.survey_delete}</td>
 			</tr>
 
 		</table>
@@ -81,12 +98,32 @@ table.surveyView {
 		</c:forEach>
 
 
-
 		<a href="${cpath }/survey/surveyModify/${dto.survey_idx}"><button>수정</button></a>
-		<a href="${cpath }/survey/surveyDelete/${dto.survey_idx}"><button>삭제</button></a>
+		<button id="surveyDelete">삭제</button>
 	</div>
 
+<script>
+function surveyDeleteHandler(event) {	
+		const cpath = '/jiago'
+		const surveyIdx = '${dto.survey_idx}'
+		const surveyName = '${dto.survey_title}'
+		const message = "'" + surveyName + "' 을/를 정말로 삭제하시겠습니까?'"
+		const flag = confirm(message)
+		if(flag) {
+			const url = cpath + '/survey/surveyDelete/' + surveyIdx
+			fetch(url)
+			.then(resp => resp.text())
+	        .then(text => {
+	           alert(text)
+	           location.href = cpath + '/survey/surveyManage'
+	          })	
+		}
+	}
+	
+const surveyDeleteButton = document.getElementById('surveyDelete')
+surveyDeleteButton.onclick = surveyDeleteHandler
 
+</script>
 
 </body>
 </html>

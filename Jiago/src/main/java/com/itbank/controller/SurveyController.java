@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.model.BoardDTO;
+import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
@@ -27,11 +30,19 @@ public class SurveyController {
 	@Autowired private SurveyService surveyService;
 
 	@GetMapping("list")
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam(defaultValue="1") Integer page) {
 		
 		ModelAndView mav = new ModelAndView();
-		List<SurveyDTO> list = surveyService.selectList();
+		
+		int count = surveyService.getSurveyListCount();
+		Paging paging = new Paging(page, count);
+		
+		System.out.println(paging);
+		
+		List<SurveyDTO> list = surveyService.selectList(paging);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
 		
 		return mav;
 	}
@@ -116,14 +127,23 @@ public class SurveyController {
 	
 	   
 	   @GetMapping("surveyManage")
-		public ModelAndView surveyManage() {
+		public ModelAndView surveyManage(@RequestParam(defaultValue="1") Integer page) {
 			
 			ModelAndView mav = new ModelAndView();
-			List<SurveyDTO> list = surveyService.selectAllList();
+			
+			int count = surveyService.getSurveyCount();
+			Paging paging = new Paging(page, count);
+			
+			System.out.println(paging);
+			
+			List<SurveyDTO> list = surveyService.selectAllList(paging);
+			
 			mav.addObject("list", list);
+			mav.addObject("paging", paging);
 			
 			return mav;
-		}
+		}	   
+	   
 	   
 	   @GetMapping("surveyView/{survey_idx}")
 		public ModelAndView view(@PathVariable ("survey_idx") int survey_idx) {

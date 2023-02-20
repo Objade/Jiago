@@ -75,6 +75,7 @@ input[type="text"] {
 				</c:forEach>
 			</div>
 			<input type="submit" value="제출">
+		</div>
 	</form>
 
 
@@ -98,6 +99,7 @@ input[type="text"] {
             input.setAttribute('name', 'question_content')
             input.setAttribute('placeholder', '질문 추가')
             input.setAttribute('question_idx', '0')
+            input.setAttribute('required', 'required')
 
             const button = document.createElement('button')
             button.innerHTML = "보기 추가"
@@ -139,6 +141,7 @@ input[type="text"] {
                input.setAttribute('name', 'example_content')
                input.setAttribute('placeholder', '보기 추가')
                input.setAttribute('question_idx', '0')
+               input.setAttribute('required', 'required')
 
                const insert = document.createElement('button')
                insert.innerHTML = "삭제"
@@ -218,6 +221,7 @@ input[type="text"] {
                input.setAttribute('id', 'question_content')
                input.setAttribute('value', item[event.target.getAttribute('idx')].innerText)
                input.setAttribute('question_idx', value)
+               input.setAttribute('required', 'required')
 
                question.setAttribute('value', value)
 
@@ -267,6 +271,7 @@ input[type="text"] {
                   input.setAttribute('name', 'example_content')
                   input.setAttribute('placeholder', '보기 추가')
                   input.setAttribute('question_idx', event.target.parentNode.getAttribute('value'))
+                  input.setAttribute('required', 'required')
 
                   const insert = document.createElement('button')
                   insert.innerHTML = "삭제"
@@ -329,7 +334,7 @@ input[type="text"] {
 
            
            const cpath = '/jiago'
-         const url = location.href
+           const url = location.href
            const opt = {
                  method: 'POST',
                  body: JSON.stringify(result),
@@ -349,7 +354,11 @@ input[type="text"] {
         }
         
       form.onsubmit = testHandler
-                 
+            
+      
+      window.onload = function loadHandler() {
+    	  buttonHandler()
+      }
     </script>
 
 

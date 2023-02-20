@@ -48,7 +48,7 @@ table.surveyView {
 
    <p>타겟 연령대 
       <select name="survey_targetAge">
-         <option value="">== 타겟 연령대 ==</option>
+         <option value="공통" ${dto.survey_targetAge == '공통' ? 'selected' : ''}>== 타겟 연령대 ==</option>
          <option value="10대 이전" ${dto.survey_targetAge == '10대 이전' ? 'selected' : ''} >10대 이전</option>
          <option value="10대" ${dto.survey_targetAge == '10대' ? 'selected' : ''}>10대</option>
          <option value="20대" ${dto.survey_targetAge == '20대' ? 'selected' : ''}>20대</option>
@@ -61,7 +61,7 @@ table.surveyView {
 
    <p>타겟 성별
       <select name="survey_targetGender">
-         <option value="">== 타겟 성별 ==</option>
+         <option value="공통" ${dto.survey_targetGender == '공통' ? 'selected' : ''}>== 타겟 성별 ==</option>
          <option value="남성" ${dto.survey_targetGender == '남성' ? 'selected' : ''}>남성</option>
          <option value="여성" ${dto.survey_targetGender == '여성' ? 'selected' : ''}>여성</option>
       </select>
@@ -69,7 +69,7 @@ table.surveyView {
 
    <p>타겟 직업 
       <select name="survey_targetJob">
-         <option value="">== 타겟 직업 ==</option>
+         <option value="공통" ${dto.survey_targetJob == '공통' ? 'selected' : ''}>== 타겟 직업 ==</option>
          <option value="전문직" ${dto.survey_targetJob == '전문직' ? 'selected' : ''}>전문직</option>
          <option value="경영직" ${dto.survey_targetJob == '경영직' ? 'selected' : ''}>경영직</option>
          <option value="사무직" ${dto.survey_targetJob == '사무직' ? 'selected' : ''}>사무직</option>

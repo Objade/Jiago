@@ -7,11 +7,20 @@
 
 
    <select id="selectList" resultType="survey">
-      select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 order by survey_idx
+    select * from survey 
+    	where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
+		order by survey_idx desc
+		offset #{offset} rows
+		fetch first #{perPage} rows only
+   
    </select>
    
    <select id="selectAllList" resultType="survey">
-  	  select * from survey order by survey_idx 
+   	  select * from survey 
+		order by survey_idx desc
+		offset #{offset} rows
+		fetch first #{perPage} rows only	
+
    </select>
 
    <select id="selectOneDetail" parameterType="int" resultType="survey">
@@ -132,6 +141,19 @@
 	
 	<select id="checkQuestion" parameterType="int" resultType="surveyQuestion">
 		select * from question where question_idx = #{question_idx}
+	</select>
+	
+	<update id="deleteSurvey" parameterType="int">
+		update survey set survey_delete = 'Y' where survey_idx = ${survey_idx}
+	</update>
+	
+	<select id="selectSurveyCount" resultType="int">
+		select count(*) from survey
+	</select>
+	
+	<select id="selectSurveyListCount" resultType="int">
+		select count(*) from survey 
+    		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
 	</select>
 	
 </mapper>

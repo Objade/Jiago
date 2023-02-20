@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.itbank.model.AnswerDTO;
+import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
@@ -14,7 +15,7 @@ import com.itbank.model.UserDonateDTO;
 @Repository
 public interface SurveyDAO {
 
-   List<SurveyDTO> selectList();
+   List<SurveyDTO> selectList(HashMap<String, Object> param);
 
    SurveyDTO selectOneDetail(int survey_idx);
 
@@ -54,7 +55,7 @@ public interface SurveyDAO {
 
    int insertNewExample(HashMap<String, String> addNewMap);
 
-   List<SurveyDTO> selectAllList();
+   List<SurveyDTO> selectAllList(HashMap<String, Object> param);
 
    int updateSurvey(SurveyDTO dto);
 
@@ -65,6 +66,12 @@ public interface SurveyDAO {
    int changeSurveyExample(int survey_idx);
 
    SurveyQuestionDTO checkQuestion(int idx);
+
+   int deleteSurvey(int survey_idx);
+
+   int selectSurveyCount();
+   
+   int selectSurveyListCount();
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.model.AnswerDTO;
+import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
@@ -18,8 +19,13 @@ public class SurveyService {
 
    @Autowired private SurveyDAO dao;
 
-   public List<SurveyDTO> selectList() {
-      return dao.selectList();
+   public List<SurveyDTO> selectList(Paging paging) {
+	   HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("offset", paging.getOffset());
+		param.put("perPage", paging.getPerPage());
+		
+      return dao.selectList(param);
    }
 
    public SurveyDTO getSurveyDetail(int survey_idx) {
@@ -100,8 +106,14 @@ public class SurveyService {
 		return dao.insertNewExample(addNewMap);
 	}
 
-	public List<SurveyDTO> selectAllList() {
-		return dao.selectAllList();
+	public List<SurveyDTO> selectAllList(Paging paging) {
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("offset", paging.getOffset());
+		param.put("perPage", paging.getPerPage());
+		
+		return dao.selectAllList(param);
 	}
 
 	public int modifySurvey(SurveyDTO dto) {
@@ -118,6 +130,18 @@ public class SurveyService {
 
 	public SurveyQuestionDTO checkQuestion(int idx) {
 		return dao.checkQuestion(idx);
+	}
+
+	public int deleteSurvey(int survey_idx) {
+		return dao.deleteSurvey(survey_idx);
+	}
+
+	public int getSurveyCount() {
+		return dao.selectSurveyCount();
+	}
+
+	public int getSurveyListCount() {
+		return dao.selectSurveyListCount();
 	}
 
 

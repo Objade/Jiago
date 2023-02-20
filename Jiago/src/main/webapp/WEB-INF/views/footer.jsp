@@ -67,8 +67,8 @@
         </div>
 
         <div class="footer_img">
-            <div><img src="개인정보보호우수사이트.gif"></div>
-            <div><img src="ISO 9001 인증.gif"></div>
+            <div><img src="${cpath }/resources/img/개인정보보호우수사이트.gif"></div>
+            <div><img src="${cpath }/resources/img/ISO 9001 인증.gif"></div>
         </div>
 
         <div class="footer_move">
