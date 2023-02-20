@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
+
+	.myPageLogo > a > img {
+		width: 300px;
+	}
+
 	a {
 		text-decoration: none;
 		color: green;
@@ -34,7 +39,7 @@
 </head>
 <body>
 
-	<div><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png"></a></div>
+	<div class="myPageLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png"></a></div>
 	<div id="selectBox">
 	
 		<ul>

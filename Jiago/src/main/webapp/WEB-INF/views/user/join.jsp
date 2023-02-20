@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>회원가입 페이지</title>
 <style>
 	
@@ -83,15 +84,22 @@
 		margin: 0 auto;
 	}
 	
-	#joinForm > form > p > input:not([type="submit"]) {
+	#joinForm > form > div > input:not([type="submit"]) {
 		width: 300px;
 		font-size: 30px;
 		box-sizing: border-box;
+		padding: 5px 10px;
+		font-size: 25px;
 	}
 	
-	#joinForm > form > p {
+	#joinForm > form > div {
 		width: 800px;
 		margin: 40px auto;
+	}
+	
+	.phone > input {
+		width: 90px !important;
+		
 	}
 
 </style>
@@ -99,20 +107,50 @@
 	
 	<div id="joinForm" > <!-- class="hidden"  -->
 		<form method="POST" action="${cpath }/user/join">
-			<p><input type="text" name="user_id" placeholder="유저 아이디" required autocomplete="off"><span><button type="button" class="dupbtn">중복 검사</button></span><span class="duptext1"></span></p>
-			<p><input type="password" name="user_pw" placeholder="유저 비밀번호" required autocomplete="off"><span class="pwMessage1"></span></p>
-			<p><input type="password" name="user_pw_check" placeholder="유저 비밀번호" required autocomplete="off"><span class="pwMessage2"></span></p>
-			<p><input type="text" name="user_name" placeholder="유저 이름" required autocomplete="off"></p>
-			<p><input type="date" name="user_birth">생일 입력</p>
-			<p>
-				<input type="radio" name="user_gender" value="남">남성
-				<input type="radio" name="user_gender" value="여">여성
-			</p>
-			<p><input type="text" name="user_address" placeholder="주소 입력" required autocomplete="off"></p>
-			<p><input type="text" name="user_phone" placeholder="전화번호 입력" required autocomplete="off"></p>
-			<p><input type="email" placeholder="이메일 주소 입력" name="user_email" required autocomplete="off"></p>
-			<p><input type="text" placeholder="직업" name="user_job" required autocomplete="off"></p>
-			<p>
+			<div>
+				<input type="text" name="user_id" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" class="dupbtn">중복 검사</button></span><span class="duptext1"></span>
+				<div>8자리 이상의 문자 + 숫자</div>
+			</div>
+			
+			<div>
+				<input type="password" name="user_pw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="pwMessage1"></span>
+				<div>8 ~ 16자리 문자 + 숫자 + 특수기호</div>
+			</div>
+			<div><input type="password" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="pwMessage2"></span></div>
+
+			<div><input type="text" name="user_name" placeholder="유저 이름" required autocomplete="off"><span class="nameMessage"></span></div>
+			<div><input type="date" name="user_birth" required>생일 입력</div>
+			<div>
+				<input type="radio" name="user_gender" value="남" required>남성
+				<input type="radio" name="user_gender" value="여" required>여성
+			</div>
+			<div>
+				<input type="text" id="postcode" placeholder="우편번호" required>
+				<input type="button" onclick="findUserAddress()" value="우편번호 찾기" required><br>
+				<input type="text" id="address" placeholder="주소" required><br>
+				<input type="text" id="detailAddress" placeholder="상세주소" required>
+				<input type="text" id="extraAddress" placeholder="참고항목" required>
+				<input type="hidden" name="user_address">
+			</div>
+			<div class="phone">
+            	<input id="phone1" type="text" size="1" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone1()" required> -
+            	<input id="phone2" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone2()" required> -
+            	<input id="phone3" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone3()" required>
+            	<input type="hidden" name="user_phone">
+      		</div>
+      		<div>
+      			<input id="email1" type="text" onchange="frontEmailId()" > @ 
+      			<select id="email2" required>
+      				<option value="">--직업을 선택하세요--</option>
+      				<option value="naver.com">naver.com</option>
+      				<option value="gmail.com">gmail.com</option>
+      				<option value="직접 입력">직접 입력하세요</option>
+      			</select>
+      			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력" onchange="sendHiddenEmail()" ></span>
+      			<input type="hidden" name="user_email"><button type="button">인증</button>
+      		</div>
+      		
+			<div>
 				<select name="user_job" id="job-select" required>
 				    <option value="">--직업을 선택하세요--</option>
 				    <option value="전업주부">전업주부</option>
@@ -129,9 +167,9 @@
 				    <option value="자영업">자영업</option>
 				    <option value="기타">기타</option>
 				</select>
-			</p>
-			<p><input type="hidden" name="user_type" value="Admin"></p> <!-- 얘는 임시 -->
-			<p><input type="submit" value="입력"></p>
+			</div>
+			<div><input type="hidden" name="user_type" value="Admin"></div> <!-- 얘는 임시 -->
+			<div><input type="submit" value="입력"></div>
 		</form>
 	</div>
 	
@@ -185,6 +223,7 @@
 				duptext1.innerText = ''
 				duptext1.innerText = '사용가능한 아이디입니다.'
 				duptext1.style.color = 'blue';
+				idValue.disabled = true;
 			}
 		})
 		
@@ -207,25 +246,27 @@
 
 		function pwHandler1(event) {
 			const addPwValue = event.target.value
-			if(addPwValue.length > 16) {
-				pwMessage1.innerText = '비밀번호는 최대 16자리까지만 가능합니다'	
-				pwMessage1.style.color = 'red'
-			}
-			else {
+			pwMessage2.innerText = '비밀번호가 서로 일치하지 않습니다'
+			pwMessage2.style.color = 'red'
+			if(addPwValue.length < 16 && addPwValue.length > 8) {
 				pwMessage1.innerText = '사용가능한 비밀번호 입니다'
 				pwMessage1.style.color = 'blue'
 			}
+			else {
+				pwMessage1.innerText = '해당 조건에 부합하지 않는 비밀번호입니다.'	
+				pwMessage1.style.color = 'red'
+			}
 		}
 		
-		modifyPw.onkeyup = pwHandler1
-		
+//		modifyPw.onkeyup = pwHandler1
+		modifyPw.addEventListener('keyup', pwHandler1)
 		
 		function pwHandler2(event2) {
 			const btn = document.querySelector('.btn')
 			const checkPwValue = event2.target.value
 			console.log('위' + modifyPw.value)
 			console.log('아래' + checkPwValue)
-			if(checkPwValue == modifyPw.value ) {
+			if(checkPwValue == modifyPw.value && pwMessage1.innerText == '사용가능한 비밀번호 입니다' ) {
 				pwMessage2.innerText = '비밀번호가 서로 일치합니다'
 				pwMessage2.style.color = 'blue'
 				btn.disabled = false
@@ -237,13 +278,198 @@
 			}
 		}
 		
-		checkPw.onkeyup = pwHandler2		
+// 		checkPw.onkeyup = pwHandler2	
+		checkPw.addEventListener('keyup', pwHandler2)
 		
 		
 		
 		
 </script>
+
+
+<script>
+	const checkName = document.querySelector('input[name="user_name"]')
+	console.log(checkName)
 	
+	
+	function nameHandler(event) {
+		const inputName = event.target.value
+		console.log(inputName)
+		const nameMessage = document.querySelector('.nameMessage')
+		console.log(nameMessage)
+		const url = "${cpath}/user/userDup/" + inputName + "/"
+		
+		
+		fetch(url)
+		.then(response => response.text())
+		.then(text => {
+			if(inputName.length == 0) nameMessage.innerText = ''
+			else if(text == 1) {
+				nameMessage.innerText = '이미 존재하는 이름입니다.'
+				nameMessage.style.color = 'red'
+			}
+			else {
+				nameMessage.innerText = '사용 가능한 이름입니다.'
+				nameMessage.style.color = 'blue'
+			}
+
+		})
+		
+		
+		
+	}
+	
+	
+	
+	
+	checkName.onkeyup = nameHandler
+
+
+</script>
+
+<script>
+	// 주소 입력
+	function findUserAddress() {
+	  new daum.Postcode({
+	     oncomplete: function(data) {
+             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+             var addr = ''; // 주소 변수
+             var extraAddr = ''; // 참고항목 변수
+
+             //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                 addr = data.roadAddress;
+             } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                 addr = data.jibunAddress;
+             }
+
+             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+             if(data.userSelectedType === 'R'){
+                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                     extraAddr += data.bname;
+                 }
+                 // 건물명이 있고, 공동주택일 경우 추가한다.
+                 if(data.buildingName !== '' && data.apartment === 'Y'){
+                     extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                 }
+                 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                 if(extraAddr !== ''){
+                     extraAddr = ' (' + extraAddr + ')';
+                 }
+                 // 조합된 참고항목을 해당 필드에 넣는다.
+                 document.getElementById("extraAddress").value = extraAddr;
+             
+             } else {
+                 document.getElementById("extraAddress").value = '';
+             }
+
+             // 우편번호와 주소 정보를 해당 필드에 넣는다.
+             document.getElementById('postcode').value = data.zonecode;
+             document.getElementById("address").value = addr;
+             // 커서를 상세주소 필드로 이동한다.
+             document.getElementById("detailAddress").focus();
+	     }
+  	  }).open();	
+	}
+	
+	const detailAddress = document.querySelector('input[id="detailAddress"]')
+	console.log(detailAddress)
+	
+	function addressHandler(event) {
+		const fullAddress = document.querySelector('input[name="user_address"]')
+		console.log(fullAddress)
+		fullAddress.value = 
+			document.getElementById('postcode').value +
+			document.getElementById("address").value + ' ' +
+			event.target.value
+	}
+	
+	
+	detailAddress.onkeyup = addressHandler
+
+</script>
+
+<script>
+	// 전화번호 입력 
+	
+	const user_phone = document.querySelector('input[name="user_phone"]')
+	console.log(user_phone)
+		// 휴대폰 번호 입력 부분
+	function changePhone1(){
+	    const phone1 = document.getElementById("phone1").value // 010
+	    if(phone1.length === 3){
+	        document.getElementById("phone2").focus();
+	    }
+	}
+	function changePhone2(){
+	    const phone2 = document.getElementById("phone2").value // 010
+	    if(phone2.length === 4){
+	        document.getElementById("phone3").focus();
+	    }
+	}
+	function changePhone3(){
+		const phone1 = document.getElementById("phone1").value
+		const phone2 = document.getElementById("phone2").value
+		const phone3 = document.getElementById("phone3").value // 010
+	    if(phone3.length == 4) user_phone.value = phone1 + '-' + phone2 + '-' + phone3
+	    console.log()
+	}
+
+</script>
+
+
+<script>
+	// 이메일 입력
+	
+	const user_email = document.querySelector('input[name="user_email"]')
+	console.log(user_email)
+	const inputEmailId = document.getElementById('email1')
+	const selectEmail = document.getElementById('email2')
+	console.log(selectEmail)
+	const directly = document.querySelector('.directly')
+	console.log(directly)
+	let secondEmailId = ''
+	
+	
+	function frontEmailId() {
+		user_email.value = inputEmailId.value
+	}
+	
+	
+	
+ 
+	function emailHandler(event) {
+		const value = selectEmail.options[selectEmail.selectedIndex].value
+		console.log(value)
+		console.log(value == '직접 입력')
+ 		if(value == '직접 입력') {
+			directly.classList.remove('hidden')
+		}
+ 		else {
+ 			directly.classList.add('hidden')
+ 			secondEmailId = inputEmailId.value + '@' + value
+ 			user_email.value = secondEmailId
+ 			console.log(secondEmailId)
+ 		}
+	
+	}
+	
+	selectEmail.onchange = emailHandler 
+	
+	function sendHiddenEmail() {
+		const directEmail = document.getElementById('directEmail')
+		secondEmailId = inputEmailId.value + '@' + directEmail.value
+		user_email.value = secondEmailId
+		console.log(secondEmailId)
+	}
+
+</script>
+
 
 </body>
 </html>
