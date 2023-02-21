@@ -24,7 +24,8 @@ public class UserService {
 		UserDTO dto = userDao.login(account);
 		
 		if(dto.getUser_pw() != null) {
-			int point = Integer.parseInt(userDao.getPoint(dto.getUser_idx()));
+			int point = 0;
+			if(userDao.getPoint(dto.getUser_idx()) != null) point = Integer.parseInt(userDao.getPoint(dto.getUser_idx()));
 			System.out.println(point);
 			if(point >= 100000 ) dto.setGrade("6단계");
 			else if(point >= 50000 ) dto.setGrade("5단계");

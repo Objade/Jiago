@@ -54,7 +54,7 @@
 			console.log(text)
 			if(text == '인증완료') {
 				emailForm.classList.add('hidden')
-				document.cookie = 'emailData=' + encodeURIComponent(text)
+				opener.document.getElementById("userEmail").value = "${email}";
 				if(window.confirm('인증에 성공하였습니다. 창을 닫으시겠습니까?')) window.close();
 			}
 			else alert('인증에 실패했습니다. 다시 시도해 주세요.')

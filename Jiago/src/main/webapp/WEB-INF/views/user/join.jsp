@@ -30,7 +30,30 @@
 	
 	
 	/* 회원가입 css */
+
+	#joinForm {
+		width: 1200px;
+		margin: 0 auto;
+	}
 	
+	#joinForm > form > div > input:not([type="submit"]) {
+		width: 300px;
+		font-size: 30px;
+		box-sizing: border-box;
+		padding: 5px 10px;
+		font-size: 25px;
+	}
+	
+	#joinForm > form > div {
+		width: 800px;
+		margin: 40px auto;
+	}
+	
+	.phone > input {
+		width: 90px !important;
+		
+	}
+
 	
 
 </style>
@@ -77,49 +100,24 @@
 </div>
 
 
-<style>
 
-	#joinForm {
-		width: 1200px;
-		margin: 0 auto;
-	}
-	
-	#joinForm > form > div > input:not([type="submit"]) {
-		width: 300px;
-		font-size: 30px;
-		box-sizing: border-box;
-		padding: 5px 10px;
-		font-size: 25px;
-	}
-	
-	#joinForm > form > div {
-		width: 800px;
-		margin: 40px auto;
-	}
-	
-	.phone > input {
-		width: 90px !important;
-		
-	}
-
-</style>
 
 	
-	<div id="joinForm" > <!-- class="hidden"  -->
+	<div id="joinForm" class="hidden"> <!-- class="hidden"  -->
 		<form method="POST" action="${cpath }/user/join">
 			<div>
-				<input type="text" id="joinId" name="user_id" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" onclick="joinIdCheck()">중복 검사</button></span><span class="checkIdText"></span>
+				<input type="text" id="joinId" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" onclick="joinIdCheck()">중복 검사</button></span><span class="checkIdText"></span>
 				<div>영문자로 시작하는 영문자 + 숫자의 조합의 6 ~ 12자 </div>
 			</div>
 			
 			<div>
-				<input type="password" id="joinPw" name="user_pw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
+				<input type="password" id="joinPw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
 				<div>소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 			</div>
 			<div><input type="password" id="checkPw" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
 
 			<div>
-				<input type="text" id="joinName" name="user_name" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
+				<input type="text" id="joinName" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
 				<div>한글, 숫자 , 영문 자유 형식의 4 ~ 12자</div>
 			</div>
 			<div><input type="date" name="user_birth" required>생일 입력</div>
@@ -133,11 +131,13 @@
 				<input type="text" id="address" placeholder="주소" required><br>
 				<input type="text" id="detailAddress" placeholder="상세주소" required>
 				<input type="text" id="extraAddress" placeholder="참고항목" required>
+				<input type="hidden" id="userAddress" name="user_address">
 			</div>
 			<div class="phone">
             	<input id="phone1" type="text" size="1" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone1()" required> -
             	<input id="phone2" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone2()" required> -
             	<input id="phone3" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone3()" required>
+      			<input type="hidden" id="userPhone" name="user_phone">
       		</div>
       		<div>
       			<input id="email1" type="text"> @ 
@@ -147,8 +147,9 @@
       				<option value="gmail.com">gmail.com</option>
       				<option value="직접 입력">직접 입력하세요</option>
       			</select>
-      			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력" ></span>
+      			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력"></span>
       			<span><button id="checkEmailSend" type="button">인증메일 전송</button></span>
+      			<input type="hidden" id="userEmail" name="user_email">
       		</div>
       		
 			<div>
@@ -208,10 +209,13 @@
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
 				checkIdText.style.color = 'blue'
+				joinId.setAttribute('name','user_id')
+				console.log(joinId.value)
 			}
 			else {
 				checkIdText.innerText = '조건이 맞지 않거나 중복된 계정이 존재합니다.'
 				checkIdText.style.color = 'red'
+				joinId.removeAttribute('name')
 			}
 		})
 	}
@@ -244,6 +248,7 @@
 			else {
 				checkPwText1.innerText = '조건에 부합되지 않은 비밀번호입니다.'
 				checkPwText1.style.color = 'red'
+				
 				checkPw.setAttribute('disabled',true)
 			}
 		}
@@ -256,10 +261,13 @@
 		function checkPwHandler(event) {
 			const checkPwValue = event.target.value
 			if(checkPwValue == joinPw.value) {
+				joinPw.setAttribute('name','user_pw')
 				checkPwText2.innerText = '비밀번호가 서로 일치합니다'
 				checkPwText2.style.color = 'blue'
+				console.log(joinPw.value)
 			}
 			else {
+				joinPw.removeAttribute('name')
 				checkPwText2.innerText = '비밀번호가 서로 일치하지 않습니다'
 				checkPwText2.style.color = 'red'
 			}
@@ -291,6 +299,7 @@
 			.then(text => {
 				console.log(text)
 				if(text != 1) {
+					joinName.setAttribute('name','user_name')
 					nameCheckMessage.innerText = '사용 가능한 별명 입니다.'
 					nameCheckMessage.style.color = 'blue'
 					return
@@ -298,6 +307,7 @@
 			})
 		}
 		else {
+			joinName.removeAttribute('name')
 			nameCheckMessage.innerText = '이미 존재하는 이름이거나 조건 양식에 맞지 않습니다.'
 			nameCheckMessage.style.color = 'red'
 		}	
@@ -358,13 +368,14 @@
 	}
 	
 	const detailAddress = document.getElementById('detailAddress')
-	let user_address = ''
+	const userAddress = document.getElementById('userAddress')
 	
 	function addressHandler(event) {
-		user_address = 
+		userAddress.value = 
 			document.getElementById('postcode').value +
 			document.getElementById("address").value + ' ' +
 			event.target.value
+		console.log(userAddress)
 	}
 	
 	
@@ -373,7 +384,7 @@
 </script>
 
 <script>
-	let user_phone = ''
+	const userPhone = document.getElementById('userPhone')
 
 	// 휴대폰 번호 입력 부분
 	function changePhone1(){
@@ -392,8 +403,8 @@
 		const phone1 = document.getElementById("phone1").value
 		const phone2 = document.getElementById("phone2").value
 		const phone3 = document.getElementById("phone3").value // ****
-	    if(phone3.length == 4) user_phone = phone1 + '-' + phone2 + '-' + phone3
-	    console.log(user_phone)
+	    if(phone3.length == 4) userPhone.value = phone1 + '-' + phone2 + '-' + phone3
+	    console.log(userPhone)
 	}
 
 </script>
