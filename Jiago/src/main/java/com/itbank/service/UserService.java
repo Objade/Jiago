@@ -21,7 +21,21 @@ public class UserService {
 	public UserDTO login(UserDTO account) {
 		account.setUser_pw(sha256.encrypt(account.getUser_pw()));
 		System.out.println(account.getUser_pw());
-		return userDao.login(account);
+		UserDTO dto = userDao.login(account);
+		
+		if(dto.getUser_pw() != null) {
+			int point = Integer.parseInt(userDao.getPoint(dto.getUser_idx()));
+			System.out.println(point);
+			if(point >= 100000 ) dto.setGrade("6단계");
+			else if(point >= 50000 ) dto.setGrade("5단계");
+			else if(point >= 30000 ) dto.setGrade("4단계");
+			else if(point >= 10000 ) dto.setGrade("3단계");
+			else if(point >= 5000 ) dto.setGrade("2단계");
+			else dto.setGrade("1단계");
+			
+		}
+		
+		return dto;
 	}
 	
 	public int join(UserDTO user) {
@@ -117,6 +131,10 @@ public class UserService {
 
 	public int dupId(String id) {
 		return userDao.dupId(id);
+	}
+
+	public int userDup(String name) {
+		return userDao.userDup(name);
 	}
 
 	
