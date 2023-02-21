@@ -31,11 +31,11 @@ public class UserController {
 		UserDTO userAccount = userService.login(account);
 		mav.setViewName("user/result");
 		if(userAccount == null) {
-			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었");
+			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었습");
 			mav.addObject("address","user/login");
 			return mav;
 		}
-		mav.addObject("result","로그인에 성공 했");
+		mav.addObject("result","로그인에 성공 했습");
 		session.setAttribute("login", userAccount);	
 		return mav;
 	}
@@ -47,7 +47,7 @@ public class UserController {
 	public ModelAndView join(UserDTO user) {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.join(user);
-		String result = row == 1 ? "회원 가입에 성공했" : "오류가 발생했";
+		String result = row == 1 ? "회원 가입에 성공했습" : "오류가 발생했습";
 		mav.addObject("result", result);
 		return mav;
 	}
@@ -57,7 +57,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/result");
 		session.removeAttribute("login");
-		mav.addObject("result","로그아웃에 성공했");
+		mav.addObject("result","로그아웃에 성공했습");
 		return mav;
 	}
 	
@@ -79,11 +79,9 @@ public class UserController {
 	public ModelAndView mypage(HttpSession session) {
 		ModelAndView mav = new ModelAndView("user/mypageHome");
 		UserDTO user = (UserDTO)session.getAttribute("login");
-		int user_idx = user.getUser_idx();
-		System.out.println(user_idx);
-		int point = userService.getPoint(user_idx);
-		System.out.println(point);
-		mav.addObject("point",point);
+		System.out.println(user.getUser_idx());
+		String point = userService.getPoint(user.getUser_idx());
+		if(point != null) mav.addObject("point",point);
 		return mav; 
 	}
 	
@@ -99,9 +97,9 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.update(user);
 		if(row == 1) {
-			mav.addObject("result","회원 정보 수정에 성공했");
+			mav.addObject("result","회원 정보 수정에 성공했습");
 		} else {
-			mav.addObject("result","오류가 발생했");
+			mav.addObject("result","오류가 발생했습");
 			
 		}
 		return mav;
@@ -114,11 +112,33 @@ public class UserController {
 			UserDTO user = new UserDTO();
 			user.setUser_pw(first);
 			int row = userService.newPasswordSet(user);
-			if(row == 1) mav.addObject("result","비밀번호가 변경되었");
+			if(row == 1) mav.addObject("result","비밀번호가 변경되었습");
 			return mav;
 		}
-		mav.addObject("result","오류가 발생했");
+		mav.addObject("result","오류가 발생했습");
 		mav.addObject("address","user/findLoginPw");
+		return mav;
+	}
+	
+	@GetMapping("mypageQuit")
+	public void mypageQuit() {}
+	
+	@PostMapping("mypageQuit")
+	public ModelAndView mypageQuit(HttpSession session, @RequestParam("input_pw") String inputPw) {
+		ModelAndView mav = new ModelAndView("user/result");
+		String loginPw = (String)((UserDTO)session.getAttribute("login")).getUser_pw();
+		boolean flag = userService.checkPw(loginPw ,inputPw);
+		if(flag) {
+			int idx = (int)((UserDTO)session.getAttribute("login")).getUser_idx();
+			int row = userService.quit(idx);
+			if(row == 1) {
+				mav.addObject("result","회원 탈퇴가 성공적으로 이뤄졌습니다. 이용해주셔서 감사합");
+				session.removeAttribute("login");
+				return mav;
+			}
+		}
+		mav.addObject("result","오류가 발생했습");
+		mav.addObject("address","user/mypageQuit");
 		return mav;
 	}
 	

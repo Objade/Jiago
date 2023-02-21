@@ -81,10 +81,7 @@
 				alert('존재하지 않는 메일 주소 입니다.')
 			}
 		})
-	
-		.catch(ex => {	
-			console.log(ex)
-		})
+
 	}
 	
 	

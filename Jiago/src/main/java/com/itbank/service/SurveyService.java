@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.model.AnswerDTO;
+import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
+import com.itbank.model.SurveyFormDTO;
 import com.itbank.model.SurveyQuestionDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.SurveyDAO;
@@ -18,8 +20,13 @@ public class SurveyService {
 
    @Autowired private SurveyDAO dao;
 
-   public List<SurveyDTO> selectList() {
-      return dao.selectList();
+   public List<SurveyDTO> selectList(Paging paging) {
+	   HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("offset", paging.getOffset());
+		param.put("perPage", paging.getPerPage());
+		
+      return dao.selectList(param);
    }
 
    public SurveyDTO getSurveyDetail(int survey_idx) {
@@ -82,6 +89,70 @@ public class SurveyService {
 	public int selectSurveyIdx() {
 	    return dao.selectSurveyIdx();
 	}
+
+	public int addQuestion(HashMap<String, String> addMap) {
+		return dao.insertQuestion(addMap);
+	}
+
+	public int addExample(HashMap<String, String> addMap) {
+		return dao.insertExample(addMap);
+	}
+
+	public int addNewQuestion(HashMap<String, String> addNewMap) {
+		
+		return dao.insertNewQuestion(addNewMap);
+	}
+
+	public int addNewExample(HashMap<String, String> addNewMap) {
+		return dao.insertNewExample(addNewMap);
+	}
+
+	public List<SurveyDTO> selectAllList(Paging paging) {
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("offset", paging.getOffset());
+		param.put("perPage", paging.getPerPage());
+		
+		return dao.selectAllList(param);
+	}
+
+	public int modifySurvey(SurveyDTO dto) {
+		return dao.updateSurvey(dto);
+	}
+
+	public int resetSurveyQuestion(int survey_idx) {
+		return dao.changeSurveyQuestion(survey_idx);
+	}
+	
+	public int resetSurveyExample(int survey_idx) {
+		return dao.changeSurveyExample(survey_idx);
+	}
+
+	public SurveyQuestionDTO checkQuestion(int idx) {
+		return dao.checkQuestion(idx);
+	}
+
+	public int deleteSurvey(int survey_idx) {
+		return dao.deleteSurvey(survey_idx);
+	}
+
+	public int getSurveyCount() {
+		return dao.selectSurveyCount();
+	}
+
+	public int getSurveyListCount() {
+		return dao.selectSurveyListCount();
+	}
+
+	public int getSurveyListFilterCount(HashMap<String, String> test) {
+	    return dao.selectSurveyFilterCount(test);
+	}
+
+	 public List<SurveyDTO> filterList(HashMap<String, String> test) {
+	    return dao.filterList(test);
+	 }
+
 
 
 

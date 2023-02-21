@@ -25,9 +25,21 @@ public interface UserDAO {
 	int newPasswordSet(UserDTO user);
 
 	int pwUpdate(UserDTO user);
-
 	
-	int getPoint(int user_idx);
+	String getPoint(int idx);
+
+	String getPw(String idx);
+
+	int quit(int idx);
+
+	int dupId(String id);
+
+	int joinId(String id);
+
+	int joinName(String name);
+
+	int getEmail(String email);
+
 
 	
 }

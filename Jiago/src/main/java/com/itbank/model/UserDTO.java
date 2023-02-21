@@ -16,6 +16,7 @@ public class UserDTO {
 	private String user_type;
 	private Date user_joindate;
 	private String user_withdraw;
+	private String grade;
 	
 	public UserDTO() {}
 
@@ -121,6 +122,14 @@ public class UserDTO {
 
 	public void setUser_withdraw(String user_withdraw) {
 		this.user_withdraw = user_withdraw;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	
 	

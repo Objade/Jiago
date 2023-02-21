@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
+
+	.myPageLogo > a > img {
+		width: 300px;
+	}
+
 	a {
 		text-decoration: none;
 		color: green;
@@ -22,6 +27,10 @@
 	ul > li {
 		padding: 10px 20px;
 	}
+	
+	.hidden {
+		display: none;
+	}
 
 </style>
 
@@ -30,11 +39,12 @@
 </head>
 <body>
 
-
+	<div class="myPageLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png"></a></div>
 	<div id="selectBox">
 	
 		<ul>
-			<li><a href="${cpath }/user/mypageHome">나무 보여줄 홈</a></li>
+			<li><a href="${cpath }/user/mypageHome">마이페이지 홈</a></li>
 			<li><a href="${cpath }/user/mypageSecurity">보안</a></li>
+			<li><a href="${cpath }/user/mypageQuit">회원탈퇴</a></li>
 		</ul>
 	</div>

@@ -7,7 +7,20 @@
 
 
    <select id="selectList" resultType="survey">
-      select * from survey where to_date(substr(survey_date,10)) >= sysdate order by survey_idx
+    select * from survey 
+    	where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
+		order by survey_idx desc
+		offset #{offset} rows
+		fetch first #{perPage} rows only
+   
+   </select>
+   
+   <select id="selectAllList" resultType="survey">
+   	  select * from survey where survey_delete = 'N'
+		order by survey_idx desc
+		offset #{offset} rows
+		fetch first #{perPage} rows only	
+
    </select>
 
    <select id="selectOneDetail" parameterType="int" resultType="survey">
@@ -63,7 +76,7 @@
 	</select>
 	
 	<select id="selectHomeSurvey" resultType="survey">
-		select * from survey where to_date(substr(survey_date,10)) >= sysdate and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
+		select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
 	</select>
 	
 	<insert id="insertSurvey" parameterType="survey">
@@ -83,7 +96,89 @@
       select * from(select survey_idx from survey order by rownum desc) where rownum = 1
    </select>
    
+	<insert id="insertQuestion" parameterType="HashMap">
+		insert into survey_question 
+			(survey_idx, question_idx, question_content) 
+		values (#{survey_idx}, #{question_idx}, #{question_content})
+	</insert>
 	
+	<insert id="insertExample" parameterType="HashMap">
+		insert into survey_example
+    		(survey_idx, question_idx, example_content) 
+    	values (#{survey_idx}, #{question_idx}, #{example_content})
+	</insert>
 	
+	<insert id="insertNewQuestion" parameterType="HashMap">
+		insert into survey_question (survey_idx, question_idx, question_content) values (#{survey_idx}, question_seq.nextval, #{question_content})
+	</insert>
+	
+	<insert id="insertNewExample" parameterType="HashMap">
+		insert into survey_example
+    		(survey_idx, question_idx, example_content) 
+    	values 
+        (#{survey_idx}, 
+        (select question_idx from 
+        	(select * from survey_question where survey_idx = #{survey_idx} order by question_idx desc) where rownum = 1), 
+        #{example_content})
+	</insert>
 
+	<update id="updateSurvey" parameterType="survey">
+		update survey set 
+		company_idx = #{company_idx}, survey_title = #{survey_title}, survey_date = #{survey_date}, 
+		survey_point = #{survey_point}, survey_time = #{survey_time}, survey_targetAge = #{survey_targetAge}, 
+		survey_targetGender = #{survey_targetGender}, survey_targetJob = #{survey_targetJob}, survey_info = #{survey_info}
+		
+		where survey_idx = #{survey_idx}
+	</update>
+	
+	<delete id="changeSurveyQuestion" parameterType="int">
+		delete from survey_question where survey_idx = #{survey_idx}
+	</delete>
+	
+	<delete id="changeSurveyExample" parameterType="int">
+		delete from survey_example where survey_idx = #{survey_idx}
+	</delete>
+	
+	<select id="checkQuestion" parameterType="int" resultType="surveyQuestion">
+		select * from question where question_idx = #{question_idx}
+	</select>
+	
+	<update id="deleteSurvey" parameterType="int">
+		update survey set survey_delete = 'Y' where survey_idx = ${survey_idx}
+	</update>
+	
+	<select id="selectSurveyCount" resultType="int">
+		select count(*) from survey
+	</select>
+	
+	<select id="selectSurveyListCount" resultType="int">
+		select count(*) from survey 
+    		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
+	</select>
+	
+	   <select id="filterList" resultType="survey" parameterType="hashmap">
+    select * from survey 
+       where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
+       
+       <if test="survey_targetAge != null">
+          and survey_targetAge like '%${survey_targetAge}%' 
+       </if>
+       <if test="survey_targetGender != null">
+          and survey_targetGender like '%${survey_targetGender}%' 
+       </if> 
+       <if test="survey_targetJob != null">
+           and survey_targetJob like '%${survey_targetJob}%'
+       </if>
+      order by survey_idx desc 
+      offset #{offset} rows
+      fetch first #{perPage} rows only
+   </select>
+	
+	<select id="selectSurveyFilterCount" resultType="int" parameterType="hashmap">
+      select count(*) from survey 
+      where survey_targetAge like '%${survey_targetAge}%' 
+      and survey_targetGender like '%${survey_targetGender}%' 
+      and survey_targetJob like '%${survey_targetJob}%'
+   </select>
+	
 </mapper>

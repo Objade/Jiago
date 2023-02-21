@@ -14,7 +14,7 @@
 
 <form method="POST">
    
-   <p>회사 번호 <input type="number" placeholder="회사 번호" name="company_idx" required></p> 
+   <p>회사 번호 <input type="number" placeholder="회사 번호" name="company_idx" min="0" required></p> 
 
    <p>설문 제목 <input type="text" placeholder="설문 제목" name="survey_title" required></p> 
 
@@ -22,12 +22,12 @@
 
    <p>적립금 <input type="number" name="survey_point" placeholder="적립금" min="0" step="100" required/> POINT
 
-   <p>예상 소요 시간 <input type="number" name="survey_time" placeholder="예상 소요 시간" min="0" required/> 분
+   <p>예상 소요 시간 <input type="number" name="survey_time" placeholder="예상 소요 시간" min="1" required/> 분
    
 
    <p>타겟 연령대 
       <select name="survey_targetAge">
-         <option value="">== 타겟 연령대 ==</option>
+         <option value="공통">== 타겟 연령대 ==</option>
          <option value="10대 이전">10대 이전</option>
          <option value="10대">10대</option>
          <option value="20대">20대</option>
@@ -40,7 +40,7 @@
 
    <p>타겟 성별
       <select name="survey_targetGender">
-         <option value="">== 타겟 성별 ==</option>
+         <option value="공통">== 타겟 성별 ==</option>
          <option value="남성">남성</option>
          <option value="여성">여성</option>
       </select>
@@ -48,7 +48,7 @@
 
    <p>타겟 직업 
       <select name="survey_targetJob">
-         <option value="">== 타겟 직업 ==</option>
+         <option value="공통">== 타겟 직업 ==</option>
          <option value="전문직">전문직</option>
          <option value="경영직">경영직</option>
          <option value="사무직">사무직</option>

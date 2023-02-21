@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.itbank.model.UserDTO;
 import com.itbank.repository.UserDAO;
@@ -18,10 +19,28 @@ public class UserService {
 	@Autowired UserDAO userDao;
 	
 	public UserDTO login(UserDTO account) {
-		return userDao.login(account);
+		account.setUser_pw(sha256.encrypt(account.getUser_pw()));
+		System.out.println(account.getUser_pw());
+		UserDTO dto = userDao.login(account);
+		
+		if(dto.getUser_pw() != null) {
+			int point = 0;
+			if(userDao.getPoint(dto.getUser_idx()) != null) point = Integer.parseInt(userDao.getPoint(dto.getUser_idx()));
+			System.out.println(point);
+			if(point >= 100000 ) dto.setGrade("6단계");
+			else if(point >= 50000 ) dto.setGrade("5단계");
+			else if(point >= 30000 ) dto.setGrade("4단계");
+			else if(point >= 10000 ) dto.setGrade("3단계");
+			else if(point >= 5000 ) dto.setGrade("2단계");
+			else dto.setGrade("1단계");
+			
+		}
+		
+		return dto;
 	}
 	
 	public int join(UserDTO user) {
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.join(user);
 	}
 
@@ -81,18 +100,45 @@ public class UserService {
 
 	public int newPasswordSet(UserDTO user) {
 		user.setUser_id(base.get("userId"));
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.newPasswordSet(user);
 	}
 
 	public int pwUpdate(UserDTO user) {
+		user.setUser_pw(sha256.encrypt(user.getUser_pw()));
 		return userDao.pwUpdate(user);
 	}
 
-	public int getPoint(int user_idx) {
-		return userDao.getPoint(user_idx);
+	public String getPoint(int idx) {
+		return userDao.getPoint(idx);
 	}
 
+	public int pwCheck(HashMap<String, String> param) {
+		String idx = param.get("idx");
+		String getPw = userDao.getPw(idx);
+		String inputPw = param.get("inputPw");
+		inputPw = sha256.encrypt(inputPw);
+		return getPw.equals(inputPw) ? 1 : 0;
+	}
 
+	public int quit(int idx) {
+		return userDao.quit(idx);
+	}
+
+	public boolean checkPw(String loginPw, String inputPw) {
+		inputPw = sha256.encrypt(inputPw);
+		return loginPw.equals(inputPw);
+	}
+
+	public int joinId(String id) {
+		return userDao.joinId(id);
+	}
+
+	public int joinName(String name) {
+		return userDao.joinName(name);
+	}
+
+	
 	
 
 }

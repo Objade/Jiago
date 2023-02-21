@@ -3,14 +3,12 @@
 <%@ include file="../header.jsp" %>
 
 
-
-
 <div class="main" value="0">
- 	 <%-- 중요! 시작 이미지 변경 및 크기 정해야함 --%>  <div class="surveyList_start"><img src="${cpath }/resources/img/설문_시작페이지.png" style="width: 300px;"></div>
+ 	 <div class="surveyList_start"><img src="${cpath }/resources/img/survey_startpage.png" style="width: 300px;"></div>
 
    <c:forEach var="dto" items="${list }" varStatus="status">
       <div class="surveyList item" question_idx="${dto.question_idx}" index="${status.count }">
-         <div class="surveyList surveyTitle">${status.count} ${dto.question_content}</div>
+         <div class="surveyList surveyTitle question">${status.count} ${dto.question_content}</div>
       </div>
    </c:forEach>
 

@@ -33,6 +33,7 @@ public class MailService {
 	private Resource mailForm;
 	
 	public int sendMail(String email, String sendNumber) throws IOException {
+		if(userDao.getEmail(email) == 1) return -1; 
 		
 		
 		Scanner sc = new Scanner(account.getFile());
@@ -90,7 +91,7 @@ public class MailService {
 			return 1;
 		} catch (AddressException e) {
 			e.printStackTrace();
-			System.out.println("잘못된 주소 입니다");
+			System.out.println("중복되거나 잘못된 주소 입니다");
 			return -1;
 		} catch (MessagingException e) {
 			e.printStackTrace();
