@@ -16,7 +16,7 @@
    </select>
    
    <select id="selectAllList" resultType="survey">
-   	  select * from survey 
+   	  select * from survey where survey_delete = 'N'
 		order by survey_idx desc
 		offset #{offset} rows
 		fetch first #{perPage} rows only	
@@ -155,5 +155,30 @@
 		select count(*) from survey 
     		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
 	</select>
+	
+	   <select id="filterList" resultType="survey" parameterType="hashmap">
+    select * from survey 
+       where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete = 'N'
+       
+       <if test="survey_targetAge != null">
+          and survey_targetAge like '%${survey_targetAge}%' 
+       </if>
+       <if test="survey_targetGender != null">
+          and survey_targetGender like '%${survey_targetGender}%' 
+       </if> 
+       <if test="survey_targetJob != null">
+           and survey_targetJob like '%${survey_targetJob}%'
+       </if>
+      order by survey_idx desc 
+      offset #{offset} rows
+      fetch first #{perPage} rows only
+   </select>
+	
+	<select id="selectSurveyFilterCount" resultType="int" parameterType="hashmap">
+      select count(*) from survey 
+      where survey_targetAge like '%${survey_targetAge}%' 
+      and survey_targetGender like '%${survey_targetGender}%' 
+      and survey_targetJob like '%${survey_targetJob}%'
+   </select>
 	
 </mapper>

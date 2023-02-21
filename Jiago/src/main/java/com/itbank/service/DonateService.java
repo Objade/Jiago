@@ -12,15 +12,25 @@ import com.itbank.repository.DonateDAO;
 @Service
 public class DonateService {
 
-	@Autowired DonateDAO donateDAO;
+   @Autowired DonateDAO donateDAO;
 
 
-	public HashMap<String, UserDonateDTO> getDonateList() {
-		return donateDAO.selectDonateList();
-	}
+   public HashMap<String, UserDonateDTO> getDonateList() {
+      return donateDAO.selectDonateList();
+   }
 
-	
-	
-	
-	
+
+   public int addUserPoint(HashMap<String, String> hashmap) {
+      return donateDAO.insertUserPoint(hashmap);
+   }
+
+
+   public void minusUserPoint(HashMap<String, String> hashmap) {
+      donateDAO.minusUserPoint(hashmap);      
+   }
+
+   
+   
+   
+   
 }

@@ -10,9 +10,13 @@ import com.itbank.model.UserDonateDTO;
 @Repository
 public interface DonateDAO {
 
-	HashMap<String, UserDonateDTO> selectDonateList();
+   HashMap<String, UserDonateDTO> selectDonateList();
+
+   int insertUserPoint(HashMap<String, String> hashmap);
+
+   void minusUserPoint(HashMap<String, String> hashmap);
 
 
-	
-	
+   
+   
 }

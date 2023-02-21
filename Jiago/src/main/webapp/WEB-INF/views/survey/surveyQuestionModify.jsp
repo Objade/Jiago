@@ -78,8 +78,25 @@ input[type="text"] {
 		</div>
 	</form>
 
+  
 
-	<script>
+   <script>
+      const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.questionItem > input[type="checkbox"]'))
+      const question_content = Array.from(document.querySelectorAll('#question_content'))
+      const question_content_idx = question_content.map(e => e.getAttribute('question_idx'))
+
+      const result = modifyCheckbox.filter(ob => question_content_idx.includes(ob.value))   
+      result.forEach(e => e.checked = 'checked')
+      
+      function resultHandler(event) {
+         const rest1 = question_content.filter(ob => event.target.value.includes(ob.getAttribute('question_idx')))
+         rest1[0].parentNode.remove()
+
+      }
+      result.forEach(e => e.onclick = resultHandler)
+   </script>
+
+   <script>
         const button = document.querySelector('#button')
         const items = document.querySelector('.items')
         const example = document.querySelector('.example')
@@ -121,6 +138,12 @@ input[type="text"] {
             const dropbutton = Array.from(document.querySelectorAll('#drop'))
 
             function dropHandler(event) {
+            const rest2 = event.target.previousSibling.previousSibling.getAttribute('question_idx')
+            const result10 = modifyCheckbox.filter(ob => rest2.includes(ob.value))   
+            result10.forEach(e => e.checked = '')
+            
+            
+            
                event.target.parentNode.remove()
             }      
             dropbutton.forEach(e => e.onclick = dropHandler)
@@ -198,7 +221,7 @@ input[type="text"] {
 
 
 
-	<script>
+   <script>
         const item = Array.from(document.querySelectorAll('.questionList.questionItem'))
 
         const checkbox = Array.from(document.querySelectorAll('.questionList.questionItem > input[type="checkbox"]'))
@@ -286,7 +309,7 @@ input[type="text"] {
                   console.log(deleteButton)
 
                   // 보기 삭제
-                  function deleteHandler(event) {
+                  function deleteHandler(event) {               
                      event.target.parentNode.remove()
 
                   }  
@@ -311,7 +334,7 @@ input[type="text"] {
       checkbox.map(e => e.onchange = checkboxHandler)
     </script>
 
-	<script>
+   <script>
       const form = document.forms[0]
         
          function testHandler(event) {
@@ -357,7 +380,7 @@ input[type="text"] {
             
       
       window.onload = function loadHandler() {
-    	  buttonHandler()
+         buttonHandler()
       }
     </script>
 

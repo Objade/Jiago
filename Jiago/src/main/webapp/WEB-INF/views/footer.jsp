@@ -23,10 +23,28 @@
             color: white;
             text-decoration: none;
         }
+        
+        .footer_menu > ul > li:nth-child(1) {
+           padding-right: 10px;
+           
+        }
 
         .footer_menu > ul > li:nth-child(n+2) {
-            margin: 0px 10px;
+            padding: 0px 10px;
         }
+        
+        .footer_menu > ul > li:nth-child(2) {
+           border-left: 1px solid white;
+           border-right: 1px solid white;
+        }
+        
+        .footer_menu > ul > li:nth-child(4) {
+           border-left: 1px solid white;
+           border-right: 1px solid white;
+        }
+        
+        
+                    
         
         .footer_img {
             display: flex;
@@ -67,7 +85,7 @@
         </div>
 
         <div class="footer_img">
-            <div><img src="${cpath }/resources/img/개인정보보호우수사이트.gif"></div>
+            <div><img src="${cpath }/resources/img/개인정보보호.gif"></div>
             <div><img src="${cpath }/resources/img/ISO 9001 인증.gif"></div>
         </div>
 

@@ -10,6 +10,7 @@ import com.itbank.model.AnswerDTO;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
+import com.itbank.model.SurveyFormDTO;
 import com.itbank.model.SurveyQuestionDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.SurveyDAO;
@@ -143,6 +144,16 @@ public class SurveyService {
 	public int getSurveyListCount() {
 		return dao.selectSurveyListCount();
 	}
+
+	public int getSurveyListFilterCount(HashMap<String, String> test) {
+	    return dao.selectSurveyFilterCount(test);
+	}
+
+	 public List<SurveyDTO> filterList(HashMap<String, String> test) {
+	    return dao.filterList(test);
+	 }
+
+
 
 
 	

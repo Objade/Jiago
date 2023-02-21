@@ -73,6 +73,10 @@ public interface SurveyDAO {
    
    int selectSurveyListCount();
 
+   List<SurveyDTO> filterList(HashMap<String, String> test);
+
+   int selectSurveyFilterCount(HashMap<String, String> test);
+
 
 
 

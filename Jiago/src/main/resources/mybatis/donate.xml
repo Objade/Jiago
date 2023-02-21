@@ -5,8 +5,16 @@
 <mapper namespace="com.itbank.repository.DonateDAO">
 
 <select id="selectDonateList" resultType="hashmap">
-	select sum(total_donate) as sum, count(user_idx) as count, sum(total_donate)/2 as tree from user_donate
+   select sum(total_donate) as sum, count(user_idx) as count, floor(sum(total_donate)/452000) as tree from user_donate
 </select>
+
+<insert id="insertUserPoint" parameterType="hashmap">
+   insert into user_donate (user_idx, total_donate) values (#{user_idx}, #{total_donate})
+</insert>
+
+<insert id="minusUserPoint" parameterType="hashmap">
+   insert into point(user_idx, point) values (#{user_idx},-#{total_donate})
+</insert>
 
 
 </mapper>

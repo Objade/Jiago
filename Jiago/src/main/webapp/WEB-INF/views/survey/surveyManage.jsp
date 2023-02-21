@@ -95,7 +95,6 @@
 	<h2><a href="${cpath }/survey/surveyAdd">설문 추가</a></h2>
 	
 	<h3>설문관리</h3>
-		<label><input type="checkbox" class="deletecheckbox">삭제 한 것도 보기</label>
 		<table class="surveyManage surveyList">
 			<thead>
 				<tr>
@@ -103,7 +102,6 @@
 					<th>회사 번호</th>
 					<th>설문 제목</th>
 					<th>조사 기간</th>
-					<th>삭제 여부</th>
 				</tr>
 			</thead>
 			
@@ -114,29 +112,12 @@
 						<td>${dto.company_idx}</td>
 						<td>${dto.survey_title}</td>
 						<td>${dto.survey_date}</td>
-						<td class="check_delete">${dto.survey_delete}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		
-	<script>
-		const checkbox = document.querySelector('input[type="checkbox"]')
-		console.log(checkbox)
-		let value = 0;
-
-		function handler(event) {
-			if(event.target.checked == true) {
-				value = 1;
-			}
-		}
-		
-		checkbox.onchange = handler
-		
-	
-	</script>
-		
-		
+		<div class="page_wrap">
 		    <div class="page_nation">
 		      <c:if test="${paging.prev }">
 		         <a class="arrow pprev" href="${cpath }/survey/surveyManage?page=1&check=${value }"></a>
@@ -161,53 +142,9 @@
 		         <a class="arrow nnext" href="${cpath }/survey/surveyManage?page=${paging.pageCount }&check=${value }"></a>
 		      </c:if>   
 		   </div>
-		  </div>
+		</div>
 		  
-		  
-		  <script>
-            const item = Array.from(document.querySelectorAll('tbody > tr')) // 목록
-            console.log(item)
-            
 
-            const title = Array.from(document.querySelectorAll('.title')) // 제목
-            console.log(title)
-        
-            const checkDelete = Array.from(document.querySelectorAll('.check_delete'))  // 삭제 여부
-            console.log(checkDelete)
-            console.log(checkDelete.map(e => e.innerText))
-            console.log(checkDelete.map(e => e.parentNode))
-
-
-
-            function deleteHandler() {
-                checkDelete.map(e => {
-                    if(e.innerText == 'Y') {
-                        e.parentNode.classList.add('hidden')
-                    }
-                })
-            }
-
-            window.onload = deleteHandler          
-
-        </script>
-
-        <script>
-            const deleteCheckbox = document.querySelector('.deletecheckbox')
-            console.log(deleteCheckbox)
-
-            function deleteCheckboxHandler(event) {
-                console.log(event)
-                console.log(event.target.checked == true)
-                if(event.target.checked == true) {
-                    checkDelete.map(e => e.parentNode.classList.remove('hidden'))
-                }
-                else {
-                  deleteHandler()  
-                }
-            }
-
-            deleteCheckbox.onchange = deleteCheckboxHandler
-        </script>
 
 </body>
 </html>
