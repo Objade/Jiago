@@ -118,7 +118,10 @@
 			</div>
 			<div><input type="password" id="checkPw" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
 
-			<div><input type="text" name="user_name" placeholder="유저 이름" required autocomplete="off"><span class="nameMessage"></span></div>
+			<div>
+				<input type="text" id="joinName" name="user_name" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
+				<div>한글, 숫자 , 영문 자유 형식의 4 ~ 12자</div>
+			</div>
 			<div><input type="date" name="user_birth" required>생일 입력</div>
 			<div>
 				<input type="radio" name="user_gender" value="남" required>남성
@@ -130,24 +133,22 @@
 				<input type="text" id="address" placeholder="주소" required><br>
 				<input type="text" id="detailAddress" placeholder="상세주소" required>
 				<input type="text" id="extraAddress" placeholder="참고항목" required>
-				<input type="hidden" name="user_address">
 			</div>
 			<div class="phone">
             	<input id="phone1" type="text" size="1" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone1()" required> -
             	<input id="phone2" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone2()" required> -
             	<input id="phone3" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone3()" required>
-            	<input type="hidden" name="user_phone">
       		</div>
       		<div>
-      			<input id="email1" type="text" onchange="frontEmailId()" > @ 
+      			<input id="email1" type="text"> @ 
       			<select id="email2" required>
       				<option value="">--직업을 선택하세요--</option>
       				<option value="naver.com">naver.com</option>
       				<option value="gmail.com">gmail.com</option>
       				<option value="직접 입력">직접 입력하세요</option>
       			</select>
-      			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력" onchange="sendHiddenEmail()" ></span>
-      			<input type="hidden" name="user_email"><button type="button">인증</button>
+      			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력" ></span>
+      			<span><button id="checkEmailSend" type="button">인증메일 전송</button></span>
       		</div>
       		
 			<div>
@@ -202,7 +203,7 @@
 		
 		fetch(url)
 		.then(response => response.text())
-		.then(text => {
+		.then(text => {			 
 			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{6,12}$/g
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
@@ -231,6 +232,7 @@
 			const joinPwValue = event.target.value
 			if(joinPwValue.length == 0) {
 				checkPwText1.innerText = ''
+				checkPw.setAttribute('disabled',true)
 				return
 			}
 			const pw_if = /(?=.*[0-9])(?=.*[a-z])(?=.*\W)(?=\S+$).{8,20}/
@@ -269,41 +271,38 @@
 
 
 <script>
-	const checkName = document.querySelector('input[name="user_name"]')
-	console.log(checkName)
+	const joinName = document.getElementById('joinName')
+	console.log(joinName)
 	
 	
-	function nameHandler(event) {
+	function nameCheckHandler(event) {
+		const name_if = /[0-9]|[a-z]|[A-Z]|[가-힣]{4,12}$/g
 		const inputName = event.target.value
-		console.log(inputName)
-		const nameMessage = document.querySelector('.nameMessage')
-		console.log(nameMessage)
-		const url = "${cpath}/user/userDup/" + inputName + "/"
+		const nameCheckMessage = document.querySelector('.nameCheckMessage')
 		
-		
-		fetch(url)
-		.then(response => response.text())
-		.then(text => {
-			if(inputName.length == 0) nameMessage.innerText = ''
-			else if(text == 1) {
-				nameMessage.innerText = '이미 존재하는 이름입니다.'
-				nameMessage.style.color = 'red'
-			}
-			else {
-				nameMessage.innerText = '사용 가능한 이름입니다.'
-				nameMessage.style.color = 'blue'
-			}
-
-		})
-		
-		
-		
+		if(inputName.length == 0) {
+			nameCheckMessage.innerText = ''
+			return
+		}
+		if(name_if.test(inputName) && inputName.length >= 4 && inputName.length <= 12) {
+			const url = "${cpath}/user/joinName/" + inputName + "/"
+			fetch(url)
+			.then(response => response.text())
+			.then(text => {
+				console.log(text)
+				if(text != 1) {
+					nameCheckMessage.innerText = '사용 가능한 별명 입니다.'
+					nameCheckMessage.style.color = 'blue'
+					return
+				}
+			})
+		}
+		else {
+			nameCheckMessage.innerText = '이미 존재하는 이름이거나 조건 양식에 맞지 않습니다.'
+			nameCheckMessage.style.color = 'red'
+		}	
 	}
-	
-	
-	
-	
-	checkName.onkeyup = nameHandler
+	joinName.onkeyup = nameCheckHandler
 
 
 </script>
@@ -358,29 +357,25 @@
   	  }).open();	
 	}
 	
-	const detailAddress = document.querySelector('input[id="detailAddress"]')
-	console.log(detailAddress)
+	const detailAddress = document.getElementById('detailAddress')
+	let user_address = ''
 	
 	function addressHandler(event) {
-		const fullAddress = document.querySelector('input[name="user_address"]')
-		console.log(fullAddress)
-		fullAddress.value = 
+		user_address = 
 			document.getElementById('postcode').value +
 			document.getElementById("address").value + ' ' +
 			event.target.value
 	}
 	
 	
-	detailAddress.onkeyup = addressHandler
+	detailAddress.onchange = addressHandler
 
 </script>
 
 <script>
-	// 전화번호 입력 
-	
-	const user_phone = document.querySelector('input[name="user_phone"]')
-	console.log(user_phone)
-		// 휴대폰 번호 입력 부분
+	let user_phone = ''
+
+	// 휴대폰 번호 입력 부분
 	function changePhone1(){
 	    const phone1 = document.getElementById("phone1").value // 010
 	    if(phone1.length === 3){
@@ -388,7 +383,7 @@
 	    }
 	}
 	function changePhone2(){
-	    const phone2 = document.getElementById("phone2").value // 010
+	    const phone2 = document.getElementById("phone2").value // ****
 	    if(phone2.length === 4){
 	        document.getElementById("phone3").focus();
 	    }
@@ -396,57 +391,58 @@
 	function changePhone3(){
 		const phone1 = document.getElementById("phone1").value
 		const phone2 = document.getElementById("phone2").value
-		const phone3 = document.getElementById("phone3").value // 010
-	    if(phone3.length == 4) user_phone.value = phone1 + '-' + phone2 + '-' + phone3
-	    console.log()
+		const phone3 = document.getElementById("phone3").value // ****
+	    if(phone3.length == 4) user_phone = phone1 + '-' + phone2 + '-' + phone3
+	    console.log(user_phone)
 	}
 
 </script>
 
-
 <script>
 	// 이메일 입력
 	
-	const user_email = document.querySelector('input[name="user_email"]')
-	console.log(user_email)
-	const inputEmailId = document.getElementById('email1')
-	const selectEmail = document.getElementById('email2')
-	console.log(selectEmail)
+	let frontEmail
+	let secondEmail
+	
+	const inputEmailFront = document.getElementById('email1')
+	const inputSelectEmail = document.getElementById('email2')
+	
 	const directly = document.querySelector('.directly')
-	console.log(directly)
-	let secondEmailId = ''
 	
 	
 	function frontEmailId() {
-		user_email.value = inputEmailId.value
+		frontEmail = inputEmailFront.value
 	}
 	
+	inputEmailFront.onchange = frontEmailId
 	
-	
- 
+	// 셀렉트 선택
 	function emailHandler(event) {
-		const value = selectEmail.options[selectEmail.selectedIndex].value
-		console.log(value)
-		console.log(value == '직접 입력')
- 		if(value == '직접 입력') {
+		const selectValue = inputSelectEmail.options[inputSelectEmail.selectedIndex].value
+		console.log(selectValue)
+		console.log(selectValue == '직접 입력')
+ 		if(selectValue == '직접 입력') {	// 직접 입력이 들어오면 숨긴 폼 보여주기
 			directly.classList.remove('hidden')
 		}
  		else {
  			directly.classList.add('hidden')
- 			secondEmailId = inputEmailId.value + '@' + value
- 			user_email.value = secondEmailId
- 			console.log(secondEmailId)
+ 			secondEmail = '@' + selectValue
  		}
-	
 	}
 	
-	selectEmail.onchange = emailHandler 
+	inputSelectEmail.onchange = emailHandler
 	
-	function sendHiddenEmail() {
-		const directEmail = document.getElementById('directEmail')
-		secondEmailId = inputEmailId.value + '@' + directEmail.value
-		user_email.value = secondEmailId
-		console.log(secondEmailId)
+	// 직접입력 창에서 입력을 완료하면 변경
+	directly.onchange = function(event) {			
+		secondEmail = '@' + event.target.value
+	}
+	
+	// 이메일 인증 창 열고 전송 후 받기
+	const checkEmailSend = document.getElementById('checkEmailSend')
+	checkEmailSend.onclick = function() {
+        const emailCheckMailUrl = '${cpath}/popUp/emailCheckMail/' + frontEmail + secondEmail + '/';
+        const emailCheckMailOption = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
+        window.open(emailCheckMailUrl, 'popUp', emailCheckMailOption);
 	}
 
 </script>

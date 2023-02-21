@@ -34,5 +34,12 @@ public interface UserDAO {
 
 	int dupId(String id);
 
+	int joinId(String id);
+
+	int joinName(String name);
+
+	int getEmail(String email);
+
+
 	
 }

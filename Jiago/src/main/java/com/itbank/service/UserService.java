@@ -129,12 +129,12 @@ public class UserService {
 		return loginPw.equals(inputPw);
 	}
 
-	public int dupId(String id) {
-		return userDao.dupId(id);
+	public int joinId(String id) {
+		return userDao.joinId(id);
 	}
 
-	public int userDup(String name) {
-		return userDao.userDup(name);
+	public int joinName(String name) {
+		return userDao.joinName(name);
 	}
 
 	
