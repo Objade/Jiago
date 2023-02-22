@@ -12,21 +12,21 @@
     <title>자연에 설문을 담다 지아고 입니다.</title>
 
     <style>
-    	.hidden {
-    		display: none;
-    	}
-    	
-    	header {
-    	    position: fixed;
-    	    width: 100%;
-  			top: 0;
-    		background-color: white;
-    		z-index: 2;
-    	}
+       .hidden {
+          display: none;
+       }
+       
+       header {
+           position: fixed;
+           width: 100%;
+           top: 0;
+          background-color: white;
+          z-index: 2;
+       }
     
-    	body {
-    		font-family: 'Dongle';
-    	}
+       body {
+          font-family: 'Dongle';
+       }
     
         #root {
             width: 1100px;
@@ -39,8 +39,8 @@
         
         .logo > a > img {
             width: 200px;
-			margin-top: 30px;
-			
+         margin-top: 30px;
+         
         }
 
         .nav {
@@ -48,8 +48,8 @@
         }
         
         .nav > ul {
-        	margin: 0;
-        	padding: 0;
+           margin: 0;
+           padding: 0;
         }
         
         .nav > ul > li {
@@ -62,29 +62,29 @@
         
         
         .nav > ul > li > a:hover {
-        	font-size: 40px;
-        	color: lightgreen;
-        	transition: 0.2s ease-out;
+           font-size: 40px;
+           color: lightgreen;
+           transition: 0.2s ease-out;
         }
         
         .nav > ul > li > a:not(:hover) {
-        	transition: 0.2s ease-out;
+           transition: 0.2s ease-out;
         }
 
         .loginBar > span {
-        	margin: 0 10px;
+           margin: 0 10px;
         }
         
         .loginBar > span > a:hover {
-        	color: lightgreen;
-        	transition: 0.2s ease-out;
+           color: lightgreen;
+           transition: 0.2s ease-out;
         }
         
         .loginBar > span > a:not(:hover) {
-			transition: 0.2s ease-out;
-			
-		}
-		
+         transition: 0.2s ease-out;
+         
+      }
+      
         a {
             text-decoration: none;
             color: inherit;
@@ -96,8 +96,8 @@
         }
         
         .root {
-        	text-align: center;
-        	margin-top: 120px;
+           text-align: center;
+           margin-top: 120px;
         }
         
         
@@ -106,6 +106,7 @@
         }
         
         .banner2 > img {
+        	margin: 50px 0;
             width: 900px;
         }
         
@@ -141,7 +142,9 @@
             color: white;
             font-size: 20px;
             padding: 10px;
-            margin-right: 2px;    
+            margin-right: 2px;  
+            width: 325px;
+            box-sizing: border-box;  
         }
         
         .write_mid {
@@ -165,6 +168,10 @@
             color: grey;
             padding-top: 20px;
             padding-bottom: 20px;
+        }
+        
+        .surveys.surveyItem {
+        	background-color: white;
         }
         
         .s4_top{
@@ -202,7 +209,7 @@
         }
         
         #section4 {
-            background-color: #1B434A;
+            background-color: #1D594E;
             text-align: center;
             width: 100%;
             padding-bottom: 20px;
@@ -298,11 +305,7 @@
             font-size: 25px;
             font-family: 'Dongle';
          }
-         #replyWriteForm {
-         
-         
-         }
-         
+
          .write_button {
             width: 100px;
             height: 30px;
@@ -541,256 +544,254 @@
          color:#fff;
          border:1px solid #1B434A;
       }
-		
-		/* 설문 목록 */
-		
-		.main {
-			margin-top: 150px;
-		}
-		
-		.surveyList.title {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 70px;
-			background-color: #1D594E;
-			font-size: 30px;
-			font-weight: bold;
-			color: #eee;
-			margin: 20px 0 0 0;
-		}
-		
-		.surveyList.items {
-			display: flex;
-			flex-wrap: wrap;
-			box-sizing: border-box;
-			background-color: #dadada;
-			padding: 50px;
-			margin: 0 auto;
-			justify-content: flex-start;
-		}
-		
-		.surveyList.item {
-			background-color: white;
-			width: 250px;
-			margin: 10px;
-			box-sizing: border-box;
-		}
-		
-		.surveyList.items >a:hover {
-			background-color: #44A666;
-			
-		}
-		
-		.surveyList.surveyTitle {
-			background-color: #1D594E;
-			padding: 10px;
-			box-sizing: border-box;
-			text-align: center;
-			color: white;
-			font-size: 20px;
-			font-weight: bold;
-			
-		}
-		
-		.surveyList.subject {
-			padding: 10px 0 5px 0;
-			box-sizing: border-box;
-			text-align: center;
-			font-size: 15px;
-			color: #595959;
-			font-weight: 700;
-		}
-		
-		.surveyList.content {
-			font-size: 15px;
-			color: gray;
-			font-weight: 400;
-			text-align: center;
-		}
-		
-		.surveyList.content:last-child {
-			padding: 0 0 10px 0;
-		}
-		
-		.survey_filter {
-	      display: flex;
-	      justify-content: flex-end;
-	      align-items: flex-end;
-	      text-align: right;
-	      margin-right: 5px;
-   		}
-		   #filter_all {
-		      display: flex;
-		   }
-		   #filter {
-		      margin-right: 20px;
-		      
-		   }
-		   #filter2 {
-		      margin-right: 20px;
-		   }
-		   #filter3 {
-		      margin-right: 20px;
-		   }
-		   .filter_targetAge select {
-		      width: 196px;
-		      height: 41px;
-		      font-size: 15px;
-		      color: #999;
-		      border: 2px solid #ddd;
-		   }
-		   .filter_targetGender select {
-		      width: 196px;
-		      height: 41px;
-		      font-size: 15px;
-		      color: #999;
-		      border: 2px solid #ddd;
-		   }
-		   .filter_targetJob select {
-		      width: 196px;
-		      height: 41px;
-		      font-size: 15px;
-		      color: #999;
-		      border: 2px solid #ddd;
-		   }
-		   #survey_filter_input {
-		     width: 70px;
-		     height: 41px; 
-	         border-left: none;
-	         border: 1px solid #1D594E;
-	         font-family: 'Dongle';
-	         font-size: 25px;
-	         background-color: #1D594E;
-	         color: white;
-	         cursor: pointer;
-	         margin-top: 15px;
-		   }
-		
-		/* 설문 상세 */
+      
+      /* 설문 목록 */
+      
+      .main {
+         margin-top: 150px;
+      }
+      
+      .surveyList.title {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 70px;
+         background-color: #1D594E;
+         font-size: 30px;
+         font-weight: bold;
+         color: #eee;
+         margin: 20px 0 0 0;
+      }
+      
+      .surveyList.items {
+         display: flex;
+         flex-wrap: wrap;
+         box-sizing: border-box;
+         background-color: #dadada;
+         padding: 50px;
+         margin: 0 auto;
+         justify-content: flex-start;
+      }
+      
+      .surveyList.item {
+         background-color: white;
+         width: 250px;
+         margin: 10px;
+         box-sizing: border-box;
+      }
+      
+      .surveyList.items >a:hover {
+         background-color: #44A666;
+         
+      }
+      
+      .surveyList.surveyTitle {
+         background-color: #1D594E;
+         padding: 10px;
+         box-sizing: border-box;
+         text-align: center;
+         color: white;
+         font-size: 20px;
+         font-weight: bold;
+         
+      }
+      
+      .surveyList.subject {
+         padding: 10px 0 5px 0;
+         box-sizing: border-box;
+         text-align: center;
+         font-size: 15px;
+         color: #595959;
+         font-weight: 700;
+      }
+      
+      .surveyList.content {
+         font-size: 15px;
+         color: gray;
+         font-weight: 400;
+         text-align: center;
+      }
+      
+      .surveyList.content:last-child {
+         padding: 0 0 10px 0;
+      }
+      
+      .survey_filter {
+         display: flex;
+         justify-content: flex-end;
+         align-items: flex-end;
+         text-align: right;
+         margin-right: 5px;
+         }
+         #filter_all {
+            display: flex;
+         }
+         #filter {
+            margin-right: 20px;
+            
+         }
+         #filter2 {
+            margin-right: 20px;
+         }
+         #filter3 {
+            margin-right: 20px;
+         }
+         .filter_targetAge select {
+            width: 196px;
+            height: 41px;
+            font-size: 15px;
+            color: #999;
+            border: 2px solid #ddd;
+         }
+         .filter_targetGender select {
+            width: 196px;
+            height: 41px;
+            font-size: 15px;
+            color: #999;
+            border: 2px solid #ddd;
+         }
+         .filter_targetJob select {
+            width: 196px;
+            height: 41px;
+            font-size: 15px;
+            color: #999;
+            border: 2px solid #ddd;
+         }
+         #survey_filter_input {
+           width: 70px;
+           height: 41px; 
+            border-left: none;
+            border: 1px solid #1D594E;
+            font-family: 'Dongle';
+            font-size: 25px;
+            background-color: #1D594E;
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+         }
+      
+      /* 설문 상세 */
 
-	    .surveyDetail.title {
-	        display: flex;
-	        align-items: center;
-	        justify-content: center;
-	        padding: 70px;
-	        background-color: #1D594E;
-	        font-size: 30px;
-	        font-weight: bold;
-	        color: #eee;
-	        margin: 20px 0 0 0;
-	      }
-	
-	      table.surveyDetail th {
-	        background-color: #1D594E;
-	        padding: 30px;
-	        color: white;
-	      }
-	
-	      table.surveyDetail td {
-	        background-color: white;
-	        border: 1px solid 1D594E;
-	        font-weight: 550;
-	        padding: 30px;
-	      }
-	
-	      table.surveyDetail {
-	        margin: 50px;
-	      }
-	
-	      .surveyDetail {
-	        display: flex;
-	        flex-direction: column;
-	        justify-content: center;
-	        align-items: center;
-	        border: 0px;
-	        background-color: #dadada;
-	      }
-	      
-	       .surveyDetail.button {
-	        background-color: #1D594E;
-	        margin: 0 0 100px 0;
-	        color: white;
-	      
-	        font-weight: bold;
-	        font-size: 20px;
-	        width: 400px;
-	        box-sizing: border-box;
-	
-	      }
-	      
-	      /* 설문 시작 */
+       .surveyDetail.title {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 70px;
+           background-color: #1D594E;
+           font-size: 30px;
+           font-weight: bold;
+           color: #eee;
+           margin: 20px 0 0 0;
+         }
+   
+         table.surveyDetail th {
+           background-color: #1D594E;
+           padding: 30px;
+           color: white;
+         }
+   
+         table.surveyDetail td {
+           background-color: white;
+           border: 1px solid 1D594E;
+           font-weight: 550;
+           padding: 30px;
+         }
+   
+         table.surveyDetail {
+           margin: 50px;
+         }
+   
+         .surveyDetail {
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           border: 0px;
+           background-color: #dadada;
+         }
+         
+          .surveyDetail.button {
+           background-color: #1D594E;
+           margin: 0 0 100px 0;
+           color: white;
+         
+           font-weight: bold;
+           font-size: 20px;
+           width: 400px;
+           box-sizing: border-box;
+   
+         }
+         
+         /* 설문 시작 */
 
-	      .surveyStart {
-	        display: flex;
-	        flex-direction: column;
-	        padding: 50px;
-	        justify-content: center;
-	        align-items: center;
-	      }
-	
-	      .button {
-	        background-color: #1D594E;
-	        color: white;
-	        font-weight: bold;
-	        font-size: 15px;
-	        box-sizing: border-box;
-	        width: 100px;
-	        margin: 10px;
-	      }
-	
-	      .surveyList_start > img {
-	        width: 1000px;
-	      }
-	
-	      .surveyList.question {
-	        background-color: white;
-	        color: black;
-	      }
-	      
-	      .s3_mid {
-	         width: 100%;
-	            
-	      }
-	
-	      .customer {
-	         display: flex;
-	         width: 70%;
-	         text-align: center;
-	         margin: 0 auto;
-	         flex-flow: wrap;
-	      }
-	
-	      .surveys {
-	         width: 325px;
-	           
-	      }
-	        
-	        
-	      .banner3 {
-	         width: 40%;
-	         margin: 10px auto;
-	         position: relative;            
-	      }
-	      
-	      .banner3_img {
-	         width: 100%;
-	         vertical-align: middle;
-	            
-	      }
-	        
-	      .banner3_text {
-	         padding: 5px 10px;
-	         text-align: center;
-	         color: white;
-	         font-size: 60px;
-	         position: absolute;
-	         top: 50%;
-	         left: 50%;
-	      }
-	     
-	     
-	     
+         .surveyStart {
+           display: flex;
+           flex-direction: column;
+           padding: 50px;
+           justify-content: center;
+           align-items: center;
+         }
+   
+         .button {
+           background-color: #1D594E;
+           color: white;
+           font-weight: bold;
+           font-size: 15px;
+           box-sizing: border-box;
+           width: 100px;
+           margin: 10px;
+         }
+   
+         .surveyList_start > img {
+           width: 1000px;
+         }
+   
+         .surveyList.question {
+           background-color: white;
+           color: black;
+         }
+         
+         .s3_mid {
+            width: 100%;
+               
+         }
+   
+         .customer {
+            display: flex;
+            width: 70%;
+            text-align: center;
+            margin: 0 auto;
+            flex-flow: wrap;
+         }
+   
+         .surveys {
+            width: 325px;
+            margin: 5px;
+         }
+           
+           
+         .banner3 {
+            width: 52%;
+            margin: 10px auto;
+            position: relative;            
+         }
+         
+         .banner3_img {
+            width: 1000px;               
+         }
+           
+         .banner3_text {
+            padding: 5px 10px;
+            text-align: center;
+            color: white;
+            font-size: 60px;
+            position: absolute;
+            top: 10%;
+            left: 20%;
+         }
+        
+        
+        
     </style>
 
 </head>
@@ -798,37 +799,37 @@
 
 <header>
 
-	<div id="root">
+   <div id="root">
       
-		<div class="logo">
-		    <a href="${cpath }/"><img src="${cpath }/resources/img/logo.png" class="logoImg"></a>
-		</div>
-		
-		
-		<div class="nav">
-		    <ul>
-		        <li><a href="${cpath }/">홈</a></li>
-		      	<li><a href="${cpath }/survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=">설문참여</a></li>
-		        <li><a href="${cpath }/donate/donateList">나무심기</a></li>
-		        <li><a href="${cpath }/cuscenter">고객센터</a></li>
-		        <li><a href="${cpath }/survey/surveyManage">설문관리</a></li>
-		    </ul>
-		</div>
-		
-		
-		<div class="loginBar">
-		       <c:choose>
-		     <c:when test="${empty login }">
-		        <span class="login"><a href="${cpath }/user/login">로그인</a></span>
-		        <span class="join"><a href="${cpath }/user/join">회원가입</a></span>
-		     </c:when>
-		     <c:otherwise>
-		        <span><a href="${cpath }/user/mypageHome"><b style="color:red">${login.user_name }</b>님 환영합니다</a></span>
-		        <span><a href="${cpath }/user/logout">로그아웃</a></span>
-		     </c:otherwise>
-		  </c:choose>
-		</div>
+      <div class="logo">
+          <a href="${cpath }/"><img src="${cpath }/resources/img/logo.png" class="logoImg"></a>
+      </div>
+      
+      
+      <div class="nav">
+          <ul>
+              <li><a href="${cpath }/">홈</a></li>
+              <li><a href="${cpath }/survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=">설문참여</a></li>
+              <li><a href="${cpath }/donate/donateList">나무심기</a></li>
+              <li><a href="${cpath }/cuscenter">고객센터</a></li>
+              <li><a href="${cpath }/survey/surveyManage">설문관리</a></li>
+          </ul>
+      </div>
+      
+      
+      <div class="loginBar">
+             <c:choose>
+           <c:when test="${empty login }">
+              <span class="login"><a href="${cpath }/user/login">로그인</a></span>
+              <span class="join"><a href="${cpath }/user/join">회원가입</a></span>
+           </c:when>
+           <c:otherwise>
+              <span><a href="${cpath }/user/mypageHome"><b style="color:red">${login.user_name }</b>님 환영합니다</a></span>
+              <span><a href="${cpath }/user/logout">로그아웃</a></span>
+           </c:otherwise>
+        </c:choose>
+      </div>
      
-      </div> <!-- header -->
+      </div>
 </header>   
    

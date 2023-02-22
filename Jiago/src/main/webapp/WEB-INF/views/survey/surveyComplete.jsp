@@ -29,8 +29,17 @@
         alert(point +'포인트 기부 감사합니다')
     }
 
+    
+    
     form.onsubmit = formHandler
 
+</script>
+
+<script>
+	window.onkeydown = function() {
+		var kcode = event.keycode;
+		if(kcode == 8 || kcode == 116) event.returnValue = false;
+	}
 </script>
 
 

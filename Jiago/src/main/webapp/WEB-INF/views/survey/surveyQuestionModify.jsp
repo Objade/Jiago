@@ -366,15 +366,21 @@ input[type="text"] {
                  }
            }
            
-           fetch(url, opt)
-           .then(resp => resp.text())
-           .then(text => {
-              alert(text)
-              location.href = cpath      // 이후에는 관리자 페이지 메인으로 이동하도록 수정할것
-           })
-           .error(err => console.log(err))
-           
-        }
+             fetch(url, opt)
+             .then(resp => resp.text())
+             .then(text => {
+                console.log(text == '이미 질문 리스트에 등록 된 질문 입니다.')
+                 alert(text)
+                 if(text != '이미 질문 리스트에 등록 된 질문 입니다.') {
+                    location.href = cpath + "/survey/surveyManage"
+                 }else {
+                    const result100 = Array.from(document.querySelectorAll('#question_content'))
+                    console.log(result100)
+                    console.log(result100.map(e => e.value))
+                 }
+
+              })
+      }
         
       form.onsubmit = testHandler
             

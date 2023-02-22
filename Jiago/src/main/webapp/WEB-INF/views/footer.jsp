@@ -23,28 +23,10 @@
             color: white;
             text-decoration: none;
         }
-        
-        .footer_menu > ul > li:nth-child(1) {
-           padding-right: 10px;
-           
-        }
 
         .footer_menu > ul > li:nth-child(n+2) {
-            padding: 0px 10px;
+            margin: 0px 10px;
         }
-        
-        .footer_menu > ul > li:nth-child(2) {
-           border-left: 1px solid white;
-           border-right: 1px solid white;
-        }
-        
-        .footer_menu > ul > li:nth-child(4) {
-           border-left: 1px solid white;
-           border-right: 1px solid white;
-        }
-        
-        
-                    
         
         .footer_img {
             display: flex;
@@ -73,11 +55,11 @@
     <div class="wrap">
         <div class="footer_menu">
             <ul>
-                <li><a href="#">회사소개</a></li>
-                <li><a href="#">오시는 길</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">개인정보처리방침</a></li>
-                <li><a href="#">사이트맵</a></li>
+                <li><a href="${cpath }/introcompany">회사소개</a></li>
+                <li><a href="${cpath }/waytocome">오시는길</a></li>
+                <li><a href="${cpath }/termofuse">이용약관</a></li>
+                <li><a href="${cpath }/personalinform">개인정보처리방침</a></li>
+                <li><a href="${cpath }/sitemap">사이트맵</a></li>
             </ul>
             <span>주소주소주소주소주소주소주소주소주소</span><br>
             <span>대표대표대표대표대표대대표대표대표 | 사업자 번호 1320-30-31023</span><br>

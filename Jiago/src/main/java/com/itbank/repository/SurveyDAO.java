@@ -77,6 +77,8 @@ public interface SurveyDAO {
 
    int selectSurveyFilterCount(HashMap<String, String> test);
 
+   HashMap<String, String> selectTotalDonate();
+
 
 
 

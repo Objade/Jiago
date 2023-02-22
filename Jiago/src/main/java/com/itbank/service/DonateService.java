@@ -29,6 +29,11 @@ public class DonateService {
       donateDAO.minusUserPoint(hashmap);      
    }
 
+
+public List<UserDonateDTO> getDonateHistory() {
+	return donateDAO.selectDonateHistory();
+}
+
    
    
    
