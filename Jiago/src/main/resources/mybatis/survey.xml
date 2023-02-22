@@ -76,7 +76,7 @@
 	</select>
 	
 	<select id="selectHomeSurvey" resultType="survey">
-		select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 and rownum BETWEEN 1 AND 6 order by to_date(substr(survey_date,10))
+		select * from survey where to_date(substr(survey_date,10)) >= sysdate - 1 and rownum BETWEEN 1 AND 8 order by to_date(substr(survey_date,10))
 	</select>
 	
 	<insert id="insertSurvey" parameterType="survey">
@@ -179,6 +179,10 @@
       where survey_targetAge like '%${survey_targetAge}%' 
       and survey_targetGender like '%${survey_targetGender}%' 
       and survey_targetJob like '%${survey_targetJob}%'
+   </select>
+   
+   <select id="selectTotalDonate" resultType="hashmap">
+      select count(user_idx) as totalCount, sum(total_donate) as totalDonate from user_donate
    </select>
 	
 </mapper>

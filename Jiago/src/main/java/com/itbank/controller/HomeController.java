@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView("home");
 		List<SurveyDTO> list = surveyService.getHomeSurvey();
 		mav.addObject("list", list);
+		
+		HashMap<String, String> dto = surveyService.getTotalDonate();
+	      mav.addObject("totalDonate", dto.get("TOTALDONATE"));
+	      mav.addObject("totalCount", dto.get("TOTALCOUNT"));
+		
+		
 		return mav;
 	}
 

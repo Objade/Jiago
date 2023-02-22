@@ -22,7 +22,9 @@ public class PopUpDataController {
 	@PostMapping("pwUpdate")
 	public int pwUpdate(HttpSession session , @RequestBody HashMap<String, String> param) {
 		String modifyPw = param.get("modifyPw");
+		System.out.println(modifyPw);
 		String checkPw = param.get("checkPw");
+		System.out.println(checkPw);
 		int idx = Integer.parseInt(param.get("idx"));
 		if(modifyPw.equals(checkPw)) {
 			session.removeAttribute("login");

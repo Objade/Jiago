@@ -16,6 +16,8 @@ public interface DonateDAO {
 
    void minusUserPoint(HashMap<String, String> hashmap);
 
+   List<UserDonateDTO> selectDonateHistory();
+
 
    
    

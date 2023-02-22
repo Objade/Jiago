@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -29,7 +30,7 @@ public class DonateController {
    @GetMapping("/donateList")
    public ModelAndView donateList(HttpSession session) {
       ModelAndView mav = new ModelAndView("/donate/donateList");
-      System.out.println("!");
+
       HashMap<String, UserDonateDTO> hashmap = donateService.getDonateList();
       
       mav.addObject("tree", hashmap.get("TREE"));
@@ -44,6 +45,10 @@ public class DonateController {
       
          mav.addObject("point", point);
       }
+         
+      List<UserDonateDTO> list = donateService.getDonateHistory();
+    
+      mav.addObject("list", list);
       
       return mav;
    }

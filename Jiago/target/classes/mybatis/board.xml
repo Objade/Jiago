@@ -11,21 +11,28 @@
 			* from q_board
 			 
 			order by qboard_idx desc
-			
 			offset #{offset} rows			
 			fetch first #{perPage} rows only
 			
 	</select>
 	
-	<select id="search" parameterType="String" resultType="board">
-		select 
-			* 
-			from q_board where qboard_title like '%${qboard_title}%' 			
+	<select id="search" resultType="board" parameterType="hashmap">
+		select * from q_board
+		    where qboard_title like '%${qboard_title}%'  
+		   order by qboard_idx desc   
+		   offset #{offset} rows
+		   fetch first #{perPage} rows only	
 	</select>
 
 	
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from q_board
+	</select>
+	
+	<select id="selectSearchBoardCount" parameterType="string" resultType="int">
+		select count(*) from q_board
+   		 where qboard_title like '%${qboard_title}%'
+   		 order by qboard_idx desc   
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="board">

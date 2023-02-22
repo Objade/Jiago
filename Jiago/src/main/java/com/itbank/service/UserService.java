@@ -138,6 +138,10 @@ public class UserService {
 		return userDao.joinName(name);
 	}
 
+	public int checkPhoneNum(String phone) {
+		return userDao.checkPhoneNum(phone);
+	}
+
 	
 	
 

@@ -5,6 +5,11 @@ public class UserDonateDTO {
 	private int survey_idx;
 	private int user_idx;
 	private	int total_donate;
+	
+	
+	private int total;
+	private int member;
+	private String month;
 			
 	public int getSurvey_idx() {
 		return survey_idx;
@@ -24,6 +29,30 @@ public class UserDonateDTO {
 	public void setTotal_donate(int total_donate) {
 		this.total_donate = total_donate;
 	}
+	
+	
+	
+	
+	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public int getMember() {
+		return member;
+	}
+	public void setMember(int member) {
+		this.member = member;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 
 	
 }

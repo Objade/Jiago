@@ -71,6 +71,7 @@ public class UserController {
 	public ModelAndView pwCheckEmail() {
 		ModelAndView mav = new ModelAndView("user/pwCheckEmail");
 		List<String> user = userService.getEmailAndPhone();
+		System.out.println(user);
 		 mav.addObject("user",user);
 		return mav;
 	}
@@ -91,8 +92,6 @@ public class UserController {
 	
 	@PostMapping("userModify")
 	public ModelAndView userModify(HttpSession session ,UserDTO user) {
-		System.out.println("여기 실행됬어요");
-		
 		
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.update(user);
@@ -127,9 +126,11 @@ public class UserController {
 	public ModelAndView mypageQuit(HttpSession session, @RequestParam("input_pw") String inputPw) {
 		ModelAndView mav = new ModelAndView("user/result");
 		String loginPw = (String)((UserDTO)session.getAttribute("login")).getUser_pw();
+		System.out.println("세션 비밀번호" + loginPw);
 		boolean flag = userService.checkPw(loginPw ,inputPw);
 		if(flag) {
 			int idx = (int)((UserDTO)session.getAttribute("login")).getUser_idx();
+			System.out.println("유저 인덱스" + idx);
 			int row = userService.quit(idx);
 			if(row == 1) {
 				mav.addObject("result","회원 탈퇴가 성공적으로 이뤄졌습니다. 이용해주셔서 감사합");

@@ -40,6 +40,8 @@ public interface UserDAO {
 
 	int getEmail(String email);
 
+	int checkPhoneNum(String phone);
+
 
 	
 }

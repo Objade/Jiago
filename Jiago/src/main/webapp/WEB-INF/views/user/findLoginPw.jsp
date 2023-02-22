@@ -55,7 +55,7 @@
 	
 	
 	input:focus {
-		outline-color: #008037;
+		outline-color: #1D594E;
 	}
 	
 	input[type="text"] {
@@ -68,7 +68,7 @@
 	
 	input:not([type="text"]) {
 		border: solid 1px rgba(0,0,0,.05);
-		background-color: #008037;
+		background-color: #1D594E;
 		color: white;
 		cursor: pointer;
 	}
@@ -81,7 +81,7 @@
 	
 	a {
 		text-decoration: none; 
-		color: #008037;
+		color: #1D594E;
 	}
 	
 	.foot {
@@ -99,7 +99,7 @@
 
 
 <div id="findUserPw">
-	<div class="imglogo"><img src="${cpath }/resources/img/로고.png"></div>
+	<div class="imglogo"><img src="${cpath }/resources/img/logo.png"></div>
 	<div class="message">비밀번호를 찾고자 하는 아이디를 입력해주세요</div>
 	<div id="inputId">
 		<form id="idForm">

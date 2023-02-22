@@ -77,7 +77,25 @@
 			<div><div class="innerTitle">거주지역</div>: <span class="innerData"><input type="text"  name="user_address" value="${login.user_address }" required autocomplete="off"></span></div>
 			<div><div class="innerTitle">휴대폰정보</div>: <span class="innerData"><input type="text"  name="user_phone" value="${login.user_phone }" required autocomplete="off"></span></div>
 			<div><div class="innerTitle">이메일</div>: <span class="innerData"><input type="text"  name="user_email" value="${login.user_email }" required autocomplete="off"></span></div>
-			<div><div class="innerTitle">직업</div>: <span class="innerData"><input type="text"  name="user_job" value="${login.user_job }" required autocomplete="off"></span></div>
+			<div><div class="innerTitle">직업</div>: <span class="innerData">
+				<select name="user_job" id="job-select" required>
+				    <option value="${login.user_job }">${login.user_job }</option>
+				    <option value="전업주부">전업주부</option>
+				    <option value="학생">학생</option>
+				    <option value="무직">무직</option>
+				    <option value="생산/기술직/무직">생산/ 기술직/ 노무직</option>
+				    <option value="사무직">사무직</option>
+				    <option value="교사/학원강사">교사 / 학원강사</option>
+				    <option value="공무원 (공기업포함)">공무원 (공기업포함)</option>
+				    <option value="경영직">경영직</option>
+				    <option value="전문직">전문직</option>
+				    <option value="서비스/영업/판매직">서비스 / 영업 / 판매직</option>
+				    <option value="농/임/어업">농 / 임 / 어업</option>
+				    <option value="자영업">자영업</option>
+				    <option value="기타">기타</option>
+				</select>
+			</span>
+			</div>
 			<input type="hidden"  name="user_idx" value="${login.user_idx }">
 			<!-- 비밀번호 변경은 따로 영역을 만들어서 처리할거임 -->
 			<div><div class="innerTitle">비밀번호</div>: <span class="innerData"><button type="button" id="pwbtn">비밀번호 변경</button></span></div>
@@ -94,7 +112,7 @@
 	
 	
 	function pwmodify(event) {
-        var pwUrl = '${cpath}/popUp/pwmodify/${login.user_idx}';
+        var pwUrl = '${cpath}/popUp/pwmodify';
         var pwOption = 'top=10, left=10, width=1000, height=600, status=no, menubar=no, toolbar=no, resizable=no';
         window.open(pwUrl, 'popUp', pwOption);
 	}

@@ -29,7 +29,7 @@
 		width: 500px;
 		margin: 0 auto;
 		margin-top: 50px;
-		border: 3px solid darkgrey;
+		border: 5px solid #648c85;
 		border-radius: 25px;
 	}
 	
@@ -71,8 +71,9 @@
 		margin-top: 30px;
 		box-sizing: border-box;
 		cursor: pointer;
-		background-color: #008037;
+		background-color: #1D594E;
 		font-size: 30px;
+		color: white
 	}
 	
 	.idForm > div > input:focus {
@@ -80,7 +81,7 @@
 	}
 	
 	.focusColor {
-		border: 1px solid #008037;
+		border: 1px solid #1D594E;
 	}
 	
 	#menuBar {
