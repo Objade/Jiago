@@ -6,56 +6,111 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>비밀번호 변경</title>
 <style>
+
 	.hidden {
 		display: none;
 	}
+	
+	.pwChangeLogo {
+		width: 300px;
+		margin: 100px auto;
+	}
+	.pwChangeLogo > img {
+		width: inherit;
+	}
+	
+	#pwCheck , #changePw {
+		width: 500px;
+		margin: 0 auto;
+	}
+	
+	.inputLocation {
+		width: 300px;
+		margin: 20px auto;
+	}
+	
+	input {
+		width: inherit;
+		font-size: 25px;
+		text-align: center;
+		box-sizing: border-box;
+		font-family: 'Dongle';
+		border-radius: 10px;
+	}
+	
+	input[type="password"] {
+		border: 2px solid #648c85;
+	}
+	
+
+	
+	input[type="submit"] {
+		background-color: #1D594E;
+		border: 0px solid black;
+	}
+	
+	
+	input[type="submit"]:hover {
+		cursor: pointer;
+		background-color: #648c85;
+		transition: background 0.3s ease-in-out;
+	}
+	
+	input:focus {
+		outline-color: #1D594E;
+	}
+	
 </style>
 </head>
 <body>
 	
+	
+	<div class="pwChangeLogo"><img src="${cpath}/resources/img/logo.png"></div>
+	
 	<div id="pwCheck">
 		<form method="POST">
-			<div><input type="password" name="input_pw" placeholder="비밀번호를 입력하세요" required autocomplete="off"></div>
-			<div><input type="submit" value="입력"></div>
+			<div class="inputLocation"><input type="password" name="input_pw" placeholder="비밀번호를 입력하세요" required autocomplete="off"></div>
+			<div class="inputLocation"><input type="submit" value="입력"></div>
 		</form>
 	</div>
 
 
 
 	<div id="changePw" class="hidden">
-		<form method="POST">
-			<div>
-				<input type="password" name="user_pw" placeholder="변경할 비밀번호를 입력">
-				<span class="pwMessage1"></span>
+		<form id="modifyStart" method="POST">
+			<div class="inputLocation">
+				<input id="modifyPw" type="password" placeholder="변경할 비밀번호를 입력">
+				<span class="checkPwText1"></span>
 			</div>
-			<div>
-				<input type="password" name="user_pw_check" placeholder="비밀번호 확인">
-				<span class="pwMessage2"></span>
+			<div class="inputLocation">
+				<input id="changeCheckPw" type="password" name="user_pw_check" placeholder="비밀번호 확인">
+				<span class="checkPwText2"></span>
 			</div>
-			<input type="submit" value="변경" class="btn" disabled>
+			<div class="inputLocation"><input type="submit" value="변경" class="btn"></div>
 		</form>
 	</div>
 	
-		<script>
-		const pwCheck = document.getElementById('pwCheck')	// 비밀번호 검사
-		const changePw = document.getElementById('changePw')
-		const modifyPw = document.querySelector('input[name="user_pw"]') // 새로운 비밀번호 입력
-		const checkPw = document.querySelector('input[name="user_pw_check"]') // 비밀번호 확인
-		const pwMessage1 = document.querySelector('.pwMessage1')	// 비밀번호 조건 메세지
-		const pwMessage2 = document.querySelector('.pwMessage2')	// 비밀번호 확인 메세지
+	<script>
+		const pwCheck = document.getElementById('pwCheck')						// 변경시 비밀번호 검사
+		const changePw = document.getElementById('changePw')					// div를 숨기기 위한 전체 div
+		const modifyPw = document.getElementById('modifyPw')					// 새로운 비밀번호 입력
+		const changeCheckPw = document.getElementById('changeCheckPw') 			// 비밀번호 확인
+		const checkPwText1 = document.querySelector('.checkPwText1')			// 비밀번호 조건 메세지
+		const checkPwText2 = document.querySelector('.checkPwText2')			// 비밀번호 확인 메세지
+		const modifyStart = document.getElementById('modifyStart')
+	</script>
 		
-		
-	
+	<script>
 		document.forms[0].onsubmit = function(event) {
 			event.preventDefault()
 			
 			const inputPw = document.querySelector('input[name="input_pw"]').value
-			console.log(inputPw)
 			
 			const item1 = {
-				idx: '${idx }',
+				idx: '${login.user_idx }',
 				inputPw: inputPw
 			}
 			
@@ -66,7 +121,7 @@
 					headers: {
 						'Content-Type': 'application/json; charset=utf-8'
 					}	
-			}
+				}
 			
 			fetch(url,tmp)
 			.then(response => response.text())
@@ -80,85 +135,88 @@
 		}
 	</script>
 	
-	
-	
-	
-	
-	
-	
 	<script>
 
-		
-		function pwHandler1(event) {
-			const addPwValue = event.target.value
-			if(addPwValue.length > 16) {
-				pwMessage1.innerText = '비밀번호는 최대 16자리까지만 가능합니다'	
-				pwMessage1.style.color = 'red'
-			}
-			else {
-				pwMessage1.innerText = '사용가능한 비밀번호 입니다'
-				pwMessage1.style.color = 'blue'
-			}
+	function modifyPwHandler(event) {
+		changeCheckPw.value = ''
+		checkPwText2.innerText = ''
+		const joinPwValue = event.target.value
+		if(joinPwValue.length == 0) {
+			checkPwText1.innerText = ''
+			changeCheckPw.setAttribute('disabled',true)
+			return
 		}
-		
-		modifyPw.onkeyup = pwHandler1
-		
-		
-		function pwHandler2(event2) {
-			const btn = document.querySelector('.btn')
-			const checkPwValue = event2.target.value
-			console.log('위' + modifyPw.value)
-			console.log('아래' + checkPwValue)
-			if(checkPwValue == modifyPw.value ) {
-				pwMessage2.innerText = '비밀번호가 서로 일치합니다'
-				pwMessage2.style.color = 'blue'
-				btn.disabled = false
-			}
-			else {
-				pwMessage2.innerText = '비밀번호가 서로 일치하지 않습니다'
-				pwMessage2.style.color = 'red'
-				btn.disabled = true
-			}
+		const pw_if = /(?=.*[0-9])(?=.*[a-z])(?=.*\W)(?=\S+$).{8,20}/
+		if(pw_if.test(joinPwValue)) {
+			checkPwText1.innerText = '사용가능한 비밀번호입니다'
+			checkPwText1.style.color = 'blue'
+			changeCheckPw.removeAttribute('disabled')		// 사용가능한 비밀번호가 아니면 비밀번호 확인 비활성화
 		}
-		
-		checkPw.onkeyup = pwHandler2
+		else {
+			checkPwText1.innerText = '조건에 부합되지 않은 비밀번호입니다.'
+			checkPwText1.style.color = 'red'
+			changeCheckPw.setAttribute('disabled',true)
+		}
+	}
+	
+	modifyPw.addEventListener('keyup', modifyPwHandler)
+	
+	
+	
+	function checkPwHandler(event) {
+		const checkPwValue = event.target.value
+		if(checkPwValue == modifyPw.value) {
+			modifyPw.setAttribute('name','user_pw')
+			checkPwText2.innerText = '비밀번호가 서로 일치합니다'
+			checkPwText2.style.color = 'blue'
+			console.log(modifyPw.value)
+		}
+		else {
+			modifyPw.removeAttribute('name')
+			checkPwText2.innerText = '비밀번호가 서로 일치하지 않습니다'
+			checkPwText2.style.color = 'red'
+		}
+	}
+	
+	changeCheckPw.addEventListener('keyup', checkPwHandler)
+	
+
 		
 		function pwUpdate(event) {
 			event.preventDefault()
 			url = '${cpath}/popUp/pwUpdate'
+			console.log('${login.user_idx}')
+			console.log(modifyPw.value)
+			console.log(changeCheckPw.value)
+			
 			
 			const item2 = {
-				idx: '${idx }',
+				idx: '${login.user_idx }',
 				modifyPw: modifyPw.value,
-				checkPw: checkPw.value
+				checkPw: changeCheckPw.value
 			}
-			const cls = {
+			const res = {
 				method: 'POST',
 				body: JSON.stringify(item2),
 				headers: {
 					'Content-Type': 'application/json; charset=utf-8'
 				}	
 			}
-			fetch(url, cls)
+			fetch(url, res)
 			.then(response => response.text())
 			.then(text => {
 				console.log(text)
 				if(text == 1) {
 					alert('비밀번호가 성공적으로 수정되었습니다.')
 					window.close();
-					
 				}
-				
+				else {
+					alert('오류가 발생했습니다.')
+				}
 			})
-			
-			
 		}
 		
-		
-		
-		
-		
-		document.forms[1].onsubmit = pwUpdate
+		modifyStart.onsubmit = pwUpdate
 		
 		
 		
