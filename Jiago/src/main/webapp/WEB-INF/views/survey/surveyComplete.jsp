@@ -3,22 +3,52 @@
 <%@ include file="../header.jsp" %>
 
 
+
+<style>
+   .complete_wrap {
+      width: 700px;
+      margin: 0px auto;
+      align-items: center;
+      text-align: center;
+   }
+
+   .complete_wrap > img {
+      width: 500px;
+
+   }
+
+   .complete_wrap > form > input[type="number"] {
+      width: 160px;
+      height: 20px;
+   }
+
+   .complete_wrap > form > input[type="submit"] {
+   	  background-color: #1D594E;
+   	  color: white;
+      height: 25px;
+   }
+</style>
+
+
+
+
+
 <div class="main">
-	<h3>설문 완료페이지</h3>
-	<img src="${cpath }/resources/img/surveyComplete.png" width="250px">
-
-	<h3>${userName }님이 보유하신 포인트는 ${userPoint } 입니다</h3>
-
-	<div class="userPoint"></div>
-
-	<form method="POST" action="${cpath }/survey/surveyComplete">
-		<input type="hidden" name="survey_idx" value="${survey_idx }">
-		<input type="hidden" name="user_idx" value="${login.user_idx }">
-		<input type="number" id="point" name="total_donate" placeholder="기부할 금액 입력하세요" max="${userPoint }" min="0" step="100">
-		<input type="submit" value="기부하기">
-	</form>
-
-	<a href="${cpath }">나중에 기부하기</a>
+	<div class="complete_wrap">
+		<h1>설문 완료페이지</h1>
+		<img src="${cpath }/resources/img/surveyComplete.png" width="250px">
+	
+		<h3>${userName }님이 보유하신 포인트는 ${userPoint } 원 입니다</h3>
+		
+		<form method="POST" action="${cpath }/survey/surveyComplete">
+			<input type="hidden" name="survey_idx" value="${survey_idx }">
+			<input type="hidden" name="user_idx" value="${login.user_idx }">
+			<input type="number" id="point" name="total_donate" placeholder="기부할 금액 입력하세요" max="${userPoint }" min="0" step="100">
+			<input type="submit" value="기부하기">
+		</form>
+	
+		<a href="${cpath }">나중에 기부하기</a>
+	</div>
 </div>
 
 <script>
@@ -28,8 +58,6 @@
         const point = document.getElementById("point").value;
         alert(point +'포인트 기부 감사합니다')
     }
-
-    
     
     form.onsubmit = formHandler
 
@@ -37,10 +65,13 @@
 
 <script>
 	window.onkeydown = function() {
-		var kcode = event.keycode;
+		var kcode = event.keyCode;
 		if(kcode == 8 || kcode == 116) event.returnValue = false;
 	}
 </script>
+
+
+
 
 
 </body>
