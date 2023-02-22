@@ -10,6 +10,14 @@
 <title>회원가입 페이지</title>
 <style>
 	
+	.warningImg {
+		background-image: url(${cpath}/resources/userImg/경고.png);
+  		background-position: 20px center;
+  		background-size: 30px;
+ 		background-repeat: no-repeat;
+		text-indent: 50px;
+	}
+	
 	.hidden { display: none}
 
 	/* 약간 동의 */
@@ -106,18 +114,18 @@
 	<div id="joinForm" class="hidden"> <!-- class="hidden"  -->
 		<form method="POST" action="${cpath }/user/join">
 			<div>
-				<input type="text" id="joinId" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" onclick="joinIdCheck()">중복 검사</button></span><span class="checkIdText"></span>
+				<input type="text" name="" id="joinId" placeholder="신규 아이디 입력" required autocomplete="off"><span><button type="button" onclick="joinIdCheck()">중복 검사</button></span><span class="checkIdText"></span>
 				<div>영문자로 시작하는 영문자 + 숫자의 조합의 6 ~ 12자 </div>
 			</div>
 			
 			<div>
-				<input type="password" id="joinPw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
+				<input type="password" name="" id="joinPw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
 				<div>소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 			</div>
-			<div><input type="password" id="checkPw" name="user_pw_check" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
+			<div><input type="password" id="checkPw" placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
 
 			<div>
-				<input type="text" id="joinName" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
+				<input type="text" id="joinName" name="" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
 				<div>한글, 숫자 , 영문 자유 형식의 4 ~ 12자</div>
 			</div>
 			<div><input type="date" name="user_birth" required>생일 입력</div>
@@ -131,13 +139,13 @@
 				<input type="text" id="address" placeholder="주소" required><br>
 				<input type="text" id="detailAddress" placeholder="상세주소" required>
 				<input type="text" id="extraAddress" placeholder="참고항목" required>
-				<input type="hidden" id="userAddress" name="user_address">
+				<input type="hidden" id="userAddress" name="" >
 			</div>
 			<div class="phone">
             	<input id="phone1" type="text" size="1" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone1()" required> -
             	<input id="phone2" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone2()" required> -
             	<input id="phone3" type="text" size="3" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); changePhone3()" required>
-      			<input type="hidden" id="userPhone" name="user_phone">
+      			<input type="hidden" id="userPhone" name="" >
       		</div>
       		<div>
       			<input id="email1" type="text"> @ 
@@ -149,7 +157,7 @@
       			</select>
       			<span class="directly hidden"><input type="text" id="directEmail" placeholder="직접 입력"></span>
       			<span><button id="checkEmailSend" type="button">인증메일 전송</button></span>
-      			<input type="hidden" id="userEmail" name="user_email">
+      			<input type="hidden" id="userEmail" name="">
       		</div>
       		
 			<div>
@@ -158,14 +166,14 @@
 				    <option value="전업주부">전업주부</option>
 				    <option value="학생">학생</option>
 				    <option value="무직">무직</option>
-				    <option value="생산/ 기술직/ 노무직">생산/ 기술직/ 노무직</option>
+				    <option value="생산/기술직/무직">생산/ 기술직/ 노무직</option>
 				    <option value="사무직">사무직</option>
-				    <option value="교사 / 학원강사">교사 / 학원강사</option>
+				    <option value="교사/학원강사">교사 / 학원강사</option>
 				    <option value="공무원 (공기업포함)">공무원 (공기업포함)</option>
 				    <option value="경영직">경영직</option>
 				    <option value="전문직">전문직</option>
-				    <option value="서비스 / 영업 / 판매직">서비스 / 영업 / 판매직</option>
-				    <option value="농 / 임 / 어업">농 / 임 / 어업</option>
+				    <option value="서비스/영업/판매직">서비스 / 영업 / 판매직</option>
+				    <option value="농/임/어업">농 / 임 / 어업</option>
 				    <option value="자영업">자영업</option>
 				    <option value="기타">기타</option>
 				</select>
@@ -209,13 +217,13 @@
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
 				checkIdText.style.color = 'blue'
-				joinId.setAttribute('name','user_id')
-				console.log(joinId.value)
+				joinId.name = 'user_id'
+				console.log(joinId.name)
 			}
 			else {
 				checkIdText.innerText = '조건이 맞지 않거나 중복된 계정이 존재합니다.'
 				checkIdText.style.color = 'red'
-				joinId.removeAttribute('name')
+				joinId.name = ''
 			}
 		})
 	}
@@ -261,13 +269,13 @@
 		function checkPwHandler(event) {
 			const checkPwValue = event.target.value
 			if(checkPwValue == joinPw.value) {
-				joinPw.setAttribute('name','user_pw')
+				joinPw.name = 'user_pw'
 				checkPwText2.innerText = '비밀번호가 서로 일치합니다'
 				checkPwText2.style.color = 'blue'
 				console.log(joinPw.value)
 			}
 			else {
-				joinPw.removeAttribute('name')
+				joinPw.name = ''
 				checkPwText2.innerText = '비밀번호가 서로 일치하지 않습니다'
 				checkPwText2.style.color = 'red'
 			}
@@ -299,7 +307,8 @@
 			.then(text => {
 				console.log(text)
 				if(text != 1) {
-					joinName.setAttribute('name','user_name')
+					console.log(joinName.name)
+					joinName.name = 'user_name'
 					nameCheckMessage.innerText = '사용 가능한 별명 입니다.'
 					nameCheckMessage.style.color = 'blue'
 					return
@@ -307,7 +316,7 @@
 			})
 		}
 		else {
-			joinName.removeAttribute('name')
+			joinName.name = ''
 			nameCheckMessage.innerText = '이미 존재하는 이름이거나 조건 양식에 맞지 않습니다.'
 			nameCheckMessage.style.color = 'red'
 		}	
@@ -371,6 +380,7 @@
 	const userAddress = document.getElementById('userAddress')
 	
 	function addressHandler(event) {
+		userAddress.name = 'user_address'
 		userAddress.value = 
 			document.getElementById('postcode').value +
 			document.getElementById("address").value + ' ' +
@@ -403,8 +413,19 @@
 		const phone1 = document.getElementById("phone1").value
 		const phone2 = document.getElementById("phone2").value
 		const phone3 = document.getElementById("phone3").value // ****
-	    if(phone3.length == 4) userPhone.value = phone1 + '-' + phone2 + '-' + phone3
-	    console.log(userPhone)
+	    if(phone3.length == 4) {
+	    	const allPhone = phone1 + '-' + phone2 + '-' + phone3
+	    	const url = '${cpath}/user/checkPhoneNum/' + allPhone + '/'
+	    	fetch(url)
+	    	.then(response => response.text())
+	    	.then(text => {
+	    		if(text != 1) {
+	    	    	userPhone.name = 'user_phone'
+	    		    userPhone.value = allPhone
+	    		}
+	    	})
+	    }
+	    
 	}
 
 </script>
@@ -458,6 +479,26 @@
 
 </script>
 
+<script>
+
+ 
+ joinForm.onsubmit = function(event) {
+	  const checkNameAll = Array.from(document.querySelectorAll('input[name]'));
+	  const result = checkNameAll.filter(value => value.name == '');
+
+	  if (result != null && result != '') {
+	    result[0].scrollIntoView();
+	    if (result[0].id == 'userEmail') alert('이메일 인증이 필요합니다!!');
+	    event.preventDefault();
+	    return false;
+	  } else {
+	    joinForm.unbind();
+	    return true;
+	  }
+	}
+
+
+</script>
 
 </body>
 </html>

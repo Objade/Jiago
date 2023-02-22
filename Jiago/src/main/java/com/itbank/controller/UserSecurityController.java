@@ -89,7 +89,7 @@ public class UserSecurityController {
 			String sendNumber = ran.nextInt(100000) + 100000 + "";
 			System.out.println("인증 메일 전송시 번호 : " + sendNumber);
 			int row = mailService.sendMail(email, sendNumber);
-			if(row == 1) sendNumberMap.put("saveCheckNumber", sendNumber);
+			sendNumberMap.put("saveCheckNumber", sendNumber);
 		}
 		return type;
 	}
@@ -97,6 +97,7 @@ public class UserSecurityController {
 	@PostMapping("pwFindMailNumber")
 	public int pwFindMailNumber(@RequestBody String number) {
 		String saveCheckNumber = sendNumberMap.get("saveCheckNumber");
+		System.out.println(saveCheckNumber);
 		String inputCheckNumber = number;
 		
 		if(saveCheckNumber.equals(inputCheckNumber)) {
@@ -147,6 +148,12 @@ public class UserSecurityController {
 		System.out.println(saveCheckNumber);
 		System.out.println(number);
 		return saveCheckNumber.equals(number) ? "인증완료" : "인증실패";
+	}
+	
+	@GetMapping("checkPhoneNum/{phone}")
+	public int checkPhoneNum(@PathVariable("phone") String phone) {
+		int row = userService.checkPhoneNum(phone);
+		return row;
 	}
 	
 	

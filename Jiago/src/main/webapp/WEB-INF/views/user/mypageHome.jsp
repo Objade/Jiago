@@ -40,7 +40,7 @@
 					<h2>${login.grade } 등급입니다.</h2>
 				</div>
 			</div>
-			<div class="donation"><a href="${cpath }/survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=">기부하기</a></div>
+			<div class="donation"><a href="${cpath }/donate/donateList">기부하기</a></div>
 			
 			
 			

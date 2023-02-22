@@ -33,7 +33,7 @@ public class MailService {
 	private Resource mailForm;
 	
 	public int sendMail(String email, String sendNumber) throws IOException {
-		if(userDao.getEmail(email) == 1) return -1; 
+		// if(userDao.getEmail(email) == 1) return -1; 
 		
 		
 		Scanner sc = new Scanner(account.getFile());

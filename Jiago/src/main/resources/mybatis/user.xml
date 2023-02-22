@@ -58,6 +58,18 @@
 		select user_pw from member where user_idx=#{idx}
 	</select>
 	
+	<!-- 삭제지만 withdraw를 Y로 업데이트 한다 -->
+	<update id="quit" parameterType="int">
+		update member set
+		user_pw = '탈퇴', user_name = '탈퇴', user_birth = '00/01/01', user_gender = '남',
+		user_address = '탈퇴', user_job = '탈퇴',
+		user_type = 'Member', user_joindate = '00/01/01', user_withdraw = 'Y', user_agree = 'Y'
+		where user_idx =#{idx }
+	
+	</update>
+	
+	
+	
 	<!-- 회원 가입시 아이디 중복 검사 -->
 	<select id="joinId" parameterType="String" resultType="int">
 		select count(user_id) from member where user_id=#{id}
@@ -72,4 +84,11 @@
 	<select id="getEmail" parameterType="String" resultType="int">
 		select count(user_email) from member where user_email=#{email}
 	</select>
+	
+	<select id="checkPhoneNum" parameterType="String" resultType="int">
+		select count(user_phone) from member where user_phone=#{phone}
+	</select>
+	
+
+	
 </mapper>
