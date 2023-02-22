@@ -1,68 +1,116 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<style>
+
+
+    .surveyList_start > img {
+            width: 600px;
+        }
+
+        .surveyList.surveyTitle.question {
+            font-size: 50px;
+        }
+
+        .surveyList_wrap {
+            margin: 0px auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+        }
+        
+        .example_wrap {
+           width: 150px;
+           height: 270px;
+        
+        }
+
+        .button_wrap {
+            margin: 0px auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+</style>
+
+
 
 
 <div class="main" value="0">
- 	 <div class="surveyList_start"><img src="${cpath }/resources/img/survey_startpage.png" style="width: 300px;"></div>
-
-   <c:forEach var="dto" items="${list }" varStatus="status">
-      <div class="surveyList item" question_idx="${dto.question_idx}" index="${status.count }">
-         <div class="surveyList surveyTitle question">${status.count} ${dto.question_content}</div>
-      </div>
-   </c:forEach>
-
-   <c:forEach var="dtoEX" items="${exList }" varStatus="status">
-      <div class="surveyList example" question_idx="${dtoEX.question_idx}">
-         <div class="surveyList surveyExample">
-            <input type="radio" name="${dtoEX.question_idx }" value="${dtoEX.example_content }" required>
-               ${dtoEX.example_content }
+   <div class="surveyList_all">
+         <div class="surveyList_wrap">
+           <div class="surveyList_start"><img src="${cpath }/resources/img/survey_startpage.png"></div>
+      
+               <c:forEach var="dto" items="${list }" varStatus="status">
+                  <div class="surveyList item" question_idx="${dto.question_idx}" index="${status.count }">
+                     <div class="surveyList surveyTitle question">${status.count} ${dto.question_content}</div>
+                  </div>
+               </c:forEach>
+      
+            <diV class="example_wrap hidden" value="0">
+               <c:forEach var="dtoEX" items="${exList }" varStatus="status">
+                  <div class="surveyList example" question_idx="${dtoEX.question_idx}">
+                     <div class="surveyList surveyExample">
+                        <input type="radio" name="${dtoEX.question_idx }" value="${dtoEX.example_content }" required>
+                           ${dtoEX.example_content }
+                     </div>
+                  </div>
+               </c:forEach>
+            </div>
          </div>
+         
+      
+      
+      <div class="button_wrap">
+         <button class="button before">이전</button>
+         <button class="button after">다음</button>
+          
+         <a href="${cpath }/survey/surveyComplete/${survey_idx}"><button class="button submit">제출</button></a>
       </div>
-   </c:forEach>
+   </div>
 </div>
 
-<button class="button before">이전</button>
-<button class="button after">다음</button>
- 
-<a href="${cpath }/survey/surveyComplete/${survey_idx}"><button class="button submit">제출</button></a>
+   <script>
+      // 문제와 보기의 question_idx가 같으면 보기에 index를 문제의 index로 넣는다.
 
+      const item1 = Array.from(document.querySelectorAll('.surveyList.item'))
+      const item2 = Array.from(document.querySelectorAll('.surveyList.example'))      
 
-	<script>
-		// 문제와 보기의 question_idx가 같으면 보기에 index를 문제의 index로 넣는다.
+      const item1_get = item1.map(e => console.log(e.getAttribute('question_idx')))   // 문제의 question idx
+   
+      const item2_get = item2.map(e => console.log(e.getAttribute('question_idx')))   // 보기의 question idx
+      
+      item1.forEach(e1 => {
+         const idx1 = e1.getAttribute('question_idx')
+         item2.forEach(e2 => {
+            const idx2 = e2.getAttribute('question_idx')
+            if(idx1 == idx2){
 
-		const item1 = Array.from(document.querySelectorAll('.surveyList.item'))
-		const item2 = Array.from(document.querySelectorAll('.surveyList.example'))		
+               e2.setAttribute('index', +e1.getAttribute('index'))
+            }
+         })
+      })
+      
+   </script>
+   
+   
+   <script>
+   //   설문 시작 시 이전 버튼 빼고 다음버튼을 설문 시작으로 변경하기
+   const before = document.querySelector('.button.before')
+   const after = document.querySelector('.button.after')
 
-		const item1_get = item1.map(e => console.log(e.getAttribute('question_idx')))	// 문제의 question idx
-	
-		const item2_get = item2.map(e => console.log(e.getAttribute('question_idx')))	// 보기의 question idx
-		
-		item1.forEach(e1 => {
-			const idx1 = e1.getAttribute('question_idx')
-			item2.forEach(e2 => {
-				const idx2 = e2.getAttribute('question_idx')
-				if(idx1 == idx2){
-
-					e2.setAttribute('index', +e1.getAttribute('index'))
-				}
-			})
-		})
-		
-	</script>
-	
-	
-	<script>
-	//	설문 시작 시 이전 버튼 빼고 다음버튼을 설문 시작으로 변경하기
-	const before = document.querySelector('.button.before')
-	const after = document.querySelector('.button.after')
-
-	console.log(before)
-	console.log(after)
+   console.log(before)
+   console.log(after)
 
 
 
-	</script>
+   </script>
 
 
    <script>
@@ -86,20 +134,20 @@
       
       // 설문 시작 시 멘트 변경      
       function surveyStart(event) {
-		buttonBefore.classList.add('hidden')
-		buttonAfter.innerText = '설문시작'
+      buttonBefore.classList.add('hidden')
+      buttonAfter.innerText = '설문시작'
 
-	  }
+     }
 
-	  window.onload = surveyStart
+     window.onload = surveyStart
       
       
-		
+      
       // 정답 제출할거
       function submitHandler(event) {
-    	 const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
-    	     	          
-    	 if(inputArr.length == questionAll.length) {   // 문항수와 정답지의 길이가 같으면 실행함
+        const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
+                         
+        if(inputArr.length == questionAll.length) {   // 문항수와 정답지의 길이가 같으면 실행함
            
             const ob = {
                user_idx: '${login.user_idx}',
@@ -133,15 +181,15 @@
          const submit = document.querySelector('.button.submit')
          
          if(inputArr.length == questionAll.length) {  
-	     	buttonSubmit.classList.remove('hidden')
-	     }
+           buttonSubmit.classList.remove('hidden')
+        }
       }
       input.map(e => e.onclick = inputHandler)
       
       
       // 이전 문제와 보기를 보여주는 핸들러
         function buttonBeforeHandler(event) {
-    	 buttonAfter.classList.remove('hidden')
+        buttonAfter.classList.remove('hidden')
          if(main.getAttribute('value') > 1) {
             questionAll.map(e => e.classList.add('hidden'))
             exampleAll.map(e => e.classList.add('hidden'))
@@ -157,19 +205,19 @@
             question.forEach(e => e.classList.remove('hidden'))
             example.forEach(e => e.classList.remove('hidden'))
          }
-    	 if(main.getAttribute('value') == 1) {
-            	buttonBefore.classList.add('hidden')
-       	  }
+        if(main.getAttribute('value') == 1) {
+               buttonBefore.classList.add('hidden')
+            }
         }
 
       // 다음 문제와 보기를 보여주는 핸들러
         function buttonAfterHandler(event) {
-    	  buttonBefore.classList.remove('hidden')
+         buttonBefore.classList.remove('hidden')
          if(main.getAttribute('value') < questionAll.length) {
-        	after.innerText = '다음'
-        	const start = document.querySelector('.surveyList_start')
-			start.classList.add('hidden')
-        	        	 
+           after.innerText = '다음'
+           const start = document.querySelector('.surveyList_start')
+         start.classList.add('hidden')
+                       
             questionAll.map(e => e.classList.add('hidden'))
             exampleAll.map(e => e.classList.add('hidden'))
             main.setAttribute('value', +main.getAttribute('value')+1)
@@ -184,12 +232,22 @@
             question.forEach(e => e.classList.remove('hidden'))
             example.forEach(e => e.classList.remove('hidden'))
          }
-    	  if(main.getAttribute('value') == questionAll.length) {
-         	buttonAfter.classList.add('hidden')
-    	  }
-    	  if(main.getAttribute('value') == 1) {
-           	buttonBefore.classList.add('hidden')
-      	  }
+         if(main.getAttribute('value') == questionAll.length) {
+            buttonAfter.classList.add('hidden')
+         }
+         if(main.getAttribute('value') == 1) {
+              buttonBefore.classList.add('hidden')
+           }
+         
+         const example_wrap = document.querySelector('.example_wrap')
+          example_wrap.classList.remove('hidden')
+         
+          const surveyList_all = document.querySelector('.surveyList_all')
+
+          surveyList_all.style.border = '3px solid #dadada';
+          surveyList_all.style.width = '600px';
+          surveyList_all.style.margin = '0 auto';
+         
         }
       
       buttonBefore.onclick = buttonBeforeHandler

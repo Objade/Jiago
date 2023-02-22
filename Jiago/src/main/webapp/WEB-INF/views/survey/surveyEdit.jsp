@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SurveyList</title>
+<title>SurveyEdit</title>
 <style>
    #root {
       width: 1200px;
@@ -119,7 +119,8 @@
          padding-right: 5px;
          width: 25px;
       }
-
+      
+      
 
 </style>
 
@@ -127,10 +128,8 @@
 <body>
    
    
-   <div class="img_home"><a href="${cpath }"><img src="${cpath }/resources/img/홈.png">Home</a></div>
-   
    <div id="root">
-   <h1>설문 목록</h1>
+   <h1>설문 수정</h1>
       <table class="surveyManage surveyList">
          <thead>
             <tr>
@@ -138,6 +137,7 @@
                <th>회사 번호</th>
                <th>설문 제목</th>
                <th>조사 기간</th>
+               <th></th>
             </tr>
          </thead>
          
@@ -148,35 +148,35 @@
                   <td>${dto.company_idx}</td>
                   <td>${dto.survey_title}</td>
                   <td>${dto.survey_date}</td>
+                  <td><a href="${cpath }/survey/surveyModify/${dto.survey_idx}"><button>수정</button></a></td>
                </tr>
             </c:forEach>
          </tbody>
       </table>
-      <div class="img_survey"><a href="${cpath }/survey/surveyAdd"><img src="${cpath }/resources/img/설문추가.png">설문 추가</a></div>
-      
+     
       <div class="page_wrap">
           <div class="page_nation">
             <c:if test="${paging.prev }">
-               <a class="arrow pprev" href="${cpath }/survey/surveyManage?page=1&check=${value }"></a>
+               <a class="arrow pprev" href="${cpath }/survey/surveyEdit?page=1&check=${value }"></a>
             </c:if>   
           
             <c:if test="${paging.prev }">
-               <a class="arrow prev" href="${cpath }/survey/surveyManage?page=${paging.begin - 1}&check=${value }">
+               <a class="arrow prev" href="${cpath }/survey/surveyEdit?page=${paging.begin - 1}&check=${value }">
                
                </a>
             </c:if>
             
             <c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
                <a style="font-size: 20px" class="${paging.page == i ? 'active' : '' }" 
-                  href="${cpath }/survey/surveyManage?page=${i}&check=${value }">${i}</a>
+                  href="${cpath }/survey/surveyEdit?page=${i}&check=${value }">${i}</a>
             </c:forEach>
             
             <c:if test="${paging.next }">
-               <a class="arrow next" href="${cpath }/survey/surveyManage?page=${paging.end + 1}&check=${value }"></a>
+               <a class="arrow next" href="${cpath }/survey/surveyEdit?page=${paging.end + 1}&check=${value }"></a>
             </c:if>
             
             <c:if test="${paging.next }">
-               <a class="arrow nnext" href="${cpath }/survey/surveyManage?page=${paging.pageCount }&check=${value }"></a>
+               <a class="arrow nnext" href="${cpath }/survey/surveyEdit?page=${paging.pageCount }&check=${value }"></a>
             </c:if>   
          </div>
       </div>
