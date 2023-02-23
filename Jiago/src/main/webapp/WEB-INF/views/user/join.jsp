@@ -130,8 +130,8 @@
 			</div>
 			<div><input type="date" name="user_birth" required>생일 입력</div>
 			<div>
-				<input type="radio" name="user_gender" value="남" required>남성
-				<input type="radio" name="user_gender" value="여" required>여성
+				<input type="radio" name="user_gender" value="남성" required>남성
+				<input type="radio" name="user_gender" value="여성" required>여성
 			</div>
 			<div>
 				<input type="text" id="postcode" placeholder="우편번호" required>
@@ -178,7 +178,7 @@
 				    <option value="기타">기타</option>
 				</select>
 			</div>
-			<div><input type="hidden" name="user_type" value="Admin"></div> <!-- 얘는 임시 -->
+			<div><input type="hidden" name="user_type" value="Member"></div> <!-- 얘는 임시 -->
 			<div><input type="submit" value="입력"></div>
 		</form>
 	</div>
@@ -213,7 +213,7 @@
 		fetch(url)
 		.then(response => response.text())
 		.then(text => {			 
-			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{6,12}$/g
+			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{5,12}$/g
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
 				checkIdText.style.color = 'blue'

@@ -50,8 +50,24 @@
 		update member set user_pw=#{user_pw} where user_idx=#{user_idx}
 	</update>
 	
+	<!-- 현재 보유 포인트 가져오기 -->
 	<select id="getPoint" parameterType="int" resultType="String">
 		select sum(point) from point where user_idx=#{user_idx}
+	</select>
+	
+	<!-- 총 기부 포인트 가져오기 -->
+	<select id="getTotalPoint" parameterType="int" resultType="String">
+		select sum(total_donate) from user_donate where user_idx=#{user_idx}
+	</select>
+	
+	<!-- 등급 지정 -->
+	<update id="setGrade" parameterType="user">
+		update member set user_grade=#{user_grade } where user_idx=#{user_idx }
+	</update>
+	
+	<!-- 등급 가져오기 -->
+	<select id="getGrade" parameterType="int" resultType="String">
+		select user_grade from member where user_idx=#{user_idx }
 	</select>
 	
 	<select id="getPw" parameterType="String" resultType="String">
@@ -88,7 +104,5 @@
 	<select id="checkPhoneNum" parameterType="String" resultType="int">
 		select count(user_phone) from member where user_phone=#{phone}
 	</select>
-	
-
 	
 </mapper>

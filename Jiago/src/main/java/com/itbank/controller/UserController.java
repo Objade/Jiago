@@ -31,12 +31,22 @@ public class UserController {
 		UserDTO userAccount = userService.login(account);
 		mav.setViewName("user/result");
 		if(userAccount == null) {
-			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었습");
+			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었습니다.");
 			mav.addObject("address","user/login");
 			return mav;
 		}
-		mav.addObject("result","로그인에 성공 했습");
+		
+		mav.addObject("result","로그인에 성공 했습니다.");
 		session.setAttribute("login", userAccount);	
+		
+		if(session.getAttribute("login") != null) {
+			UserDTO user = (UserDTO)session.getAttribute("login");
+			String userType = user.getUser_type();
+			if(userType.equals("Admin")) {
+				mav.addObject("result","사이트 관리자 "+ user.getUser_name() + "님 접속 되었습니다.");
+				mav.addObject("address","manage/manageHome");
+			}
+		}
 		return mav;
 	}
 	
@@ -47,7 +57,7 @@ public class UserController {
 	public ModelAndView join(UserDTO user) {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.join(user);
-		String result = row == 1 ? "회원 가입에 성공했습" : "오류가 발생했습";
+		String result = row == 1 ? "회원 가입에 성공했습니다." : "오류가 발생했습니다.";
 		mav.addObject("result", result);
 		return mav;
 	}
@@ -57,7 +67,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/result");
 		session.removeAttribute("login");
-		mav.addObject("result","로그아웃에 성공했습");
+		mav.addObject("result","로그아웃에 성공했습니다.");
 		return mav;
 	}
 	
@@ -79,10 +89,25 @@ public class UserController {
 	@GetMapping("mypageHome")
 	public ModelAndView mypage(HttpSession session) {
 		ModelAndView mav = new ModelAndView("user/mypageHome");
-		UserDTO user = (UserDTO)session.getAttribute("login");
-		System.out.println(user.getUser_idx());
-		String point = userService.getPoint(user.getUser_idx());
-		if(point != null) mav.addObject("point",point);
+		UserDTO user = (UserDTO) session.getAttribute("login");
+		int user_idx = user.getUser_idx();	// session idx 가져오기
+		
+		String point = userService.getPoint(user_idx);			// 현재 보유 포인트
+		System.out.println("111111111111111111");
+		
+		
+		String totalPoint = userService.getTotalPoint(user_idx);	// 사용자 단일 계정 총합 기부
+		System.out.println("222222222222222222222");
+		
+		String grade = userService.getGrade(user_idx);
+		System.out.println("333333333333333333333");
+		
+		if(point != null) {
+		System.out.println("444444444444444");
+			mav.addObject("point",point);
+			mav.addObject("totalPoint",totalPoint);
+			mav.addObject("grade",grade);
+		}
 		return mav; 
 	}
 	
@@ -96,7 +121,7 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("user/result");
 		int row = userService.update(user);
 		if(row == 1) {
-			mav.addObject("result","회원 정보 수정에 성공했습");
+			mav.addObject("result","회원 정보 수정에 성공했습니다.");
 		} else {
 			mav.addObject("result","오류가 발생했습");
 			
@@ -111,10 +136,10 @@ public class UserController {
 			UserDTO user = new UserDTO();
 			user.setUser_pw(first);
 			int row = userService.newPasswordSet(user);
-			if(row == 1) mav.addObject("result","비밀번호가 변경되었습");
+			if(row == 1) mav.addObject("result","비밀번호가 변경되었습니다.");
 			return mav;
 		}
-		mav.addObject("result","오류가 발생했습");
+		mav.addObject("result","오류가 발생했습니다.");
 		mav.addObject("address","user/findLoginPw");
 		return mav;
 	}

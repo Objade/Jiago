@@ -33,11 +33,12 @@
 			
 			<div class="pointInfo">
 				<div class="left">
-					<img src="${cpath }/resources/userImg/${login.grade }.png">
+					<img src="${cpath }/resources/userImg/${grade }.png">
 				</div>
 				<div class="right">
-					<h1>${login.user_id }님  현재 보유 포인트 : <span>${point }</span> </h1>
-					<h2>${login.grade } 등급입니다.</h2>
+					<h1>${login.user_name }님  현재 보유 포인트 : <span>${point }</span> </h1>
+					<h1>${login.user_name }님  총 기부 금액 : <span>${totalPoint }</span> </h1>
+					<h2>현재 ${grade } 등급입니다.</h2>
 				</div>
 			</div>
 			<div class="donation"><a href="${cpath }/donate/donateList">기부하기</a></div>

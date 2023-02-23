@@ -42,6 +42,14 @@ public interface UserDAO {
 
 	int checkPhoneNum(String phone);
 
+	String getTotalPoint(int userIdx);
+
+	int setGrade(UserDTO user);
+
+	String getGrade(int user_idx);
+
+	int checkUserType(UserDTO user);
+
 
 	
 }

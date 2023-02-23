@@ -64,6 +64,8 @@ public class DonateController {
       
       donateService.minusUserPoint(hashmap);
       int row = donateService.addUserPoint(hashmap);
+      int row2 = userService.setGrade(userIdx);				// DB에 등급 업데이트
+      System.out.println("setGrade 성공 여부 : " + row2);
       
       
       return row == 1 ? "redirect:/donate/donateList" : "/";

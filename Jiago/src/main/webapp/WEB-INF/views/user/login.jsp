@@ -14,14 +14,15 @@
 		font-family: 'Dongle';
 	}
 
-	#loginLogo > img {
-		width: inherit;
-	}
 	
 	#loginLogo {
 		width: 400px;
 		margin: 0 auto;
 		margin-top: 50px;
+	}
+	
+	#loginLogo > a > img {
+		width: 400px;
 	}
 	
 	#accountInput {
@@ -102,7 +103,7 @@
 </style>
 </head>
 <body>
-	<div id="loginLogo"><img src="${cpath}/resources/img/logo.png "></div>
+	<div id="loginLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png "></a></div>
 	
 	<form method="POST" action="${cpath }/user/login">
 		<div id="accountInput">
@@ -162,6 +163,8 @@
 		
 		
 	</script>
+	
+	
 	
 	
 </body>
