@@ -4,212 +4,237 @@
 
 
 <style>
-.main2 {
-	margin: 150px auto 0 auto;
-	display: flex;
-	justify-content: center;
-	width: 1700px;
-}
-
-.donate {
-	background-color: #1B434A;
-	color: white;
-	width: 60%;
-}
-
-.donate_title {
-	font-size: 50px;
-	margin-left: 20px;
-}
-
-.donate_total {
-	display: flex;
-	justify-content: space-around;
-}
-
-.give {
-	display: flex;
-	justify-content: space-around;
-}
-
-.give>.right>div {
-	margin: 10px 0px;
-}
-
-.donate_detail {
-	text-align: center;
-}
-
-.currentPoint {
-	background-color: white;
-	color: black;
-}
-
-button[type="submit"] {
-	background-color: #44A666;
-	color: white;
-	height: 50px;
-	width: 100px;
-	border: 0px;
-}
-
-button[type="submit"]:active {
-	background-color: #29633D;
-	color: white;
-	height: 50px;
-	width: 100px;
-	border: 0px;
-}
-
-.donate_detail {
-	color: white;
-	width: 50%;
-	margin: auto;
-}
-
-button[type="button"] {
-	background-color: #44A666;
-	color: white;
-	height: 30px;
-	width: 250px;
-	border: 0px;
-	margin-bottom: 10px;
-}
-
-button[type="button"]:active {
-	background-color: #29633D;
-	color: white;
-	height: 30px;
-	width: 250px;
-	border: 0px;
-}
-
-.joinPerson {
-	text-align: right;
-	font-size: 50px;
-}
-
-.add {
-	margin: 10px auto;
-	display: flex;
-	justify-content: center;
-	width: 1700px;
-}
-
-.add>img {
-	width: 1020px;
-}
-
-.donate_bottom {
-	border: 1px solid black;
-}
-
-.donate_bottom_title {
-	font-size: 50px;
-}
-
-.donate_bottom_items {
-	display: flex;
-	width: 70%;
-}
-
-.donate_bottom_items>div {
-	margin: 5px 10px;
-}
-
-.donate_bottom_items>div>img {
-	width: 200px;
-	height: 100px;
-}
-
-.modal {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.modal__background {
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
-
-.modal__content {
-	text-align: center;
-	position: relative;
-	background-color: white;
-	border-radius: 10px;
-	top: 0;
-	padding: 10px 25px;
-	width: 20%;
-}
-
-.donate_subtitle {
-	font-size: 50px;
-}
-
-.donate_value {
-	font-size: 100px;
-	margin-top: -40px;
-}
-
-hr {
-	margin-top: -20px;
-}
-
-.currentPoint_User {
-	width: 400px;
-}
-
-.donate_input {
-	width: 300px;
-	height: 46px;
-	margin-right: 10px;
-}
-
-.give>.left>img {
-	margin-left: 30px;
-}
-
-.modal_content {
-	width: 800px;
-	height: 300px;
-	background-color: white;
-}
-
-.donateList {
-	height: 200px;
-    overflow-y: scroll;
-}
-
-.donateListTable {
-	border-collapse: collapse;
+	.main2 {
+		margin: 150px auto 0 auto;
+		display: flex;
+		justify-content: center;
+		width: 1700px;
+	}
 	
-}
-
-.donateListTable > th, td {
-	border: 1px solid black;
-	padding: 10px;
-	text-align: center;
-}
-
+	.donate {
+		background-color: #1B534A;
+		color: white;
+		width: 60%;
+		padding-bottom: 20px;
+	}
+	
+	.donate_title {
+		font-size: 50px;
+		margin-left: 20px;
+	}
+	
+	.donate_total {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	.give {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	.give>.right>div {
+		margin: 10px 0px;
+	}
+	
+	.donate_detail {
+		text-align: center;
+	}
+	
+	.currentPoint {
+		background-color: white;
+		color: black;
+	}
+	
+	button[type="submit"] {
+		background-color: #44A666;
+		color: white;
+		height: 50px;
+		width: 100px;
+		border: 0px;
+	}
+	
+	button[type="submit"]:active {
+		background-color: #29633D;
+		color: white;
+		height: 50px;
+		width: 100px;
+		border: 0px;
+	}
+	
+	.donate_detail {
+		color: white;
+		width: 50%;
+		margin: auto;
+	}
+	
+	button[type="button"] {
+		background-color: #44A666;
+		color: white;
+		height: 30px;
+		width: 250px;
+		border: 0px;
+		margin-bottom: 10px;
+	}
+	
+	button[type="button"]:active {
+		background-color: #29633D;
+		color: white;
+		height: 30px;
+		width: 250px;
+		border: 0px;
+	}
+	
+	.joinPerson {
+		text-align: right;
+		font-size: 50px;
+	}
+	
+	.add {
+		display: flex;
+		justify-content: center;
+		width: 1700px;
+		margin: 0 auto 50px auto;
+	}
+	
+	.add>img {
+		width: 1020px;
+	}
+	
+	.donate_bottom {
+		border: 1px solid black;
+	}
+	
+	.donate_bottom_title {
+		font-size: 50px;
+	}
+	
+	.donate_bottom_items {
+		display: flex;
+		width: 70%;
+	}
+	
+	.donate_bottom_items>div {
+		margin: 5px 10px;
+	}
+	
+	.donate_bottom_items>div>img {
+		width: 200px;
+		height: 100px;
+	}
+	
+	.modal {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.modal__background {
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+	
+	.modal__content {
+		text-align: center;
+		position: relative;
+		background-color: white;
+		border-radius: 10px;
+		top: 0;
+		padding: 10px 25px;
+		width: 20%;
+	}
+	
+	.donate_subtitle {
+		font-size: 50px;
+	}
+	
+	.donate_value {
+		font-size: 100px;
+		margin-top: -40px;
+	}
+	
+	hr {
+		margin-top: -20px;
+	}
+	
+	.currentPoint_User {
+		width: 400px;
+	}
+	
+	.donate_input {
+		width: 300px;
+		height: 46px;
+		margin-right: 10px;
+	}
+	
+	.give>.left>img {
+		margin-left: 30px;
+	}
+	
+	.modal_content {
+	    font-size: 30px;
+		width: 480px;
+		height: 470px;
+		background-color: white;
+	}
+	
+	.modal_content > h3 {
+	    text-align: center;
+	    margin: 0;
+	    padding: 15px;
+	    background-color: #648C85;
+	}
+	
+	.donateList {
+		height: 385px;
+	    overflow-y: scroll;
+	}
+	
+	.donateListTable {
+	    text-align: center;
+	    margin: 0 auto;
+	}
+	
+	.donateListTable {
+		border-collapse: collapse;
+		
+	}
+	.donateListTable > thead > tr > th {
+		border: 2px solid #dadada;
+		padding: 10px;
+		text-align: center;
+		background-color: #1b534A;
+		color: white;
+	}
+	
+	.donateListTable > th, td {
+		border: 2px solid #dadada;
+		padding: 10px;
+		text-align: center;
+	}
+	
+	.donate_topImg > img {
+		width: 100%;
+		margin: 0px auto;
+	}
 
 </style>
 
 
 <div class="main2">
 	<div class="donate">
-		<div class="donate_title">나무 심기</div>
+		<div class="donate_topImg"><img src="${cpath }/resources/img/donateList_top.png"></div>
 		<div class="donate_total">
 			<div class="left">
 				<div class="donate_subtitle">총 기부금액</div>
-				<div class="donate_value">${sum }원</div>
+				<div class="donate_value"><fmt:formatNumber value="${sum }"  pattern="#,###원" /></div>
 			</div>
 			<div class="right">
 				<div class="donate_subtitle">심은 나무수</div>
@@ -227,12 +252,12 @@ hr {
 					<c:choose>
 						<c:when test="${not empty point }">
 							<h1 class="currentPoint_User">
-								당신의 포인트는 : <span>${point }</span>
+								당신의 포인트는 : <span><fmt:formatNumber value="${point }"  pattern="#,###원" /></span>
 							</h1>
 						</c:when>
 						<c:otherwise>
 							<h1 class="currentPoint_User">
-								당신의 포인트는 : <span>0</span>
+								당신의 포인트는 : <span>0 원</span>
 							</h1>
 						</c:otherwise>
 					</c:choose>
@@ -251,14 +276,39 @@ hr {
 	</div>
 </div>
 <div class="add">
-	<img src="${cpath }/resources/img/광고.png">
+	<img src="${cpath }/resources/img/donateList.png">
 </div>
 
 
 <style>
-.modal.hidden {
-	display: none;
-}
+	.modal.hidden {
+		display: none;
+	}
+	
+	.modal_background {
+		width: 700px;
+		height: 700px;
+		position: absolute;
+		z-index: -1;	
+	}
+	
+	.closeButton {
+		background-color: white;
+		padding: 20px
+	}
+	
+	.closeButton > button {
+		display: flex;
+		width: 180px;
+		align-content: center;
+		justify-content: center;
+		background-color: #648C85;
+		border: 0;
+		color: white;
+		padding: 5px;
+		
+	}
+	
 </style>
 
 <div class="modal hidden">
@@ -278,16 +328,17 @@ hr {
 				<c:forEach var="dto" items="${list }">
 					<tr>
 						<td>${dto.month }</td>
-						<td>${dto.member }</td>
-						<td>${dto.total }</td>
+						<td>${dto.member } 명</td>
+						<td><fmt:formatNumber value="${dto.total }" pattern="#,###원" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-</div>
-
-		<button name="close">close</button>
 	</div>
+	<div class="closeButton">
+		<button name="close">닫기</button>	
+	</div>
+</div>
 
 </div>
 
@@ -295,23 +346,29 @@ hr {
 
 <script>
 	const openButton = document.querySelector('button[type="button"]');
-	console.log(openButton)
 
 	const modal = document.querySelector(".modal");
-	console.log(modal)
 
-	const closeButton = modal.querySelector("button");
+	const closeButton = modal.querySelector('button[name="close"]');
 	console.log(closeButton)
+	
+	
 	const modalBackground = modal.querySelector(".modal_background");
-	console.log(modalBackground)
 
 	function displayModal() {
+		document.body.style.overflow = 'hidden';
 		modal.classList.toggle("hidden");
 	}
-
+	
+	function closeHandler() {
+		modal.classList.toggle("hidden");
+		document.body.style.overflow = 'unset';		
+	}
+	
+	
 	openButton.addEventListener("click", displayModal);
-	closeButton.addEventListener("click", displayModal)
-	modalBackground.addEventListener("click", displayModal);
+	closeButton.addEventListener("click", closeHandler)
+	modalBackground.addEventListener("click", closeHandler);
 </script>
 
 

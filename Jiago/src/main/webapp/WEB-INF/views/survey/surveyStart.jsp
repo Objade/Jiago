@@ -9,7 +9,7 @@
         }
 
         .surveyList.surveyTitle.question {
-            font-size: 50px;
+            font-size: 100%;
         }
 
         .surveyList_wrap {
@@ -24,7 +24,7 @@
         
         .example_wrap {
            width: 150px;
-           height: 270px;
+           height: 100%;
         
         }
 

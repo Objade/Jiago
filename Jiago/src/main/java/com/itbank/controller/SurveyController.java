@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.BoardDTO;
+import com.itbank.model.JudgeException;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
@@ -22,6 +25,7 @@ import com.itbank.model.SurveyQuestionDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.service.SurveyService;
+import com.itbank.service.UserService;
 
 @Controller
 @RequestMapping("/survey")
@@ -29,6 +33,10 @@ public class SurveyController {
 
 	@Autowired
 	private SurveyService surveyService;
+	
+	@Autowired
+	private UserService userService;
+	
 
 	@GetMapping("list")
 	public ModelAndView list(@RequestParam(defaultValue = "1") Integer page,
@@ -79,11 +87,25 @@ public class SurveyController {
 	}
 
 	@GetMapping("surveyStart/{survey_idx}")
-	public ModelAndView surveyStart(@PathVariable("survey_idx") int survey_idx) {
+	public ModelAndView surveyStart(@PathVariable("survey_idx") int survey_idx, HttpSession session) {
 		ModelAndView mav = new ModelAndView("/survey/surveyStart");
 		List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
-
 		List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
+		
+		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		
+		HashMap<String, Integer> hash = new HashMap<String, Integer>();
+		hash.put("survey_idx", survey_idx);
+		hash.put("user_idx", user_idx);
+		
+		int row = surveyService.judge(hash);
+		if(row > 1) {
+			ModelAndView mav1 = new ModelAndView("user/result");
+			String result = "이미 설문에 참여 하였습";
+			mav1.addObject("result", result);
+			return mav1;
+		}
+		
 
 		mav.addObject("list", list);
 
@@ -113,16 +135,6 @@ public class SurveyController {
 		return mav;
 	}
 
-	@PostMapping("surveyComplete")
-	public String surveyPointComplete(UserDonateDTO dto) {
-		System.out.println(dto.getUser_idx());
-		System.out.println(dto.getTotal_donate());
-		System.out.println(dto.getSurvey_idx());
-
-		int row = surveyService.addUserDonate(dto);
-		int minus = surveyService.minusUserPoint(dto);
-		return "redirect:/";
-	}
 
 	@GetMapping("surveyAdd")
 	public void surveyAdd() {
@@ -146,6 +158,19 @@ public class SurveyController {
 
 		return mav;
 	}
+	
+	@PostMapping("surveyComplete")
+	   public String surveyPointComplete(UserDonateDTO dto) {
+	      System.out.println(dto.getUser_idx());
+	      System.out.println(dto.getTotal_donate());
+	      System.out.println(dto.getSurvey_idx());
+
+	      int row = surveyService.addUserDonate(dto);
+	      int minus = surveyService.minusUserPoint(dto);
+	      int row2 = userService.setGrade(dto.getUser_idx());            // DB에 등급 업데이트
+	      return "redirect:/";
+	   }
+	
 
 	@GetMapping("surveyManage")
 	public ModelAndView surveyManage(@RequestParam(defaultValue = "1") Integer page) {
@@ -201,5 +226,5 @@ public class SurveyController {
 
 		return "redirect:/survey/surveyView/{survey_idx}";
 	}
-
+	
 }

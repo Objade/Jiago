@@ -157,10 +157,6 @@
             color: grey;
         }
         
-        .customer {
-            width: 300px;
-        }
-        
         .minipont {
             font-size: small;
             text-align: center;
@@ -168,6 +164,10 @@
             color: grey;
             padding-top: 20px;
             padding-bottom: 20px;
+        }
+        
+        .minipont > a {
+        	font-size: 18px;
         }
         
         .surveys.surveyItem {
@@ -194,7 +194,7 @@
         .s4_bottom {
             margin: auto;
             text-align: center;
-            font-size: 15px;
+            font-size: 18px;
             color: white;
             width: 100px;
             height: 20px;
@@ -573,9 +573,16 @@
          justify-content: flex-start;
       }
       
-      .surveyList.item {
+      .all_surveyList.item {
          background-color: white;
          width: 250px;
+         margin: 10px;
+         box-sizing: border-box;
+      }
+      
+      .surveyList.item {
+         background-color: white;
+         width: 590px;
          margin: 10px;
          box-sizing: border-box;
       }
@@ -758,10 +765,11 @@
    
          .customer {
             display: flex;
-            width: 70%;
+            width: 80%;
             text-align: center;
             margin: 0 auto;
             flex-flow: wrap;
+            justify-content: center;
          }
    
          .surveys {
@@ -805,18 +813,19 @@
           <a href="${cpath }/"><img src="${cpath }/resources/img/logo.png" class="logoImg"></a>
       </div>
       
-      
       <div class="nav">
           <ul>
               <li><a href="${cpath }/">홈</a></li>
               <li><a href="${cpath }/survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=">설문참여</a></li>
               <li><a href="${cpath }/donate/donateList">나무심기</a></li>
               <li><a href="${cpath }/cuscenter">고객센터</a></li>
-              <li><a href="${cpath }/survey/surveyManage">설문관리</a></li>
+              <c:choose>
+                    <c:when test="${login.user_type eq 'Admin'}"><li><a href="${cpath }/manage/manageHome">설문관리</a></li></c:when>
+                  <c:otherwise><li><a href="${cpath }/survey/surveyManage">설문관리</a></li></c:otherwise>
+              </c:choose>
           </ul>
       </div>
-      
-      
+            
       <div class="loginBar">
              <c:choose>
            <c:when test="${empty login }">

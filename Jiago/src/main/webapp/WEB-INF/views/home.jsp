@@ -46,11 +46,11 @@
      <div class="banner3">
         <div class="banner3_img"><img src="${cpath }/resources/img/총 기부 그림.jpg" width="1000px"></div>
             <div class="banner3_text">
-                <div>총 기부  <span>${totalDonate } 원 </span> </div>
-                <div>총 인원  <span>${totalCount } 명 </span> </div>
+                <span>총 기부  <span><fmt:formatNumber value="${totalDonate }" pattern="#,###원" /></span></span>
+                <div><span>총 인원  <span>${totalCount } 명 </span></span></div>
             </div>
     </div>
-    <a href="${cpath }/donate/donateList"><div class="s4_bottom">더 알아보기</div></a>
+    <div class="s4_bottom"><a href="${cpath }/donate/donateList">더 알아보기</a></div>
 </section>
 
 <%@ include file="footer.jsp" %>
