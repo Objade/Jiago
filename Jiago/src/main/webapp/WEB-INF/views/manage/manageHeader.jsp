@@ -21,7 +21,7 @@
             <ol><a href="${cpath }/survey/surveyEdit">설문 수정</a></ol>
         </ol>
         <ol><a href="">회원 관리</a>
-            <ol><a href="">회원 목록</a></ol>
+            <ol><a href="${cpath }/member/list?user_id=">회원 목록</a></ol>
             <ol><a href="">회원 탈퇴</a></ol>
         </ol>
         <ol><a href="">회사 관리</a>
