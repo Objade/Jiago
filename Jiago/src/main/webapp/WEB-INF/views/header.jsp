@@ -26,6 +26,7 @@
     
        body {
           font-family: 'Dongle';
+          font-size: 25px;
        }
     
         #root {
@@ -118,7 +119,7 @@
         .s3_top {
             font-weight: bolder;
             text-align: center;
-            font-size: 27px;
+            font-size: 50px;
             color: darkgreen;
             padding: 10px;
         }
@@ -140,7 +141,7 @@
             background-color: grey;
             font-weight: bolder;
             color: white;
-            font-size: 20px;
+            font-size: 25px;
             padding: 10px;
             margin-right: 2px;  
             width: 325px;
@@ -149,7 +150,7 @@
         
         .write_mid {
             font-weight: bolder;
-            font-size: 15px;
+            font-size: 25px;
             padding: 5px;
         }
         
@@ -167,7 +168,7 @@
         }
         
         .minipont > a {
-        	font-size: 18px;
+        	font-size: 40px;
         }
         
         .surveys.surveyItem {
@@ -177,15 +178,15 @@
         .s4_top{
             font-weight: bolder;
             text-align: center;
-            font-size: 27px;
+            font-size: 50px;
             color: white;
-            padding: 10px;
+            padding-top: 30px;
 
         }
         
         .s4_mid{
             text-align: center;
-            font-size: 15px;
+            font-size: 30px;
             color: white;
             margin-bottom: 10px;
 
@@ -194,12 +195,12 @@
         .s4_bottom {
             margin: auto;
             text-align: center;
-            font-size: 18px;
-            color: white;
-            width: 100px;
+            font-size: 40px;
+            color: #319482;
+            width: 300px;
             height: 20px;
-            background-color: #2B7C6F;
-            padding: 20px;
+            padding-bottom: 30px;
+            
         }
         
         #section3 {
@@ -555,9 +556,9 @@
          display: flex;
          align-items: center;
          justify-content: center;
-         padding: 70px;
+         padding: 30px;
          background-color: #1D594E;
-         font-size: 30px;
+         font-size: 70px;
          font-weight: bold;
          color: #eee;
          margin: 20px 0 0 0;
@@ -582,7 +583,7 @@
       
       .surveyList.item {
          background-color: white;
-         width: 590px;
+         width: 330px;
          margin: 10px;
          box-sizing: border-box;
       }
@@ -598,7 +599,7 @@
          box-sizing: border-box;
          text-align: center;
          color: white;
-         font-size: 20px;
+         font-size: 30px;
          font-weight: bold;
          
       }
@@ -607,13 +608,13 @@
          padding: 10px 0 5px 0;
          box-sizing: border-box;
          text-align: center;
-         font-size: 15px;
+         font-size: 25px;
          color: #595959;
          font-weight: 700;
       }
       
       .surveyList.content {
-         font-size: 15px;
+         font-size: 25px;
          color: gray;
          font-weight: 400;
          text-align: center;
@@ -674,7 +675,7 @@
             background-color: #1D594E;
             color: white;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 25px;
          }
       
       /* 설문 상세 */
@@ -765,11 +766,11 @@
    
          .customer {
             display: flex;
-            width: 80%;
+            width: 72%;
             text-align: center;
             margin: 0 auto;
             flex-flow: wrap;
-            justify-content: center;
+            justify-content: left;
          }
    
          .surveys {
@@ -789,6 +790,8 @@
          }
            
          .banner3_text {
+         	display: flex;
+         	width: 100%;
             padding: 5px 10px;
             text-align: center;
             color: white;
@@ -797,7 +800,15 @@
             top: 10%;
             left: 20%;
          }
+         
+         .home_totalDonate {
+         	margin-left: 100px;
+         }
         
+        .home_totalPerson {
+        	margin-left: 100px;
+        	width: 300px;
+        }
         
         
     </style>

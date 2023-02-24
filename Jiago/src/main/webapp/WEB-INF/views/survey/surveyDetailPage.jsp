@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>    
 
+<style>
+	table.surveyDetail > tr > th, td {
+		width: 400px;
+	}
+</style>
 
 <div class="main">
 	<div class="surveyDetail title">조사 참여하기</div>

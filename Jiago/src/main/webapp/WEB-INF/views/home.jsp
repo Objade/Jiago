@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+
+
 <div class="root">
    <section id="section1">
           <div class="banner">
@@ -26,9 +28,9 @@
 						<div class="write_mid">조사기간</div>
 						<div class="write_bottom">${list.survey_date }</div>
 						<div class="write_mid">응답시간</div>
-						<div class="write_bottom">${list.survey_time }</div>
+						<div class="write_bottom">${list.survey_time } 분</div>
 						<div class="write_mid">포인트</div>
-						<div class="write_bottom">${list.survey_point }</div>
+						<div class="write_bottom">${list.survey_point } 포인트</div>
 					</div>
 				</div>
 			</a>
@@ -46,11 +48,17 @@
      <div class="banner3">
         <div class="banner3_img"><img src="${cpath }/resources/img/총 기부 그림.jpg" width="1000px"></div>
             <div class="banner3_text">
-                <span>총 기부  <span><fmt:formatNumber value="${totalDonate }" pattern="#,###원" /></span></span>
-                <div><span>총 인원  <span>${totalCount } 명 </span></span></div>
+                <div class="home_totalDonate">
+                	<div>총 기부</div>
+                	<div>총 인원</div>
+                </div>
+                <div class="home_totalPerson">
+                	<div><fmt:formatNumber value="${totalDonate }" pattern="#,###원" /></div>
+                	<div>${totalCount } 명</div>
+                </div>
             </div>
     </div>
-    <div class="s4_bottom"><a href="${cpath }/donate/donateList">더 알아보기</a></div>
+    <div class="s4_bottom"><a href="${cpath }/donate/donateList">더보기</a></div>
 </section>
 
 <%@ include file="footer.jsp" %>

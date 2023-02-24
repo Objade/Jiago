@@ -52,6 +52,9 @@
 		height: 50px;
 		width: 100px;
 		border: 0px;
+		padding-bottom: 3px;
+		font-size: 19px;
+		font-weight: bold;
 	}
 	
 	button[type="submit"]:active {
@@ -71,10 +74,12 @@
 	button[type="button"] {
 		background-color: #44A666;
 		color: white;
-		height: 30px;
+		height: 40px;
 		width: 250px;
 		border: 0px;
 		margin-bottom: 10px;
+		font-weight: bold;
+		font-size: 21px;
 	}
 	
 	button[type="button"]:active {
@@ -166,12 +171,15 @@
 	
 	.currentPoint_User {
 		width: 400px;
+		padding-left: 10px;
 	}
 	
 	.donate_input {
 		width: 300px;
 		height: 46px;
 		margin-right: 10px;
+		font-size: 21px;
+		padding-left: 10px;
 	}
 	
 	.give>.left>img {
@@ -183,6 +191,7 @@
 		width: 480px;
 		height: 470px;
 		background-color: white;
+		box-shadow: 10px 10px 10px black;
 	}
 	
 	.modal_content > h3 {
@@ -190,6 +199,7 @@
 	    margin: 0;
 	    padding: 15px;
 	    background-color: #648C85;
+	    color: white;
 	}
 	
 	.donateList {
@@ -199,7 +209,7 @@
 	
 	.donateListTable {
 	    text-align: center;
-	    margin: 0 auto;
+	    margin: 10px auto;
 	}
 	
 	.donateListTable {
@@ -286,15 +296,17 @@
 	}
 	
 	.modal_background {
-		width: 700px;
-		height: 700px;
+		width: 100%;
+		height: 100vh;
 		position: absolute;
-		z-index: -1;	
+		z-index: -1;
+		background-color: rgba(0, 0, 0, 0.6);
 	}
 	
 	.closeButton {
 		background-color: white;
-		padding: 20px
+		padding: 20px;
+		box-shadow: 10px 10px 10px black;
 	}
 	
 	.closeButton > button {
@@ -306,6 +318,8 @@
 		border: 0;
 		color: white;
 		padding: 5px;
+		font-size: 21px;
+		font-weight: bold;
 		
 	}
 	
@@ -362,7 +376,7 @@
 	
 	function closeHandler() {
 		modal.classList.toggle("hidden");
-		document.body.style.overflow = 'unset';		
+		document.body.style.overflow = 'unset';
 	}
 	
 	

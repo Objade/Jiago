@@ -80,6 +80,9 @@ public interface SurveyDAO {
    HashMap<String, String> selectTotalDonate();
 
    int judge(HashMap<String, Integer> hash);
+
+   List<AnswerDTO> selectSurveyResultList(HashMap<String, String> map);
+
    
 
 

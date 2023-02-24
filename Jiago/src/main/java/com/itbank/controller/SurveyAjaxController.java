@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itbank.model.AnswerDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyFormDTO;
 import com.itbank.model.SurveyQuestionDTO;
@@ -141,6 +142,8 @@ public class SurveyAjaxController {
 	   System.out.println(SQLIntegrityConstraintViolationException.class.toString());
    return "이미 질문 리스트에 등록 된 질문 입니다.";
 }
+   
+   
    
    
 }

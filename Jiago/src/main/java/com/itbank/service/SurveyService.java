@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.itbank.model.AnswerDTO;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
@@ -302,4 +303,9 @@ public class SurveyService {
 		return dao.judge(hash);
 	}
 
+	public List<AnswerDTO> getSurveyResult(HashMap<String, String> map) {
+		return dao.selectSurveyResultList(map);
+	}
+
+	
 }

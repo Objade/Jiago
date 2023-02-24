@@ -25,14 +25,14 @@
             <ol><a href="">회원 탈퇴</a></ol>
         </ol>
         <ol><a href="">회사 관리</a>
-            <ol><a href="">회사 목록</a></ol>
-            <ol><a href="">회사 추가</a></ol>
+            <ol><a href="${cpath }/company/list?company_name=">회사 목록</a></ol>
+            <ol><a href="${cpath }/company/add">회사 추가</a></ol>
             <ol><a href="">회사 정보 수정</a></ol>
         </ol>
     </li>
     <li><a href="">통계</a>
         <ol><a href="">설문 통계</a>
-            <ol><a href="">설문별 통계 보기</a></ol>
+            <ol><a href="${cpath }/manage/surveyResultList">설문별 통계 보기</a></ol>
             <ol><a href="">연령대, 성별, 직업별 선호 조사</a></ol>
             <ol><a href="">유저 별 설문 참여율</a></ol>
             <ol><a href="">회사 별 선호 질문</a></ol>

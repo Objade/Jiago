@@ -19,6 +19,9 @@
 		<typeAlias type="com.itbank.model.SurveyQuestionDTO" alias="surveyQuestion"/>
 		<typeAlias type="com.itbank.model.SurveyExampleDTO" alias="surveyExample"/>
 		<typeAlias type="com.itbank.model.NoticeDTO" alias="notice" />
+		<typeAlias type="com.itbank.model.AnswerDTO" alias="answer" />
+		<typeAlias type="com.itbank.model.CompanyDTO" alias="company" />
+		<typeAlias type="com.itbank.model.MemberDTO" alias="member" />
 	</typeAliases>
 	
 </configuration>

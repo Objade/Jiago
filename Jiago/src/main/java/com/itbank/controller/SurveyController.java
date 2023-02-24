@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itbank.model.BoardDTO;
-import com.itbank.model.JudgeException;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
@@ -226,5 +224,26 @@ public class SurveyController {
 
 		return "redirect:/survey/surveyView/{survey_idx}";
 	}
+	
+	@GetMapping("surveyEdit")
+	public ModelAndView surveyEdit(@RequestParam(defaultValue = "1") Integer page) {
+
+		ModelAndView mav = new ModelAndView();
+
+		int count = surveyService.getSurveyCount();
+		Paging paging = new Paging(page, count);
+
+		System.out.println(paging);
+
+		List<SurveyDTO> list = surveyService.selectAllList(paging);
+
+		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+
+		return mav;
+	}
+	
+	
+	
 	
 }
