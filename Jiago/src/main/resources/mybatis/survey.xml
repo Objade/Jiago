@@ -185,4 +185,9 @@
       select count(user_idx) as totalCount, sum(total_donate) as totalDonate from user_donate
    </select>
 	
+	<select id="judge" parameterType="hashmap" resultType="int">
+		select count(*) from answer where user_idx = #{user_idx} and survey_idx = #{survey_idx}	
+	</select>
+	
+	
 </mapper>

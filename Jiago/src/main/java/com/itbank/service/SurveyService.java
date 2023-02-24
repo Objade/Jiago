@@ -298,4 +298,8 @@ public class SurveyService {
 		return dao.selectTotalDonate();
 	}
 
+	public int judge(HashMap<String, Integer> hash) {
+		return dao.judge(hash);
+	}
+
 }
