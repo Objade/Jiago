@@ -42,8 +42,17 @@ public class MemberService {
 
 	}
 
-	public int deleteMember(int user_idx) {
-		return dao.deleteMember(user_idx);
+	public int deleteMember(List<Integer> numbers) {
+		int row = 0;
+		System.out.println(numbers.get(0));
+		System.out.println(numbers.get(1));
+		System.out.println(numbers.get(2));
+		System.out.println(numbers.get(3));
+		
+		for(int i = 0; i< numbers.size(); i++) {
+			row = dao.deleteMember(numbers.get(i));
+		}
+		return row;
 	}
 
 

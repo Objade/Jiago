@@ -39,7 +39,7 @@ public class ManageAjaxController {
 			result.put(i + "", answerList);
 		}
 		
-		System.out.println(result);
+		System.out.println("dddd : " +result);
 		
 		JSONObject json = new JSONObject(result);
 		System.out.println(json);

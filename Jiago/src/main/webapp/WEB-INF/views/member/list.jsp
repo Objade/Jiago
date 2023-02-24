@@ -197,12 +197,12 @@
 			</form>
 	</div>
    
-<form method="POST" action="${cpath }/memberAjax">
+<form method="POST" action="${cpath }/memberAjax" class="delForm">
       <table class="memberManage memberList">
          <thead>
             <tr>
                <th>
-               		<input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();" />
+               		<input type="checkbox" name="checkAll" id="th_checkAll" />
                </th>
                <th>회원 번호</th>
                <th>회원 타입</th>
@@ -221,7 +221,7 @@
          </thead>
          <tbody>
             <c:forEach var="dto" items="${list }">
-               <tr>
+               <tr class="">
                	  <td>
                	  		<input type="checkbox" name="checkRow" value="${dto.user_idx}">
                	  </td>	
@@ -319,48 +319,45 @@
          allCheckbox.forEach(e => e.onchange = allDeleteHandler)  
 
     </script>
-   	
-   	
-   	
-    <script>
+    
+   	<script>
+        const delForm = document.querySelector('.delForm')
+        console.log(delForm)
 
-        const test = document.querySelector('.test')
-        console.log(test)
+        function delMember(event) {
+            const allCheckbox = Array.from(document.querySelectorAll('input[name="checkRow"]:checked'))
 
-
-        function delTestHandler(event) {
-            event.preventDefault()
-            console.log(event)
-            console.log(event.target)
-
-            const allCheckbox2 = Array.from(document.querySelectorAll('input[name="checkRow"]:checked'))
-            
-            const checkbox2Value = Array.from(allCheckbox2.map(e => e.value)) 
-            console.log(checkbox2Value)
+            const checkbox2Value = Array.from(allCheckbox.map(e => e.value)) 
 
             const ob = {
                answer_content: checkbox2Value
             }
-            
-            const cpath = '${cpath}'
+
+            const cpath = '/jiago'
             const url = cpath + '/memberAjax'
+            
             const opt = {
-                  method: 'POST',
-                  body: JSON.stringify(ob),
-                  headers: {
-                           'Content-Type': 'application/json; charset=utf-8'
-                  }
-
+                method: 'POST',
+                body: JSON.stringify(ob),
+                headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
                 }
-                fetch(url, opt)
 
-
+            }
+            fetch(url, opt)
+            .then(resp => resp.text())
+            .then(text => {
+            	alert(text)
+            	location.reload()
+            })
+            
+            
+            
         }
+    
+        delForm.onsubmit = delMember
 
-
-        test.onsubmit = delTestHandler
     </script>
-
 </body>
 
 </html>

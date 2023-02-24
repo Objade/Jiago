@@ -18,6 +18,7 @@ public interface MemberDAO {
 
 	int selectSearchMemberCount(String user_id);
 
-	int deleteMember(int user_idx);
+	int deleteMember(Integer integer);
+
 
 }
