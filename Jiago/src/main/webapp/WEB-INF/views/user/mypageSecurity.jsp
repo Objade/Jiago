@@ -55,21 +55,22 @@
 
 <body>
 
-<h1>내 정보 관리</h1>
 
-<div id="guideLine">
-	<div class="left">
-		<span style="font-size: 30px; font-weight: bolder;">개인 정보 수정</span>
-		<span>정확한 정보를 입력하셔야 조사 참여의 기회가 제공됩니다</span>
-	</div>
-	<div class="right">
-		<span>체크 표시는 필수 입력 항목입니다.</span>
-	</div>
-</div>
 
 	
 <form method="POST" action="${cpath }/user/userModify" >
 	<div id="customerData">
+		<h1>내 정보 관리</h1>
+
+		<div id="guideLine">
+			<div class="left">
+				<span style="font-size: 30px; font-weight: bolder;">개인 정보 수정</span>
+				<span>정확한 정보를 입력하셔야 조사 참여의 기회가 제공됩니다</span>
+			</div>
+			<div class="right">
+				<span>체크 표시는 필수 입력 항목입니다.</span>
+			</div>
+		</div>
 		
 		<div class="info">
 			<div><div class="innerTitle">이름</div>: <span class="innerData">${login.user_name }</span></div>
@@ -105,7 +106,7 @@
 	
 	<div class="end"><input type="submit" value="수정완료"></div>
 </form>
-
+</div>
 <script>
 	const pwbtn = document.getElementById('pwbtn')
 	console.log(pwbtn)

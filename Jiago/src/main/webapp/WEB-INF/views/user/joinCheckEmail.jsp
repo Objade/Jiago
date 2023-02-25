@@ -6,10 +6,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>이메일 인증</title>
 <style>
 	.hidden {
 		display: none;
+	}
+	
+	#emailForm {
+		width: 500px;
+		margin: 100px auto;
+	}
+	
+	form {
+		width: 300px;
+		margin: 0 auto;
+	}
+	
+	input {
+		width: 300px;
+		font-size: 30px;
+		font-family: 'Dongle';
+		box-sizing: border-box;
+	}
+	
+	input[type="text"] {
+		border: 3px solid #2b524a;
+		border-radius: 15px;
+	}
+	
+	input[type="text"]:focus {
+		outline: 3px solid lightgreen;
+	}
+	
+	input[type="submit"] {
+		margin-top:10px;
+		border: none;
+		border-radius: 15px;
+		cursor: pointer;
+	}
+	
+	input[type="submit"]:hover {
+		background-color: #2b524a;
 	}
 </style>
 </head>
@@ -18,7 +56,7 @@
 <body>
 	<div id="emailForm" class="hidden">
 		<form class="form">
-			<input id="inputNum" type="text" placeholder="인증번호 입력" required>
+			<input id="inputNum" type="text" placeholder="인증번호 입력" required><br>
 			<input type="submit" value="입력">
 		</form>
 	</div>
@@ -31,7 +69,7 @@
 	fetch(url)
 	.then(response => response.text())
 	.then(text => {
-		if(text.indexOf('중복') == 0) {
+		if(text.includes('중복') == true || text.includes('문제') == true) {
 			if(window.confirm(text + ' 창을 닫으시겠습니까?')) window.close();
 		}
 		else {

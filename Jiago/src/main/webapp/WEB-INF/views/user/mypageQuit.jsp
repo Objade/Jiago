@@ -8,7 +8,7 @@
 			<div><input type="submit" value="입력"></div>
 		</form>
 	</div>
-
+</div>
 
 
 </body>
