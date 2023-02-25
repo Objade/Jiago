@@ -10,6 +10,7 @@ import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.SurveyUserDonateRankDTO;
 import com.itbank.model.SurveyUserJoinDTO;
 import com.itbank.model.UserDonateDTO;
 
@@ -85,6 +86,8 @@ public interface SurveyDAO {
    List<AnswerDTO> selectSurveyResultList(HashMap<String, String> map);
 
    List<SurveyUserJoinDTO> selectUserJoin();
+
+   List<SurveyUserDonateRankDTO> selectUserDonateRank();
 
    
 

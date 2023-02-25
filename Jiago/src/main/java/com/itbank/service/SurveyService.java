@@ -13,6 +13,7 @@ import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyFormDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.SurveyUserDonateRankDTO;
 import com.itbank.model.SurveyUserJoinDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.SurveyDAO;
@@ -310,6 +311,10 @@ public class SurveyService {
 
 	public List<SurveyUserJoinDTO> getUserJoin() {
 		return dao.selectUserJoin();
+	}
+
+	public List<SurveyUserDonateRankDTO> getUserDonateRank() {
+		return dao.selectUserDonateRank();
 	}
 
 	

@@ -261,7 +261,17 @@
 				ON m.user_idx = a.user_idx
 			GROUP BY m.user_idx, m.user_name
 			having floor(COUNT(DISTINCT a.survey_idx) / (SELECT COUNT(*) FROM survey) * 100) > 0
-			order by m.user_idx desc
+			order by survey_participation_rate desc
+	</select>
+	
+	<select id="selectUserDonateRank" resultType="donaterank">
+		SELECT m.user_name, COALESCE(SUM(d.total_donate), 0) AS total_donate
+			FROM member m
+				LEFT JOIN user_donate d
+				ON m.user_idx = d.user_idx
+		where d.total_donate > 0
+			GROUP BY m.user_name, m.user_idx
+			ORDER BY total_donate DESC
 	</select>
 
 </mapper>

@@ -58,4 +58,12 @@ public class ManageController {
 		
 		return mav;
 	}
+	
+	@GetMapping("surveyUserDonateRank")
+	public ModelAndView surveyUserDonateRank() {
+		ModelAndView mav = new ModelAndView("/manage/surveyUserDonateRank");
+		
+		return mav;
+	}
+	
 }
