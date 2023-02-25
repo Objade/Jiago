@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.itbank.model.AnswerDTO;
+import com.itbank.model.SurveyPreferQuestionDTO;
 import com.itbank.model.SurveyUserDonateRankDTO;
 import com.itbank.model.SurveyUserJoinDTO;
 import com.itbank.service.SurveyService;
@@ -31,7 +32,6 @@ public class ManageAjaxController {
 		map.put("survey_idx", survey_idx+"");
 		
 		List<Integer> list = surveyService.getQuestionIDX(map);
-		System.out.println(list);
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
@@ -44,8 +44,6 @@ public class ManageAjaxController {
 		System.out.println("dddd : " +result);
 		
 		JSONObject json = new JSONObject(result);
-		System.out.println(json);
-		
 		return json;
 	}
 	
@@ -61,8 +59,6 @@ public class ManageAjaxController {
 		}
 		
 		JSONObject json = new JSONObject(UserJoin);
-		System.out.println(json);
-		
 		return json;
 	}
 	
@@ -78,14 +74,23 @@ public class ManageAjaxController {
 			UserJoin.put(i+"", dto.get(i));
 		}
 		
-		JSONObject json = new JSONObject(UserJoin);
-		System.out.println(json);
-		
-		
-		
-		
+		JSONObject json = new JSONObject(UserJoin);		
 		return json;
-		
-		
 	}
+	
+	@GetMapping("/getSurveyPreferQuestion")
+	public JSONObject getSurveyPreferQuestion() {
+		
+		List<SurveyPreferQuestionDTO> dto = surveyService.getSurveyPreferQuestion();
+		
+		HashMap<String, Object> UserJoin = new HashMap<String, Object>();
+		
+		for(int i = 0; i < dto.size(); i++) {
+			UserJoin.put(i+"", dto.get(i));
+		}
+		
+		JSONObject json = new JSONObject(UserJoin);		
+		return json;
+	}
+	
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="../manage/manageHeader.jsp"%>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,51 +13,61 @@
 </div>
 
 
+
+
 <script>
 
 	const cpath = '/jiago'
 	const survey_idx = '${survey_idx}'
-	const url = cpath + '/manage/getSurveyUserDonateRank'
+	const url = cpath + '/manage/getSurveyPreferQuestion'
 
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {   
 	     console.log(json)
 	    
-		const userName = []
-	     for(let key in json) {
-	    	 userName.push(json[key].user_name)
-	     }
-	     console.log(userName)
 	     
-	     const total_donate = []
+		const company_name = []
 	     for(let key in json) {
-	   		total_donate.push(json[key].total_donate)
+	    	 company_name.push(json[key].company_name)
 	     }
+	     console.log(company_name)
 	     
-	     console.log(total_donate)
+	     const question_content = []
+	     for(let key in json) {
+	    	 question_content.push(json[key].question_content)
+	     }
+	     console.log(question_content)
+	     
+	     const preference_count = []
+	     for(let key in json) {
+	    	 preference_count.push(json[key].preference_count)
+	     }
+	     console.log(preference_count)
+	     
+	     
 	     
 	     let context = document.getElementById('myChart')
 	     
          
 		    const data = {
-	        	labels : userName,
+	        	labels : company_name,
 	            datasets: [
 	            	{
-	                   label: '기부금액',
-	                   data: total_donate
+	                   label: question_content,
+	                   data: preference_count
 	                },
 	            ]     
 	        }
 	          
 	        const config = {
-	           type: 'bar',
+	           type: 'doughnut',
 	           data: data,
 	             options: {
 	                 plugins: {
 	                     title: {
 	                         display: true,
-	                         text: '유저별 기부 순위'
+	                         text: '회사별 선호 질문'
 	                  
 	        	         }
 	            	}

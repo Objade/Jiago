@@ -35,7 +35,7 @@
             <ol><a href="${cpath }/manage/surveyResultList">설문별 통계 보기</a></ol>
             <ol><a href="">연령대, 성별, 직업별 선호 조사</a></ol>
             <ol><a href="${cpath }/manage/surveyUserJoin">유저 별 설문 참여율</a></ol>
-            <ol><a href="">회사 별 선호 질문</a></ol>
+            <ol><a href="${cpath }/manage/surveyPreferQuestion">회사 별 선호 질문</a></ol>
         
         </ol>
         <ol><a href="">기부 통계</a>

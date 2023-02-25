@@ -99,7 +99,7 @@ public class SurveyController {
 		int row = surveyService.judge(hash);
 		if(row > 1) {
 			ModelAndView mav1 = new ModelAndView("user/result");
-			String result = "이미 설문에 참여 하였습";
+			String result = "이미 설문에 참여 하였습니다";
 			mav1.addObject("result", result);
 			return mav1;
 		}

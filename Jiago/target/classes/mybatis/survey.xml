@@ -274,4 +274,23 @@
 			ORDER BY total_donate DESC
 	</select>
 
+	<select id="selectSurveyPreferQuestion" resultType="preferquestion">
+		SELECT 
+		  sc.company_name, 
+		  q.question_content,
+		  COUNT(*) as preference_count
+		FROM 
+		  survey_company sc 
+		  JOIN survey s ON sc.company_idx = s.company_idx 
+		  JOIN survey_question sq ON s.survey_idx = sq.survey_idx 
+		  JOIN question q ON sq.question_idx = q.question_idx 
+		GROUP BY 
+		  sc.company_name, 
+		  q.question_content
+		ORDER BY 
+		  sc.company_name, 
+		  preference_count DESC	
+	</select>
+
+
 </mapper>

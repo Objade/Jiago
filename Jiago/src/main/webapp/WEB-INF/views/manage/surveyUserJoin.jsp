@@ -64,7 +64,7 @@
             }
         }
           
-          const myChart = new Chart(context, config)   
+        const myChart = new Chart(context, config)   
            
 })
 	          

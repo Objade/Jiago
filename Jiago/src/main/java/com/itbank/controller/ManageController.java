@@ -66,4 +66,10 @@ public class ManageController {
 		return mav;
 	}
 	
+	@GetMapping("surveyPreferQuestion")
+	public ModelAndView surveyPreferQuestion() {
+		ModelAndView mav = new ModelAndView("/manage/surveyPreferQuestion");
+		
+		return mav;
+	}
 }
