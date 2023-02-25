@@ -254,5 +254,14 @@
 		order by q.question_idx
 	</select>
 
+	<select id="selectUserJoin" resultType="userjoin">
+		SELECT m.user_idx, m.user_name, floor(COUNT(DISTINCT a.survey_idx) / (SELECT COUNT(*) FROM survey) * 100) AS survey_participation_rate
+			FROM member m
+				LEFT JOIN answer a
+				ON m.user_idx = a.user_idx
+			GROUP BY m.user_idx, m.user_name
+			having floor(COUNT(DISTINCT a.survey_idx) / (SELECT COUNT(*) FROM survey) * 100) > 0
+			order by m.user_idx desc
+	</select>
 
 </mapper>

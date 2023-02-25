@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.itbank.model.AnswerDTO;
+import com.itbank.model.SurveyUserJoinDTO;
 import com.itbank.service.SurveyService;
 
 @RestController
@@ -47,7 +48,20 @@ public class ManageAjaxController {
 		return json;
 	}
 	
-	
-	
-	
+	@GetMapping("/getSurveyUserJoin")
+	public JSONObject surveyUserJoinJson() {
+		
+		List<SurveyUserJoinDTO> dto = surveyService.getUserJoin();
+		
+		HashMap<String, Object> UserJoin = new HashMap<String, Object>();
+		
+		for(int i = 0; i < dto.size(); i++) {
+			UserJoin.put(i+"", dto.get(i));
+		}
+		
+		JSONObject json = new JSONObject(UserJoin);
+		System.out.println(json);
+		
+		return json;
+	}
 }

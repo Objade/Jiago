@@ -52,4 +52,10 @@ public class ManageController {
 		return mav;
 	}
 	
+	@GetMapping("surveyUserJoin")
+	public ModelAndView surveyUserJoin() {
+		ModelAndView mav = new ModelAndView("/manage/surveyUserJoin");
+		
+		return mav;
+	}
 }
