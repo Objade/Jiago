@@ -144,7 +144,8 @@ public class UserService {
 	// 등급 지정
 	public int setGrade(int userIdx) {
 		String gradeSet = "";
-		int totalPoint = Integer.parseInt(userDao.getTotalPoint(userIdx));		// 토탈 기부 포인트를 가져오는 함수
+		String getTotalPoint = userDao.getTotalPoint(userIdx);
+		int totalPoint = Integer.parseInt(getTotalPoint);		// 토탈 기부 포인트를 가져오는 함수
 		if(totalPoint >= 500000) gradeSet = "6단계";
 		else if(totalPoint >= 300000) gradeSet = "5단계";
 		else if(totalPoint >= 100000) gradeSet = "4단계";
@@ -165,6 +166,19 @@ public class UserService {
 	// 사용자 등급 갖고오기
 	public String getGrade(int user_idx) {
 		return userDao.getGrade(user_idx);
+	}
+
+	// 다음 단계까지 남은 포인트 가지고 오기
+	public int getleftPoint(int user_idx) {
+		String getTotalPoint = userDao.getTotalPoint(user_idx);
+		if(getTotalPoint == null) return 10000;
+		int totalPoint = Integer.parseInt(getTotalPoint);
+		if(totalPoint >= 500000) return 0;
+		else if(totalPoint >= 300000) return totalPoint - 300000;
+		else if(totalPoint >= 100000) return totalPoint - 100000;
+		else if(totalPoint >= 50000) return totalPoint - 50000;
+		else if(totalPoint >= 10000) return totalPoint - 10000;
+		else return 10000 - totalPoint;
 	}
 
 

@@ -2,6 +2,8 @@ package com.itbank.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,16 @@ public class UserController {
 	public void login() {}
 	
 	@PostMapping("login")
-	public ModelAndView login(HttpSession session, UserDTO account) {
+	public ModelAndView login(HttpServletResponse response ,HttpSession session, UserDTO account) {
 		ModelAndView mav = new ModelAndView();
+		if(account.getRemember_id() == null) {
+			  Cookie cookie = new Cookie("user_id", null);  // 쿠키 값을 null로 설정
+			  cookie.setMaxAge(0);  // 남은 만료시간을 0으로 설정
+			  response.addCookie(cookie);
+		}
+		
+		
+		
 		UserDTO userAccount = userService.login(account);
 		mav.setViewName("user/result");
 		if(userAccount == null) {
@@ -38,6 +48,13 @@ public class UserController {
 		
 		mav.addObject("result","로그인에 성공 했습니다.");
 		session.setAttribute("login", userAccount);	
+		
+		if(account.getRemember_id() != null) {
+			Cookie cookie = new Cookie("user_id", userAccount.getUser_id());
+			cookie.setMaxAge(60 * 60 * 60 * 24);
+			response.addCookie(cookie);
+		}
+
 		
 		if(session.getAttribute("login") != null) {
 			UserDTO user = (UserDTO)session.getAttribute("login");
@@ -93,21 +110,22 @@ public class UserController {
 		int user_idx = user.getUser_idx();	// session idx 가져오기
 		
 		String point = userService.getPoint(user_idx);			// 현재 보유 포인트
-		System.out.println("111111111111111111");
 		
 		
 		String totalPoint = userService.getTotalPoint(user_idx);	// 사용자 단일 계정 총합 기부
-		System.out.println("222222222222222222222");
-		
-		String grade = userService.getGrade(user_idx);
-		System.out.println("333333333333333333333");
 		
 		if(point != null) {
-		System.out.println("444444444444444");
 			mav.addObject("point",point);
-			mav.addObject("totalPoint",totalPoint);
-			mav.addObject("grade",grade);
 		}
+		
+		String grade = userService.getGrade(user_idx);	// 등급 책정
+		System.out.println(grade);
+		int leftPoint = userService.getleftPoint(user_idx);
+		mav.addObject("totalPoint",totalPoint);
+		mav.addObject("grade",grade);
+		mav.addObject("leftPoint",leftPoint);
+		System.out.println(leftPoint);	
+		
 		return mav; 
 	}
 	

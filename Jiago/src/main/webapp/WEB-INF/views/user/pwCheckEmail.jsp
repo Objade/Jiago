@@ -6,15 +6,98 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>비밀번호 이메일 찾기 페이지</title>
 </head>
 	<style>
-		#mainForm {
-			width: 800px;
-		}
-		
+	
 		.hidden {
 			display: none;
+		}
+	
+		body {
+			font-family: 'Dongle';
+			font-size: 30px;
+		}
+		#mainForm {
+			width: 800px;
+			margin: 200px auto;
+			text-align: center;
+		}
+		
+		#mainForm > div {
+			width: 500px;
+			margin: 0 auto;
+		}
+		
+		input {
+			font-family: 'Dongle'
+		}
+		
+		input[type="submit"] {
+			margin-top: 30px;
+			background-color: white;
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 40px;
+			border-radius: 15px;
+			cursor: pointer;
+		}
+
+		#checkNumber {
+			width: 500px;
+			margin: 0 auto;
+		}
+		
+		#checkNumber > form > p  {
+			width: 300px;
+			margin: 200px auto;
+		}
+		
+		#checkNumber > form > p > input {
+			width: inherit;
+			font-size: 30px;
+			box-sizing: border-box;
+			border-radius: 15px;
+		}
+		
+		input[type="text"] , input[type="password"] {
+			padding: 10px 20px;
+			border: 3px solid black;
+			border-radius: 15px;
+			box-sizing: border-box;
+		}
+		
+		input[type="text"]:focus , input[type="password"]:focus {
+			outline: 3px solid lightgreen;
+		}
+		
+		input[type="submit"] {
+			padding: 0;
+			width: 300px;
+			background-color: #1D594E;
+			color: white;
+			border: none;
+		}
+		
+		
+		#newPassword {
+			width: 900px;
+			margin: 180px auto;
+		}
+		
+		#newPassword > form > div {
+			width: 600px;
+			margin: 0 auto;
+		}
+		
+		#newPassword > form > div > input {
+			width: 300px;
+			font-size: 35px;
+		}
+		
+		input::placeholder {
+			color: #ccc;
 		}
 		
 		
@@ -38,21 +121,26 @@
 		<form id="checkForm" method="POST">
 			<p>
 				<input type="text" name="checkNumber" placeholder="인증번호를 입력하세요">
+				<span id="timer" style="font-family: 'dongle'; font-size: 20px;"></span><br>
 				<input type="submit" value="인증">
 			</p>
 		</form>
 	</div>
 	
+	
+	
+	
 	<div id="newPassword" class="hidden">
 		<form method="POST" action="${cpath }/user/newPasswordSet">
 			<div>
-				<span>새로 변경할 비밀번호</span>
+				<div>새로 변경할 비밀번호</div>
 				<input type="password" name="password" placeholder="신규 비밀번호 입력" required autocomplete="off">
 				<span id="pwMessage1"></span>
+				<div style="margin-bottom: 20px; font-size: 20px;">소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 			</div>
 			<div>
-				<span>변경된 비밀번호 확인</span>
-				<input type="password" name="passwordCheck" placeholder="신규 비밀번호 확인" required autocomplete="off">
+				<div>변경된 비밀번호 확인</div>
+				<input type="password" name="passwordCheck" disabled placeholder="신규 비밀번호 확인" required autocomplete="off">
 				<span id="pwMessage2"></span>
 			</div>
 			<div><input type="submit" value="변경" disabled class="btn"></div>
@@ -98,6 +186,23 @@
 					alert('계정에 저장된 이메일 주소로 인증번호를 보냈습니다.')
 					event.target.parentNode.classList.add('hidden')
 					checkNumber.classList.remove('hidden')
+					
+				// 2분 타이머 설정
+				let secondsLeft = 120
+				const timerDiv = document.getElementById('timer');
+				let timer = setInterval(() => {
+					secondsLeft--;
+					if (secondsLeft === 0) {
+						clearInterval(timer)
+						alert('시간이 초과되었습니다. 다시 시도해주세요.');
+						event.target.parentNode.classList.remove('hidden')
+						checkNumber.classList.add('hidden')
+						return
+					} else {
+						timerDiv.innerHTML = '남은 시간 : ' + secondsLeft +'초'
+					}
+				}, 1000)
+					
 				}
 				else {
 					alert('휴대폰 인증 미구현')
@@ -107,6 +212,12 @@
 
 		}			// form[0]
 			
+		
+		
+
+		
+		
+		
 		
 		document.forms[1].onsubmit = event => {
 			event.preventDefault()
@@ -140,35 +251,45 @@
 		}
 		
 		const addPassword = document.querySelector('input[name="password"]')
-		console.log(addPassword)
 		const checkPassword = document.querySelector('input[name="passwordCheck"]')
-		console.log(checkPassword)
-		
 		const pwMessage1 = document.getElementById('pwMessage1')
-		console.log(pwMessage1)
 		const pwMessage2 = document.getElementById('pwMessage2')
-		console.log(pwMessage2)	
+		const btn = document.querySelector('.btn')
 		
 		function pwHandler1(event) {
 			const addPwValue = event.target.value
-			console.log(addPwValue)
-			if(addPwValue.length > 16) {
-				pwMessage1.innerText = '비밀번호는 최대 16자리까지만 가능합니다'	
-				pwMessage1.style.color = 'red'
+			pwMessage2.innerText = ''
+			btn.disabled = true
+			if(addPwValue.length == 0) {
+				pwMessage1.innerText = ''
+				checkPassword.disabled = true
+				return
+			}
+			
+			const pw_if = /(?=.*[0-9])(?=.*[a-z])(?=.*\W)(?=\S+$).{8,20}/
+			if(pw_if.test(addPwValue)) {
+				pwMessage1.innerText = '사용가능한 비밀번호입니다.'	
+				pwMessage1.style.color = 'blue'
+				checkPassword.disabled = false
 			}
 			else {
-				pwMessage1.innerText = '사용가능한 비밀번호 입니다'
-				pwMessage1.style.color = 'blue'
+				pwMessage1.innerText = '조건에 부합되지 않은 비밀번호입니다.'
+				pwMessage1.style.color = 'red'
+				checkPassword.value = ''
+				checkPassword.disabled = true
 			}
 		}
 		addPassword.onkeyup = pwHandler1
 		
 		
-		function pwHandler2(event2) {
-			const btn = document.querySelector('.btn')
-			const checkPwValue = event2.target.value
-			console.log('위' + addPassword.value)
-			console.log('아래' + checkPwValue)
+		function pwHandler2(event) {
+			const checkPwValue = event.target.value
+			if(checkPwValue.length == 0) {
+				pwMessage2.innerText = ''
+				btn.disabled = true
+				return
+			}
+			
 			if(checkPwValue == addPassword.value ) {
 				pwMessage2.innerText = '비밀번호가 서로 일치합니다'
 				pwMessage2.style.color = 'blue'

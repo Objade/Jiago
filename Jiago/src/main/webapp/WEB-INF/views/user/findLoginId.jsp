@@ -28,7 +28,7 @@
 		margin-top: 70px;
 	}
 
-	.imglogo > img {
+	.imglogo > a > img {
 		width: 300px;
 	}
 	
@@ -67,6 +67,9 @@
 		border: solid 1px rgba(0,0,0,.05);
 		background-color: #1D594E;
 		color: white;
+	}
+	
+	input[type="submit"] {
 		cursor: pointer;
 	}
 	
@@ -90,13 +93,55 @@
 	.foot > a {
 		color: rgba(0,0,0,.6);
 	}
+	
+		#check {
+		width: 600px;
+		margin: 150px auto;
+	}
+	
+	#check > form > p {
+		width: 300px;
+		margin: 0 auto;
+		
+	}
+	
+	#check > form > p > input {
+		width: inherit;
+		box-sizing: border-box;
+	}
+	
+	#check > form > p > input[type="text"] {
+		background-color: white;
+		color: black;
+		border: 1px solid darkgrey;
+	}
+	
+	#result {
+		width: 600px;
+		margin: 150px auto;
+	}
+	
+	#result > div {
+		font-size: 30px;
+	}
+	
+	.idList {
+		text-align: center;
+	}
+	
+	#reuslt > otherlink {
+		margin-bottom: 20px;
+		
+	}
+	
+	
 </style>
 </head>
 <body>
 
-
+	
+<div class="imglogo hidden"><a href="${cpath }/"><img src="${cpath }/resources/img/logo.png"></a></div>
 <div id="findUserId">
-	<div class="imglogo"><img src="${cpath }/resources/img/logo.png"></div>
 	<div class="message">회원가입시 설정한 이메일을 입력해주세요</div>
 	<div id="inputEmail">
 		<form id="idForm">
@@ -109,25 +154,23 @@
 
 
 
-
-
-<fieldset id="check" class="hidden">
+<div id="check" class="hidden">	<!-- class="hidden"  -->
 	<form id="checkForm">
-		<p>
-			<input type="text" id="checkNumber" name="checkNumber" placeholder="인증번호를 입력하세요">
-			<input type="submit" value="인증">
-		</p>
+		<p><input type="text" id="checkNumber" name="checkNumber" placeholder="인증번호를 입력하세요"></p>
+		<div id="timer" style="font-family: 'dongle'; font-size: 20px; margin-left: 165px;"></div>
+		<p><input type="submit" value="인증"></p>
 	</form>
-</fieldset>
-
-<div id="result">
-	
 </div>
 
 
-<p class="next hidden">
+<div id="result">
+	<div class="otherlink hidden">비밀번호가 기억나지 않는다면?&nbsp; &nbsp;<a href="${cpath }/user/findLoginPw">비밀번호 찾기</a></div>
+</div>
+
+<p id="next" class="hidden">
 	<a href="${cpath }/"><button>home으로 이동</button></a>
 </p>
+
 
 
 <div class="foot"><a href="${cpath }/" style="font-weight: bolder;">JIAGO</a><span style="margin: 0 5px;">|</span><a href="${cpath }/cuscenter">회원정보 고객센터</a></div>
@@ -157,18 +200,36 @@
 		.then(response => response.text())
 		.then(text => {
 			console.log('안에 값은 = ' + text)
-			if(text == 1) {
+			if(text != 0) {
 				numcheck.classList.remove('hidden')
 				findUserId.classList.add('hidden')
 				alert('인증번호가 발송되었습니다. 메일을 확인해주세요')
+				
+				// 2분 타이머 설정
+				let secondsLeft = 120;
+				const timerDiv = document.getElementById('timer');
+				let timer = setInterval(() => {
+					secondsLeft--
+					if (secondsLeft === 0) {
+						clearInterval(timer)
+						alert('시간이 초과되었습니다. 다시 시도해주세요.')
+						numcheck.classList.add('hidden')
+						findUserId.classList.remove('hidden')
+						return
+					} else {
+						timerDiv.innerHTML = '남은 시간 : ' + secondsLeft +'초'
+					}
+				}, 1000)
+				
+				
 			}
 			else {
 				alert('존재하지 않는 메일 주소 입니다.')
+				return
 			}
 		})
 
 	}
-	
 	
 	sendmessage.onsubmit = sendmail
 	
@@ -196,19 +257,29 @@
 			}
 		
 			fetch(url, opt2)
-			.then(response => response.text())
+			.then(response => response.json())
 			.then(text => {
-				console.log(text)
 				const result = document.getElementById('result')
-				console.log(result)
-				if(text != '') {
+				if(text[0] != '없음') {
 					alert('인증이 완료되었습니다')
+					const result = document.getElementById('result')
+					const imgLogo = document.querySelector('.imglogo')
+					imgLogo.classList.remove('hidden')
 					numcheck.classList.add('hidden')
-					result.innerText = '고객님의 아이디는 ' + text + '입니다.'
-					
+					let count = 1;
+					text.forEach(id => {
+						const tmp = document.createElement('div')
+						tmp.classList.add('idList')
+						tmp.innerText = count + '. ' + id
+						result.appendChild(tmp)
+						count++;
+					})
+					const passwordFindLink = document.querySelector('#result > .otherlink')
+					passwordFindLink.classList.remove('hidden')
 				}
 				else {
 					alert('인증번호가 일치하지 않습니다. 다시 확인해주세요')
+					return
 				}
 			})
 		}

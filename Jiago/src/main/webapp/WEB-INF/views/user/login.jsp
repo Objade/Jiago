@@ -100,27 +100,39 @@
 		color:black;
 	}
 	
+	.rememberId {
+		width: 300px;
+   	 	margin: 20px auto;
+    	font-size: 25px;
+	}
+	
 </style>
 </head>
 <body>
 	<div id="loginLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png "></a></div>
 	
 	<form method="POST" action="${cpath }/user/login">
-		<div id="accountInput">
-			<div class="idForm">
-				<div class="id">
-					<img src="${cpath }/resources/loginImg/login.png">
-					<input class="idText" type="text" name="user_id" placeholder="아이디" autocomplete="off" required>
-				</div>
-				<div class="password">
-					<img src="${cpath }/resources/loginImg/password.png">
-					<input class="pwText" type="password" name="user_pw" placeholder="비밀번호" autocomplete="off" required>
-				</div>
-				<div class="loginBtn">
-					<input type="submit" value="로그인">
-				</div>
-			</div>		
-		</div>
+	  <div id="accountInput">
+	    <div class="idForm">
+	      <div class="id">
+	        <img src="${cpath }/resources/loginImg/login.png">
+	        <input class="idText" type="text" name="user_id" placeholder="아이디" autocomplete="off" required
+	          value="${cookie.user_id.value }">
+	        <!-- 쿠키에서 아이디를 읽어서 자동으로 입력 -->
+	      </div>
+	      <div class="password">
+	        <img src="${cpath }/resources/loginImg/password.png">
+	        <input class="pwText" type="password" name="user_pw" placeholder="비밀번호" autocomplete="off" required>
+	      </div>
+	      <div class="rememberId">
+	        <input type="checkbox" name="remember_id" value="1" id="rememberId" ${empty cookie.user_id.value ? '' : 'checked'}>
+	        <label for="rememberId">아이디 저장</label>
+	      </div>
+	      <div class="loginBtn">
+	        <input type="submit" value="로그인">
+	      </div>
+	    </div>
+	  </div>
 	</form>
 	
 	
@@ -160,6 +172,9 @@
 		}	
 		inputId.onblur = focusOff
 		inputPw.onblur = focusOff
+		
+		
+		
 		
 		
 	</script>

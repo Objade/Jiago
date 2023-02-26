@@ -24,14 +24,14 @@
 
 	a {
 		text-decoration: none;
-		color: #91ba6c;
+		color: white;
 	}
 	
 	#selectBox {
 		width: 300px;
 		height: 500px;
 		background-color: #2b524a;
-		border-radius: 25px;s
+		border-radius: 25px;
 	}
 	
 	ul {

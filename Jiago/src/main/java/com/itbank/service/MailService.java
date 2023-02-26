@@ -1,6 +1,7 @@
 package com.itbank.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -101,12 +102,11 @@ public class MailService {
 		
 	}
 
-	public boolean checkRealMail(String email) {
-		String saveEmail = userDao.checkRealMail(email);
-		return saveEmail.equals(email);
+	public int checkRealMail(String email) {
+		return userDao.checkRealMail(email);
 	}
 
-	public String getId(String email) {
+	public List<String> getId(String email) {
 		return userDao.getId(email);
 	}
 	

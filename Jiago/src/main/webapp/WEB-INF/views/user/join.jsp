@@ -28,11 +28,11 @@
 	/* 약간 동의 */
 	.contract {
 	    width: 700px; margin: 50px auto 80px; padding: 30px 40px 50px;
-	    border-radius: 30px; background-color: #2b524a; color: #2b524a
+	    border-radius: 30px; background-color: #50684f;
 	}
 	.contract h1 {text-align: center; font-size: 60px;}
 	.contract .text {
-	    height: 230px; border: 3px solid black; background-color: #91ba6c;
+	    height: 230px; border: 3px solid black; background-color: white;
 	    white-space: pre-line; overflow-y: scroll; margin: 0 auto 20px;
 	    font-size: 30px; border-radius: 5px;
 	}	
@@ -88,6 +88,7 @@
 		font-family: 'Dongle';
 		top:100%; 
 		margin-top:-50px;
+		color: #ccc;
 	}
 	
 	input:focus {
@@ -195,7 +196,7 @@
 		color: #1D594E;
 	}
 	
-	img {width: 300px;}
+	a > img {width: 300px;}
 
 	
 
@@ -206,10 +207,10 @@
 
 <body>
 	
-<img src="${cpath }/resources/img/logo.png">
+<a href="${cpath }/"><img src="${cpath }/resources/img/logo.png"></a>
 <div>
     <form class="contract" action="signup.html">
-        <h1 style="color:#b5fdb6;">계정 정보 동의 약관</h1>
+        <h1 style="color:white;">계정 정보 동의 약관</h1>
 	        <div class="text"><span>가.</span> 개인정보의 수집 및 이용 목적
 	
 			            본 사이트 JIAGO는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보 보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.
@@ -236,7 +237,7 @@
 			            위 개인정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 동의를 거부할 경우 회원 가입이 제한됩니다.
 	        </div>
         <div>
-            <p style="font-size: 30px; color:#b5fdb6;"><input type="checkbox" required class="agbtn"> 약관에 동의하면 체크</p>
+            <p style="font-size: 30px; color:white;"><input type="checkbox" required class="agbtn"> 약관에 동의하면 체크</p>
         </div>
     </form>
 </div>
@@ -247,7 +248,7 @@
 	<div id="joinForm" class="hidden"> <!-- class="hidden"  -->
 		<form method="POST" action="${cpath }/user/join">
 			<div>
-				<div>아이디</div>
+				<div style="font-size: 32px;">아이디</div>
 				<input type="text" name="" id="joinId" placeholder="신규 아이디 입력" required autocomplete="off"><button type="button" onclick="joinIdCheck()">중복 검사</button><span class="checkIdText"></span>
 				<div>영문자로 시작하는 영문자 + 숫자의 조합의 6 ~ 12자 </div>
 			</div>
@@ -257,10 +258,12 @@
 				<input type="password" name="" id="joinPw" placeholder="신규 비밀번호 입력" required autocomplete="off"><span class="checkPwText1"></span>
 				<div>소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 			</div>
-			<div><input type="password" id="checkPw" disabled placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span></div>
-
 			<div>
 				<div>비밀번호 확인</div>
+					<input type="password" id="checkPw" disabled placeholder="신규 비밀번호 확인" required autocomplete="off"><span class="checkPwText2"></span>
+				</div>
+			<div>
+				<div>별명, 닉네임</div>
 				<input type="text" id="joinName" name="" placeholder="유저 이름" required autocomplete="off"><span class="nameCheckMessage"></span>
 				<div>한글, 숫자 , 영문 자유 형식의 4 ~ 12자</div>
 			</div>
@@ -418,6 +421,9 @@
 		
 		function checkPwHandler(event) {
 			const checkPwValue = event.target.value
+			if(checkPwValue.length == 0) {
+				checkPwText2.innerText = ''
+			}
 			if(checkPwValue == joinPw.value) {
 				joinPw.name = 'user_pw'
 				checkPwText2.innerText = '비밀번호가 서로 일치합니다'
@@ -652,6 +658,9 @@
 	    return true;
 	  }
 	}
+ 
+ 
+ 
 
 
 </script>

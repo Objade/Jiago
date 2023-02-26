@@ -17,6 +17,7 @@ public class UserDTO {
 	private Date user_joindate;
 	private String user_withdraw;
 	private String user_grade;
+	private String remember_id;
 	
 	public UserDTO() {}
 
@@ -131,6 +132,15 @@ public class UserDTO {
 	public void setUser_grade(String user_grade) {
 		this.user_grade = user_grade;
 	}
+
+	public String getRemember_id() {
+		return remember_id;
+	}
+
+	public void setRemember_id(String remember_id) {
+		this.remember_id = remember_id;
+	}
+
 
 
 	
