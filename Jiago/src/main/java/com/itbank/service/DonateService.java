@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.model.CompanyDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.DonateDAO;
 
@@ -32,6 +33,11 @@ public class DonateService {
 
 public List<UserDonateDTO> getDonateHistory() {
 	return donateDAO.selectDonateHistory();
+}
+
+
+public List<CompanyDTO> getSurveyCountByDonate() {
+	return donateDAO.selectSurveyCountByDonate();
 }
 
    

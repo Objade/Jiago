@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.itbank.model.CompanyDTO;
 import com.itbank.model.UserDonateDTO;
 
 @Repository
@@ -17,6 +18,8 @@ public interface DonateDAO {
    void minusUserPoint(HashMap<String, String> hashmap);
 
    List<UserDonateDTO> selectDonateHistory();
+
+   List<CompanyDTO> selectSurveyCountByDonate();
 
 
    

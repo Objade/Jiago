@@ -18,6 +18,7 @@ public class CompanyDTO {
 	private String company_email;
 	private String company_delete;
 	
+	private int count;
 	
 	public int getCompany_idx() {
 		return company_idx;
@@ -81,6 +82,14 @@ public class CompanyDTO {
 
 	public void setCompany_delete(String company_delete) {
 		this.company_delete = company_delete;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 }

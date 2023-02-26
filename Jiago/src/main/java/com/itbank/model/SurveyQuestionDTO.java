@@ -12,6 +12,8 @@ public class SurveyQuestionDTO {
 	private int question_idx;
 	private String question_content;
 	
+	private int count;
+	
 	
 	public int getSurvey_question_idx() {
 		return survey_question_idx;
@@ -36,6 +38,12 @@ public class SurveyQuestionDTO {
 	}
 	public void setQuestion_content(String question_content) {
 		this.question_content = question_content;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

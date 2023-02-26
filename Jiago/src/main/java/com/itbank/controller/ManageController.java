@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
+import com.itbank.model.SurveyPreferGenderDTO;
+import com.itbank.model.SurveyPreferQuestionDTO;
 import com.itbank.service.SurveyService;
 
 @Controller
@@ -70,6 +72,68 @@ public class ManageController {
 	public ModelAndView surveyPreferQuestion() {
 		ModelAndView mav = new ModelAndView("/manage/surveyPreferQuestion");
 		
+		List<SurveyPreferQuestionDTO> list = surveyService.getSurveyPreferQuestion();
+		
+		mav.addObject("list", list);
 		return mav;
 	}
+	
+	@GetMapping("donateMonth")
+	public ModelAndView donateMonth() {
+		ModelAndView mav = new ModelAndView("/manage/donateMonth");
+		
+		return mav;
+	}
+	
+	@GetMapping("surveyPreferGender")
+	   public ModelAndView surveyPreferGender() {
+	      ModelAndView mav = new ModelAndView("/manage/surveyPreferGender");
+	      
+	      return mav;
+	   }
+	
+	@GetMapping("surveyCountByCompany")
+	   public ModelAndView surveyCountByCompany() {
+	      ModelAndView mav = new ModelAndView("/manage/surveyCountByCompany");
+	      
+	      return mav;
+	   }
+	
+	@GetMapping("surveyQuestionRanking")
+	   public ModelAndView surveyQuestionRanking() {
+	      ModelAndView mav = new ModelAndView("/manage/surveyQuestionRanking");
+	      
+	      return mav;
+	   }
+	
+	@GetMapping("surveyPreference")
+	   public ModelAndView surveyPreference() {
+	      ModelAndView mav = new ModelAndView();
+	      
+	      return mav;
+	   }
+	
+	@GetMapping("surveyPreferAge")
+	   public ModelAndView surveyPreferAge() {
+	      ModelAndView mav = new ModelAndView("/manage/surveyPreferAge");
+	      
+	      List<SurveyPreferGenderDTO> list = surveyService.getPreferAge();
+	      
+	      mav.addObject("list", list);
+	         
+	      return mav;
+	   }
+	
+	@GetMapping("surveyPreferJob")
+	   public ModelAndView surveyPreferJob() {
+	      ModelAndView mav = new ModelAndView("/manage/surveyPreferJob");
+	      
+	      List<SurveyPreferGenderDTO> list = surveyService.getsurveyPreferJob();
+	      
+	      mav.addObject("list", list);
+	         
+	      return mav;
+	   }
 }
+
+

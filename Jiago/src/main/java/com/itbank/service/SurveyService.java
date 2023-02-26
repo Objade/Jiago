@@ -12,6 +12,7 @@ import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyFormDTO;
+import com.itbank.model.SurveyPreferGenderDTO;
 import com.itbank.model.SurveyPreferQuestionDTO;
 import com.itbank.model.SurveyQuestionDTO;
 import com.itbank.model.SurveyUserDonateRankDTO;
@@ -322,5 +323,20 @@ public class SurveyService {
 		return dao.selectSurveyPreferQuestion();
 	}
 
-	
+	public List<SurveyPreferQuestionDTO> getSurveyPreferGender() {
+		return dao.selectSurveyPreferGender();
+	}
+
+	public List<SurveyQuestionDTO> getSurveyQuestionRanking() {
+		return dao.selectSurveyQuestionRanking();
+	}
+
+	public List<SurveyPreferGenderDTO> getPreferAge() {
+		return dao.selectSurveyPreferAge();
+	}
+
+	public List<SurveyPreferGenderDTO> getsurveyPreferJob() {
+		return dao.selectSurveyPreferJob();
+	}
+
 }

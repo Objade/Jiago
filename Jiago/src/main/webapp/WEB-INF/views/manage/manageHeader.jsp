@@ -33,13 +33,14 @@
     <li><a href="">통계</a>
         <ol><a href="">설문 통계</a>
             <ol><a href="${cpath }/manage/surveyResultList">설문별 통계 보기</a></ol>
-            <ol><a href="">연령대, 성별, 직업별 선호 조사</a></ol>
-            <ol><a href="${cpath }/manage/surveyUserJoin">유저 별 설문 참여율</a></ol>
+            <ol><a href="${cpath }/manage/surveyPreference">연령대, 성별, 직업별 선호 조사</a></ol>
+            <ol><a href="${cpath }/manage/surveyUserJoin">가장 많이 설문에 참여한 회원</a></ol>
             <ol><a href="${cpath }/manage/surveyPreferQuestion">회사 별 선호 질문</a></ol>
-        
+         	<ol><a href="${cpath }/manage/surveyCountByCompany">회사 별 설문조사 수</a></ol>
+         	<ol><a href="${cpath }/manage/surveyQuestionRanking">가장 많이 사용된 질문 보기</a></ol>
         </ol>
         <ol><a href="">기부 통계</a>
-            <ol><a href="">월별 기부 내역</a></ol>
+            <ol><a href="${cpath }/manage/donateMonth">월별 기부 내역</a></ol>
             <ol><a href="${cpath }/manage/surveyUserDonateRank">유저별 기부 순위</a></ol>
         </ol>
     </li>

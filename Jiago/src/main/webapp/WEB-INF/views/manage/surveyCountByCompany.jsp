@@ -1,52 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ include file="../manage/manageHeader.jsp"%>
+<%@ include file="../manage/manageHeader.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<h3>회사 별 설문 개수</h3>
 
-<h3>설문 결과</h3>
 
-
-<div id="surveyUserDonateRank">
-	<canvas id="myChart"></canvas>
+<div id="surveyCountByDonate">
+	<canvas id="surveyCountByDonateChart"></canvas>
 </div>
-
 
 <script>
 
 	const cpath = '/jiago'
 	const survey_idx = '${survey_idx}'
-	const url = cpath + '/manage/getSurveyUserDonateRank'
+	const url = cpath + '/manage/getSurveyCountByDonate'
 
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {   
 	     console.log(json)
 	    
-		const userName = []
+		const companyName = []
 	     for(let key in json) {
-	    	 userName.push(json[key].user_name)
+	    	 companyName.push(json[key].company_name)
 	     }
-	     console.log(userName)
+	     console.log(companyName)
 	     
-	     const total_donate = []
+	     const count = []
 	     for(let key in json) {
-	   		total_donate.push(json[key].total_donate)
+	   		count.push(json[key].count)
 	     }
 	     
-	     console.log(total_donate)
+	     console.log(count)
 	     
-	     let context = document.getElementById('myChart')
+	     let context = document.getElementById('surveyCountByDonateChart')
 	     
          
 		    const data = {
-	        	labels : userName,
+	        	labels : companyName,
 	            datasets: [
 	            	{
-	                   label: '기부금액',
-	                   data: total_donate,
+	            	   label: '설문 조사 수',
+	                   data: count,
 	                   backgroundColor: [
 	                        'rgba(255, 99, 132)',
 	                        'rgba(54, 162, 235)',
@@ -67,13 +64,14 @@
 	                 plugins: {
 	                     title: {
 	                         display: true,
-	                         text: '유저별 기부 순위'
+	                         text: '회사 별 설문 조사 수'
 	                  
 	        	         },
 	        	         legend: {
-		 	                	display: false
-		 	                }
-	            	}
+	 	                	display: false
+	 	                }
+	            	},
+	            
 	            }
 	        }
 	          
@@ -82,7 +80,6 @@
 	})
 	
 </script>
-
 
 
 </body>

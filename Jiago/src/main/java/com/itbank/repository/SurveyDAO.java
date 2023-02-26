@@ -9,6 +9,7 @@ import com.itbank.model.AnswerDTO;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
+import com.itbank.model.SurveyPreferGenderDTO;
 import com.itbank.model.SurveyPreferQuestionDTO;
 import com.itbank.model.SurveyQuestionDTO;
 import com.itbank.model.SurveyUserDonateRankDTO;
@@ -91,6 +92,16 @@ public interface SurveyDAO {
    List<SurveyUserDonateRankDTO> selectUserDonateRank();
 
    List<SurveyPreferQuestionDTO> selectSurveyPreferQuestion();
+
+   List<SurveyPreferQuestionDTO> selectSurveyPreferGender();
+
+   List<SurveyQuestionDTO> selectSurveyQuestionRanking();
+
+   List<SurveyPreferGenderDTO> selectSurveyPreferAge();
+
+   List<SurveyPreferGenderDTO> selectSurveyPreferJob();
+
+
 
 
    

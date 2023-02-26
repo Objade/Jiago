@@ -114,12 +114,14 @@ fetch(url)
                      
            let context = document.getElementById('myChart' + i)
            const labels = answers[i]
+           console.log('labels : ' + labels)
+           console.log('labels[i] : ' + labels[i])
       
          const data = {
             labels : labels,
             datasets: [
                {
-                  label: labels[i],
+            	  label: '결과',
                   data: counts[i]
                },
             ]
@@ -142,7 +144,6 @@ fetch(url)
          }
          
          const myChart = new Chart(context, config)   
-         console.log(questions[0][i])
            
         }  
      

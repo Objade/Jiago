@@ -25,4 +25,20 @@
 	order by month desc
 </select>
 
+<select id="selectSurveyCountByDonate" resultType="company">
+	SELECT
+	    c.company_name,
+	    COUNT(*) AS count
+	FROM
+	    survey s
+	    JOIN survey_company c ON s.company_idx = c.company_idx
+	WHERE
+	    s.survey_delete = 'N'
+	GROUP BY
+	    c.company_name,
+	    SUBSTR(SUBSTR(s.survey_info, INSTR(s.survey_info, 'Q') + 1), 1, INSTR(SUBSTR(s.survey_info, INSTR(s.survey_info, 'Q') + 1), ':') - 1)
+	ORDER BY
+	    COUNT(*) DESC
+</select>
+
 </mapper>

@@ -25,6 +25,7 @@
 		<typeAlias type="com.itbank.model.SurveyUserJoinDTO" alias="userjoin" />
 		<typeAlias type="com.itbank.model.SurveyUserDonateRankDTO" alias="donaterank" />
 		<typeAlias type="com.itbank.model.SurveyPreferQuestionDTO" alias="preferquestion" />
+		<typeAlias type="com.itbank.model.SurveyPreferGenderDTO" alias="prefergender" />
 	</typeAliases>
 	
 </configuration>

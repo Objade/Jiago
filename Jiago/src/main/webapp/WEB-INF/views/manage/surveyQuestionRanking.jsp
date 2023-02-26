@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ include file="../manage/manageHeader.jsp"%>
+<%@ include file="../manage/manageHeader.jsp" %>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<h3>설문 결과</h3>
-
-
-<div id="surveyUserDonateRank">
+<div id="surveyQuestionRanking">
 	<canvas id="myChart"></canvas>
 </div>
 
@@ -18,35 +14,35 @@
 
 	const cpath = '/jiago'
 	const survey_idx = '${survey_idx}'
-	const url = cpath + '/manage/getSurveyUserDonateRank'
+	const url = cpath + '/manage/getSurveyQuestionRanking'
 
 	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {   
 	     console.log(json)
 	    
-		const userName = []
+		const question = []
 	     for(let key in json) {
-	    	 userName.push(json[key].user_name)
+	    	 question.push(json[key].question_content)
 	     }
-	     console.log(userName)
+	     console.log(question)
 	     
-	     const total_donate = []
+	     const count = []
 	     for(let key in json) {
-	   		total_donate.push(json[key].total_donate)
+	    	 count.push(json[key].count)
 	     }
 	     
-	     console.log(total_donate)
+	     console.log(count)
 	     
 	     let context = document.getElementById('myChart')
 	     
          
 		    const data = {
-	        	labels : userName,
+	        	labels : question,
 	            datasets: [
 	            	{
-	                   label: '기부금액',
-	                   data: total_donate,
+	                   label: '사용 횟수',
+	                   data: count,
 	                   backgroundColor: [
 	                        'rgba(255, 99, 132)',
 	                        'rgba(54, 162, 235)',
@@ -67,7 +63,7 @@
 	                 plugins: {
 	                     title: {
 	                         display: true,
-	                         text: '유저별 기부 순위'
+	                         text: '가장 많이 사용된 질문'
 	                  
 	        	         },
 	        	         legend: {
