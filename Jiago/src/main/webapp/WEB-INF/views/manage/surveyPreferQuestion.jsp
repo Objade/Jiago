@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ include file="../manage/manageHeader.jsp"%>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -7,45 +7,42 @@
 
 <style>
 #surveyPreferQuestion {
-   width: 500px;
-   display: flex;
+	width: 500px;
+	display: flex;
 }
 </style>
 
-<h3>회사별 선호 질문</h3>
+<div id="surveyPreferQuestion_root">
+	<div>
+		<h1>회사별 선호 질문</h1>
+		<p class="filter_preferQuestion">
+			<select class="choice">
+			</select>
+		</p>
+		<table class="topSurveyPreferQuestion surveyList">
+			<thead>
+				<tr>
+					<th>회사명</th>
+					<th>질문</th>
+					<th>사용 횟수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="dto" items="${list }">
+					<tr>
+						<td>${dto.company_name }</td>
+						<td>${dto.question_content }</td>
+						<td>${dto.preference_count }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
-
-<select class="choice">
-</select>
-
-
-
-<table>
-
-   <thead>
-      <tr>
-         <th>회사명</th>
-         <th>질문</th>
-         <th>사용 횟수</th>
-      </tr>
-   </thead>
-   <tbody>
-
-      <c:forEach var="dto" items="${list }">
-         <tr>
-            <td>${dto.company_name }</td>
-            <td>${dto.question_content }</td>
-            <td>${dto.preference_count }</td>
-         </tr>
-      </c:forEach>
-   </tbody>
-</table>
-
-
-<div class="surveyPreferQuestion">
-   <div id="surveyPreferQuestion"></div>
+	<div class="surveyPreferQuestion">
+		<div id="surveyPreferQuestion"></div>
+	</div>
 </div>
-
 <script>
 
    const cpath = '/jiago'

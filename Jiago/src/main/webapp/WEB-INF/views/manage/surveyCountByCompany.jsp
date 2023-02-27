@@ -4,11 +4,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<h3>회사 별 설문 개수</h3>
 
 
-<div id="surveyCountByDonate">
-	<canvas id="surveyCountByDonateChart"></canvas>
+	<div id="surveyCountByDonate">
+		<h1 class="countByCom_h1">회사 별 설문 개수</h1>
+		<canvas id="surveyCountByDonateChart"></canvas>
+	</div>
 </div>
 
 <script>

@@ -5,10 +5,11 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<h3>설문 결과</h3>
+
 
 
 <div id="surveyUserDonateRank">
+	<h1 class="userJoin_h1">월별 기부 통계자료</h1>
 	<canvas id="myChart"></canvas>
 </div>
 
