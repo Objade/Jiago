@@ -35,14 +35,15 @@
 		<interceptor>
 			<mapping path="/notice/**" />
 			<mapping path="/board/**" />
-<!-- 		<mapping path="/user/**" />
+			<mapping path="/user/**" />
+			<mapping path="/survey/**" />
 			
 			<exclude-mapping path="/user/login" />
 			<exclude-mapping path="/user/join" />
 			<exclude-mapping path="/user/findLoginId" />
 			<exclude-mapping path="/user/findLoginPw" /> 
 			<exclude-mapping path="/user/pwCheckEmail"/>
-			<exclude-mapping path="/user/result.jsp"/> -->
+			<exclude-mapping path="/user/result.jsp"/>
 			
 			
 			<exclude-mapping path="/board/list" />
@@ -50,6 +51,9 @@
 			
 			<exclude-mapping path="/notice/list" />
 			<exclude-mapping path="/notice/view/**" />
+			
+			<exclude-mapping path="/survey/list"/>
+			<exclude-mapping path="/survey/surveyDetailPage/**"/>
 			
 			<beans:bean id="loginInterceptor" class="com.itbank.interceptor.LoginInterceptor" />	
 		</interceptor>

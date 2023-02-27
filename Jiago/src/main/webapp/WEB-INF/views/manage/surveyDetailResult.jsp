@@ -7,9 +7,17 @@
 
 <style>
 
+   .surveyDetailResult {
+      width: 1500px;
+      display:flex;
+      flex-wrap: wrap;
+	  margin: 0 auto;     
+   }
+
+
    #surveyDetailResult {
       width: 500px;
-      display:flex;
+      
      
    }
 </style>
@@ -18,7 +26,7 @@
 <h3>설문 결과</h3>
 
 
-<div id="surveyDetailResult"></div>
+<div class="surveyDetailResult"></div>
 
 
 
@@ -53,18 +61,18 @@ fetch(url)
      
      const question = new Array();
      for(let i = 0; i < array.length; i++) {
-    	question.push(array[i][0])
-    	 
+       question.push(array[i][0])
+        
      }
      
-   	 console.log(question)
-   	 
-   	 const questions = new Array();
-   	 questions.push(question.map(e => e.질문))
-   	 
-   	 console.log(questions)
-   	 console.log(questions[0][0])
-   	 
+       console.log(question)
+       
+       const questions = new Array();
+       questions.push(question.map(e => e.질문))
+       
+       console.log(questions)
+       console.log(questions[0][0])
+       
      const answer = new Array();
      for(let i = 0; i < array.length; i++) {
         answer.push(array[i].map(e => {
@@ -102,12 +110,16 @@ fetch(url)
      console.log(counts)
      
      
-       const test = document.querySelector('#surveyDetailResult')
+       const test = document.querySelector('.surveyDetailResult')
 
        for(let i = 0; i < array.length; i++) {
-            const test1 = document.createElement('canvas')
-            test1.id = 'myChart'+[i]
-            test.appendChild(test1)
+          const test1 = document.createElement('canvas')
+          const test2 = document.createElement('div')
+           test1.id = 'myChart'+[i]
+            test2.id = 'surveyDetailResult'
+            test2.appendChild(test1)
+           test.appendChild(test2)               
+            
         }     
      
         for(let i = 0; i < array.length; i++) {
@@ -121,7 +133,7 @@ fetch(url)
             labels : labels,
             datasets: [
                {
-            	  label: '결과',
+                 label: '결과',
                   data: counts[i]
                },
             ]

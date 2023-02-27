@@ -79,7 +79,6 @@ body, html {
 					<ul>
 						<li><a href="${cpath }/survey/surveyManage">설문 목록</a></li>
 						<li><a href="${cpath }/survey/surveyAdd">설문 추가</a></li>
-						<li><a href="${cpath }/survey/surveyEdit">설문 수정</a></li>
 					</ul>
 				</li>
 				
@@ -99,16 +98,18 @@ body, html {
 				<li class="manage_li"><a>설문통계</a>
 					<ul>
 						<li><a href="${cpath }/manage/surveyResultList">설문별 통계 보기</a></li>
-						<li><a href="">연령대, 성별, 직업별 선호 조사</a></li>
+						<li><a href="${cpath }/manage/surveyPreference">연령대, 성별, 직업별 선호 조사</a></li>
 						<li><a href="${cpath }/manage/surveyUserJoin">유저 별 설문 참여율</a></li>
-						<li><a href="">회사 별 선호 질문</a></li>
+						<li><a href="${cpath }/manage/surveyPreferQuestion">회사 별 선호 질문</a></li>
+						<li><a href="${cpath }/manage/surveyCountByCompany">회사 별 설문조사 수</a></li>
+						<li><a href="${cpath }/manage/surveyQuestionRanking">가장 많이 사용된 질문 보기</a></li>
 					</ul>
 				</li>
 			
 				<li class="manage_li"><a>기부통계</a>
 					<ul>
-						<li><a href="">월별 기부 내역</a></li>
-						<li><a href="">유저별 기부 순위</a></li>
+						<li><a href="${cpath }/manage/donateMonth">월별 기부 내역</a></li>
+						<li><a href="${cpath }/manage/surveyUserDonateRank">유저별 기부 순위</a></li>
 					</ul>
 				</li>
 			</ul>

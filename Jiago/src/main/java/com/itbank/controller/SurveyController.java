@@ -224,23 +224,7 @@ public class SurveyController {
 		return "redirect:/survey/surveyView/{survey_idx}";
 	}
 	
-	@GetMapping("surveyEdit")
-	public ModelAndView surveyEdit(@RequestParam(defaultValue = "1") Integer page) {
 
-		ModelAndView mav = new ModelAndView();
-
-		int count = surveyService.getSurveyCount();
-		Paging paging = new Paging(page, count);
-
-		System.out.println(paging);
-
-		List<SurveyDTO> list = surveyService.selectAllList(paging);
-
-		mav.addObject("list", list);
-		mav.addObject("paging", paging);
-
-		return mav;
-	}
 	
 	
 	

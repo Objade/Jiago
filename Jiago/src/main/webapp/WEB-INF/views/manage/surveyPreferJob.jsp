@@ -15,6 +15,11 @@
 
 <h3>직업별 선호질문</h3>
 
+<a href="${cpath }/manage/surveyPreferAge"><button>연령대별 선호설문</button></a>
+<a href="${cpath }/manage/surveyPreferGender"><button>성별별 선호설문</button></a>
+<a href="${cpath }/manage/surveyPreferJob"><button>직업별 선호설문</button></a>
+
+
 <select class="choice"></select>
 
 <table>

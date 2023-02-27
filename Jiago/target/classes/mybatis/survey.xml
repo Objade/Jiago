@@ -32,14 +32,14 @@
 
 	<select id="selectSurveyQuestion" parameterType="int"
 		resultType="surveyQuestion">
-		select * from survey_question where question_idx > 1 and survey_idx =
-		#{survey_idx} order by question_idx
+		select * from survey_question where question_idx > 1 and survey_idx = #{survey_idx} 
+		order by question_idx
 	</select>
 
 	<select id="selectSurveyExample" parameterType="int"
 		resultType="surveyExample">
-		select * from survey_example where question_idx > 1 and survey_idx =
-		#{survey_idx} order by question_idx
+		select * from survey_example where question_idx > 1 
+		and survey_idx = #{survey_idx} order by question_idx, example_idx
 	</select>
 
 	<insert id="insertAnswer" parameterType="HashMap">

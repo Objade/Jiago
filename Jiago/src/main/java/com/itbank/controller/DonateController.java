@@ -1,9 +1,8 @@
 package com.itbank.controller;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itbank.model.UserDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.service.DonateService;
-import com.itbank.service.SurveyService;
+
 import com.itbank.service.UserService;
 
 @Controller
@@ -39,6 +38,7 @@ public class DonateController {
       
       if(session.getAttribute("login") != null) {
          int userIdx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+         mav.addObject("login", session.getAttribute("login"));
          
          String point = userService.getPoint(userIdx);
          if(point != null) mav.addObject("point",point);

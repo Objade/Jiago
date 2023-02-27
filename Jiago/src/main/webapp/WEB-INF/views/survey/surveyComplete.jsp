@@ -18,14 +18,15 @@
    }
 
    .complete_wrap > form > input[type="number"] {
-      width: 160px;
-      height: 20px;
+      width: 300px;
+      height: 50px;
    }
 
    .complete_wrap > form > input[type="submit"] {
    	  background-color: #1D594E;
    	  color: white;
-      height: 25px;
+      height: 55px;
+      border: 0px solid white;
    }
 </style>
 
@@ -66,8 +67,9 @@
 <script>
 	window.onkeydown = function() {
 		var kcode = event.keyCode;
-		if(kcode == 8 || kcode == 116) event.returnValue = false;
+		if(kcode == 116) event.returnValue = false;
 	}
+	
 </script>
 
 

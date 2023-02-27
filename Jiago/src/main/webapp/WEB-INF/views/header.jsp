@@ -40,7 +40,7 @@
         
         .logo > a > img {
             width: 200px;
-         margin-top: 30px;
+         margin-top: 10px;
          
         }
 
@@ -55,7 +55,7 @@
         
         .nav > ul > li {
            width: 100px;
-           font-size: 25px;
+           font-size: 35px;
            line-height: 80px;
            margin: 0 10px;
            text-align: center;
@@ -64,7 +64,7 @@
         
         .nav > ul > li > a:hover {
            font-size: 40px;
-           color: lightgreen;
+           color: #8BBF65;
            transition: 0.2s ease-out;
         }
         
@@ -77,7 +77,7 @@
         }
         
         .loginBar > span > a:hover {
-           color: lightgreen;
+           color: #8BBF65;
            transition: 0.2s ease-out;
         }
         
@@ -120,7 +120,7 @@
             font-weight: bolder;
             text-align: center;
             font-size: 50px;
-            color: darkgreen;
+            color: #1D594E;
             padding: 10px;
         }
         

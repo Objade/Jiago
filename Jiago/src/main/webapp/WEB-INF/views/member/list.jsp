@@ -324,6 +324,7 @@
         console.log(delForm)
 
         function delMember(event) {
+        	event.preventDefault()
             const allCheckbox = Array.from(document.querySelectorAll('input[name="checkRow"]:checked'))
 
             const checkbox2Value = Array.from(allCheckbox.map(e => e.value)) 
@@ -343,12 +344,20 @@
                 }
 
             }
-            fetch(url, opt)
-            .then(resp => resp.text())
-            .then(text => {
-            	alert(text)
-            	location.reload()
-            })
+            
+            
+            const deleteConfirm = confirm('선택한 회원을 삭제하시겠습니까?')
+            
+            if(deleteConfirm == true) {
+            	 fetch(url, opt)
+                 .then(resp => resp.text())
+                 .then(text => {
+                 	alert(text)
+                 	location.reload()
+                 })	
+            }
+       
+           
             
             
             
