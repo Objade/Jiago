@@ -116,6 +116,7 @@ public class UserSecurityController {
 	public int joinId(@PathVariable("joinId") String id) {
 		System.out.println(id);
 		int row = userService.joinId(id);
+		System.out.println(row);
 		return row;
 	}
 	

@@ -10,7 +10,17 @@
 	width: 500px;
 	display: flex;
 }
+
+.img_back > a {
+	display: block;
+	width: 135px;
+}
+
 </style>
+
+<div class="img_back">
+   <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
+</div>
 
 <div id="surveyPreferQuestion_root">
 	<div>

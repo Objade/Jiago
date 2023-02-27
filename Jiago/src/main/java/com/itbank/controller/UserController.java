@@ -141,7 +141,7 @@ public class UserController {
 		if(row == 1) {
 			mav.addObject("result","회원 정보 수정에 성공했습니다.");
 		} else {
-			mav.addObject("result","오류가 발생했습");
+			mav.addObject("result","오류가 발생했습니다.");
 			
 		}
 		return mav;
@@ -176,12 +176,12 @@ public class UserController {
 			System.out.println("유저 인덱스" + idx);
 			int row = userService.quit(idx);
 			if(row == 1) {
-				mav.addObject("result","회원 탈퇴가 성공적으로 이뤄졌습니다. 이용해주셔서 감사합");
+				mav.addObject("result","회원 탈퇴가 성공적으로 이뤄졌습니다. 이용해주셔서 감사합니다.");
 				session.removeAttribute("login");
 				return mav;
 			}
 		}
-		mav.addObject("result","오류가 발생했습");
+		mav.addObject("result","오류가 발생했습니다.");
 		mav.addObject("address","user/mypageQuit");
 		return mav;
 	}

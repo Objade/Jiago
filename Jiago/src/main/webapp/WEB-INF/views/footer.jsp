@@ -59,10 +59,9 @@
                 <li><a href="${cpath }/footer/waytocome">오시는길</a></li>
                 <li><a href="${cpath }/footer/termofuse">이용약관</a></li>
                 <li><a href="${cpath }/footer/personalinform">개인정보처리방침</a></li>
-                <li><a href="${cpath }/footer/sitemap">사이트맵</a></li>
             </ul>
-            <span>주소주소주소주소주소주소주소주소주소</span><br>
-            <span>대표대표대표대표대표대대표대표대표 | 사업자 번호 1320-30-31023</span><br>
+            <span>주소  부산광역시 해운대구 우동 센텀2로 25 센텀드림월드 11층</span><br>
+            <span>(주) 지아고 대표이사  정운성 | 사업자 번호 1320-30-31023</span><br>
             <span>COPYTIGHT MACROMILL EMBRAIN. ALL RIGHTS RESERVED.</span>
         </div>
 
@@ -73,10 +72,11 @@
 
         <div class="footer_move">
             <select>
-                <option>---------------</option>
-                <option></option>
-                <option></option>
-                <option></option>
+                <option>협력 회사</option>
+                <option>엠브레인</option>
+                <option>EZ 서베이</option>
+                <option>마크로밀 엠브레인</option>
+                <option>엠브레인 퍼블릭</option>
             </select>
             <button>이동</button>
         </div>

@@ -361,11 +361,13 @@
 	
 	function joinIdCheck() {
 		
-		const url = '${cpath}/user/joinId/' + joinId.value + '/'
+		const url = '${cpath}/user/joinId/' + joinId.value
+		console.log(url)
 		
 		fetch(url)
 		.then(response => response.text())
-		.then(text => {			 
+		.then(text => {			
+			console.log(text)
 			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{5,12}$/g
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'

@@ -6,23 +6,41 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 
-   #surveyUserDonateRank {
+   #SurveyPreferGender {
       width: 500px;
       display:flex;
      
    }
+   
+   .img_back > a {
+	display: block;
+	width: 135px;
+}
+
+.surveyPreferGender {
+	margin-top: 30px;
+	padding: 10px;
+}
+
+.surveyPreferGenderHeader {
+	margin-bottom: 50px;
+}
+
 </style>
 
+<div class="img_back">
+   <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
+</div>
+
+<div class="surveyPreferGender">
+<h1 class="surveyPreferGenderHeader">성별별 선호조사 결과</h1>
 
 
-<h3>설문 결과</h3>
-
-
-<div id="surveyUserDonateRank">
+<div id="SurveyPreferGender">
    <canvas id="myChart0"></canvas>
    <canvas id="myChart1"></canvas>
 </div>
-
+</div>
 
 <script>
 

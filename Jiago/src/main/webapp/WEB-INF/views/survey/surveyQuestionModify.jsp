@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
@@ -12,73 +12,147 @@
 <title>Insert title here</title>
 <style>
 .questionList.container {
-	border: 1px solid black;
-	padding: 10px;
-	margin: 10px;
-	width: 500px;
-	height: 100px;
-	overflow-y: scroll;
+   border: 1px solid black;
+   padding: 10px;
+   margin: 10px;
+   width: 500px;
+   height: 100px;
+   overflow-y: scroll;
 }
 
-input[type="text"] {
-	width: 250px;
+input[id="search"] {
+   width: 250px;
+   height: 23px;
 }
+
+input[id="question_content"] {
+   width: 250px;
+   height: 23px;
+}
+
+input[id="example_content"] {
+      width: 250px;
+      height: 23px;
+   }
 
 .question {
-	border: 1px solid black;
-	padding: 10px;
-	margin: 10px;
-	width: 500px;
+   border: 1px solid black;
+   padding: 10px;
+   margin: 10px;
+   width: 500px;
 }
+
+#survey_wrap {
+   width: 550px;
+   margin: auto;
+   justify-content: center;
+   padding: 10px;
+}
+
+.img_back {
+   padding-bottom: 20px;
+}
+
+.img_back>a {
+   font-size: 25px;
+   text-decoration-line: none;
+   color: black;
+}
+
+.img_back>a>img {
+   padding-right: 5px;
+   width: 25px;
+}
+
+#button {
+   background-color: #1D594E;
+   color: white;
+   border: 0px;
+   width: 150px;
+   margin-left: 10px;
+   padding: 10px 10px; 
+   
+}
+
+#exbutton {
+   background-color: #1D594E;
+   color: white;
+   border: 0px;
+   margin: 0px 5px;
+   padding: 5px 5px;
+}
+
+#drop, #drop1 {
+   background-color: #1D594E;
+   color: white;
+   border: 0px;
+   margin: 0px 5px;
+   padding: 5px 5px;
+}
+
+#delete {
+   background-color: #1D594E;
+   color: white;
+   border: 0px;
+   margin: 5px 5px;
+   padding: 5px 5px;
+}
+
+
 </style>
 
 </head>
 <body>
 
-	<h3>설문 질문 수정하기</h3>
+<div class="img_back">
+   <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
+</div>   
+   
+<div id="survey_wrap">
+   <h2>설문 질문 수정하기</h2>
+   
+   <h4>설문 질문 리스트</h4>
 
-	<h4>설문 질문 리스트</h4>
+   <div class="questionList container">
+      <input type="text" onkeyup="filter()" name="search" id="search"
+         placeholder="질문의 키워드를 입력하세요.">
 
-	<div class="questionList container">
-		<input type="text" onkeyup="filter()" name="search" id="search"
-			placeholder="질문의 키워드를 입력하세요.">
-
-		<c:forEach var="dto" items="${list }">
-			<div class="questionList questionItem">
-				<input type="checkbox" value="${dto.question_idx }"
-					name="question_idx"><span class="eachQuestion">${dto.question_content }</span>
-			</div>
-		</c:forEach>
-	</div>
+      <c:forEach var="dto" items="${list }">
+         <div class="questionList questionItem">
+            <input type="checkbox" value="${dto.question_idx }"
+               name="question_idx"><span class="eachQuestion">${dto.question_content }</span>
+         </div>
+      </c:forEach>
+   </div>
 
 
-	<button id="button">질문 생성</button>
+   <button id="button">질문 생성</button>
 
-	<form method="POST">
-		<div class="wrap">
-			<div class="items">
-				<c:forEach var="dto" items="${qList }" varStatus="status">
-					<div class="question" id="question">
-						<input type="text" id="question_content" name="question_content"
-							placeholder="질문 추가" question_idx="${dto.question_idx}"
-							value="${dto.question_content}"><button id="exbutton" type="button">보기추가</button><button id="drop" type="button">삭제</button>
-						<c:forEach var="dtoEX" items="${exList }" varStatus="status">
-							<c:if test="${dto.question_idx == dtoEX.question_idx }">
-								<div class="example">
-									<input type="text" id="example_content" name="example_content"
-										placeholder="보기 추가" question_idx="${dtoEX.question_idx}"
-										value="${dtoEX.example_content }"><button id="delete" type="button">삭제</button>
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
-				</c:forEach>
-			</div>
-			<input type="submit" value="제출">
-		</div>
-	</form>
+   <form method="POST">
+      <div class="wrap">
+         <div class="items">
+            <c:forEach var="dto" items="${qList }" varStatus="status">
+               <div class="question" id="question">
+                  <input type="text" id="question_content" name="question_content"
+                     placeholder="질문 추가" question_idx="${dto.question_idx}"
+                     value="${dto.question_content}"><button id="exbutton" type="button">보기추가</button><button id="drop" type="button">삭제</button>
+                  <c:forEach var="dtoEX" items="${exList }" varStatus="status">
+                     <c:if test="${dto.question_idx == dtoEX.question_idx }">
+                        <div class="example">
+                           <input type="text" id="example_content" name="example_content"
+                              placeholder="보기 추가" question_idx="${dtoEX.question_idx}"
+                              value="${dtoEX.example_content }"><button id="delete" type="button">삭제</button>
+                        </div>
+                     </c:if>
+                  </c:forEach>
+               </div>
+            </c:forEach>
+         </div>
+         <input id="button" type="submit" value="제출">
+      </div>
+   </form>
 
-  
+</div>  
 
    <script>
       const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.questionItem > input[type="checkbox"]'))

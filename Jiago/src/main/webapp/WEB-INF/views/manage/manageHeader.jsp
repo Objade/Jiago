@@ -834,7 +834,6 @@ body {
 					<ul>
 						<li><a href="${cpath }/survey/surveyManage">설문 목록</a></li>
 						<li><a href="${cpath }/survey/surveyAdd">설문 추가</a></li>
-						<li><a href="${cpath }/survey/surveyEdit">설문 수정</a></li>
 					</ul></li>
 
 				<li class="manage_li"><a>회원관리</a>
