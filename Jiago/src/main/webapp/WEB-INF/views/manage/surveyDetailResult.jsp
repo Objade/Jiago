@@ -1,35 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ include file="../manage/manageHeader.jsp" %>
+<%@ include file="../manage/manageHeader.jsp"%>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<style>
 
-   .surveyDetailResult {
-      width: 1500px;
-      display:flex;
-      flex-wrap: wrap;
-	  margin: 0 auto;     
-   }
-
-
-   #surveyDetailResult {
-      width: 500px;
-      
-     
-   }
-</style>
-
-
-<h3>설문 결과</h3>
-
-
-<div class="surveyDetailResult"></div>
-
-
-
+	<div>
+		<h1 class="DetailResult_h1">통계 결과</h1>
+		<div class="surveyDetailResult"></div>
+	</div>
+</div>
 <script>
 
 const cpath = '/jiago'

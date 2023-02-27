@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ include file="../manage/manageHeader.jsp"%>
 
@@ -7,48 +7,46 @@
 
 <style>
 #surveyPreferJob {
-   width: 500px;
-   display: flex;
+	width: 500px;
+	display: flex;
 }
 </style>
 
+<div id="surveyPreferQuestion_root">
+	<div>
+		<h1>직업별 선호질문</h1>
+		<p class="filter_preferQuestion">
+			<select class="choice">
+			</select>
+		</p>
+		<table class="topSurveyPreferQuestion surveyList">
 
-<h3>직업별 선호질문</h3>
+			<thead>
+				<tr>
+					<th>직업</th>
+					<th>설문 제목</th>
+					<th>참여 횟수</th>
+				</tr>
+			</thead>
+			<tbody>
 
-<a href="${cpath }/manage/surveyPreferAge"><button>연령대별 선호설문</button></a>
-<a href="${cpath }/manage/surveyPreferGender"><button>성별별 선호설문</button></a>
-<a href="${cpath }/manage/surveyPreferJob"><button>직업별 선호설문</button></a>
-
-
-<select class="choice"></select>
-
-<table>
-
-	<thead>
-		<tr>
-			<th>직업</th>
-			<th>설문 제목</th>
-			<th>참여 횟수</th>
-		</tr>
-	</thead>
-	<tbody>
-
-		<c:forEach var="dto" items="${list }">
-			<tr>
-				<td>${dto.user_job }</td>
-				<td>${dto.survey_title }</td>
-				<td>${dto.count }</td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+				<c:forEach var="dto" items="${list }">
+					<tr>
+						<td>${dto.user_job }</td>
+						<td>${dto.survey_title }</td>
+						<td>${dto.count }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 
-<div class="surveyPreferJob">
-	<div id="surveyPreferJob"></div>
+	<div class="surveyPreferJob">
+		<div id="surveyPreferJob"></div>
+	</div>
+
 </div>
-
-
 
 
 <script>

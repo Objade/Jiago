@@ -20,7 +20,7 @@
 	align-items: center;
 	margin: 100px auto;
 	width: 290px;
-	border: 3px dotted rgba(3, 199, 90, .3);
+	border: 3px dotted #38B63C;
 	background-color: white;
 	border-radius: 20px;
 }
@@ -46,7 +46,7 @@
 .userbottom_name {
 	width: 270px;
 	height: 151px;
-	background-color: #03C75A;
+	background-color:#38B63C;
 	color: #ffffff;
 	font-size: 30px;
 	font-weight:bolder;
@@ -63,7 +63,7 @@
 	align-items: center;
 	width: 400px;
 	height: 75px;
-	background-color: #AAE5AD;
+	background-color: #7CC135;
 	display: flex;
 	justify-content: space-between;
 }
@@ -82,10 +82,10 @@
 	font-size: 25px;
 }
 .userbottom_point {
-	border-right: 1px solid #92C494;
+	border-right: 1px solid #689e31;
 }
 .userbottom_point > div:first-child {
-	border-bottom: 1px solid #92C494;
+	border-bottom: 1px solid #689e31;
 }
 
 .donation {
@@ -94,7 +94,7 @@
 	text-align: center;
 	line-height: 151px;
 	font-size: 30px;
-	background-color: #AAE5AD;
+	background-color: #7CC135;
 }
 .donation a {
 	text-decoration: none;
@@ -117,21 +117,9 @@
 	padding-bottom: 50px;
 }
 
-span>button {
-	color: lightgreen;
-	background-color: #2b524a;
-	padding: 5px 10px;
-	border-radius: 15px;
-}
-
-span>button {
-	font-family: 'Dongle';
-	font-size: 20px;
-}
 
 .donation>a:hover, span>button:hover {
-
-	color: orange;
+	color: #38B63C;
 	transition: all 0.7s;
 	cursor: pointer;
 }

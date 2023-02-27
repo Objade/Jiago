@@ -20,19 +20,19 @@
    }
    
    #pwCheck > form > div > input[type="password"] {
-      border: solid 3px rgba(3, 199, 90, .3);
+      border: solid 3px #689e31;
       padding: 5px 10px;
       border-radius: 15px;
       margin-bottom: 20px;
    }
    
    #pwCheck > form > div > input[type="password"]:focus {
-      outline: 3px solid lightgreen;
+      outline: 3px solid #689e31;
    }
    
    #pwCheck > form > div > input[type="submit"] {
       border: none;
-      background-color: #03C75A;
+      background-color: #38B63C;
       color: #ffffff;
       cursor: pointer;
       border-radius: 15px;

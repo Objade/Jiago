@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ include file="../manage/manageHeader.jsp"%>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<h3>설문 결과</h3>
 
 
-<div id="surveyUserJoin">
-	<canvas id="myChart"></canvas>
+
+	<div id="surveyUserJoin">
+		<h1 class="userJoin_h1">설문 통계자료</h1>
+		<canvas id="myChart"></canvas>
+	</div>
 </div>
 
 <script>
