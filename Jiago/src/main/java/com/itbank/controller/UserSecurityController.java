@@ -61,8 +61,7 @@ public class UserSecurityController {
 		boolean flag = saveCheckNumber.equals(inputCheckNumber);
 		if(flag) {
 			userId = mailService.getId(param.get("email"));
-			System.out.println("유저 아이디1 : " + userId.get(0));
-			System.out.println("유저 아이디2 : " + userId.get(1));
+		
 			return userId;
 		} 
 		else {

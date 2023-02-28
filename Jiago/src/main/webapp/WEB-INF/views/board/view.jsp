@@ -8,7 +8,7 @@
    const login_user_id = '${login.user_id}'
    const login_user_idx = '${login.user_idx}'
 </script>
-<script src="${cpath }/resources/js/viewscript.js"></script>
+<script src="${cpath }/resources/js/board/viewscript.js"></script>
 
 
 
@@ -65,12 +65,17 @@
    </div>
 </div>
 
-<script>
-   const replyWriteForm = document.getElementById('replyWriteForm')
-   
-   document.body.onload = replyLoadHandler
-   replyWriteForm.onsubmit = replyWriteHandler
 
+<script>
+	const replyWriteForm = document.getElementById('replyWriteForm')
+</script>
+
+    <script src="${cpath }/resources/js/survey/surveyQuestionAdd.js"></script>
+
+
+<script>
+document.body.onload = replyLoadHandler
+replyWriteForm.onsubmit = replyWriteHandler
 </script>
 
 </body>

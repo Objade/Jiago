@@ -1,3 +1,6 @@
+
+
+
 function deleteHandler(event) {
 	
 	const replyWriter = event.target.parentNode.parentNode.querySelector('.writer')
@@ -21,11 +24,11 @@ function deleteHandler(event) {
 	}
 }
 
-async function replyLoadHandler() {
+function replyLoadHandler() {
 	const replyDiv = document.getElementById('reply')
 	const url = cpath + '/board/reply/' + qboard_idx
 	
-	await fetch(url)
+	fetch(url)
 	.then(resp => resp.json())
 	.then(json => {
 		const arr = json
@@ -72,6 +75,10 @@ function convertHTMLfromJSON(dto) {
 	return html
 }
 
+
+
+
+
 function replyWriteHandler(event) {
 	event.preventDefault()
 	const content = document.querySelector('#replyWriteForm textarea')
@@ -84,6 +91,7 @@ function replyWriteHandler(event) {
 	}
 	console.log(ob);
 	const url = cpath + '/board/reply/' + qboard_idx
+	console.log(url)
 	const opt = {
 		method: 'POST',
 		body: JSON.stringify(ob),
@@ -103,6 +111,9 @@ function replyWriteHandler(event) {
 		}
 	})
 }
+
+
+
 
 
 

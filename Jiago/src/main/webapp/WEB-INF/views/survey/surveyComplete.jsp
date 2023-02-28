@@ -4,7 +4,6 @@
 
 <link rel="stylesheet" href="${cpath }/resources/css/survey/surveyComplete.css" type="text/css">
 
-
 <div class="main">
 	<div class="complete_wrap">
 		<h1>설문 완료페이지</h1>
@@ -23,27 +22,14 @@
 	</div>
 </div>
 
-<script>
-    const form = document.querySelector('form')
 
-    function formHandler() {
-        const point = document.getElementById("point").value;
-        alert(point +'포인트 기부 감사합니다')
-    }
-    
+
+<script src="${cpath }/resources/js/survey/surveyComplete.js"></script>
+
+
+<script>  
     form.onsubmit = formHandler
-
 </script>
-
-<script>
-	window.onkeydown = function() {
-		var kcode = event.keyCode;
-		if(kcode == 116) event.returnValue = false;
-	}
-	
-</script>
-
-
 
 
 
