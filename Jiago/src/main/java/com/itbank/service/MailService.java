@@ -69,7 +69,7 @@ public class MailService {
 		
 
 		Message mimeMessage = new MimeMessage(mailSession);
-		
+		System.out.println(mimeMessage);
 
 		String body = "";
     

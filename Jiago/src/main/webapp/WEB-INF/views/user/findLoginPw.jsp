@@ -30,39 +30,13 @@
 <div class="foot"><a href="${cpath }/" style="font-weight: bolder;">JIAGO</a><span style="margin: 0 5px;">|</span><a href="${cpath }/cuscenter">회원정보 고객센터</a></div>		
 
 
+
+
+
+<script src="${cpath }/resources/js/user/findLoginPw.js"></script>
+
+
 <script>
-	// ID 존재 확인
-	const inputId = document.getElementById('inputId')
-	const sendId = document.forms[0]
-	console.log(inputId)
-	console.log(sendId)
-	
-	function checkUserId(event) {
-		event.preventDefault()
-		const url = '${cpath}/user/sendId'
-		const id = document.querySelector('input[name="id"]').value
-		console.log(id)
-		
-		const opt1 = {
-			method: 'POST',
-			body: id,
-			headers: { 
-				'Content-Type': 'application/json; charset=utf-8'
-			}
-		}
-		
-		fetch(url,opt1)
-		.then(response => response.text())
-		.then(text => {
-			console.log(text)
-			if(text == 1) {
-				location.href ='${cpath}/user/pwCheckEmail'
-			}
-			else {
-				alert('잘못된 형식의 아이디입니다.')
-			}
-		})
-	}
 	sendId.onsubmit = checkUserId
 </script>
 

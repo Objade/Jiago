@@ -66,9 +66,7 @@
       <div class="boardNoticeWrite_button">
                <a class="write" href="${cpath }/notice/write">작성</a>
       </div>
-            <%-- <c:if test="${login.user_type == 'Admin' }">
-            </c:if> --%>
-     
+
    </div>
 </div>
 </body>
