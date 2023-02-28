@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>    
 
-<style>
-	table.surveyDetail > tr > th, td {
-		width: 400px;
-	}
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/survey/surveyDetailPage.css" type="text/css">
+
 
 <div class="main">
 	<div class="surveyDetail title">조사 참여하기</div>

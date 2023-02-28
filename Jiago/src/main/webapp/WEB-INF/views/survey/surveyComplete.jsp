@@ -2,36 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-
-
-<style>
-   .complete_wrap {
-      width: 700px;
-      margin: 0px auto;
-      align-items: center;
-      text-align: center;
-   }
-
-   .complete_wrap > img {
-      width: 500px;
-
-   }
-
-   .complete_wrap > form > input[type="number"] {
-      width: 300px;
-      height: 50px;
-   }
-
-   .complete_wrap > form > input[type="submit"] {
-   	  background-color: #1D594E;
-   	  color: white;
-      height: 55px;
-      border: 0px solid white;
-   }
-</style>
-
-
-
+<link rel="stylesheet" href="${cpath }/resources/css/survey/surveyComplete.css" type="text/css">
 
 
 <div class="main">

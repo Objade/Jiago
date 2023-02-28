@@ -8,62 +8,10 @@
 <meta charset="UTF-8">
 <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>비밀번호 변경</title>
-<style>
 
-	.hidden {
-		display: none;
-	}
-	
-	.pwChangeLogo {
-		width: 300px;
-		margin: 100px auto;
-	}
-	.pwChangeLogo > img {
-		width: inherit;
-	}
-	
-	#pwCheck , #changePw {
-		width: 500px;
-		margin: 0 auto;
-	}
-	
-	.inputLocation {
-		width: 300px;
-		margin: 20px auto;
-	}
-	
-	input {
-		width: inherit;
-		font-size: 25px;
-		text-align: center;
-		box-sizing: border-box;
-		font-family: 'Dongle';
-		border-radius: 10px;
-	}
-	
-	input[type="password"] {
-		border: 2px solid #648c85;
-	}
-	
+<link rel="stylesheet" href="${cpath }/resources/css/user/pwmodify.css" type="text/css">
 
-	
-	input[type="submit"] {
-		background-color: #1D594E;
-		border: 0px solid black;
-	}
-	
-	
-	input[type="submit"]:hover {
-		cursor: pointer;
-		background-color: #648c85;
-		transition: background 0.3s ease-in-out;
-	}
-	
-	input:focus {
-		outline-color: #1D594E;
-	}
-	
-</style>
+
 </head>
 <body>
 	

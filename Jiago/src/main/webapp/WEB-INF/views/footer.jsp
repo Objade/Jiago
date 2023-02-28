@@ -1,55 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
- <style>
-        #footer {
-            background-color: #666;
-            color: white;
-            padding: 0;
-            margin: 0;
-        }
-        .wrap {
-            display: flex;
-            justify-content: center;
-        }
-
-        .footer_menu > ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer_menu > ul > li > a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer_menu > ul > li:nth-child(n+2) {
-            margin: 0px 10px;
-        }
-        
-        .footer_img {
-            display: flex;
-            margin: 0px 150px;
-        }
-
-        .footer_img > div {
-            margin: auto;
-        }
-
-        .footer_img > div > img {
-            margin: 0px 10px;
-        }
-
-        .footer_move {
-            display: flex;
-        }
-        
-        .footer_move > select, button {
-            margin: auto;
-        }
-    </style>
-
+<link rel="stylesheet" href="${cpath }/resources/css/footer/footer.css" type="text/css">
 
 <div id="footer">
     <div class="wrap">

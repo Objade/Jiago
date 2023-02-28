@@ -1,46 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<style>
 
 
-    .surveyList_start > img {
-            width: 600px;
-        }
-
-        .surveyList.surveyTitle.question {
-            font-size: 100%;
-        }
-
-        .surveyList_wrap {
-            margin: 0px auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-        }
-        
-        .example_wrap {
-           width: 150px;
-           height: 100%;
-        
-        }
-
-        .button_wrap {
-            margin: 0px auto;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-</style>
-
-
-
+<link rel="stylesheet" href="${cpath }/resources/css/survey/surveyStart.css" type="text/css">
 
 <div class="main" value="0">
    <div class="surveyList_all">

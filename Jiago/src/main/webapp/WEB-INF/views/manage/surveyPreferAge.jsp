@@ -5,18 +5,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-<style>
-#surveyPreferAge {
-	width: 500px;
-	display: flex;
-}
-
-   .img_back > a {
-	display: block;
-	width: 135px;
-}
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/manage/surveyPreferAll.css" type="text/css">
 
 
 <div class="img_back">

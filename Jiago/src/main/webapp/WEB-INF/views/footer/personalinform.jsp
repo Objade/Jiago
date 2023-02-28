@@ -2,56 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-<style>
-	
-	#main {
-		margin-top: 50px;
-	}
-	#fBody {
-		padding-top: 10px;
-	}
-	#fRoot {
-		width: 1000px;
-		margin: 100px auto;
-	}
-	.come_title {
-		display: flex;
-		justify-content: space-between;
-	}
-	.come_title_L {
-		font-size: 60px;
-		font-weight: bolder;
-	}
-	.term_title {
-		padding: 30px;
-		background-color: #D3ECFA;
-		font-family: '맑은 고딕';
-		color: #333333;
-		border: 1px solid #D3ECFA;
-	}
-	.term_main {
-		padding-top: 40px;
-		font-size: 13px;
-		font-family: '맑은 고딕';
-		color: #666666;
-		border: 1px solid #dadada;
-		padding-left: 15px;
-		border-top: none;
-		margin-top: 0;
-	}
-	.term_sub {
-		padding-top: 40px;
-		font-size: 13px;
-		font-family: '맑은 고딕';
-		color: #003366;
-		border: 1px solid #dadada;
-		border-bottom: none;
-		padding-left: 15px;
-		margin-bottom: 0;
-		
-		
-	}
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/footer/footer.css" type="text/css">
+
 <div id="main">
 	<div id="fBody">
 		<div id="fRoot">

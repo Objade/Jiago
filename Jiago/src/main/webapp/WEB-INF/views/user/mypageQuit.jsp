@@ -2,49 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="mypage.jsp" %>
 
-<style>
-   #pwCheck {
-      width: 500px;
-      margin: 200px auto;
-   }
-   
-   #pwCheck > form > div {
-      text-align: center;
-   }
-   
-   #pwCheck > form > div > input {
-      width: 400px;
-      font-size: 30px;
-      font-family: 'Dongle';
-      box-sizing: border-box;
-   }
-   
-   #pwCheck > form > div > input[type="password"] {
-      border: solid 3px #689e31;
-      padding: 5px 10px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-   }
-   
-   #pwCheck > form > div > input[type="password"]:focus {
-      outline: 3px solid #689e31;
-   }
-   
-   #pwCheck > form > div > input[type="submit"] {
-      border: none;
-      background-color: #38B63C;
-      color: #ffffff;
-      cursor: pointer;
-      border-radius: 15px;
-   }
-   
-   #pwCheck > form > div > input[type="submit"]:hover {
-   
-   }
-   
-   
-</style>
-
+<link rel="stylesheet" href="${cpath }/resources/css/user/mypageQuit.css" type="text/css">
 
    <div id="pwCheck">
       <form method="POST">

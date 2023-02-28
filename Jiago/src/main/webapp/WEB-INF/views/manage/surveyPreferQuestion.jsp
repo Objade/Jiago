@@ -4,13 +4,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-<style>
-#surveyPreferQuestion {
-	width: 500px;
-	display: flex;
-}
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/manage/surveyPreferAll.css" type="text/css">
 
 <div id="surveyPreferQuestion_root">
 	<div>

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../manage/manageHeader.jsp"%>
-<style>
 
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/manage/surveyPreferAll.css" type="text/css">
+
+
 	<div class="preferenceBox">
 		<div class="preferenceBox_div">
 			<a href="${cpath }/manage/surveyPreferAge"><img src="${cpath }/resources/img/연령대.png">연령대별 선호설문</a>

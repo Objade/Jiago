@@ -1,58 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="mypage.jsp" %>
-<style>
 
-	.security_wrap {
-		width: 1200px;
-		margin: auto;
-	}
-
-	
-	#guideLine {
-		
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-	}
-	
-	
-	.guide_right,.guide_left {
-		line-height: 55px;
-	}
-	
-	#customerData {
-		width: 1200px;
-		margin: 0 auto;
-		background-color: white;
-	}
-	
-	.info > div {
-		width: 1000px;
-		display: flex;
-		border-bottom: 1px dashed #ccc;
-		padding: 20px;
-		margin: 0 auto;
-	}
-	
-	.info > div:last-child {
-		border-bottom: 0px solid black;
-	}
-	
-	.innerTitle {
-		width: 150px;
-	}
-	
-	.innerData {
-		padding-left: 20px;
-	}
-	
-	.end {
-		margin-top: 50px;
-		text-align: center;
-	}
-	
-</style>
+<link rel="stylesheet" href="${cpath }/resources/css/user/mypageSecurity.css" type="text/css">
 
 
 <div class="security_wrap">

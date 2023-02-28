@@ -8,48 +8,9 @@
 <meta charset="UTF-8">
 <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>이메일 인증</title>
-<style>
-	.hidden {
-		display: none;
-	}
-	
-	#emailForm {
-		width: 500px;
-		margin: 100px auto;
-	}
-	
-	form {
-		width: 300px;
-		margin: 0 auto;
-	}
-	
-	input {
-		width: 300px;
-		font-size: 30px;
-		font-family: 'Dongle';
-		box-sizing: border-box;
-	}
-	
-	input[type="text"] {
-		border: 3px solid #2b524a;
-		border-radius: 15px;
-	}
-	
-	input[type="text"]:focus {
-		outline: 3px solid lightgreen;
-	}
-	
-	input[type="submit"] {
-		margin-top:10px;
-		border: none;
-		border-radius: 15px;
-		cursor: pointer;
-	}
-	
-	input[type="submit"]:hover {
-		background-color: #2b524a;
-	}
-</style>
+
+<link rel="stylesheet" href="${cpath }/resources/css/user/joinCheckEmail.css" type="text/css">
+
 </head>
 
 

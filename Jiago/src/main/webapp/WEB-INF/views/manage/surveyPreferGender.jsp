@@ -4,29 +4,9 @@
 <%@ include file="../manage/manageHeader.jsp"%>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
 
-   #SurveyPreferGender {
-      width: 500px;
-      display:flex;
-     
-   }
-   
-   .img_back > a {
-	display: block;
-	width: 135px;
-}
+<link rel="stylesheet" href="${cpath }/resources/css/manage/surveyPreferAll.css" type="text/css">
 
-.surveyPreferGender {
-	margin-top: 30px;
-	padding: 10px;
-}
-
-.surveyPreferGenderHeader {
-	margin-bottom: 50px;
-}
-
-</style>
 
 <div class="img_back">
    <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
