@@ -320,25 +320,25 @@
 	}
 	
 	.page_nation .pprev {
-		background: #f8f8f8 url('${cpath}/resources/img/page_pprev.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_pprev.png')
 			no-repeat center center;
 		margin-left: 0;
 	}
 	
 	.page_nation .prev {
-		background: #f8f8f8 url('${cpath}/resources/img/page_prev.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_prev.png')
 			no-repeat center center;
 		margin-right: 7px;
 	}
 	
 	.page_nation .next {
-		background: #f8f8f8 url('${cpath}/resources/img/page_next.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_next.png')
 			no-repeat center center;
 		margin-left: 7px;
 	}
 	
 	.page_nation .nnext {
-		background: #f8f8f8 url('${cpath}/resources/img/page_nnext.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_nnext.png')
 			no-repeat center center;
 		margin-right: 0;
 	}

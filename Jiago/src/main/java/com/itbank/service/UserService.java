@@ -146,12 +146,12 @@ public class UserService {
 		String gradeSet = "";
 		String getTotalPoint = userDao.getTotalPoint(userIdx);
 		int totalPoint = Integer.parseInt(getTotalPoint);		// 토탈 기부 포인트를 가져오는 함수
-		if(totalPoint >= 500000) gradeSet = "6단계";
-		else if(totalPoint >= 300000) gradeSet = "5단계";
-		else if(totalPoint >= 100000) gradeSet = "4단계";
-		else if(totalPoint >= 50000) gradeSet = "3단계";
-		else if(totalPoint >= 10000) gradeSet = "2단계";
-		else gradeSet = "1단계";
+		if(totalPoint >= 500000) gradeSet = "자연";
+		else if(totalPoint >= 300000) gradeSet = "숲";
+		else if(totalPoint >= 100000) gradeSet = "나무";
+		else if(totalPoint >= 50000) gradeSet = "묘목";
+		else if(totalPoint >= 10000) gradeSet = "새싹";
+		else gradeSet = "씨앗";
 		System.out.println("유저 총 보유 포인트 : " + gradeSet);
 		// 재활용 하겠금 DB에 저장
 		UserDTO user = new UserDTO();

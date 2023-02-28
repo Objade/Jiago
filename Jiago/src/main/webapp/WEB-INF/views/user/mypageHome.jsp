@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="mypage.jsp"%>
-
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <link rel="stylesheet" href="${cpath }/resources/css/user/mypageHome.css" type="text/css">
 
 <div id="userPoint">
@@ -12,41 +12,18 @@
 					<div class="usertop_img">
 						<img src="${cpath }/resources/userImg/${grade }.png">
 					</div>
-					<div class="usertop_write">현재 ${leftPoint != 0 ? grade : '최고'}
+					<div class="usertop_write">현재
+						<span class="usertop_write_grade">&nbsp${leftPoint != 0 ? grade : '자연'}&nbsp</span>
 						등급입니다</div>
-					<h2>${leftPoint != 0 ? '다음 등급까지 남은 기부 포인트는' : '' }
-						${leftPoint != 0 ? leftPoint : '' } <span><button
+					<h2>${leftPoint != 0 ? '다음 등급까지 남은 기부 포인트 : ' : '' }
+						${leftPoint != 0 ? leftPoint : '' }원 <span><button
 								id="open-modal">전체 등급표 보기</button></span>
 					</h2>
 					<div id="customer-grade-modal" class="modal">
 						<div class="modal-content">
-							<h2 style="text-align: center;">고객 등급표</h2>
 							<!-- 고객 등급표 내용 -->
 							<div id="gradeForm">
-								<div>
-									<span><img src="${cpath }/resources/userImg/1단계.png">1단계</span>
-									: 총 기부 포인트 1만 미만
-								</div>
-								<div>
-									<span><img src="${cpath }/resources/userImg/2단계.png">2단계</span>
-									: 총 기부 포인트 1만 이상
-								</div>
-								<div>
-									<span><img src="${cpath }/resources/userImg/3단계.png">3단계</span>
-									: 총 기부 포인트 5만 이상
-								</div>
-								<div>
-									<span><img src="${cpath }/resources/userImg/4단계.png">4단계</span>
-									: 총 기부 포인트 10만 이상
-								</div>
-								<div>
-									<span><img src="${cpath }/resources/userImg/5단계.png">5단계</span>
-									: 총 기부 포인트 30만 이상
-								</div>
-								<div>
-									<span><img src="${cpath }/resources/userImg/6단계.png">6단계</span>
-									: 총 기부 포인트 50만 이상
-								</div>
+								<img class="gradeForm" src="${cpath }/resources/userImg/등급표.png">
 							</div>
 						</div>
 						<br>
@@ -94,7 +71,6 @@
 		</c:choose>
 	</div>
 </div>
-
 
 	<script>
 	// 모달 열기 버튼

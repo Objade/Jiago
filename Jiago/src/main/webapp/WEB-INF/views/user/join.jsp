@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>회원가입 페이지</title>
 
@@ -88,11 +89,11 @@
 				<div>성별</div>
 				  <label>
 				    <input type="radio" name="user_gender" value="남성" required/>
-				    <span>남성</span>
+				    <span class="user_gender">남성</span>
 				  </label>
 				  <label style="margin-left: 20px;">
 				    <input type="radio" name="user_gender" value="여성" required />
-				    <span>여성</span>
+				    <span class="user_gender">여성</span>
 				  </label>
 			</div>
 			<div class="addressForm">

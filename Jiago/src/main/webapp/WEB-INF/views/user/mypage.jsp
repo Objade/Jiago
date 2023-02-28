@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <link rel="stylesheet" href="${cpath }/resources/css/user/mypage.css" type="text/css">
 
 </head>
@@ -36,7 +36,7 @@
 				</div>
 				<div class="headerLeft3">
 					<ul class="leftmenu3">
-						<li><a><img src="${cpath }/resources/img/알람.png">[보안] 주기적으로 비밀번호를 바꿔주세요!</a></li>
+						<li><a><img src="${cpath }/resources/img/알림.png">[보안] 주기적으로 비밀번호를 바꿔주세요!</a></li>
 					</ul>
 				</div>
 				

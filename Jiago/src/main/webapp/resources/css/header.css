@@ -26,7 +26,7 @@
 	
 	.logo>a>img {
 		width: 200px;
-		margin-top: 10px;
+		margin-top: 30px;
 	}
 	
 	.nav {
@@ -40,7 +40,7 @@
 	
 	.nav>ul>li {
 		width: 100px;
-		font-size: 35px;
+		font-size: 25px;
 		line-height: 80px;
 		margin: 0 10px;
 		text-align: center;
@@ -48,27 +48,67 @@
 	
 	.nav>ul>li>a:hover {
 		font-size: 40px;
-		color: #8BBF65;
+		color: lightgreen;
 		transition: 0.2s ease-out;
 	}
 	
-	.nav>ul>li>a:not (:hover ) {
-		transition: 0.2s ease-out;
-	}
+	.nav
+	>
+	ul
+	>
+	li
+	>
+	a
+	:not
+	 
+	(
+	:hover
+	 
+	)
+	{
+	transition
+	:
+	 
+	0
+	.2s
+	 
+	ease-out
+	;
 	
+	
+	}
 	.loginBar>span {
 		margin: 0 10px;
 	}
 	
 	.loginBar>span>a:hover {
-		color: #8BBF65;
+		color: lightgreen;
 		transition: 0.2s ease-out;
 	}
 	
-	.loginBar>span>a:not (:hover ) {
-		transition: 0.2s ease-out;
-	}
+	.loginBar
+	>
+	span
+	>
+	a
+	:not
+	 
+	(
+	:hover
+	 
+	)
+	{
+	transition
+	:
+	 
+	0
+	.2s
+	 
+	ease-out
+	;
 	
+	
+	}
 	a {
 		text-decoration: none;
 		color: inherit;
@@ -102,7 +142,7 @@
 		font-weight: bolder;
 		text-align: center;
 		font-size: 50px;
-		color: #1D594E;
+		color: darkgreen;
 		padding: 10px;
 	}
 	
@@ -224,10 +264,6 @@
 		background-color: white;
 	}
 	
-	#mdiRoot {
-		padding-top: 100px;
-	}
-	
 	#boardList {
 		border-collapse: collapse;
 		width: 100%;
@@ -290,14 +326,14 @@
 		font-family: 'Dongle';
 	}
 	
-	.write_button {
+	.boardNoticeWrite_button {
 		width: 100px;
 		height: 30px;
 		background-color: #1B434A;
 		float: right;
 	}
 	
-	.write_button>a {
+	.boardNoticeWrite_button>a {
 		display: flex;
 		width: 100px;
 		height: 30px;
@@ -307,6 +343,35 @@
 		font-size: 30px;
 		font-weight: bolder;
 		color: #eee;
+	}
+	
+	.boardNoticeListButton_div {
+		float: right;
+	}
+	
+	.boardNoticeList_button {
+		width: 100px;
+		height: 40px;
+		background-color: #1B434A;
+		color: #eee;
+		font-weight: bolder;
+		font-size: 25px;
+		cursor: pointer;
+		font-family: "Dongle";
+		background: linear-gradient(-135deg, transparent 10px, #1B434A 0);
+		border: none;
+	}
+	
+	.boardNoticeUpdate_Button {
+		width: 80px;
+		height: 35px;
+		background-color: #1B434A;
+		color: #eee;
+		font-weight: bolder;
+		font-size: 25px;
+		cursor: pointer;
+		font-family: "Dongle";
+		border: none;
 	}
 	
 	.write_button2 {
@@ -361,57 +426,18 @@
 		cursor: pointer;
 	}
 	
-	.serviceBox {
-		width: 900px;
-		margin: auto;
-	}
-	
-	.noticeBox {
-		width: 500px;
-		height: 200px;
-		background: #1B434A;
-		margin: 100px auto;
-	}
-	
-	.boardBox {
-		width: 500px;
-		height: 200px;
-		background: #1B434A;
-		margin: 100px auto;
-	}
-	
-	.serviceBox>.noticeBox>a {
-		display: flex;
-		width: 500px;
-		height: 200px;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		font-size: 30px;
-		font-weight: bolder;
-		color: #eee;
-	}
-	
-	.serviceBox>.boardBox>a {
-		display: flex;
-		width: 500px;
-		height: 200px;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-		font-size: 30px;
-		font-weight: bolder;
-		color: #eee;
-	}
-	
 	.header>.nav a {
 		font-size: 20px;
 		color: #333333;
 		font-weight: bolder;
 	}
 	
+	#replyWriteForm {
+		height: 120px;
+	}
+	
 	#replyWriteForm textarea {
-		height: 100px;
+		height: 120px;
 		min-height: auto;
 		width: 80%;
 	}
@@ -516,25 +542,25 @@
 	}
 	
 	.page_nation .pprev {
-		background: #f8f8f8 url('${cpath}/resources/img/page_pprev.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_pprev.png')
 			no-repeat center center;
 		margin-left: 0;
 	}
 	
 	.page_nation .prev {
-		background: #f8f8f8 url('${cpath}/resources/img/page_prev.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_prev.png')
 			no-repeat center center;
 		margin-right: 7px;
 	}
 	
 	.page_nation .next {
-		background: #f8f8f8 url('${cpath}/resources/img/page_next.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_next.png')
 			no-repeat center center;
 		margin-left: 7px;
 	}
 	
 	.page_nation .nnext {
-		background: #f8f8f8 url('${cpath}/resources/img/page_nnext.png')
+		background: #f8f8f8 url('/jiago/resources/img/page_nnext.png')
 			no-repeat center center;
 		margin-right: 0;
 	}
@@ -543,6 +569,67 @@
 		background-color: #1B434A;
 		color: #fff;
 		border: 1px solid #1B434A;
+	}
+	
+	/* 공지사항&질문게시판 작성 (write) */
+	#boardNoticeAdd_Root {
+		padding-top: 20px;
+		width: 550px;
+		margin: auto;
+		justify-content: center;
+		padding: 10px;
+		padding-top: 130px;
+	}
+	
+	.boardNoticeAdd_form {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background-color: #648C85;
+	}
+	
+	.boardNoticeAdd_form span {
+		padding-left: 45px;
+		font-size: 30px;
+		color: white;
+	}
+	
+	.boardNoticeAdd_form p {
+		margin-left: 45px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	.boardNoticeAdd_form input {
+		width: 450px;
+		height: 45px;
+		border: 1px solid #dadada;
+		margin-bottom: 5px;
+		font-size: 15px;
+		color: grey;
+	}
+	
+	.boardNoticeAdd_form p textarea {
+		width: 443px;
+		height: 250px;
+		border: 1px solid #dadada;
+	}
+	
+	.boardNotice_Add_radio input {
+		width: 20px;
+		font-size: 30px;
+		color: white;
+	}
+	
+	.boardNoticeAdd_button input {
+		width: 450px;
+		height: 45px;
+		background-color: #1B434A;
+		border: 1px solid #1B434A;
+		text-align: center;
+		color: white;
+		font-size: 30px;
+		cursor: pointer;
+		font-family: "Dongle";
 	}
 	
 	/* 설문 목록 */
@@ -805,4 +892,50 @@
 	.home_totalPerson {
 		margin-left: 100px;
 		width: 300px;
+	}
+	
+	/* 고객 센터(cuscenter) */
+	
+	#cuscenterBody {
+		padding-top: 140px;
+	}
+	
+	.cuscenter_img {
+		display: flex;
+		justify-content: center;
+		height: 250px;
+		width: 100%;
+		background-color: #57774E;
+	}
+	
+	.cuscenter_img img {
+		height: 250px;
+	}
+	
+	.serviceBox {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 100px;
+		padding-right: 250px;
+		padding-left: 250px;
+	}
+	
+	.noticeBox {
+		width: 380px;
+	}
+	
+	.noticeBox:hover {
+		border: 4px dotted #8FD493;
+		border-radius: 20px;
+		padding: 10px;
+		box-sizing: border-box;
+	}
+	
+	.noticeBox img {
+		width: 190px;
+		height: 190px;
+	}
+	
+	.noticeBox a {
+		font-size: 60px;
 	}
