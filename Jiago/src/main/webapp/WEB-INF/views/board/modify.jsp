@@ -2,20 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
-<!-- 
-<c:if test="${dto.qboard_writer != login.user_id }">
-	<script>
-		alert('본인의 글만 수정/삭제 할 수 있습니다')
-		location.href = '${cpath}/board/list'
-	</script>
-</c:if>
- -->
-<div id="mdiRoot">
-<form method="POST">
-	<p><input type="text" name="qboard_title" placeholder="제목" value="${dto.qboard_title }" required></p>
-	<p><input type="text" name="qboard_writer" value="${dto.qboard_writer }" readonly></p>
-	<p><textarea name="qboard_content" placeholder="내용" required>${dto.qboard_content }</textarea></p>
-	<p><input type="submit" value="수정"></p>
+<div id="boardNoticeAdd_Root">
+<form class="boardNoticeAdd_form" method="POST">
+   <span>제목</span>
+   <p><input type="text" name="qboard_title" placeholder="제목" value="${dto.qboard_title }" required></p>
+   <span>글쓴이</span>
+   <p><input type="text" name="qboard_writer" value="${dto.qboard_writer }" readonly></p>
+   <span>내용</span>
+   <p><textarea name="qboard_content" placeholder="내용" required>${dto.qboard_content }</textarea></p>
+   <p class="boardNoticeAdd_button"><input type="submit" value="수정"></p>
 </form>
 </div>
 </body>

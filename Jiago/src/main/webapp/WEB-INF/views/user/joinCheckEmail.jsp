@@ -6,63 +6,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>이메일 인증</title>
-<style>
-	.hidden {
-		display: none;
-	}
-</style>
+
+<link rel="stylesheet" href="${cpath }/resources/css/user/joinCheckEmail.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 </head>
 
 
 <body>
 	<div id="emailForm" class="hidden">
 		<form class="form">
-			<input id="inputNum" type="text" placeholder="인증번호 입력" required>
+			<input id="inputNum" type="text" placeholder="인증번호 입력" required><br>
+			<div id="timer" style="font-family: 'dongle'; font-size: 20px;"></div>
 			<input type="submit" value="입력">
 		</form>
 	</div>
 	
 	
+<script>const email = '${email}'
+
+	console.log(email)</script>
+	
+<script src="${cpath }/resources/js/user/joinCheckEmail.js" charset="utf-8" type="text/javascript"></script>
+	
 <script>
-	const url = '${cpath}/user/sendJoinEmail/${email}/'
-	const emailForm = document.getElementById('emailForm')
 	
-	fetch(url)
-	.then(response => response.text())
-	.then(text => {
-		if(text.indexOf('중복') == 0) {
-			if(window.confirm(text + ' 창을 닫으시겠습니까?')) window.close();
-		}
-		else {
-			alert(text)
-			emailForm.classList.remove('hidden')
-		}
-	})
-	
-	const form = document.querySelector('.form')
-	console.log(form)
-	
-	function formHandler(event) {
-		event.preventDefault()
-		const inputNum = document.getElementById('inputNum').value
-		const url = '${cpath}/user/equalCheckNumber/' + inputNum + '/'
-		
-		fetch(url)
-		.then(response => response.text())
-		.then(text => {
-			console.log(text)
-			if(text == '인증완료') {
-				emailForm.classList.add('hidden')
-				const parentPage = opener.document.getElementById("userEmail")
-				parentPage.name = 'user_email'
-				parentPage.value = "${email}";
-				if(window.confirm('인증에 성공하였습니다. 창을 닫으시겠습니까?')) window.close();
-			}
-			else alert('인증에 실패했습니다. 다시 시도해 주세요.')
-		})
-		
-	}
 	form.onsubmit = formHandler
 
 	

@@ -32,17 +32,26 @@
 	</beans:bean>
 	
 	<interceptors>
+		
 		<interceptor>
 			<mapping path="/notice/**" />
 			<mapping path="/board/**" />
-<!-- 		<mapping path="/user/**" />
+			<mapping path="/user/mypage/**" />
+			<mapping path="/user/mypageHome/**" />
+			<mapping path="/user/mypageSecurity/**" />
+			<mapping path="/user/mypageSecurity/**" />
+			<mapping path="/user/mypageQuit/**" />
 			
-			<exclude-mapping path="/user/login" />
-			<exclude-mapping path="/user/join" />
-			<exclude-mapping path="/user/findLoginId" />
-			<exclude-mapping path="/user/findLoginPw" /> 
-			<exclude-mapping path="/user/pwCheckEmail"/>
-			<exclude-mapping path="/user/result.jsp"/> -->
+			<mapping path="/survey/**" />
+			
+<!-- 			<exclude-mapping path="/user/login" /> -->
+<!-- 			<exclude-mapping path="/user/join" /> -->
+<!-- 			<exclude-mapping path="/user/joinId/**" /> -->
+<!-- 			<exclude-mapping path="/user/popUp/emailCheckMail/**" /> -->
+<!-- 			<exclude-mapping path="/user/findLoginId" /> -->
+<!-- 			<exclude-mapping path="/user/findLoginPw" />  -->
+<!-- 			<exclude-mapping path="/user/pwCheckEmail"/> -->
+<!-- 			<exclude-mapping path="/user/result.jsp"/> -->
 			
 			
 			<exclude-mapping path="/board/list" />
@@ -51,9 +60,20 @@
 			<exclude-mapping path="/notice/list" />
 			<exclude-mapping path="/notice/view/**" />
 			
+			<exclude-mapping path="/survey/list"/>
+			<exclude-mapping path="/survey/surveyDetailPage/**"/>
+			
 			<beans:bean id="loginInterceptor" class="com.itbank.interceptor.LoginInterceptor" />	
 		</interceptor>
 		
+		<interceptor>
+			<mapping path="/manage/**"/>
+			<mapping path="/survey/surveyManage"/>
+			<mapping path="/survey/surveyAdd"/>
+			<mapping path="/member/**"/>
+			<mapping path="/company/**"/>
+			<beans:bean id="AdminInterceptor" class="com.itbank.interceptor.AdminInterceptor" />	
+		</interceptor>
 	</interceptors>
 	
 	<!-- 요청이 multipart/form-data 형식으로 전달될 때, 파일을 처리할 객체를 스프링 빈으로 등록 -->

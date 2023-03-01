@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.itbank.model.UserDTO;
 import com.itbank.repository.UserDAO;
@@ -21,21 +20,14 @@ public class UserService {
 	public UserDTO login(UserDTO account) {
 		account.setUser_pw(sha256.encrypt(account.getUser_pw()));
 		System.out.println(account.getUser_pw());
+		System.out.println(account.getUser_id());
 		UserDTO dto = userDao.login(account);
 		
-		if(dto.getUser_pw() != null) {
+		if(dto != null) {
 			int point = 0;
 			if(userDao.getPoint(dto.getUser_idx()) != null) point = Integer.parseInt(userDao.getPoint(dto.getUser_idx()));
-			System.out.println(point);
-			if(point >= 100000 ) dto.setGrade("6단계");
-			else if(point >= 50000 ) dto.setGrade("5단계");
-			else if(point >= 30000 ) dto.setGrade("4단계");
-			else if(point >= 10000 ) dto.setGrade("3단계");
-			else if(point >= 5000 ) dto.setGrade("2단계");
-			else dto.setGrade("1단계");
-			
+			System.out.println("유저 보유 포인트" + point);
 		}
-		
 		return dto;
 	}
 	
@@ -109,8 +101,14 @@ public class UserService {
 		return userDao.pwUpdate(user);
 	}
 
+	// 포인트 가져오기
 	public String getPoint(int idx) {
 		return userDao.getPoint(idx);
+	}
+	
+	// 기부 총합포인트 갖고오기
+	public String getTotalPoint(int user_idx) {
+		return userDao.getTotalPoint(user_idx);
 	}
 
 	public int pwCheck(HashMap<String, String> param) {
@@ -141,6 +139,52 @@ public class UserService {
 	public int checkPhoneNum(String phone) {
 		return userDao.checkPhoneNum(phone);
 	}
+	
+
+	// 등급 지정
+	public int setGrade(int userIdx) {
+		String gradeSet = "";
+		String getTotalPoint = userDao.getTotalPoint(userIdx);
+		int totalPoint = Integer.parseInt(getTotalPoint);		// 토탈 기부 포인트를 가져오는 함수
+		if(totalPoint >= 500000) gradeSet = "자연";
+		else if(totalPoint >= 300000) gradeSet = "숲";
+		else if(totalPoint >= 100000) gradeSet = "나무";
+		else if(totalPoint >= 50000) gradeSet = "묘목";
+		else if(totalPoint >= 10000) gradeSet = "새싹";
+		else gradeSet = "씨앗";
+		System.out.println("유저 총 보유 포인트 : " + gradeSet);
+		// 재활용 하겠금 DB에 저장
+		UserDTO user = new UserDTO();
+		user.setUser_grade(gradeSet);
+		user.setUser_idx(userIdx);
+		int row = userDao.setGrade(user);
+		System.out.println(row);
+		return row;
+	}
+
+
+	// 사용자 등급 갖고오기
+	public String getGrade(int user_idx) {
+		return userDao.getGrade(user_idx);
+	}
+
+	// 다음 단계까지 남은 포인트 가지고 오기
+	public int getleftPoint(int user_idx) {
+		String getTotalPoint = userDao.getTotalPoint(user_idx);
+		if(getTotalPoint == null) return 10000;
+		int totalPoint = Integer.parseInt(getTotalPoint);
+		if(totalPoint >= 500000) return 0;
+		else if(totalPoint >= 300000) return totalPoint - 300000;
+		else if(totalPoint >= 100000) return totalPoint - 100000;
+		else if(totalPoint >= 50000) return totalPoint - 50000;
+		else if(totalPoint >= 10000) return totalPoint - 10000;
+		else return 10000 - totalPoint;
+	}
+
+	public UserDTO getUser(int user_idx) {
+		return userDao.selectUser(user_idx);
+	}
+
 
 	
 	

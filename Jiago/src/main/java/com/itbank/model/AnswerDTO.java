@@ -10,6 +10,17 @@ public class AnswerDTO {
 	private int question_idx;
 	private int survey_idx;
 	
+	private int count;
+	private String question_content;
+	
+	@Override
+	public String toString() {
+		String result = String.format("설문번호 : %d, 질문번호 : %d, 질문 : %s, 답변: %s, 결과 : %d", 
+									  survey_idx, question_idx, question_content, answer_content, count);
+		return result;
+	}
+	
+	
 	public AnswerDTO() {
 	
 	}
@@ -61,6 +72,26 @@ public class AnswerDTO {
 	public void setSurvey_idx(int survey_idx) {
 		this.survey_idx = survey_idx;
 	}
+	
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+	public String getQuestion_content() {
+		return question_content;
+	}
+
+
+	public void setQuestion_content(String question_content) {
+		this.question_content = question_content;
+	}
+	
 	
 	
 }

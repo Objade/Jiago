@@ -7,11 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.itbank.model.AnswerDTO;
 import com.itbank.model.Paging;
 import com.itbank.model.SurveyDTO;
 import com.itbank.model.SurveyExampleDTO;
 import com.itbank.model.SurveyFormDTO;
+import com.itbank.model.SurveyPreferGenderDTO;
+import com.itbank.model.SurveyPreferQuestionDTO;
 import com.itbank.model.SurveyQuestionDTO;
+import com.itbank.model.SurveyUserDonateRankDTO;
+import com.itbank.model.SurveyUserJoinDTO;
 import com.itbank.model.UserDonateDTO;
 import com.itbank.repository.SurveyDAO;
 
@@ -296,6 +301,42 @@ public class SurveyService {
 
 	public HashMap<String, String> getTotalDonate() {
 		return dao.selectTotalDonate();
+	}
+
+	public int judge(HashMap<String, Integer> hash) {
+		return dao.judge(hash);
+	}
+
+	public List<AnswerDTO> getSurveyResult(HashMap<String, String> map) {
+		return dao.selectSurveyResultList(map);
+	}
+
+	public List<SurveyUserJoinDTO> getUserJoin() {
+		return dao.selectUserJoin();
+	}
+
+	public List<SurveyUserDonateRankDTO> getUserDonateRank() {
+		return dao.selectUserDonateRank();
+	}
+
+	public List<SurveyPreferQuestionDTO> getSurveyPreferQuestion() {
+		return dao.selectSurveyPreferQuestion();
+	}
+
+	public List<SurveyPreferQuestionDTO> getSurveyPreferGender() {
+		return dao.selectSurveyPreferGender();
+	}
+
+	public List<SurveyQuestionDTO> getSurveyQuestionRanking() {
+		return dao.selectSurveyQuestionRanking();
+	}
+
+	public List<SurveyPreferGenderDTO> getPreferAge() {
+		return dao.selectSurveyPreferAge();
+	}
+
+	public List<SurveyPreferGenderDTO> getsurveyPreferJob() {
+		return dao.selectSurveyPreferJob();
 	}
 
 }

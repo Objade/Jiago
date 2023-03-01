@@ -8,92 +8,9 @@
 <meta charset="UTF-8">
 <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <title>비밀번호 찾기</title>
-<style>
-	html {
-		font-family: 'Dongle';
-	}
 
-	#findUserPw {
-		width: 800px;
-		margin: 0 auto;
-	}
-	
-	.imglogo {
-		display: flex;
-		justify-content: center;
-		margin-top: 70px;
-	}
+<link rel="stylesheet" href="${cpath }/resources/css/user/findLoginPw.css" type="text/css">
 
-	.imglogo > img {
-		width: 300px;
-	}
-	
-	.message {
-		font-weight: bolder;
-		font-size: 35px;
-	 	text-align: center;
-	 	margin-top: 10px;
-	}
-	
-	#inputId {
-		display: flex;
-		justify-content: center;
-		margin-top: 30px;
-	}
-	
-	input {
-		width: 450px;
-		font-size: 30px;
-		padding: 5px 10px;
-		box-sizing: border-box;
-		margin: 10px;
-		border: solid 1px #bbbbbd;
-		border-radius: 10px;
-		box-shadow: 0 1px 5px 0 rgb(0 0 0 / 5%);
-		font-family: 'Dongle';
-	}
-	
-	
-	input:focus {
-		outline-color: #1D594E;
-	}
-	
-	input[type="text"] {
-		background-image: url(${cpath}/resources/loginImg/아이디확인.png);
-  		background-position: 20px center;
-  		background-size: 30px;
- 		background-repeat: no-repeat;
-		text-indent: 50px;
-	}
-	
-	input:not([type="text"]) {
-		border: solid 1px rgba(0,0,0,.05);
-		background-color: #1D594E;
-		color: white;
-		cursor: pointer;
-	}
-	
-	.otherlink {
-		text-align: center;
-		margin-top: 30px;
-		font-size: 25px;
-	}
-	
-	a {
-		text-decoration: none; 
-		color: #1D594E;
-	}
-	
-	.foot {
-		margin-top: 50px;
-		font-size: 20px;
-		text-align: center;
-		color: rgba(0,0,0,.6);
-	}
-	.foot > a {
-		color: rgba(0,0,0,.6);
-	}
-</style>
 </head>
 <body>
 
@@ -113,39 +30,13 @@
 <div class="foot"><a href="${cpath }/" style="font-weight: bolder;">JIAGO</a><span style="margin: 0 5px;">|</span><a href="${cpath }/cuscenter">회원정보 고객센터</a></div>		
 
 
+
+
+
+<script src="${cpath }/resources/js/user/findLoginPw.js"></script>
+
+
 <script>
-	// ID 존재 확인
-	const inputId = document.getElementById('inputId')
-	const sendId = document.forms[0]
-	console.log(inputId)
-	console.log(sendId)
-	
-	function checkUserId(event) {
-		event.preventDefault()
-		const url = '${cpath}/user/sendId'
-		const id = document.querySelector('input[name="id"]').value
-		console.log(id)
-		
-		const opt1 = {
-			method: 'POST',
-			body: id,
-			headers: { 
-				'Content-Type': 'application/json; charset=utf-8'
-			}
-		}
-		
-		fetch(url,opt1)
-		.then(response => response.text())
-		.then(text => {
-			console.log(text)
-			if(text == 1) {
-				location.href ='${cpath}/user/pwCheckEmail'
-			}
-			else {
-				alert('잘못된 형식의 아이디입니다.')
-			}
-		})
-	}
 	sendId.onsubmit = checkUserId
 </script>
 

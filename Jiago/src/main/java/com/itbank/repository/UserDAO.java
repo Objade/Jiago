@@ -1,6 +1,7 @@
 package com.itbank.repository;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +15,9 @@ public interface UserDAO {
 
 	int join(UserDTO user);
 
-	String checkRealMail(String email);
+	int checkRealMail(String email);
 
-	String getId(String email);
+	List<String> getId(String email);
 
 	HashMap<String, String> checkId(String id);
 
@@ -41,6 +42,16 @@ public interface UserDAO {
 	int getEmail(String email);
 
 	int checkPhoneNum(String phone);
+
+	String getTotalPoint(int userIdx);
+
+	int setGrade(UserDTO user);
+
+	String getGrade(int user_idx);
+
+	int checkUserType(UserDTO user);
+
+	UserDTO selectUser(int user_idx);
 
 
 	

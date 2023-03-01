@@ -3,115 +3,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style>
-body {
-background-color: #f5f6f7;
-}
-#survey_root {
-   width: 550px;
-   margin: auto;
-   justify-content: center;
-   padding: 10px;
-}
-table.surveyView {
-   border-collapse: collapse;
-}
-
-.surveyView  th, td {
-   border: 1px solid black;
-   padding: 10px;
-   text-align: center;
-}
-.img_back {
-   padding-bottom: 20px;
-}
-
-.img_back>a {
-   font-size: 25px;
-   text-decoration-line: none;
-   color: black;
-}
-
-.img_back>a>img {
-   padding-right: 5px;
-   width: 25px;
-}
-.survey_Modify input {
-   width: 450px;
-   height: 45px;   
-   border: 1px solid #dadada;
-   margin-bottom: 10px;
-   font-size: 15px;
-   color: grey;
-}
-.survey_Modify select {
-   width: 450px;
-   height: 45px;
-   border: 1px solid #dadada;
-   margin-bottom: 10px;
-}
-.survey_Modify option {
-   color: grey;
-}
-.survey_Modify span {
-   padding-left: 5px;
-   font-weight: bolder;
-      
-}
-.survey_Modify p {
-   margin: 5px;
-}
-.survey_Modify p textarea{
-   width: 443px;
-   height: 250px;
-   border: 1px solid #dadada;      
-}
-.surveyModi_button input{
-   width: 450px;
-   height: 45px;
-   background-color: #1B434A;
-   border: 1px solid #1B434A;
-   text-align: center;
-   color: white;
-   font-size: 20px;
-   cursor: pointer;
-}
-.surveymodi_option {
-   color: grey;
-   font-size: 15px;
-}
-.survey_Modify h1 {
-   padding-bottom: 20px;
-}
-.surveyModi_button button {
-
-   width: 450px;
-   height: 45px;
-   background-color: #1B434A;
-   border: 1px solid #1B434A;
-   text-align: center;
-   color: white;
-   font-size: 20px;
-   cursor: pointer;
-   margin-bottom: 70px;
-}
-
-</style>
-
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<link rel="stylesheet" href="${cpath }/resources/css/survey/surveyModify.css" type="text/css">
+
 
 </head>
 <body>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <div class="img_back">
    <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
@@ -185,13 +95,6 @@ table.surveyView {
       <p class="surveyModi_button"><a href="${cpath }/survey/surveyQuestionModify/${dto.survey_idx}"><button type="button">질문 리스트 수정하기</button></a></p>
    </form>
 </div>
-
-
-
-
-
-
-
 
 
 <script>

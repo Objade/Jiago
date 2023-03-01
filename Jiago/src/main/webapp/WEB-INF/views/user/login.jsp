@@ -7,6 +7,8 @@
 <head>
 <link href="https://webfontworld.github.io/yangheeryu/Dongle.css" rel="stylesheet">
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>로그인 페이지</title>
 <style type="text/css">
 
@@ -14,14 +16,15 @@
 		font-family: 'Dongle';
 	}
 
-	#loginLogo > img {
-		width: inherit;
-	}
 	
 	#loginLogo {
 		width: 400px;
 		margin: 0 auto;
 		margin-top: 50px;
+	}
+	
+	#loginLogo > a > img {
+		width: 400px;
 	}
 	
 	#accountInput {
@@ -99,27 +102,59 @@
 		color:black;
 	}
 	
+	.rememberId {
+		width: 300px;
+   	 	margin: 20px auto;
+    	font-size: 25px;
+	}
+	
 </style>
 </head>
 <body>
-	<div id="loginLogo"><img src="${cpath}/resources/img/logo.png "></div>
+	<div id="loginLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png "></a></div>
 	
 	<form method="POST" action="${cpath }/user/login">
-		<div id="accountInput">
-			<div class="idForm">
-				<div class="id">
-					<img src="${cpath }/resources/loginImg/login.png">
-					<input class="idText" type="text" name="user_id" placeholder="아이디" autocomplete="off" required>
-				</div>
-				<div class="password">
-					<img src="${cpath }/resources/loginImg/password.png">
-					<input class="pwText" type="password" name="user_pw" placeholder="비밀번호" autocomplete="off" required>
-				</div>
-				<div class="loginBtn">
-					<input type="submit" value="로그인">
-				</div>
-			</div>		
-		</div>
+	  <div id="accountInput">
+	    <div class="idForm">
+	      <div class="id">
+	        <img src="${cpath }/resources/loginImg/login.png">
+	        <input class="idText" type="text" name="user_id" placeholder="아이디" autocomplete="off" required
+	          value="${cookie.user_id.value }">
+	        <!-- 쿠키에서 아이디를 읽어서 자동으로 입력 -->
+	      </div>
+	      <div class="password">
+	        <img src="${cpath }/resources/loginImg/password.png">
+	        <input class="pwText" type="password" name="user_pw" placeholder="비밀번호" autocomplete="off" required>
+	      </div>
+	      <div class="rememberId">
+	        <input type="checkbox" name="remember_id" value="1" id="rememberId" ${empty cookie.user_id.value ? '' : 'checked'}>
+	        <label for="rememberId">아이디 저장</label>
+	      </div>
+	      <div class="loginBtn">
+	        <input type="submit" value="로그인">
+	      </div>
+	      
+	  
+	<ul>
+	<li onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그인</span>
+      </a>
+	</li>
+	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li>
+</ul>
+	
+
+	      
+	      
+	      
+	      
+	    </div>
+	  </div>
 	</form>
 	
 	
@@ -160,8 +195,86 @@
 		inputId.onblur = focusOff
 		inputPw.onblur = focusOff
 		
-		
 	</script>
+	
+
+
+<!-- 카카오 스크립트 -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('838b2d684b7a71b5613042d0169ff0ed'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response);
+        	  const account = response.kakao_account;
+        	  console.log(response.id)
+        	  console.log(account.email)
+        	  console.log(account.gender)
+        	  
+        	  const url = '${cpath}/user/kakaoCheck'
+        	  
+         	  const data = {
+				id: response.id,
+				gender: account.gender,
+				email: account.email
+        	  }
+        	  
+        	  console.log(data)
+        	  
+        	  const res = {
+				method: 'POST',
+				body: JSON.stringify(data),
+				headers: { 
+					'Content-Type': 'application/json; charset=utf-8'
+				}
+        	  }
+        	  
+        	  fetch(url , res)
+        	  .then(response => response.text())
+        	  .then(text => {
+        		  console.log(text)
+        	  })
+        	  
+        	  
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+//카카오로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
+
+
+
+
+
+
 	
 	
 </body>

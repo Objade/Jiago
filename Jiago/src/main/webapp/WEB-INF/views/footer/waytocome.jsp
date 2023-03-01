@@ -1,122 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
-<style>
-	#main {
-	margin-top: 50px;
-	}
-	#fBody {
-		padding-top: 10px;
-	}
-	#fRoot {
-		width: 1000px;
-		margin: 100px auto;
-	}
-	.come_title {
-		display: flex;
-		justify-content: space-between;
-	}
-	.come_title_L {
-		font-size: 60px;
-		font-weight: bolder;
-	}
-	#map {
-		margin-top: 20px;
-		width: 100%;
-		height: 400px;
-	}
-	.come_main {
-		display: flex;
-		padding-top: 20px;
-		
-	}
-	.come_ul {
-		padding-left: 0;
-	}
-	.come_li {
-		border-top: 1px solid grey;
-		border-bottom: 1px solid grey;
-		width: 500px;
-	}
-	 .come_dl {
-	 	padding-left: 30px;
-	 	display: flex;
-	 }
+<%@ include file="../header.jsp" %>
 
-	.come_dt {
-		width: 100px;
-		font-size: 45px;
-		color: grey;
-		font-weight: bolder;
-	}
-	.come_dd {
-		font-size: 30px;
-	}
-	.come_dd p {
-		margin-top: 0;
-	}
-	.come_p_title {
-		font-size: 35px;
-		font-weight: bolder;
-		margin-bottom: 0;
-	}
-	.come_span_subway {
-		background-color: #00A84D;
-		display:table;
-		text-align: center;
-		vertical-align: middle;
-		width: 60px;
-		height: 10px;
-		margin-right: 10px;
-		border-radius: 30px;
-		color: white;
-	}
-	.come_p_center {
-		display: flex;
-	}
-	.come_span_bus1 {
-		background-color: #53b332;
-		display:table;
-		text-align: center;
-		vertical-align: middle;
-		width: 60px;
-		height: 10px;
-		margin-right: 10px;
-		border-radius: 30px;
-		color: white;
-	}
-	.come_span_bus2 {
-		background-color: #0068b7;
-		display:table;
-		text-align: center;
-		vertical-align: middle;
-		width: 60px;
-		height: 10px;
-		margin-right: 10px;
-		border-radius: 30px;
-		color: white;
-	}
-	.come_span_bus3 {
-		background-color: #e60012	;
-		display:table;
-		text-align: center;
-		vertical-align: middle;
-		width: 60px;
-		height: 10px;
-		margin-right: 10px;
-		border-radius: 30px;
-		color: white;
-	}
-	.come_img > img {
-		height: 500px;
-		padding-top: 16px;
-	}
-	.come_span {
-		font-size: 25px;
-	}
-	
-	
-</style>
+
+<link rel="stylesheet" href="${cpath }/resources/css/footer/footer.css" type="text/css">
+
 <div id="main">
 	<div id="fBody">
 		<div id="fRoot">
@@ -189,6 +77,7 @@
 	
 	
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2138103522bb5cc0b51caf1b45ef9917"></script>
+
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 

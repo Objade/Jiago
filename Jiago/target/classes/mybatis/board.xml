@@ -84,6 +84,7 @@
         select * from reply
             where qboard_idx = ${qboard_idx}
     		)
+    	order by reply_idx
 	</select>
 	
 	<insert id="insertReply" parameterType="reply">

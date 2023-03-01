@@ -2,36 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-
-
-<style>
-   .complete_wrap {
-      width: 700px;
-      margin: 0px auto;
-      align-items: center;
-      text-align: center;
-   }
-
-   .complete_wrap > img {
-      width: 500px;
-
-   }
-
-   .complete_wrap > form > input[type="number"] {
-      width: 160px;
-      height: 20px;
-   }
-
-   .complete_wrap > form > input[type="submit"] {
-   	  background-color: #1D594E;
-   	  color: white;
-      height: 25px;
-   }
-</style>
-
-
-
-
+<link rel="stylesheet" href="${cpath }/resources/css/survey/surveyComplete.css" type="text/css">
 
 <div class="main">
 	<div class="complete_wrap">
@@ -51,26 +22,14 @@
 	</div>
 </div>
 
-<script>
-    const form = document.querySelector('form')
 
-    function formHandler() {
-        const point = document.getElementById("point").value;
-        alert(point +'포인트 기부 감사합니다')
-    }
-    
+
+<script src="${cpath }/resources/js/survey/surveyComplete.js"></script>
+
+
+<script>  
     form.onsubmit = formHandler
-
 </script>
-
-<script>
-	window.onkeydown = function() {
-		var kcode = event.keyCode;
-		if(kcode == 8 || kcode == 116) event.returnValue = false;
-	}
-</script>
-
-
 
 
 
