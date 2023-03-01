@@ -12,8 +12,6 @@
 <body>
    
    
-   <div class="img_home"><a href="${cpath }"><img src="${cpath }/resources/img/홈.png">Home</a></div>
-   
    <div id="root">
    <h1>설문 목록</h1>
       <table class="surveyManage surveyList">
