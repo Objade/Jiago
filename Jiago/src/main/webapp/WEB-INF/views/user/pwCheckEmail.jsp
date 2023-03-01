@@ -19,7 +19,6 @@
 	
 	<div>
 		<form id="mainForm" method="POST">
-			<div><input type="radio" name="check" value="phone"> 회원정보에 등록한 휴대전화로 인증 (${user[2] })</div>
 			<div><input type="radio" name="check" value="email"> 본인확인 이메일로 인증 (${user[1] })</div>
 			<div><input type="submit" value="선택" class="mainSelect"></div>
 		</form>

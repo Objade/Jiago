@@ -89,6 +89,8 @@ public class SurveyController {
 		List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
 		List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
 		
+		System.out.println("지은이 바보");
+		
 		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
 		
 		HashMap<String, Integer> hash = new HashMap<String, Integer>();
@@ -96,8 +98,10 @@ public class SurveyController {
 		hash.put("user_idx", user_idx);
 		
 		int row = surveyService.judge(hash);
+		System.out.println(row);
 		if(row > 1) {
 			ModelAndView mav1 = new ModelAndView("user/result");
+			System.out.println("진성이 바보");
 			String result = "이미 설문에 참여 하였습니다";
 			mav1.addObject("result", result);
 			return mav1;

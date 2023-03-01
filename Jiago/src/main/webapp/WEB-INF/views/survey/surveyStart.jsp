@@ -3,6 +3,12 @@
 <%@ include file="../header.jsp" %>
 
 
+<script>
+	const survey_idx = '${survey_idx}'
+   	const user_idx = '${login.user_idx}'
+   	const cpath = '${cpath}'
+</script>
+
 <link rel="stylesheet" href="${cpath }/resources/css/survey/surveyStart.css" type="text/css">
 
 <div class="main" value="0">
@@ -42,7 +48,8 @@
     <script src="${cpath }/resources/js/survey/surveyStart.js"></script>
 
    <script>
-
+	
+   
       window.onload = surveyStart
       
       buttonBefore.onclick = buttonBeforeHandler

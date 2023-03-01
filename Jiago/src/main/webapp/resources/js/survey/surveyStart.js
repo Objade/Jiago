@@ -59,12 +59,12 @@
         if(inputArr.length == questionAll.length) {   // 문항수와 정답지의 길이가 같으면 실행함
            
             const ob = {
-               user_idx: '${login.user_idx}',
+               user_idx: user_idx,
                answer_content: inputArr,
             }
             
-            const cpath = '${cpath}'
-            const url = cpath + '/survey/surveyAnswer/${survey_idx}'
+            
+            const url = cpath + '/survey/surveyAnswer/' + survey_idx
             const opt = {
                   method: 'POST',
                   body: JSON.stringify(ob),

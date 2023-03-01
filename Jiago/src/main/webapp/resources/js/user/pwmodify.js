@@ -105,11 +105,15 @@ const pwCheck = document.getElementById('pwCheck')						// 변경시 비밀번�
 		.then(text => {
 			console.log(text)
 			if(text == 1) {
-				alert('비밀번호가 성공적으로 수정되었습니다.')
+				console.log('1')
+				alert('비밀번호가 성공적으로 수정되었습니다.')	
 				window.close();
+				const parent = window.opener;
+				parent.location.reload();
 			}
 			else {
 				alert('오류가 발생했습니다.')
 			}
+		
 		})
 	}

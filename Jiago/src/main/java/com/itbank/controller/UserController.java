@@ -76,6 +76,7 @@ public class UserController {
 		int row = userService.join(user);
 		String result = row == 1 ? "회원 가입에 성공했습니다." : "오류가 발생했습니다.";
 		mav.addObject("result", result);
+		mav.addObject("address", "user/login");
 		return mav;
 	}
 	
@@ -164,7 +165,10 @@ public class UserController {
 			UserDTO user = new UserDTO();
 			user.setUser_pw(first);
 			int row = userService.newPasswordSet(user);
-			if(row == 1) mav.addObject("result","비밀번호가 변경되었습니다.");
+			if(row == 1) {
+				mav.addObject("result","비밀번호가 변경되었습니다.");
+				mav.addObject("address","user/login.");
+			}
 			return mav;
 		}
 		mav.addObject("result","오류가 발생했습니다.");
