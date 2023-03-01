@@ -21,14 +21,14 @@
 		<div id="customerData">
 			
 			<div class="info">
-				<div><div class="innerTitle">이름</div>: <span class="innerData">${login.user_name }</span></div>
-				<div><div class="innerTitle">생년월일 / 성별</div>: <span class="innerData">${login.user_joindate} / ${login.user_gender }</span></div>
-				<div><div class="innerTitle">거주지역</div>: <span class="innerData"><input type="text"  name="user_address" value="${login.user_address }" required autocomplete="off"></span></div>
-				<div><div class="innerTitle">휴대폰정보</div>: <span class="innerData"><input type="text"  name="user_phone" value="${login.user_phone }" required autocomplete="off"></span></div>
-				<div><div class="innerTitle">이메일</div>: <span class="innerData"><input type="text"  name="user_email" value="${login.user_email }" required autocomplete="off"></span></div>
+				<div><div class="innerTitle">이름</div>: <span class="innerData">${dto.user_name }</span></div>
+				<div><div class="innerTitle">생년월일 / 성별</div>: <span class="innerData">${dto.user_joindate} / ${dto.user_gender }</span></div>
+				<div><div class="innerTitle">거주지역</div>: <span class="innerData"><input type="text"  name="user_address" value="${dto.user_address }" required autocomplete="off"></span></div>
+				<div><div class="innerTitle">휴대폰정보</div>: <span class="innerData"><input type="text"  name="user_phone" value="${dto.user_phone }" required autocomplete="off"></span></div>
+				<div><div class="innerTitle">이메일</div>: <span class="innerData"><input type="text"  name="user_email" value="${dto.user_email }" required autocomplete="off"></span></div>
 				<div><div class="innerTitle">직업</div>: <span class="innerData">
 					<select name="user_job" id="job-select" required>
-					    <option value="${login.user_job }">${login.user_job }</option>
+					    <option value="${dto.user_job }">${dto.user_job }</option>
 					    <option value="전업주부">전업주부</option>
 					    <option value="학생">학생</option>
 					    <option value="무직">무직</option>
@@ -45,7 +45,7 @@
 					</select>
 				</span>
 				</div>
-				<input type="hidden"  name="user_idx" value="${login.user_idx }">
+				<input type="hidden"  name="user_idx" value="${dto.user_idx }">
 				<!-- 비밀번호 변경은 따로 영역을 만들어서 처리할거임 -->
 				<div><div class="innerTitle">비밀번호</div>: <span class="innerData"><button type="button" id="pwbtn">비밀번호 변경</button></span></div>
 			</div>

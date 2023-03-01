@@ -181,6 +181,10 @@ public class UserService {
 		else return 10000 - totalPoint;
 	}
 
+	public UserDTO getUser(int user_idx) {
+		return userDao.selectUser(user_idx);
+	}
+
 
 	
 	

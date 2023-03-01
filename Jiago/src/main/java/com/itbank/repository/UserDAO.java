@@ -51,6 +51,8 @@ public interface UserDAO {
 
 	int checkUserType(UserDTO user);
 
+	UserDTO selectUser(int user_idx);
+
 
 	
 }

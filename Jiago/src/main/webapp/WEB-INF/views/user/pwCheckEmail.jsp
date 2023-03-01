@@ -59,6 +59,7 @@
 	<script src="${cpath }/resources/js/user/pwCheckEmail.js"></script>
 	
 	<script>
+		const cpath = '${cpath}'
 		const mainResult = '${mainSelect }'
 		const user0 = '${user[0]}'
 		

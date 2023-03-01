@@ -131,7 +131,16 @@ public class UserController {
 	
 	
 	@GetMapping("mypageSecurity")
-	public void mypageSecurity() {}
+	public ModelAndView mypageSecurity(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int user_idx = ((UserDTO)(session.getAttribute("login"))).getUser_idx();
+		
+		UserDTO dto = userService.getUser(user_idx);
+		
+		mav.addObject("dto", dto);
+		
+		return mav;
+	}
 	
 	@PostMapping("userModify")
 	public ModelAndView userModify(HttpSession session ,UserDTO user) {
@@ -140,6 +149,7 @@ public class UserController {
 		int row = userService.update(user);
 		if(row == 1) {
 			mav.addObject("result","회원 정보 수정에 성공했습니다.");
+			mav.addObject("address", "/user/mypageSecurity");
 		} else {
 			mav.addObject("result","오류가 발생했습니다.");
 			

@@ -37,16 +37,21 @@
 			<mapping path="/notice/**" />
 			<mapping path="/board/**" />
 			<mapping path="/user/mypage/**" />
+			<mapping path="/user/mypageHome/**" />
+			<mapping path="/user/mypageSecurity/**" />
+			<mapping path="/user/mypageSecurity/**" />
+			<mapping path="/user/mypageQuit/**" />
+			
 			<mapping path="/survey/**" />
 			
-			<exclude-mapping path="/user/login" />
-			<exclude-mapping path="/user/join" />
-			<exclude-mapping path="/user/joinId/**" />
-			<exclude-mapping path="/user/popUp/emailCheckMail/**" />
-			<exclude-mapping path="/user/findLoginId" />
-			<exclude-mapping path="/user/findLoginPw" /> 
-			<exclude-mapping path="/user/pwCheckEmail"/>
-			<exclude-mapping path="/user/result.jsp"/>
+<!-- 			<exclude-mapping path="/user/login" /> -->
+<!-- 			<exclude-mapping path="/user/join" /> -->
+<!-- 			<exclude-mapping path="/user/joinId/**" /> -->
+<!-- 			<exclude-mapping path="/user/popUp/emailCheckMail/**" /> -->
+<!-- 			<exclude-mapping path="/user/findLoginId" /> -->
+<!-- 			<exclude-mapping path="/user/findLoginPw" />  -->
+<!-- 			<exclude-mapping path="/user/pwCheckEmail"/> -->
+<!-- 			<exclude-mapping path="/user/result.jsp"/> -->
 			
 			
 			<exclude-mapping path="/board/list" />
