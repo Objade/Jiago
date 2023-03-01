@@ -35,6 +35,7 @@
             <value>classpath:mybatis/notice.xml</value>
             <value>classpath:mybatis/company.xml</value>
             <value>classpath:mybatis/member.xml</value>
+	    <value>classpath:mybatis/kakao.xml</value>
          </list>
       </property>
    </bean>
