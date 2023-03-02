@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
-<link rel="stylesheet" href="${cpath }/resources/css/donateList/donateList.css" type="text/css">
+<link rel="stylesheet"
+	href="${cpath }/resources/css/donateList/donateList.css"
+	type="text/css">
 
 
 <div class="main2">
@@ -38,22 +40,21 @@
 										당신의 포인트는 : <span><fmt:formatNumber value="${point }"
 												pattern="#,###원" /></span>
 									</h1>
+									<form method="POST" action="${cpath }/donate/donateList">
+										<input type="number" class="donate_input" id="point"
+											name="total_donate" placeholder="포인트 입력" min="0"
+											max="${point }" step="100">
+										<button type="submit">기부하기</button>
+									</form>
 								</c:when>
 								<c:otherwise>
-									<h1 class="currentPoint_User">
-										당신의 포인트는 : <span>0 원</span>
-									</h1>
+									<h1 class="nonePoint_User">설문에 참여하고, 기부에 동참해보세요!</h1>
 								</c:otherwise>
 							</c:choose>
 						</div>
-						<form method="POST" action="${cpath }/donate/donateList">
-							<input type="number" class="donate_input" id="point"
-								name="total_donate" placeholder="포인트 입력" min="0" max="${point }"
-								step="100">
-							<button type="submit">기부하기</button>
-						</form>
+
 					</c:when>
-					
+
 					<c:otherwise>
 						<h1>로그인을 하고, 기부에 동참해보세요!</h1>
 					</c:otherwise>
@@ -106,8 +107,6 @@
 <script src="${cpath }/resources/js/donate/donateList.js"></script>
 
 <script>
-
-
 	openButton.addEventListener("click", displayModal);
 	closeButton.addEventListener("click", closeHandler)
 	modalBackground.addEventListener("click", closeHandler);

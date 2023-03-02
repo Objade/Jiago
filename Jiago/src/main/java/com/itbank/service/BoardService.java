@@ -52,7 +52,6 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 	}
 
 	public int delete(int qboard_idx) {
-		
 		return dao.delete(qboard_idx);
 	}
 
@@ -69,6 +68,13 @@ HashMap<String, Object> param = new HashMap<String, Object>();
 	}
 	public int getBoardSearchCount(String qboard_title) {
 		return dao.selectSearchBoardCount(qboard_title);
+	}
+	public int selectDeleteReply(int qboard_idx) {
+		return dao.selectDeleteReply(qboard_idx);
+	}
+	
+	public int deleteReplyAll(int qboard_idx) {
+		return dao.deleteReplyAll(qboard_idx);
 	}
 
 }

@@ -30,6 +30,7 @@
 	<div id="changePw" class="hidden">
 		<form id="modifyStart" method="POST">
 			<div class="inputLocation">
+				<div style="margin-bottom: 20px; font-size: 15px;">소문자, 숫자, 특수문자 조합의 8 ~ 20자</div>
 				<input id="modifyPw" type="password" placeholder="변경할 비밀번호를 입력">
 				<span class="checkPwText1"></span>
 			</div>

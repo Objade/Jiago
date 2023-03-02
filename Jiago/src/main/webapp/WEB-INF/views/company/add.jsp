@@ -9,7 +9,7 @@
 			<h1>회사 추가</h1>
 			
 			<span>회사 번호</span>
-			<p><input type="number" placeholder="회사 번호" name="company_id" min="0" required></p> 
+			<p><input type="text" placeholder="회사 아이디" name="company_id"  required></p> 
 			
 			<span>회사 이름</span>
 		    <p><input type="text" placeholder="회사 이름" name="company_name" required></p> 

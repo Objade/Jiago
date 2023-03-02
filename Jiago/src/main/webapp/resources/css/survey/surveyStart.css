@@ -1,32 +1,37 @@
-	@charset "utf-8";
-	
-	.surveyList_start>img {
-		width: 600px;
-	}
-	
-	.surveyList.surveyTitle.question {
-		font-size: 100%;
-	}
-	
-	.surveyList_wrap {
-		margin: 0px auto;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		font-size: 40px;
-	}
-	
-	.example_wrap {
-		width: 150px;
-		height: 100%;
-	}
-	
-	.button_wrap {
-		margin: 0px auto;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+.   @charset "utf-8";
+   
+   .surveyList_start>img {
+      width: 600px;
+   }
+   
+   .surveyList.surveyTitle.question {
+      font-size: 100%;
+   }
+   
+   .surveyList_wrap {
+      margin: 0px auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+   }
+   
+   .example_wrap {
+      width: 150px;
+      height: 100%;
+   }
+   
+   .button_wrap {
+      margin: 0px auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   
+   .surveyList.item {
+      width: 100%;
+   
+   }

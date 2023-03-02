@@ -10,24 +10,30 @@
 </script>
 
 
-
-
-
 <div id="vBody">
    <div id="vRoot">
    
       <div class="vMDL">
-         <c:if test="${login.user_id == dto.qboard_writer }">
+      <c:choose>
+         <c:when test="${login.user_id == dto.qboard_writer }">
             <div>
                <a href="${cpath }/board/modify/${dto.qboard_idx}"><button class="boardNoticeUpdate_Button">수정</button></a>
                <a href="${cpath }/board/delete/${dto.qboard_idx}"><button class="boardNoticeUpdate_Button">삭제</button></a>
             </div>
-         </c:if>
+         </c:when>
+         
+         <c:when test="${login.user_type eq 'Admin'}">
+             <a href="${cpath }/board/delete/${dto.qboard_idx}"><button class="boardNoticeUpdate_Button">삭제</button></a>
+         
+         
+         </c:when>
+      </c:choose>
+         
          
          <div class="boardNoticeListButton_div">
             <a href="${cpath }/board/list?qboard_title="><button class="boardNoticeList_button">목록</button></a>
          </div>
-         
+        
       </div>
       
       <table id="viewList">
@@ -43,9 +49,7 @@
        </table>
        <div class="reply_title">답변</div> 
          <div id="reply">
-               <img src="${cpath }/resources/img/로딩.gif"
-                   height="50"
-                    style="margin: 100px auto">
+              <h3>답변은 로그인한 회원만 확인할 수 있습니다.</h3>
             </div>
          
           <c:if test="${login.user_type == 'Admin' }"> 
@@ -58,10 +62,6 @@
                </p>
             </form>
            </c:if> 
-            
-
-      
-      
    </div>
 </div>
 

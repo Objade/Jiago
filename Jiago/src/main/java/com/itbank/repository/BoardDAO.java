@@ -36,4 +36,8 @@ public interface BoardDAO {
 
 	int selectSearchBoardCount(String qboard_title);
 
+	int selectDeleteReply(int qboard_idx);
+
+	int deleteReplyAll(int qboard_idx);
+
 }

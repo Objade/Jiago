@@ -86,12 +86,20 @@ public class BoardController {
 		System.out.println(row != 0 ? "수정 성공" : "수정 실패");
 		return "redirect:/board/view/" + dto.getQboard_idx();
 	}
+	
 	@GetMapping("/delete/{qboard_idx}")
-	public String delete(@PathVariable("qboard_idx") int qboard_idx) {
-		int row = boardService.delete(qboard_idx);
-		System.out.println(row != 0 ? "삭제 성공" : "삭제 실패");
-		return "redirect:/board/list?qboard_title=";
-	}
+	   public String delete(@PathVariable("qboard_idx") int qboard_idx) {
+	      int replyCheck = boardService.selectDeleteReply(qboard_idx);
+	      
+	      if(replyCheck > 0) {
+	         int replyDelete = boardService.deleteReplyAll(qboard_idx);
+	         int qboardDelete = boardService.delete(qboard_idx);
+	      }else {
+	         int qboardDelete = boardService.delete(qboard_idx);         
+	      }
+	      
+	      return "redirect:/board/list?qboard_title=";
+	   }
 		
 
 }

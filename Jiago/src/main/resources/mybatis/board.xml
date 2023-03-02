@@ -94,7 +94,13 @@
 				(#{qboard_idx},#{user_idx}, #{admin_id}, #{reply_content})
 	</insert>
 	
-	
+	<select id="selectDeleteReply" parameterType="int" resultType="int">
+      select count(*) from reply where qboard_idx = ${qboard_idx}
+   </select>
+   
+   <delete id="deleteReplyAll" parameterType="int">
+      delete from reply where qboard_idx = ${qboard_idx}
+   </delete>
 	
 </mapper>
 

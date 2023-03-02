@@ -70,14 +70,17 @@
 
 
    <script>
-	   button.onclick = buttonHandler
+	
 
-       form.onsubmit = testHandler
-            
       
       window.onload = function loadHandler() {
          buttonHandler()
       }
+      
+      button.onclick = buttonHandler
+
+      form.onsubmit = testHandler
+            
     </script>
 
 

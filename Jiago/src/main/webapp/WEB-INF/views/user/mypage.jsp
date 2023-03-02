@@ -42,7 +42,7 @@
 				
 				<div class="headerLeft4">
 					<ul class="leftmenu4">
-						<li class="li_JIAGO"><a href="${cpath }/user/mypageHome">JIAGO</a></li>
+						<li class="li_JIAGO"><a href="${cpath }">JIAGO</a></li>
 						<li class="li_personal"><a href="${cpath }/footer/personalinform">개인정보처리방침</a></li>
 						<li class="li_use"><a href="${cpath }/footer/termofuse">이용약관</a></li>
 					</ul>
