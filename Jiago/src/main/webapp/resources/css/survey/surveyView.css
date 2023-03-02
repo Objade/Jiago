@@ -75,3 +75,9 @@
 	#surveyDelete {
 		margin-left: 10px;
 	}
+	
+	.surveyView.item2_list {
+		height: 550px;
+		overflow-y: scroll; 
+	}
+	

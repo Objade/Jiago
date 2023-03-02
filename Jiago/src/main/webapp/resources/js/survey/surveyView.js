@@ -1,7 +1,7 @@
 function surveyDeleteHandler(event) {   
       const cpath = '/jiago'
-      const surveyIdx = '${dto.survey_idx}'
-      const surveyName = '${dto.survey_title}'
+      const surveyIdx = survey_idx
+      const surveyName = survey_name
       const message = "'" + surveyName + "' 을/를 정말로 삭제하시겠습니까?'"
       const flag = confirm(message)
       if(flag) {

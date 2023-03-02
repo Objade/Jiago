@@ -10,7 +10,11 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="${cpath }/resources/css/survey/surveyView.css" type="text/css">
-
+<script>
+	const survey_idx = '${dto.survey_idx}'
+    const survey_name = '${dto.survey_title}'
+	
+</script>
 </head>
 <body>
    <div id="survey_view_root">
@@ -77,7 +81,7 @@
       </div>   
       <div class="surveyView item2">
          <h1>보기 목록</h1>
-
+		<div class="surveyView item2_list">
          <c:forEach var="dto" items="${list }" varStatus="status">
             <div class="surveyList item" question_idx="${dto.question_idx}"
                index="${status.count }">
@@ -93,12 +97,13 @@
                </c:forEach>
             </div>
          </c:forEach>
+         </div>
       </div>
    </div>
       
    <script src="${cpath }/resources/js/survey/surveyView.js"></script>
    
-   <script>
+   <script>   			
    
 	surveyDeleteButton.onclick = surveyDeleteHandler
 
