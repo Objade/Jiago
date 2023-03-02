@@ -18,7 +18,7 @@
       
                <c:forEach var="dto" items="${list }" varStatus="status">
                   <div class="surveyList item" question_idx="${dto.question_idx}" index="${status.count }">
-                     <div class="surveyList surveyTitle question">${status.count} ${dto.question_content}</div>
+                     <div class="surveyList surveyTitle question">${status.count}. ${dto.question_content}</div>
                   </div>
                </c:forEach>
       

@@ -3,6 +3,7 @@ package com.itbank.controller;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -27,45 +28,56 @@ public class UserController {
 	@GetMapping("login")
 	public void login() {}
 	
-	@PostMapping("login")
-	public ModelAndView login(HttpServletResponse response ,HttpSession session, UserDTO account) {
-		ModelAndView mav = new ModelAndView();
-		if(account.getRemember_id() == null) {
-			  Cookie cookie = new Cookie("user_id", null);  // 쿠키 값을 null로 설정
-			  cookie.setMaxAge(0);  // 남은 만료시간을 0으로 설정
-			  response.addCookie(cookie);
-		}
-		
-		
-		
-		UserDTO userAccount = userService.login(account);
-		mav.setViewName("user/result");
-		if(userAccount == null) {
-			mav.addObject("result","아이디 혹은 비밀번호가 잘못되었습니다.");
-			mav.addObject("address","user/login");
-			return mav;
-		}
-		
-		mav.addObject("result","로그인에 성공 했습니다.");
-		session.setAttribute("login", userAccount);	
-		
-		if(account.getRemember_id() != null) {
-			Cookie cookie = new Cookie("user_id", userAccount.getUser_id());
-			cookie.setMaxAge(60 * 60 * 60 * 24);
-			response.addCookie(cookie);
-		}
+	   @PostMapping("login")
+	   public ModelAndView login(HttpServletResponse response ,HttpServletRequest request ,HttpSession session, UserDTO account) {
+	      ModelAndView mav = new ModelAndView();
+	      if(account.getRemember_id() == null) {
+	           Cookie cookie = new Cookie("user_id", null);  // 쿠키 값을 null로 설정
+	           cookie.setMaxAge(0);  // 남은 만료시간을 0으로 설정
+	           response.addCookie(cookie);
+	      }
+	      
+	      
+	      
+	      UserDTO userAccount = userService.login(account);
+	      mav.setViewName("user/result");
+	      if(userAccount == null) {
+	         mav.addObject("result","아이디 혹은 비밀번호가 잘못되었습니다.");
+	         mav.addObject("address","user/login");
+	         return mav;
+	      }
+	      
+	      mav.addObject("result","로그인에 성공 했습니다.");
+	      session.setAttribute("login", userAccount);   
+	      
+	      
+	      if(account.getRemember_id() != null) {
+	         Cookie cookie = new Cookie("user_id", userAccount.getUser_id());
+	         cookie.setMaxAge(60 * 60 * 60 * 24);
+	         response.addCookie(cookie);
+	      }
 
+	      
+	      if(session.getAttribute("login") != null) {
+	         UserDTO user = (UserDTO)session.getAttribute("login");
+	         String userType = user.getUser_type();
+	         if(userType.equals("Admin")) {
+	            mav.addObject("result","사이트 관리자 "+ user.getUser_name() + "님 접속 되었습니다.");
+	            mav.addObject("address","manage/manageHome");
+	         }
+	      }
+	      
+	      String url = (String)session.getAttribute("addurl");
+	      session.removeAttribute("addurl");
+	      if(url != null) {
+	         mav.addObject("address",url);
+	      }
+	      
+	      return mav;
+	   }
 		
-		if(session.getAttribute("login") != null) {
-			UserDTO user = (UserDTO)session.getAttribute("login");
-			String userType = user.getUser_type();
-			if(userType.equals("Admin")) {
-				mav.addObject("result","사이트 관리자 "+ user.getUser_name() + "님 접속 되었습니다.");
-				mav.addObject("address","manage/manageHome");
-			}
-		}
-		return mav;
-	}
+		
+		
 	
 	@GetMapping("join") 
 	public void join() {}

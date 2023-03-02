@@ -30,10 +30,10 @@
               <li><a href="${cpath }/survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=">설문참여</a></li>
               <li><a href="${cpath }/donate/donateList">나무심기</a></li>
               <li><a href="${cpath }/cuscenter">고객센터</a></li>
-              <c:choose>
-                    <c:when test="${login.user_type eq 'Admin'}"><li><a href="${cpath }/manage/manageHome">설문관리</a></li></c:when>
-                  <c:otherwise><li><a href="${cpath }/survey/surveyManage">설문관리</a></li></c:otherwise>
-              </c:choose>
+         	  <c:if test="${not empty login }">
+                    <c:if test="${login.user_type eq 'Admin'}">
+                    	<li><a href="${cpath }/manage/manageHome">설문관리</a></li></c:if>  
+              </c:if>       
           </ul>
       </div>
             

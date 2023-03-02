@@ -39,7 +39,7 @@
                checkNumber.setAttribute('cellNum','false')
                
             // 2분 타이머 설정
-            let secondsLeft = 20
+            let secondsLeft = 120
             const timerDiv = document.getElementById('timer');
             let timer = setInterval(() => {
                if(checkNumber.getAttribute('cellNum') == 'true') {

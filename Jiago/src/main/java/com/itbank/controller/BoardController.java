@@ -88,7 +88,6 @@ public class BoardController {
 	}
 	@GetMapping("/delete/{qboard_idx}")
 	public String delete(@PathVariable("qboard_idx") int qboard_idx) {
-		System.out.println(qboard_idx);
 		int row = boardService.delete(qboard_idx);
 		System.out.println(row != 0 ? "삭제 성공" : "삭제 실패");
 		return "redirect:/board/list?qboard_title=";

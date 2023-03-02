@@ -111,6 +111,8 @@
 </style>
 </head>
 <body>
+
+	<c:set var="addurl" value="${param.url }" scope="session"/>
 	<div id="loginLogo"><a href="${cpath }/"><img src="${cpath}/resources/img/logo.png "></a></div>
 	
 	<form method="POST" action="${cpath }/user/login">

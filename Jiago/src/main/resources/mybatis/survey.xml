@@ -7,14 +7,16 @@
 
 
 	<select id="selectList" resultType="survey">
+	<![CDATA[
 		select * from survey
-		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete =
-		'N'
+		where to_date(substr(survey_date,10)) >= sysdate - 1 
+			and to_date(substr(survey_date, 1, 8)) <= sysdate 
+			and survey_delete ='N'
 		order by survey_idx desc
 		offset #{offset} rows
 		fetch first #{perPage}
 		rows only
-
+	]]>
 	</select>
 
 	<select id="selectAllList" resultType="survey">
@@ -33,7 +35,7 @@
 	<select id="selectSurveyQuestion" parameterType="int"
 		resultType="surveyQuestion">
 		select * from survey_question where question_idx > 1 and survey_idx = #{survey_idx} 
-		order by question_idx
+		order by survey_question_idx, question_idx
 	</select>
 
 	<select id="selectSurveyExample" parameterType="int"
@@ -97,9 +99,12 @@
 	</select>
 
 	<select id="selectHomeSurvey" resultType="survey">
+		<![CDATA[
 		select * from survey
-		where to_date(substr(survey_date,10)) >= sysdate - 1 and rownum
+		where to_date(substr(survey_date,10)) >= sysdate - 1 
+			and to_date(substr(survey_date, 1, 8)) <= sysdate  and rownum
 		BETWEEN 1 AND 8 order by to_date(substr(survey_date,10))
+		]]>
 	</select>
 
 	<insert id="insertSurvey" parameterType="survey">
@@ -192,18 +197,24 @@
 	</select>
 
 	<select id="selectSurveyListCount" resultType="int">
+		<![CDATA[
 		select count(*)
 		from survey
-		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete =
-		'N'
+			where to_date(substr(survey_date,10)) >= sysdate - 1 
+			and to_date(substr(survey_date, 1, 8)) <= sysdate 
+			and survey_delete ='N'
+		]]>		
 	</select>
 
 	<select id="filterList" resultType="survey"
 		parameterType="hashmap">
+		<![CDATA[
 		select * from survey
-		where to_date(substr(survey_date,10)) >= sysdate - 1 and survey_delete =
-		'N'
-
+			where to_date(substr(survey_date,10)) >= sysdate - 1 
+			and to_date(substr(survey_date, 1, 8)) <= sysdate 
+			and survey_delete ='N'
+		]]>
+		
 		<if test="survey_targetAge != null">
 			and survey_targetAge like '%${survey_targetAge}%'
 		</if>

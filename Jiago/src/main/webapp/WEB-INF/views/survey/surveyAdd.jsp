@@ -64,7 +64,7 @@
 	      </select></p> 
 	
 	   <span>설문 정보</span>
-	   <p><textarea rows="10" cols="30" placeholder="설문 정보를 입력하세요" name="survey_info"></textarea></p>
+	   <p><textarea rows="10" cols="30" placeholder="설문 정보를 입력하세요" name="survey_info" required></textarea></p>
 	   <p class="surveyModi_button"><input type="submit" value="설문 질문 추가하기"></p>
 	</form>
 </div>
