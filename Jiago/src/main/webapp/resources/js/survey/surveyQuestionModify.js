@@ -3,8 +3,7 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
       const question_content_idx = question_content.map(e => e.getAttribute('question_idx'))
 
       
-      const deleteButton = Array.from(document.querySelectorAll('#delete'))
-               console.log(deleteButton)
+ 
       const result = modifyCheckbox.filter(ob => question_content_idx.includes(ob.value))   
       result.forEach(e => e.checked = 'checked')
       
@@ -22,6 +21,7 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
         const question = document.querySelector('.question')
 
         function buttonHandler(event) {
+    	  	console.log('찍힘')
             const question = document.createElement('div')
             question.classList.add('question')
             question.setAttribute('id', 'question')
@@ -55,14 +55,13 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
 
             // title 삭제
             const dropbutton = Array.from(document.querySelectorAll('#drop'))
+            
+            console.log('여기도 찍힘')
 
             function dropHandler(event) {
             const rest2 = event.target.previousSibling.previousSibling.getAttribute('question_idx')
             const result10 = modifyCheckbox.filter(ob => rest2.includes(ob.value))   
-            result10.forEach(e => e.checked = '')
-            
-            
-            
+            result10.forEach(e => e.checked = '')           
                event.target.parentNode.remove()
             }      
             dropbutton.forEach(e => e.onclick = dropHandler)
@@ -72,7 +71,9 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
             const exbutton = Array.from(document.querySelectorAll('#exbutton'))
             console.log(exbutton)
             
-            async function exbuttonHandler(event) {
+            console.log('여기도 찍힘')
+            
+            function exbuttonHandler(event) {
                const example = document.createElement('div')
                example.classList.add('example')
 
@@ -95,7 +96,9 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
                event.target.parentNode.appendChild(example)
 
                // 보기 삭제
-               
+               const deleteButton = Array.from(document.querySelectorAll('#delete'))
+               console.log(deleteButton)
+               console.log('여긴 찍힘?')
 
                function deleteHandler(event) {
                   event.target.parentNode.remove()
@@ -146,7 +149,7 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
           checkbox[i].setAttribute('idx', i)
       }
 
-      async function checkboxHandler(event) {
+      function checkboxHandler(event) {
           if (event.target.checked == true) {
              const question = document.createElement('div')
              question.classList.add('question')
@@ -297,3 +300,15 @@ const modifyCheckbox = Array.from(document.querySelectorAll('.questionList.quest
 
               })
       }
+    
+
+    
+    const deleteButton = Array.from(document.querySelectorAll('#delete'))
+    console.log(deleteButton)
+
+    function deleteHandler(event) {
+       event.target.parentNode.remove()
+
+    }
+
+    deleteButton.forEach(e => e.onclick = deleteHandler)

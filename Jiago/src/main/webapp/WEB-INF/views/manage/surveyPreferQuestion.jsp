@@ -21,6 +21,9 @@
 					<th>사용 횟수</th>
 				</tr>
 			</thead>
+		</table>
+		<div class="topSurveyPreferQuestionTable">
+		<table class="topSurveyPreferQuestionTable low">
 			<tbody>
 				<c:forEach var="dto" items="${list }">
 					<tr>
@@ -31,6 +34,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 	<div class="surveyPreferQuestion">

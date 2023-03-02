@@ -70,9 +70,7 @@
 
 
    <script>
-	
-
-      
+	      
       window.onload = function loadHandler() {
          buttonHandler()
       }

@@ -33,3 +33,15 @@
 		display: block;
 		width: 135px;
 	}
+	
+	.topSurveyPreferQuestionTable {
+		height: 350px;
+		overflow-y: scroll; 
+	}
+	
+	.topSurveyPreferQuestionTable.low {
+		border-collapse: collapse;
+		width: 800px;	
+	}
+	
+	
