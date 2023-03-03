@@ -170,15 +170,16 @@ public class UserService {
 
 	// 다음 단계까지 남은 포인트 가지고 오기
 	public int getleftPoint(int user_idx) {
-		String getTotalPoint = userDao.getTotalPoint(user_idx);
-		if(getTotalPoint == null) return 10000;
-		int totalPoint = Integer.parseInt(getTotalPoint);
-		if(totalPoint >= 500000) return 0;
-		else if(totalPoint >= 300000) return totalPoint - 300000;
-		else if(totalPoint >= 100000) return totalPoint - 100000;
-		else if(totalPoint >= 50000) return totalPoint - 50000;
-		else if(totalPoint >= 10000) return totalPoint - 10000;
-		else return 10000 - totalPoint;
+	    String getTotalPoint = userDao.getTotalPoint(user_idx);
+	    if(getTotalPoint == null) return 10000;
+	    int totalPoint = Integer.parseInt(getTotalPoint);
+	      
+	    if(totalPoint < 10000) return 10000 - totalPoint;
+	    else if(totalPoint >= 10000 && totalPoint < 50000) return 50000 - totalPoint;
+	    else if(totalPoint >= 50000 && totalPoint < 100000) return 100000 - totalPoint;
+	    else if(totalPoint >= 100000 && totalPoint < 300000) return 300000 - totalPoint;
+	    else if(totalPoint >= 300000 && totalPoint < 500000) return 500000 - totalPoint;
+	    else return 0;
 	}
 
 	public UserDTO getUser(int user_idx) {

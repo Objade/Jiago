@@ -2,13 +2,15 @@
 	
 	.complete_wrap {
 		width: 700px;
-		margin: 0px auto;
+		margin: 25px auto;
 		align-items: center;
 		text-align: center;
+		border: 5px solid #eee;
+		padding-bottom: 20px;
 	}
 	
 	.complete_wrap>img {
-		width: 500px;
+		width: 700px;
 	}
 	
 	.complete_wrap>form>input[type="number"] {
@@ -22,3 +24,10 @@
 		height: 55px;
 		border: 0px solid white;
 	}
+	
+	.surveyCompleteBanner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+	

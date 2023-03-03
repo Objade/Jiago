@@ -34,7 +34,6 @@
 						<th>이메일주소</th>
 						<th>직업</th>
 						<th>가입일</th>
-						<th>탈퇴여부</th>
 						<th>약관동의여부</th>
 					</tr>
 				</thead>
@@ -54,7 +53,6 @@
 							<td>${dto.user_email}</td>
 							<td>${dto.user_job}</td>
 							<td>${dto.user_joindate}</td>
-							<td>${dto.user_withdraw}</td>
 							<td>${dto.user_agree}</td>
 						</tr>
 					</c:forEach>

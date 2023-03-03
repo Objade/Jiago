@@ -44,4 +44,11 @@
 		width: 800px;	
 	}
 	
+	.topSurveyPreferQuestion.surveyList2 {
+		border: 1px solid #dadada;
+		border-collapse: collapse;
+		width: 800px;
+		overflow-y: scroll;
+	}
+	
 	

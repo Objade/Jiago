@@ -258,7 +258,7 @@
 	.memberManage.memberList {
 		border: 1px solid #dadada;
 		border-collapse: collapse;
-		width: 100%;
+		width: 1500px;
 	}
 	
 	.memberManage.memberList>thead>tr>th {

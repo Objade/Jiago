@@ -27,6 +27,8 @@ import com.itbank.service.UserService;
 @Controller
 @RequestMapping("/survey")
 public class SurveyController {
+	
+	private int Refresh = 0;
 
 	@Autowired
 	private SurveyService surveyService;

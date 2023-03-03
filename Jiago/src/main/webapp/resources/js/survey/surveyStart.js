@@ -156,5 +156,5 @@
           surveyList_all.style.border = '3px solid #dadada';
           surveyList_all.style.width = '600px';
           surveyList_all.style.margin = '0 auto';
-         
+          surveyList_all.style.padding = '30px';         
         }

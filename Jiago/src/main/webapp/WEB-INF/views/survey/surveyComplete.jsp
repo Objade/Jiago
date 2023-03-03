@@ -4,10 +4,11 @@
 
 <link rel="stylesheet" href="${cpath }/resources/css/survey/surveyComplete.css" type="text/css">
 
+
 <div class="main">
 	<div class="complete_wrap">
-		<h1>설문 완료페이지</h1>
-		<img src="${cpath }/resources/img/surveyComplete.png" width="250px">
+	
+		<img src="${cpath }/resources/img/surveyComplete_topImg.png">
 	
 		<h3>${userName }님이 보유하신 포인트는 ${userPoint } 원 입니다</h3>
 		
@@ -22,6 +23,13 @@
 	</div>
 </div>
 
+
+
+<div class="surveyCompleteBanner">
+	<a href="${cpath }/donate/donateList">
+		<img src="${cpath }/resources/img/surveyComplete_bottomImg.png" width="1000px">
+	</a>
+</div>
 
 
 <script src="${cpath }/resources/js/survey/surveyComplete.js"></script>

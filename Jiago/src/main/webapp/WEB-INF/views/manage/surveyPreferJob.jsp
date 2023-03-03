@@ -19,7 +19,6 @@
 			</select>
 		</p>
 		<table class="topSurveyPreferQuestion surveyList">
-
 			<thead>
 				<tr>
 					<th>직업</th>
@@ -27,8 +26,9 @@
 					<th>참여 횟수</th>
 				</tr>
 			</thead>
+		</table>
+		<table class="topSurveyPreferQuestion surveyList2">
 			<tbody>
-
 				<c:forEach var="dto" items="${list }">
 					<tr>
 						<td>${dto.user_job }</td>
