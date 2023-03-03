@@ -1,5 +1,9 @@
 	@charset "utf-8";
 	
+	.surveyView.item2.hidden {
+		display: none;		
+	}
+	
 	#survey_view_root {
 		width: 1200px;
 		margin: auto;
@@ -81,3 +85,12 @@
 		overflow-y: scroll; 
 	}
 	
+	
+	.surveyView.item2_list {
+	   -ms-overflow-style: none; /* IE and Edge */
+	   scrollbar-width: none; /* Firefox */
+	}
+	
+	.surveyView.item2_list::-webkit-scrollbar {
+	   display: none; /* Chrome, Safari, Opera*/
+	}

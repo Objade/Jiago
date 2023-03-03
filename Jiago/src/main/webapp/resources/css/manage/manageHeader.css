@@ -991,3 +991,15 @@
 .sec_calender {
 	margin: auto;
 }
+
+
+.delete_button input[type="submit"] {
+		width: 70px;
+		height: 30px;
+		background-color: #1B434A;
+		border: 1px solid #1B434A;
+		color: white;
+		cursor: pointer;
+		margin-top: 10px;
+	}
+
