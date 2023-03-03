@@ -29,6 +29,10 @@
 					<th>참여 횟수</th>
 				</tr>
 			</thead>
+		</table>
+			
+		<div class="topSurveyPreferQuestionTable">
+		<table class="topSurveyPreferQuestion surveyList2">
 			<tbody>
 	
 				<c:forEach var="dto" items="${list }">
@@ -40,6 +44,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 

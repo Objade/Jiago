@@ -63,12 +63,9 @@ public class BoardController {
 	
 	@PostMapping("/write")				
 	public String write(BoardDTO dto) {
-		System.out.println(dto.getQboard_title());
-		System.out.println(dto.getQboard_writer());
-		System.out.println(dto.getQboard_content());
-		System.out.println(dto.getQboard_privacy());
+		
 		int row = boardService.write(dto);
-		System.out.println(row != 0 ? "작성 성공" : "작성 실패");
+		
 		return "redirect:/board/list?qboard_title=";
 	}
 	
@@ -83,7 +80,7 @@ public class BoardController {
 	@PostMapping("/modify/{qboard_idx}")
 	public String modify(BoardDTO dto) {
 		int row = boardService.modify(dto);
-		System.out.println(row != 0 ? "수정 성공" : "수정 실패");
+		
 		return "redirect:/board/view/" + dto.getQboard_idx();
 	}
 	

@@ -24,18 +24,18 @@
 	function joinIdCheck() {
 		
 		const url = cpath +'/user/joinId/' + joinId.value
-		console.log(url)
+		
 		
 		fetch(url)
 		.then(response => response.text())
 		.then(text => {			
-			console.log(text)
+			
 			const id_if = /^(?=.*[0-9]+)[a-zA-Z][a-zA-Z0-9]{5,12}$/g
 			if(text == 0 && id_if.test(joinId.value)) {
 				checkIdText.innerText = '회원가입이 가능한 아이디 입니다.'
 				checkIdText.style.color = 'blue'
 				joinId.name = 'user_id'
-				console.log(joinId.name)
+				
 			}
 			else {
 				checkIdText.innerText = '조건이 맞지 않거나 중복된 계정이 존재합니다.'
@@ -89,7 +89,7 @@
 			joinPw.name = 'user_pw'
 			checkPwText2.innerText = '비밀번호가 서로 일치합니다'
 			checkPwText2.style.color = 'blue'
-			console.log(joinPw.value)
+			
 		}
 		else {
 			joinPw.name = ''
@@ -102,7 +102,7 @@
 	
 	
 	const joinName = document.getElementById('joinName')
-	console.log(joinName)
+	
 	
 	
 	function nameCheckHandler(event) {
@@ -119,9 +119,9 @@
 			fetch(url)
 			.then(response => response.text())
 			.then(text => {
-				console.log(text)
+				
 				if(text != 1) {
-					console.log(joinName.name)
+					
 					joinName.name = 'user_name'
 					nameCheckMessage.innerText = '사용 가능한 별명 입니다.'
 					nameCheckMessage.style.color = 'blue'
@@ -196,7 +196,7 @@
 			document.getElementById('postcode').value +
 			document.getElementById("address").value + ' ' +
 			event.target.value
-		console.log(userAddress)
+		
 	}
 
 	
@@ -258,8 +258,8 @@
 	// 셀렉트 선택
 	function emailHandler(event) {
 		const selectValue = inputSelectEmail.value
-		console.log(selectValue)
-		console.log(selectValue == '직접 입력')
+		
+		
  		if(selectValue == '직접 입력') {	// 직접 입력이 들어오면 숨긴 폼 보여주기
 			directly.classList.remove('hidden')
 			directly.disabled = false

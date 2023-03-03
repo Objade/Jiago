@@ -20,7 +20,7 @@ public class PopUpController {
 	public ModelAndView emailCheckMail(@PathVariable("email") String email) {
 		ModelAndView mav = new ModelAndView("user/joinCheckEmail");
 		mav.addObject("email", email);
-		System.out.println(email);
+		
 		return mav;
 	}
 

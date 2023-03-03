@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cpath"  value="${pageContext.request.contextPath }"/>
 
+<%@ include file="../manage/manageHeader.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,10 +15,8 @@
 </head>
 <body>
 
-<div class="img_back">
-   <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png" >뒤로가기</a>
-</div>
-<div id="company_root">
+
+<div id="companyModify_root">
    <form class="company_Modify" method="POST">
       <h1>회사 수정</h1>
          
@@ -43,7 +42,7 @@
       <p><input type="text" name="company_email" value="${dto.company_email}" required></p>
       
       
-      <p class="companyModi_button"><input type="submit" value="회사 정보 수정하기"></p>
+      <p class="companyModify_button"><input type="submit" value="회사 정보 수정하기"></p>
       
    </form>
 </div>

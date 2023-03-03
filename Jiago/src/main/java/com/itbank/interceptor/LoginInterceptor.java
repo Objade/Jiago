@@ -25,8 +25,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
           
        }
       
-      
-      System.out.println("여기 나오나요? : " + requestURI);
+     
       HttpSession session = request.getSession();         
       UserDTO login = (UserDTO)session.getAttribute("login");   
       

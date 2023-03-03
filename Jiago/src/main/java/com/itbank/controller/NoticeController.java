@@ -62,7 +62,7 @@ public class NoticeController {
    @PostMapping("/write")            
    public String write(NoticeDTO dto) {
       int row = noticeService.write(dto);
-      System.out.println(row != 0 ? "작성 성공" : "작성 실패");
+    
       return "redirect:/notice/list?notice_name=";
    }
    
@@ -77,13 +77,13 @@ public class NoticeController {
    @PostMapping("/modify/{notice_idx}")
    public String modify(NoticeDTO dto) {
       int row = noticeService.modify(dto);
-      System.out.println(row != 0 ? "수정 성공" : "수정 실패");
+      
       return "redirect:/notice/view/" + dto.getNotice_idx();
    }
    @GetMapping("/delete/{notice_idx}")
    public String delete(@PathVariable("notice_idx") int notice_idx) {
       int row = noticeService.delete(notice_idx);
-      System.out.println(row != 0 ? "삭제 성공" : "삭제 실패");
+      
       return "redirect:/notice/list?notice_name=";
    }
 }

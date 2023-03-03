@@ -19,9 +19,9 @@ public class KakaoSecurityController {
 	@PostMapping("kakaoCheck")
 	public String kakaoCheck(@RequestBody HashMap<String, String> param) {
 		String kakaoId = param.get("id");
-		System.out.println("여기는 접속되니 : " + kakaoId);
+		
 		int row = kakaoService.realKakaoId(kakaoId);
-		System.out.println("0이냐 1이냐 : " + row);
+		
 		
 		if(row == 1) return "home";
 		

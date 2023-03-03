@@ -34,8 +34,6 @@ public class ManageController {
 		int count = surveyService.getSurveyCount();
 		Paging paging = new Paging(page, count);
 
-		System.out.println(paging);
-
 		List<SurveyDTO> list = surveyService.selectAllList(paging);
 
 		mav.addObject("list", list);

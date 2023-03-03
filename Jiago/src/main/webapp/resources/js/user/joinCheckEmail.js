@@ -33,7 +33,7 @@
 	})
 	
 	const form = document.querySelector('.form')
-	console.log(form)
+	
 	
 	function formHandler(event) {
 		event.preventDefault()
@@ -43,7 +43,7 @@
 		fetch(url)
 		.then(response => response.text())
 		.then(text => {
-			console.log(text)
+			
 			if(text == '인증완료') {
 				emailForm.classList.add('hidden')
 				const parentPage = opener.document.getElementById("userEmail")

@@ -20,10 +20,6 @@ function convertHTMLfromJSON(dto) {
 
 
 
-
-
-
-
 function replyWriteHandler(event) {
    event.preventDefault()
    const content = document.querySelector('#replyWriteForm textarea')
@@ -44,8 +40,7 @@ function replyWriteHandler(event) {
          'Content-Type': 'application/json; charset=utf-8'
       }
    }
-   console.log(url);
-   console.log(opt);
+   
    fetch(url, opt)
    .then(resp => resp.text())
    .then(text => {
@@ -77,7 +72,7 @@ async function replyLoadHandler() {
       })
    })
    const deleteBtnList = document.querySelectorAll('.reply_delete')
-   console.log(deleteBtnList)
+
    deleteBtnList.forEach(btn => btn.onclick = deleteHandler)
    
 }
@@ -87,8 +82,7 @@ async function replyLoadHandler() {
 function deleteHandler(event) {
    
    const replyWriter = event.target.parentNode.parentNode.querySelector('.reply_left > .reply_writer')
-   console.log(replyWriter)
-   console.log(login_user_id == replyWriter)
+   
    if(login_user_id != replyWriter.innerText) {
       alert('본인이 작성한 댓글만 삭제할 수 있습니다')
       return

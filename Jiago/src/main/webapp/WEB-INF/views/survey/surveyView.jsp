@@ -103,11 +103,14 @@
       
    <script src="${cpath }/resources/js/survey/surveyView.js"></script>
    
-   <script>   			
+   <script>
    
 	surveyDeleteButton.onclick = surveyDeleteHandler
+	
+	window.onload = surveyExampleViewHandler
 
 	</script>
+	
 
 </body>
 </html>

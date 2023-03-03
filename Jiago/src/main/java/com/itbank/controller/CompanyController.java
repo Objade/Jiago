@@ -54,7 +54,6 @@ public class CompanyController {
 	@PostMapping("add")
 	public String add(CompanyDTO dto) {
 		int row = companyService.insertCompany(dto);
-		System.out.println(row);
 		return "redirect:/company/list?company_name=";
 	}
 	
@@ -62,7 +61,7 @@ public class CompanyController {
 	public ModelAndView modifyInfo(@PathVariable("company_idx") int company_idx) {
 		ModelAndView mav = new ModelAndView("/company/modify");
 		CompanyDTO dto = companyService.getCompanyDetail(company_idx);
-		System.out.println(dto);
+		
 		mav.addObject("dto", dto);
 		return mav;
 		
@@ -70,7 +69,7 @@ public class CompanyController {
 	@PostMapping("/modify/{company_idx}")
 	public String modify(CompanyDTO dto) {
 		int row = companyService.modifyCompany(dto);
-		System.out.println(row);
+		
 		return "redirect:/company/list?company_name=";
 	}
 	

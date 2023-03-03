@@ -17,7 +17,7 @@ public class BoardService {
 	@Autowired private BoardDAO dao;
 
 	public List<BoardDTO> getListAll(Paging paging) {
-HashMap<String, Object> param = new HashMap<String, Object>();
+		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		param.put("offset", paging.getOffset());
 		param.put("perPage", paging.getPerPage());

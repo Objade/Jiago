@@ -35,12 +35,12 @@ const checkbox_top = document.querySelector('#th_checkAll')
          allCheckbox.forEach(e => e.onchange = allDeleteHandler)  
 
           const delForm = document.querySelector('.delForm')
-        console.log(delForm)
+        
 
         function delMember(event) {
            event.preventDefault()
             const allCheckbox = Array.from(document.querySelectorAll('input[name="checkRow"]:checked'))
-            console.log(allCheckbox)
+        
             const checkbox2Value = Array.from(allCheckbox.map(e => e.value)) 
 
             const ob = {

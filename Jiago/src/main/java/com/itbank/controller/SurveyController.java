@@ -91,8 +91,6 @@ public class SurveyController {
 		List<SurveyQuestionDTO> list = surveyService.getSurveyQuestion(survey_idx);
 		List<SurveyExampleDTO> exList = surveyService.getSurveyExample(survey_idx);
 		
-		System.out.println("지은이 바보");
-		
 		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
 		
 		HashMap<String, Integer> hash = new HashMap<String, Integer>();
@@ -100,10 +98,9 @@ public class SurveyController {
 		hash.put("user_idx", user_idx);
 		
 		int row = surveyService.judge(hash);
-		System.out.println(row);
+		
 		if(row > 1) {
 			ModelAndView mav1 = new ModelAndView("user/result");
-			System.out.println("진성이 바보");
 			String result = "이미 설문에 참여 하였습니다";
 			mav1.addObject("result", result);
 			return mav1;
@@ -121,7 +118,7 @@ public class SurveyController {
 	public ModelAndView surveyComplete(@PathVariable("survey_idx") int survey_idx, HttpSession session) {
 		ModelAndView mav = new ModelAndView("/survey/surveyComplete");
 		UserDTO login = (UserDTO) session.getAttribute("login");
-		System.out.println("login : " + login.getUser_idx());
+		
 		String userName = login.getUser_name();
 		int user_idx = login.getUser_idx();
 
@@ -131,7 +128,7 @@ public class SurveyController {
 
 		int userPoint = surveyService.addpoint(resultMap); // 포인트 적립
 		int getPoint = surveyService.getUserPoint(user_idx); // 적립 포인트 들고 오기
-		System.out.println(userPoint);
+		
 
 		mav.addObject("userName", userName);
 		mav.addObject("userPoint", getPoint);
@@ -146,7 +143,6 @@ public class SurveyController {
 	@PostMapping("surveyAdd")
 	public String surveyAdd(SurveyDTO dto) {
 		int row = surveyService.insertSurvey(dto);
-		System.out.println(row == 1 ? "추가 성공" : "추가 실패");
 
 		int surveyIdx = surveyService.selectSurveyIdx();
 
@@ -164,9 +160,6 @@ public class SurveyController {
 	
 	@PostMapping("surveyComplete")
 	   public String surveyPointComplete(UserDonateDTO dto) {
-	      System.out.println(dto.getUser_idx());
-	      System.out.println(dto.getTotal_donate());
-	      System.out.println(dto.getSurvey_idx());
 
 	      int row = surveyService.addUserDonate(dto);
 	      int minus = surveyService.minusUserPoint(dto);
@@ -183,7 +176,7 @@ public class SurveyController {
 		int count = surveyService.getSurveyCount();
 		Paging paging = new Paging(page, count);
 
-		System.out.println(paging);
+		
 
 		List<SurveyDTO> list = surveyService.selectAllList(paging);
 

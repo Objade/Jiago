@@ -26,7 +26,7 @@ public class MemberAjaxController {
    
    @PostMapping("/memberAjax")
    public String memberAjax(@RequestBody String ob) throws JsonMappingException, JsonProcessingException {
-      System.out.println(ob);
+      
      
       //   정규표현식을 이용하여 숫자 추출
        Pattern pattern = Pattern.compile("\\d+");
@@ -41,7 +41,6 @@ public class MemberAjaxController {
        }
        
        int row = memberService.deleteMember(numbers);
-       System.out.println("row : " + row);
        
       return row == 1 ? "성공하였습니다." : "실패하였습니다.";
    }
@@ -50,7 +49,7 @@ public class MemberAjaxController {
    
    @PostMapping("/memberAjax/company")
    public String memberAjaxCompany(@RequestBody String ob) throws JsonMappingException, JsonProcessingException {
-      System.out.println(ob);
+      
      
       //   정규표현식을 이용하여 숫자 추출
        Pattern pattern = Pattern.compile("\\d+");
@@ -64,9 +63,8 @@ public class MemberAjaxController {
            numbers.add(number);
            
        }
-       System.out.println(numbers);
+      
        int row = companyService.deleteCompany(numbers);
-       System.out.println("row : " + row);
        
       return row == 1 ? "성공하였습니다." : "실패하였습니다.";
    }

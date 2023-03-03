@@ -32,9 +32,9 @@ public class SurveyAjaxController {
    
    @PostMapping("/survey/surveyAnswer/{survey_idx}")
    public int surveyAnswer(@RequestBody HashMap<String, Object> ob, @PathVariable("survey_idx") int survey_idx) {
-//      System.out.println(1);
+
       ob.put("survey_idx", survey_idx);
-//      System.out.println(ob);
+
       
       int user_idx = Integer.parseInt((String) ob.get("user_idx"));
       @SuppressWarnings("unchecked")
@@ -51,9 +51,6 @@ public class SurveyAjaxController {
          
       }
       
-//      System.out.println("user_idx : " + user_idx);
-//      System.out.println("answerList : " + answerList);
-//      System.out.println(answer_content);
       
       HashMap<String, String> map = new HashMap<String, String>();
       
@@ -65,18 +62,18 @@ public class SurveyAjaxController {
    
       List<Integer> questionIdx = new ArrayList<Integer>(); 
       questionIdx = surveyService.getQuestionIDX(map);
-//      System.out.println(questionIdx);
+
 
       
       HashMap<String, Object> resultMap = new HashMap<String, Object>();
       resultMap.put("survey_idx", survey_idx);
       resultMap.put("user_idx", ob.get("user_idx"));
       resultMap.put("questionIdx", questionIdx);
-//      System.out.println(resultMap);
+
       
       int answerSub = surveyService.answerSubstr(resultMap);
       int deleteAnswerResult = surveyService.deleteAnswerResult(resultMap);
-//      int userPoint = surveyService.addpoint(resultMap);
+
       
       return answerSub;
    }
@@ -86,11 +83,11 @@ public class SurveyAjaxController {
    @PostMapping("/survey/surveyQuestionAdd/{survey_idx}")
    public String surveyQuestionAdd(@RequestBody String question, @PathVariable("survey_idx") int survey_idx) throws JsonMappingException, JsonProcessingException {
 	   
-	   System.out.println(question);
+
 	   
 	   ObjectMapper mapper = new ObjectMapper();
 	   List<SurveyFormDTO> list = mapper.readValue(question, new TypeReference<List<SurveyFormDTO>>() {});
-	   System.out.println(list);
+	   
 	   
 	   int row = surveyService.addQuestion(list, survey_idx);
 	   
@@ -116,11 +113,11 @@ public class SurveyAjaxController {
    @PostMapping("/survey/surveyQuestionModify/{survey_idx}")
    public String surveyQuestionModify(@RequestBody String question, @PathVariable("survey_idx") int survey_idx) throws JsonMappingException, JsonProcessingException {  
 	   
-	   System.out.println(question);
+	   
 	   
 	   ObjectMapper mapper = new ObjectMapper();
 	   List<SurveyFormDTO> list = mapper.readValue(question, new TypeReference<List<SurveyFormDTO>>() {});
-	   System.out.println(list);
+	   
 	   
 	   int row = surveyService.modifyQuestion(list, survey_idx);
 		  
@@ -137,9 +134,7 @@ public class SurveyAjaxController {
 
    @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
    public String databaseError() {
-	   System.out.println(SQLIntegrityConstraintViolationException.class.getMethods());
-	   System.out.println(SQLIntegrityConstraintViolationException.class.getSimpleName());
-	   System.out.println(SQLIntegrityConstraintViolationException.class.toString());
+	   
    return "이미 질문 리스트에 등록 된 질문 입니다.";
 }
    

@@ -36,7 +36,7 @@ public class ReplyController {
 	@DeleteMapping("/{qboard_idx}/{reply_idx}")
 	public int deleteReply(@PathVariable("reply_idx") int reply_idx) {
 		int row = boardService.replyDelete(reply_idx);
-		System.out.println("삭제할 댓글 idx : " + reply_idx);
+		
 		return row;
 	}
 	

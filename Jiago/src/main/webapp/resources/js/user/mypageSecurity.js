@@ -1,7 +1,7 @@
 const cpath = '/jiago'
 
 const pwbtn = document.getElementById('pwbtn')
-	console.log(pwbtn)
+	
 	
 	
 	function pwmodify(event) {

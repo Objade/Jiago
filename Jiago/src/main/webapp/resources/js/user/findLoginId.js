@@ -4,7 +4,7 @@
 	const checkmessage = document.forms[1]
 	const numcheck = document.getElementById('check')
 	const cpath = '/jiago'
-	console.log(numcheck)
+	
 	
 	function sendmail(event) {
 		event.preventDefault()
@@ -22,7 +22,7 @@
 		fetch(url , opt1)
 		.then(response => response.text())
 		.then(text => {
-			console.log('안에 값은 = ' + text)
+			
 			if(text != 0) {
 				numcheck.classList.remove('hidden')
 				findUserId.classList.add('hidden')
@@ -64,7 +64,7 @@
 				email: document.getElementById('userEmail').value,
 				checkNumber: document.getElementById('checkNumber').value
 			}
-		console.log(ob)
+		
 		
 		const url = cpath + '/user/sendCheckNumber'
 		

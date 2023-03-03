@@ -2,15 +2,13 @@
       const mainForm = document.getElementById('mainForm')
       const checkNumber = document.getElementById('checkNumber')
       const newPassword = document.getElementById('newPassword')
-      console.log(mainForm)
+      
 
       document.forms[0].onsubmit = (event) => {
          event.preventDefault()
-         //...
-//          console.log(this.check.value)
-//          console.log(event.check.value)
+
          const checkedValue = event.target.querySelector('input:checked').value
-         console.log(checkedValue)
+         
 
          const url = cpath + '/user/findType'
          
@@ -18,7 +16,7 @@
             email: user0,
             type: checkedValue,
          }
-         console.log(item)
+         
          
          const cls = {
             method: 'POST',
@@ -31,7 +29,7 @@
          fetch(url , cls)
          .then(response => response.text())
          .then(text => {
-            console.log(text)
+            
             if(text == 'email') {
                alert('계정에 저장된 이메일 주소로 인증번호를 보냈습니다.')
                event.target.parentNode.classList.add('hidden')
@@ -75,9 +73,9 @@
       
       document.forms[1].onsubmit = event => {
          event.preventDefault()
-         console.log(checkNumber.getAttribute('cellNum'))
+         
          const inputValue = event.target.querySelector('input[type="text"]').value
-         console.log(inputValue)
+         
          const url = cpath + '/user/pwFindMailNumber'
          checkNumber.setAttribute('cellNum','true')
          
@@ -92,7 +90,7 @@
          fetch(url ,cls)
          .then(response => response.text())
          .then(text => {
-            console.log(text)
+            
             if(text == 1) {
                alert('인증에 성공하였습니다.')
                event.target.parentNode.classList.add('hidden')

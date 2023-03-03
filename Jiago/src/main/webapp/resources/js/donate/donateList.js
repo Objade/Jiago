@@ -3,7 +3,7 @@
 	const modal = document.querySelector(".modal");
 
 	const closeButton = modal.querySelector('button[name="close"]');
-	console.log(closeButton)
+	
 
 	const modalBackground = modal.querySelector(".modal_background");
 

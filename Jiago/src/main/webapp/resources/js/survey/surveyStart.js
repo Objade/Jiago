@@ -3,9 +3,6 @@
       const item1 = Array.from(document.querySelectorAll('.surveyList.item'))
       const item2 = Array.from(document.querySelectorAll('.surveyList.example'))      
 
-      const item1_get = item1.map(e => console.log(e.getAttribute('question_idx')))   // 문제의 question idx
-   
-      const item2_get = item2.map(e => console.log(e.getAttribute('question_idx')))   // 보기의 question idx
       
       item1.forEach(e1 => {
          const idx1 = e1.getAttribute('question_idx')
@@ -76,7 +73,7 @@
             fetch(url, opt)
              .then(resp => resp.text())
              .then(text => {
-                console.log(text)
+                
              })
          }
       }
@@ -85,7 +82,7 @@
       // 답을 저장해두는 배열!
       function inputHandler(event) {
          const inputArr = Array.from(document.querySelectorAll('.surveyList.surveyExample > input[type="radio"]:checked')).map(e => e.value)
-         console.log(inputArr)
+         
 
          const submit = document.querySelector('.button.submit')
          

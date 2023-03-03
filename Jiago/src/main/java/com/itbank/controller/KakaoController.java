@@ -43,16 +43,13 @@ public class KakaoController {
 			@RequestParam(value = "code", required = false) String code
 			, Model model) throws Exception {
 
-		System.out.println("#########" + code);
+		
         String access_Token = getAccessToken(code);
-        System.out.println("###access_Token#### : " + access_Token);
+        
         
         
         HashMap<String, Object> userInfo = getUserInfo(access_Token);
-        System.out.println("###access_Token#### : " + access_Token);
-        System.out.println("###userInfo#### : " + userInfo.get("email"));
-        System.out.println("###nickname#### : " + userInfo.get("nickname"));
-       
+        
         JSONObject kakaoInfo =  new JSONObject(userInfo);
         model.addAttribute("kakaoInfo", kakaoInfo);
         
@@ -86,7 +83,7 @@ public class KakaoController {
 
             //    결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
+            
 
             //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -96,7 +93,7 @@ public class KakaoController {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+            
 
             //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 
@@ -108,8 +105,7 @@ public class KakaoController {
             access_Token = (String) element.get("access_token");
             refresh_Token = (String) element.get("refresh_token");
 
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
+            
 
             br.close();
             bw.close();
@@ -136,7 +132,7 @@ public class KakaoController {
             conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
+            
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -146,7 +142,7 @@ public class KakaoController {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+            
 
             JSONParser parser = new JSONParser();
             JSONObject element = (JSONObject) parser.parse(result);

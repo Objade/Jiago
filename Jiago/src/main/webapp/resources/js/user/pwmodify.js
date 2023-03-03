@@ -71,7 +71,7 @@ const pwCheck = document.getElementById('pwCheck')						// 변경시 비밀번�
 			modifyPw.setAttribute('name','user_pw')
 			checkPwText2.innerText = '비밀번호가 서로 일치합니다'
 			checkPwText2.style.color = 'blue'
-			console.log(modifyPw.value)
+			
 		}
 		else {
 			modifyPw.removeAttribute('name')
@@ -103,9 +103,9 @@ const pwCheck = document.getElementById('pwCheck')						// 변경시 비밀번�
 		fetch(url, res)
 		.then(response => response.text())
 		.then(text => {
-			console.log(text)
+			
 			if(text == 1) {
-				console.log('1')
+				
 				alert('비밀번호가 성공적으로 수정되었습니다.')	
 				window.close();
 				const parent = window.opener;

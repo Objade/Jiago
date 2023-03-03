@@ -16,3 +16,25 @@ function surveyDeleteHandler(event) {
    }
    
 const surveyDeleteButton = document.getElementById('surveyDelete')
+
+
+
+function surveyExampleViewHandler() {
+	const surveyListExample_length = document.querySelectorAll('.surveyList.example').length
+	console.log(surveyListExample_length)
+    const surveyListView_list = document.querySelector('.surveyView.item2')
+    console.log(surveyListView_list)
+    if(surveyListExample_length < 1) {
+    	console.log('여기 도나요?')
+    	surveyListView_list.classList.add('hidden')
+    }
+    else {
+    	surveyListView_list.classList.remove('hidden')
+    }
+}
+
+
+
+
+
+

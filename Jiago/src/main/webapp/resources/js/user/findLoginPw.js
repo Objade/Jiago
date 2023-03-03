@@ -2,14 +2,13 @@
 	const cpath = '/jiago'
 	const inputId = document.getElementById('inputId')
 	const sendId = document.forms[0]
-	console.log(inputId)
-	console.log(sendId)
+
 	
 	function checkUserId(event) {
 		event.preventDefault()
 		const url = cpath +'/user/sendId'
 		const id = document.querySelector('input[name="id"]').value
-		console.log(id)
+		
 		
 		const opt1 = {
 			method: 'POST',
@@ -22,7 +21,7 @@
 		fetch(url,opt1)
 		.then(response => response.text())
 		.then(text => {
-			console.log(text)
+			
 			if(text == 1) {
 				location.href = cpath +'/user/pwCheckEmail'
 			}
