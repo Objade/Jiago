@@ -103,12 +103,11 @@ public class SurveyController {
 			ModelAndView mav1 = new ModelAndView("user/result");
 			String result = "이미 설문에 참여 하였습니다";
 			mav1.addObject("result", result);
+			mav1.addObject("address", "survey/list?survey_targetAge=&survey_targetGender=&survey_targetJob=");
 			return mav1;
 		}
 		
-
 		mav.addObject("list", list);
-
 		mav.addObject("exList", exList);
 
 		return mav;

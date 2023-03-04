@@ -472,7 +472,11 @@
    }
    
    .reply_content {
-      font-size: 20px;
+      font-size: 24px;
+      padding:10px;
+      overflow: auto;
+      white-space: pre-wrap; /* pre tag내에 word wrap */
+      font-family: 'Dongle';
    }
    
    .notice_name {

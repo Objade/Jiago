@@ -2,6 +2,8 @@ package com.itbank.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.NoticeDTO;
 import com.itbank.model.Paging;
+import com.itbank.model.UserDTO;
 import com.itbank.service.NoticeService;
 
 @Controller
@@ -22,13 +25,20 @@ public class NoticeController {
    @Autowired private NoticeService noticeService;
    
    @GetMapping("/list")						
-	public ModelAndView list(@RequestParam(defaultValue="1") Integer page, @RequestParam("notice_name") String notice_name) {	
+	public ModelAndView list(@RequestParam(defaultValue="1") Integer page, @RequestParam("notice_name") String notice_name, HttpSession session) {	
 		
 		ModelAndView mav = new ModelAndView();	
 
 		int noticeCount = 0;
 		Paging paging = null;		
-		List<NoticeDTO> list = null;		
+		List<NoticeDTO> list = null;
+		
+		 if(session.getAttribute("login") != null) {
+			String user_type = ((UserDTO)session.getAttribute("login")).getUser_type();
+			mav.addObject("user_type", user_type);
+		}
+		
+		
 		
 		if(notice_name != "") {
 			noticeCount = noticeService.getNoticeSearchCount(notice_name);
@@ -44,6 +54,7 @@ public class NoticeController {
 		mav.addObject("notice_name", notice_name);
 		mav.addObject("list", list);
 		mav.addObject("paging", paging);
+		
 		
 		return mav;	
 	}   

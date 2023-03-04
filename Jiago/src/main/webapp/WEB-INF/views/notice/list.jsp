@@ -63,9 +63,12 @@
          </c:if>   
       </div>
      </div>
-      <div class="boardNoticeWrite_button">
-               <a class="write" href="${cpath }/notice/write">작성</a>
+     <c:if test="${user_type != Member }">
+     	<div class="boardNoticeWrite_button" ${user_type == "Member" ? "hidden" : "" }>
+            <a class="write" href="${cpath }/notice/write">작성</a>
       </div>
+     </c:if>
+      
 
    </div>
 </div>
