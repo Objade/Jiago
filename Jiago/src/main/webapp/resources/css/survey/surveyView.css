@@ -38,7 +38,7 @@
 		background-color: #1B434A;
 		padding-left: 10px;
 		padding-top: 11px;
-		height: 30px;
+		padding-bottom: 8px;
 		color: white;
 	}
 	
@@ -93,4 +93,19 @@
 	
 	.surveyView.item2_list::-webkit-scrollbar {
 	   display: none; /* Chrome, Safari, Opera*/
+	}
+	
+	.img_back {
+		padding-bottom: 20px;
+	}
+	
+	.img_back>a {
+		font-size: 25px;
+		text-decoration-line: none;
+		color: black;
+	}
+	
+	.img_back>a>img {
+		padding-right: 5px;
+		width: 25px;
 	}

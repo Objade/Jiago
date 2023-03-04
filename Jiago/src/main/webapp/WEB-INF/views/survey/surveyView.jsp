@@ -17,6 +17,12 @@
 </script>
 </head>
 <body>
+
+<div class="img_back">
+   <a href="javascript:history.back(-1)"><img src="${cpath }/resources/img/뒤로가기.png">뒤로가기</a>
+</div>
+
+
    <div id="survey_view_root">
       <div id="survey_view_main">
          <div class="surveyView item">
