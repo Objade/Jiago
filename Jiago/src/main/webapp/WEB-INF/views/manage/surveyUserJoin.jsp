@@ -8,7 +8,7 @@
 
 
 	<div id="surveyUserJoin">
-		<h1 class="userJoin_h1">설문 통계자료</h1>
+		<h1 class="userJoin_h1">유저별 설문 참여율</h1>
 		<canvas id="myChart"></canvas>
 	</div>
 </div>
@@ -57,7 +57,7 @@
                  plugins: {
                      title: {
                          display: true,
-                         text: '답변을 가장 많이 한 사람'
+                         text: '유저별 설문 참여율'
                   
         	         }
             	}

@@ -6,7 +6,7 @@
 
 
 <div id="surveyQuestionRanking">
-	<h1 class="userJoin_h1">가장 많이 사용된 질문통계자료</h1>
+	<h1 class="userJoin_h1">가장 많이 사용된 질문</h1>
 	<canvas id="myChart"></canvas>
 </div>
 

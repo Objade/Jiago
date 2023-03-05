@@ -6,11 +6,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-
-
-
 <div id="surveyUserDonateRank">
-	<h1 class="userJoin_h1">유저별 기부 순위 통계자료</h1>
+	<h1 class="userJoin_h1">유저별 기부 순위</h1>
 	<canvas id="myChart"></canvas>
 </div>
 
@@ -83,7 +80,6 @@
 	})
 	
 </script>
-
 
 
 </body>
