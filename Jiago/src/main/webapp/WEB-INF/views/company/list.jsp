@@ -25,7 +25,6 @@
 					<th>사업자등록번호</th>
 					<th>주소</th>
 					<th>이메일</th>
-					<th>삭제여부</th>
 					<th>수정</th>
 				</tr>
 			</thead>
@@ -40,7 +39,6 @@
 						<td>${dto.company_registnum}</td>
 						<td>${dto.company_address}</td>
 						<td>${dto.company_email}</td>
-						<td>${dto.company_delete }</td>
 						<td class="company_modi"><a
 							href="${cpath }/company/modify/${dto.company_idx}"><img
 								src="${cpath }/resources/img/수정.png"></a></td>

@@ -15,6 +15,7 @@
    body {
       font-family: 'Dongle';
       font-size: 25px;
+      margin: 0px;
    }
    
    #root {
@@ -957,4 +958,8 @@
    
    .noticeBox a {
       font-size: 60px;
+   }
+   
+   .space {
+   	margin: 20px;
    }

@@ -139,7 +139,8 @@
 	</div>
 </div>
 
-
+<div class="space"></div>
+<%@ include file="../footer.jsp" %>
 
 
 </body>

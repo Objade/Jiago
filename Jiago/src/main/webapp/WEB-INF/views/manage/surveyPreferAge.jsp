@@ -21,7 +21,6 @@
 		</p>
 	
 		<table class="topSurveyPreferQuestion surveyList">
-	
 			<thead>
 				<tr>
 					<th>연령대</th>

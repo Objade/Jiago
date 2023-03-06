@@ -42,6 +42,25 @@
 		overflow-y: scroll; 
 	}
 	
+	.topSurveyPreferQuestion.surveyList > thead > tr > th:first-child,
+	.topSurveyPreferQuestion.surveyList2 > tbody > tr > td:first-child {
+	
+		width: 200px;
+	}
+	
+	.topSurveyPreferQuestion.surveyList > thead > tr > th:nth-child(2),
+	.topSurveyPreferQuestion.surveyList2 > tbody > tr > td:nth-child(2) {
+	
+		width: 500px;
+	}
+	
+	.topSurveyPreferQuestion.surveyList > thead > tr > th:nth-child(3),
+	.topSurveyPreferQuestion.surveyList2 > tbody > tr > td:nth-child(3) {
+	
+		width: 150px;
+	}
+	
+	
 	.topSurveyPreferQuestionTable.low {
 		border-collapse: collapse;
 		width: 800px;	
@@ -54,4 +73,15 @@
 		overflow-y: scroll;
 	}
 	
+	.topSurveyPreferQuestionTable.low > tbody > tr > td:first-child {
+	 width: 200px;
+	}
+	
+	.topSurveyPreferQuestionTable.low > tbody > tr > td:nth-child(2) {
+	 width: 500px;
+	}
+	
+	.topSurveyPreferQuestionTable.low  > tbody > tr > td:nth-child(3) {
+	 width: 150px;
+	}
 	

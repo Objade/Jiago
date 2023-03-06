@@ -116,5 +116,7 @@ infowindow.open(map, marker);
 	
 	
 </div>
+
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

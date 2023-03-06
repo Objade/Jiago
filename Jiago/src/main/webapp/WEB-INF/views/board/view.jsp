@@ -44,7 +44,7 @@
          </tr>
                   
          <tr>
-            <td class="bContent" colspan="3">${dto.qboard_content }</td>
+            <td class="bContent" colspan="3"><pre>${dto.qboard_content }</pre></td>
          </tr>
        </table>
        <div class="reply_title">답변</div> 
